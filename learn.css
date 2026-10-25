@@ -1,0 +1,58 @@
+/* Learn（Duolingo 式路徑）— 用 ui.css 嘅 CSS 變數；獨立檔 */
+#v-learn{max-width:720px;margin:0 auto}
+.lstat{display:flex;gap:10px;margin:0 0 14px;flex-wrap:wrap}
+.lstat .chip2{background:#fff;border-radius:16px;padding:8px 14px;box-shadow:0 2px 10px rgba(0,0,0,.06);font-weight:700}
+.unit{margin:18px 0 6px;padding:14px 16px;border-radius:18px;color:#0f172a}
+.unit h3{margin:0;font-size:18px}.unit .small{color:#0f172acc}
+.path{display:flex;flex-direction:column;align-items:center;gap:14px;padding:14px 0}
+.lnode{width:78px;height:78px;border-radius:50%;border:0;font-size:30px;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.18);position:relative;transition:transform .15s;background:#fff}
+.lnode:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.lnode.done{color:#0f172a}.lnode.lock{background:#cfd3da;filter:grayscale(1);cursor:not-allowed;box-shadow:0 6px 0 rgba(0,0,0,.1)}
+.lnode.cur{animation:pulse 1.6s infinite}
+@keyframes pulse{50%{transform:scale(1.07)}}
+.lnode .st{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);font-size:13px;white-space:nowrap}
+.lname{font-size:12px;margin-top:8px;text-align:center;max-width:150px;color:#334155}
+#lesson{position:fixed;inset:0;z-index:2000;background:#f4f5f8;display:none;flex-direction:column}
+#lesson.on{display:flex}
+.lhead{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.lhead .x{background:none;border:0;font-size:22px;cursor:pointer}
+.lbar{flex:1;height:14px;background:#dfe3ea;border-radius:8px;overflow:hidden}.lbar i{display:block;height:100%;background:#58cc02;border-radius:8px;transition:width .35s}
+.hearts{font-weight:800;color:#e11d48}
+.lbody{flex:1;overflow:auto;padding:8px 18px 20px;max-width:640px;width:100%;margin:0 auto}
+.lbody h2{font-size:22px;margin:6px 0 10px}
+.say{font-size:18px;line-height:1.6;margin:10px 0}
+.say b{color:#0369a1}
+.term{display:inline-block;background:#e0f2fe;border-radius:10px;padding:2px 10px;margin:2px 4px 2px 0;font-weight:700;color:#075985}
+.vbox{background:#0b1224;border-radius:16px;padding:8px;margin:12px 0}
+.vbox .abox{margin:0}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid #dfe3ea;border-bottom-width:4px;border-radius:14px;padding:14px 16px;margin:10px 0;font-size:17px;cursor:pointer}
+.opt:hover{background:#f0f7ff}.opt.sel{border-color:#38bdf8;background:#e0f2fe}
+.opt.right{border-color:#58cc02;background:#e8f8d6}.opt.wrong{border-color:#ef4444;background:#fee2e2}
+.opt:disabled{cursor:default}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.tile{background:#fff;border:2px solid #dfe3ea;border-bottom-width:4px;border-radius:12px;padding:8px 14px;font-size:16px;cursor:pointer}
+.tile.used{opacity:.25;pointer-events:none}
+.blank{display:inline-block;min-width:70px;border-bottom:3px solid #94a3b8;text-align:center;padding:0 8px;font-weight:700;color:#0369a1}
+.seq{list-style:none;padding:0;margin:10px 0}.seq li{background:#fff;border:2px solid #38bdf8;border-radius:12px;padding:10px 14px;margin:6px 0}
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pairs .tile{text-align:center}
+.tile.sel{border-color:#38bdf8;background:#e0f2fe}.tile.gone{opacity:.2;pointer-events:none;border-color:#58cc02}
+.lfoot{padding:14px 18px calc(14px + env(safe-area-inset-bottom));border-top:1px solid #e2e5ec;background:#fff}
+.lfoot .fb{max-width:640px;margin:0 auto 10px;font-size:16px;line-height:1.5;display:none}
+.lfoot .fb.ok{display:block;color:#3f8f00}.lfoot .fb.no{display:block;color:#b91c1c}
+.lfoot button.go{display:block;max-width:640px;width:100%;margin:0 auto;background:#58cc02;color:#fff;border:0;border-bottom:4px solid #46a302;border-radius:14px;padding:14px;font-size:17px;font-weight:800;cursor:pointer}
+.lfoot button.go:disabled{background:#dfe3ea;border-bottom-color:#c4c9d3;color:#94a3b8;cursor:default}
+.lfoot.bad button.go{background:#ef4444;border-bottom-color:#b91c1c}
+.done-screen{text-align:center;padding:40px 10px}.done-screen .big{font-size:64px}
+.recall{background:#fff7e6;border-radius:12px;padding:8px 12px;font-size:14px;margin:8px 0}
+.vbox label,.vbox .small,.vbox b{color:#e2e8f0}
+
+.leaveq{position:absolute;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:5}
+.leaveq .box{background:#fff;border-radius:18px;padding:20px;max-width:320px;width:86%;text-align:center}
+.leaveq .box .b{display:block;width:100%;margin:10px 0 0;padding:12px}
+
+.scene-card{background:#fff7e6;border:2px solid #f59e0b;border-radius:16px;padding:12px 14px;margin:6px 0 12px}
+.scene-card .say{font-size:17px;margin:4px 0 0}.scene-tag{font-weight:800;color:#b45309;font-size:13px}
+
+.opt[data-n]::before{content:attr(data-n);display:inline-block;min-width:22px;height:22px;line-height:22px;text-align:center;border:2px solid #cbd5e1;border-radius:7px;font-size:12px;font-weight:700;margin-right:10px;color:#64748b}
+.tile[data-n]::before{content:attr(data-n);font-size:10px;font-weight:800;color:#94a3b8;margin-right:6px}
+.kbdhint{font-size:12px;color:#94a3b8;text-align:center;margin-top:6px}
