@@ -19,7 +19,7 @@ button.b:disabled{opacity:.4}
 .mapbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .mapbar .crumb{flex:1;min-width:160px}
 .mapwrap{display:grid;gap:12px;grid-template-columns:1fr}
-@media(min-width:1000px){.mapwrap{grid-template-columns:minmax(0,1fr) 380px;align-items:start}
+@media(min-width:1320px){.mapwrap{grid-template-columns:minmax(0,1fr) 380px;align-items:start}
  #info{position:sticky;top:64px;max-height:calc(100vh - 80px);overflow:auto}}
 #mapbox{position:relative}
 #map{display:block;width:100%;aspect-ratio:1;max-height:78vh;background:rgba(255,255,255,.5);box-shadow:var(--sh);border-radius:var(--r);touch-action:none;cursor:grab;user-select:none}

@@ -88,34 +88,37 @@ function ringLayout(n,r){
     for(let j=0;j<take;j++){const a=-Math.PI/2+off+j*2*Math.PI/take;pos.push([Math.cos(a)*R,Math.sin(a)*R])}
     rem-=take;ring++;R+=gap*.92}
   const Rl=R-gap*.92,S=Math.max(600,2*(Rl+r+26));return{pos:pos.map(p=>[p[0]+S/2,p[1]+S/2]),S}}
+/* ---------- 新版概念地圖（HTML，唔再用放射圓圈）：科目 → chapter 卡 → 概念頁 ---------- */
+function ringSvg(p,size){const C=2*Math.PI*15,k=p&&p.n?p.k/p.n:0;return `<svg class="ring" style="width:${size||34}px;height:${size||34}px" viewBox="0 0 38 38"><circle cx="19" cy="19" r="15" fill="none" stroke="var(--line)" stroke-width="4"/>${k?`<circle cx="19" cy="19" r="15" fill="none" stroke="var(--ok)" stroke-width="4" stroke-linecap="round" stroke-dasharray="${C*k} ${C}" transform="rotate(-90 19 19)"/>`:""}<text x="19" y="23" font-size="10" text-anchor="middle" fill="var(--mute)">${p&&p.n?Math.round(k*100):"–"}</text></svg>`}
 function drawMap(){
-  const lv=curLevel=buildLevel(),svg=$("#map");
-  crumb();$("#mapmode").innerHTML=`<button class="tab ${mapMode==="map"?"on":""}" data-mm="map">🗺️ 地圖</button> <button class="tab ${mapMode==="list"?"on":""}" data-mm="list">📋 清單</button>`;
-  const empty=!lv.items.length;
-  svg.style.display=!empty&&mapMode==="map"?"block":"none";$("#zoomctl").style.display=svg.style.display;
-  $("#lst").innerHTML="";nodeEls=new Map();edgeEls=[];
-  if(empty){$("#lst").innerHTML=`<div class="empty">呢科（或呢個 chapter）暫時未有內容 🛠️<br><span class="small">資料整緊，之後會自動出現。</span></div>`;$("#legend").textContent="";return}
-  if(mapMode==="list")drawList(lv);else drawSvg(lv,svg);
-  $("#legend").textContent=mapMode==="map"?"圓環＝已識 card 比例 · 黃色虛線＝關連 · 橙色＝待驗證 · 可拖動／雙指縮放":"";
-  if(sel&&lv.items.some(i=>i.key===sel))mark(sel)}
-function drawSvg(lv,svg){
-  const{pos,S}=ringLayout(lv.items.length,lv.r),C=S/2;PZ.S=S;PZ.vb=[0,0,S,S];svg.setAttribute("viewBox",`0 0 ${S} ${S}`);svg.innerHTML="";svg.classList.remove("focus");
-  const g=el("g",{},svg),P=new Map(lv.items.map((it,i)=>[it.key,pos[i]]));
-  lv.items.forEach((it,i)=>el("line",{x1:C,y1:C,x2:pos[i][0],y2:pos[i][1],stroke:it.ring||it.color,class:"edge"},g));
-  lv.edges.forEach(e=>{const a=P.get(e.a),b=P.get(e.b);if(!a||!b)return;const mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2,cx=C+(mx-C)*.35,cy=C+(my-C)*.35;
-    const p=el("path",{d:`M${a[0]},${a[1]} Q${cx},${cy} ${b[0]},${b[1]}`,class:"xedge"+(lv.lvl<2?" big":"")},g);
-    if(lv.lvl<2)p.style.strokeWidth=1.5+Math.min(7,e.w/(lv.lvl?1.5:3));
-    edgeEls.push({a:e.a,b:e.b,el:p})});
-  el("circle",{cx:C,cy:C,r:56,fill:lv.center.color,stroke:"#0002"},g);
-  lv.center.label.forEach((ln,i,arr)=>{const t=el("text",{x:C,y:C+(i-(arr.length-1)/2)*15+5,"font-size":13,class:"ctr"},g);t.textContent=ln});
-  const r=lv.r,fs=Math.max(11,r*.3),cpl=Math.floor(1.7*r/(fs*.56));
-  lv.items.forEach((it,i)=>{
-    const n=el("g",{class:"node",transform:`translate(${pos[i][0]},${pos[i][1]})`,"data-k":it.key},g);
-    const tt=el("title",{},n);tt.textContent=it.title||"";
-    el("circle",{class:"body",r,fill:it.color,stroke:it.ring||"none","stroke-width":it.ring?5:0,opacity:it.dim?.55:1},n);
-    if(it.ratio&&it.ratio.n){const R=r+7,Cc=2*Math.PI*R;el("circle",{class:"track",r:R},n);if(it.ratio.k)el("circle",{class:"arc",r:R,"stroke-dasharray":`${Cc*it.ratio.k/it.ratio.n} ${Cc}`},n)}
-    const ls=it.label||wrapN(it.text,cpl,3);ls.forEach((ln,j)=>{const t=el("text",{y:(j-(ls.length-1)/2)*(fs+3)+fs/3,"font-size":fs},n);t.textContent=ln});
-    nodeEls.set(it.key,n)})}
+  mapMode="list";crumb();$("#mapmode").innerHTML="";$("#map").style.display="none";$("#zoomctl").style.display="none";$("#legend").textContent="";nodeEls=new Map();edgeEls=[];
+  const L=$("#lst"),P=progress();
+  if(!curSubject){ // 科目
+    L.innerHTML=`<div class="tiles">`+Cadet.order.map(k=>{const S=SUBJ(k),T=S.topics||[],p=P.s.get(k),chs=new Set(T.map(gname)).size;
+      return `<button class="tile9" style="--c:${S.color}" data-sub="${k}"><span class="tn">${S.emoji}</span><b>${esc(S.name)}</b><span class="small">${chs} chapters · ${T.length} topics · ${(S.cards||[]).length} cards</span><span class="seg" style="--p:${pct(p)}%"></span></button>`}).join("")+`</div>`;return}
+  const S=SUBJ(curSubject),T=S.topics||[];
+  if(!T.length){L.innerHTML=`<div class="empty">呢科暫時未有內容 🛠️</div>`;return}
+  if(sel&&Cadet.topic(sel))return renderConcept(sel);
+  const gs=[...new Set(T.map(gname))];
+  L.innerHTML=`<div class="chap-hint small">撳一個 topic 睇佢同其他概念嘅關係。數字＝建議學習次序。</div><div class="chaps">`+gs.map(g=>{const kids=T.filter(t=>gname(t)===g),p=P.g.get(curSubject+"|"+g);
+    return `<section class="chap ${curGroup===g?"on":""}" style="--c:${S.color}"><header><b>${esc(g)}</b><span class="small">${kids.length}</span></header><span class="seg" style="--p:${pct(p)}%"></span><ol>`+kids.map((t,i)=>{const tp=P.t.get(t.id);return `<li><button class="trow ${t.check?"chk":""}" data-topic-go="${esc(t.id)}"><span class="no">${String(i+1).padStart(2,"0")}</span><span class="tt">${esc(t.t)}</span>${t.check?'<span class="warn">!</span>':""}${tp&&tp.n?`<span class="mm ${tp.k===tp.n?"full":""}">${tp.k}/${tp.n}</span>`:""}</button></li>`}).join("")+`</ol></section>`}).join("")+`</div>`;
+  if(curGroup){const el=[...L.querySelectorAll(".chap")].find(x=>x.classList.contains("on"));if(el)el.scrollIntoView({block:"start"})}}
+function nbOf(id){const from=[],to=[],rel=[],seen=new Set([id]);
+  Cadet.allLinks().forEach(([a,b,w])=>{if(a===id&&Cadet.topic(b)&&!seen.has(b)){to.push({o:b,why:w});seen.add(b)}else if(b===id&&Cadet.topic(a)&&!seen.has(a)){from.push({o:a,why:w});seen.add(a)}});
+  ((Cadet.topic(id).t.rel)||[]).forEach(r=>{if(Cadet.topic(r)&&!seen.has(r)){rel.push({o:r,why:""});seen.add(r)}});
+  return from.concat(to,rel)}
+function renderConcept(id){
+  const f=Cadet.topic(id),t=f.t,S=f.s,T=S.topics||[],g=gname(t),kids=T.filter(x=>gname(x)===g),i=kids.findIndex(x=>x.id===id),P=progress(),tp=P.t.get(id);
+  const nb=nbOf(id),same=nb.filter(n=>gname(Cadet.topic(n.o).t)===g&&Cadet.topic(n.o).s.key===S.key),
+    sameS=nb.filter(n=>Cadet.topic(n.o).s.key===S.key&&gname(Cadet.topic(n.o).t)!==g),cross=nb.filter(n=>Cadet.topic(n.o).s.key!==S.key);
+  const card=n=>{const x=Cadet.topic(n.o),p=P.t.get(n.o);return `<button class="ncard" style="--c:${x.s.color}" data-topic-go="${esc(n.o)}"><span class="nt">${x.s.key!==S.key?x.s.emoji+" ":""}${esc(x.t.t)}</span>${n.why&&n.why!=="—"?`<span class="nw">${esc(n.why)}</span>`:""}<span class="nm2">${x.s.key!==S.key?esc(x.s.name)+" · ":""}${esc(gname(x.t))}${p&&p.n?` · ${p.k}/${p.n}`:""}</span></button>`};
+  const col=(h,list)=>list.length?`<div class="rcol"><h4>${h} <small>${list.length}</small></h4>${list.slice(0,12).map(card).join("")}${list.length>12?`<div class="small">仲有 ${list.length-12} 個，用搜尋或 chapter 頁睇</div>`:""}</div>`:"";
+  $("#lst").innerHTML=`<div class="flow" style="--c:${S.color}">`+kids.map((x,j)=>`<button class="fstep ${j===i?"now":""}" data-topic-go="${esc(x.id)}"><span class="no">${String(j+1).padStart(2,"0")}</span>${esc(x.t)}</button>${j<kids.length-1?'<span class="farr">→</span>':""}`).join("")+`</div>
+  <div class="center" style="--c:${S.color}">${ringSvg(tp,54)}<div><div class="small">${S.emoji} ${esc(S.name)} · ${esc(g)} · ${i+1}/${kids.length}</div><h2>${esc(t.t)}</h2><div>${esc(t.d||"")}</div></div></div>
+  <div class="rel">${col("同 chapter 關連",same)}${col("同科其他 chapter",sameS)}${col("其他科目",cross)}${nb.length?"":'<div class="empty">呢個概念暫時冇記錄關連</div>'}</div>
+  <div class="pn"><button class="b g" ${i>0?`data-topic-go="${esc(kids[i-1].id)}"`:"disabled"}>← ${i>0?esc(kids[i-1].t):"（第一個）"}</button><button class="b" ${i<kids.length-1?`data-topic-go="${esc(kids[i+1].id)}"`:"disabled"}>${i<kids.length-1?esc(kids[i+1].t):"（最後一個）"} →</button></div>`;
+  window.scrollTo({top:0})}
+document.addEventListener("click",e=>{const s=e.target.closest("[data-sub]");if(s){openSubject(s.dataset.sub);return}const g=e.target.closest("[data-topic-go]");if(g&&!g.disabled){goTopic(g.dataset.topicGo)}});
 function drawList(lv){
   const ctr=it=>{const p=it.ratio,C=2*Math.PI*15;return `<svg class="ring" viewBox="0 0 38 38"><circle cx="19" cy="19" r="15" fill="none" stroke="#d3d7de" stroke-width="5"/>${p&&p.k?`<circle cx="19" cy="19" r="15" fill="none" stroke="#16a34a" stroke-width="5" stroke-linecap="round" stroke-dasharray="${C*p.k/p.n} ${C}" transform="rotate(-90 19 19)"/>`:""}<text x="19" y="23" font-size="10" text-anchor="middle" fill="#778093">${p&&p.n?pct(p)+"%":""}</text></svg>`};
   $("#lst").innerHTML=`<div class="lgrid">`+lv.items.map(it=>`<button class="lrow ${it.dim?"dim":""}" style="--c:${it.ring||(it.color==="#fff"?"#94a3b8":it.color)}" data-k="${esc(it.key)}">${ctr(it)}<div class="lt"><b>${esc(it.title||it.text)}</b><span class="small">${esc(it.sub)}</span></div></button>`).join("")+`</div>`}
@@ -309,7 +312,9 @@ document.addEventListener("keydown",e=>{
     if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}else if(e.key==="ArrowLeft")answer(0);else if(e.key==="ArrowRight")answer(1);else if(e.key==="ArrowUp"){e.preventDefault();answer(2)}}});
 /* ---------- rail / init ---------- */
 document.querySelectorAll("#rail button[data-v],.gear button").forEach(b=>b.onclick=()=>show(b.dataset.v));
+const RETRO=["#ff6a2b","#8fae8b","#e9b949","#d8795a","#9fb4c2","#b9b88a","#d9c7a5","#f0a47a","#6fa883"];
 function init(){
+  Cadet.order.forEach((k,i)=>{Cadet.subjects[k].color=RETRO[i%RETRO.length]});if(typeof LV!=="undefined")LV.courses.forEach(c=>{if(Cadet.subjects[c.key])c.color=Cadet.subjects[c.key].color});
   $("#loading").style.display="none";
   const v=(location.hash||"").slice(1);
   show(["learn","dash","map","anim","cards","set"].includes(v)?v:"map");info()}
