@@ -41,7 +41,7 @@ T("pubs","Planning Basics","Aeronautical Publications",
  ["AIP: lasting procedures","ERSA: aerodrome + PRD + procedures","NOTAM: time-critical changes","AIC: admin / future info","CAAP: advice e.g. fuel policy"],
  ["notam","ersa-lesson"],"Basic Aero Knowledge p149-151 (Australia)"),
 T("notam","Planning Basics","NOTAM Decode",
- "NOTAM 有 Q-line、A) 地點、B/C) 時間、E) 內容、F/G) 高度。",
+ "NOTAM 有 Q-line、A) 地點、B/C) 時間、E) 內容、F/G) altitude。",
  ["Q) FIR/code/traffic/scope/limits","A) location, B) from, C) to","E) plain language text","F/G) lower/upper limits","Abbreviations: ACT, CLSD, U/S, HLDG"],
  ["wxnotam","pubs"],"ENZO NOTAM codes (abbreviation lists, FAA/ICAO/AIS); Basic Aero Knowledge NOTAM contents; ICAO format = general knowledge"),
 T("ersa-lesson","Planning Basics","ERSA Lesson (Zoo Overflight)",
@@ -62,11 +62,11 @@ T("fuel-layers","Fuel Planning","Fuel Plan Layers",
  ["Taxi: start/taxi/run-up","Trip: climb + cruise (+descent)","Variable: 10% of trip (school)","Alternate fuel","Fixed reserve + holding","Fuel required vs margin"],
  ["taxi","trip","variable","alt-fuel","final-res","hold-fuel","margin"],"Airspace FP02 slides; VPG p8 worked example"),
 T("taxi","Fuel Planning","Taxi Fuel",
- "開機到起飛前用嘅油；看本地情況（滑行時間、擠塞）。",
+ "開機到take-off前用嘅油；看本地情況（滑行時間、擠塞）。",
  ["DA40 FCOM: 2 USG","Engine start, taxi, run-up","Airliner: includes APU","Local congestion matters"],
  ["fuel-layers","fuel-fta"],"Airspace FP02 photo 035814781, 034854705"),
 T("trip","Fuel Planning","Trip Fuel (Climb + Cruise)",
- "起飛到目的地所需油；爬升同巡航用唔同 burn rate。",
+ "take-off到目的地所需油；climb同巡航用唔同 burn rate。",
  ["Climb burn higher (DA40 14 USG/hr)","Cruise burn lower (9.8 USG/hr)","Every 2000 ft climb add 1 min ETI","Use wind-corrected GS for time"],
  ["fuel-layers","climb-fuel","fuel-fta"],"Airspace FP02 exercise photo 040747438; CPL Knowledge"),
 T("climb-fuel","Fuel Planning","Climb Fuel Rule of Thumb",
@@ -102,7 +102,7 @@ T("fuel-fta","Fuel Planning","DA40 Fuel Consumption (FCOM)",
  ["Cruise 65% power, best power","Hold 45% power, best economy","Final res 5 USG IFR / 3.5 VFR","Variable 10%"],
  ["taxi","trip","hold-fuel","final-res"],"Airspace FP02 photos 034854705, 040643510; CPL Knowledge"),
 T("fuel-reqs","Fuel Planning","Fuel Requirements by Rule",
- "Final reserve 同 contingency 按飛機重量同 flight rules 而變。",
+ "Final reserve 同 contingency 按飛機weight同 flight rules 而變。",
  ["CASA Part 91: piston <=5700 kg 30 min Day VFR","Night VFR / IFR 45 min","Piston >5700 kg: 45 min + 5%","Old CAAP 234-1: piston 45 min fixed","Check current rules!"],
  ["variable","final-res","far-fuel"],"Airspace FP02 photo 035105836; CPL Knowledge; VPG p9 (CAAP 234-1)",true),
 T("far-fuel","Fuel Planning","FAA Part 121 Fuel (Domestic)",
@@ -126,7 +126,7 @@ T("never-reserve","Fuel Planning","Never Plan to Use Reserve",
  ["Plan to land with reserves intact","Use of reserve = report/Mayday?","Below final reserve: declare MAYDAY","Reserve is for the unexpected"],
  ["final-res","mayday-fuel"],"VPG p4; PPL test Q20"),
 T("mayday-fuel","Fuel Planning","Fuel Emergency Call",
- "預計降落時油少於 final reserve：要 MAYDAY。",
+ "預計landing時油少於 final reserve：要 MAYDAY。",
  ["Calculated fuel < min reserve on landing","Declare MAYDAY (CASA)","Insufficient fuel = DETRESFA","Don't wait until empty"],
  ["never-reserve","sar-phases"],"PPL flight test questions Q20; Basic Aero Knowledge p180"),
 T("inflight-fuel","Fuel Planning","In-flight Fuel Management",
@@ -171,7 +171,7 @@ T("etp","Fuel Planning","Equal Time Point (ETP)",
  ["pnr","pdp"],"General aviation knowledge (not in feed)",true),
 // ---- Weather & Alternate
 T("alt-minima","Weather & Alternate","Alternate Required (CASA)",
- "四個天氣條件觸發：雲、能見度、風、雷暴。",
+ "四個天氣條件觸發：雲、visibility、風、thunderstorm。",
  ["Cloud > SCT below 1500 ft","Vis < 8 km or fog/mist prob","X/tailwind > aircraft limit","TS >= 30% prob / provisional","±30 min of forecast period"],
  ["inter-tempo","alt-fuel","taf3"],"CPL Knowledge Alternate Minima; VPG p7"),
 T("inter-tempo","Weather & Alternate","INTER / TEMPO Holding",
@@ -187,7 +187,7 @@ T("no-fcst","Weather & Alternate","No Forecast Available",
  ["Need alternate with a forecast","Depart if return within 1 hr","Dest forecast within 30 min of dep","Cover ETA -30 to +60 min"],
  ["alt-minima"],"CPL Knowledge forecast requirements"),
 T("vmc","Weather & Alternate","VMC Minima",
- "VMC 取決於 airspace class 同高度。",
+ "VMC 取決於 airspace class 同altitude。",
  ["Below 10000 ft: 5000 m vis","At/above 10000 ft: 8000 m","1500 m horiz / 1000 ft vert from cloud","Class D: 600 m / 500 below, 1000 above","Class G low: clear of cloud (CASA)"],
  ["svfr","vfr-on-top"],"CPL Knowledge; Basic Aero Knowledge"),
 T("svfr","Weather & Alternate","Special VFR",
@@ -240,12 +240,12 @@ T("min-alt","IFR Basics","IFR Minimum Altitudes",
  ["MSA: 1000 ft clearance, 25 NM sector","OROCA: 1000/2000 ft buffer (FAA)","MOCA: nav signal only within 22 NM","MVA used by radar ATC"],
  ["msa","sid"],"Airspace FP03 photo 060908784; ATP Test Prep ch6"),
 T("msa","IFR Basics","Minimum Sector Altitude",
- "25 NM 半徑 sector 內最低高度，障礙以上 1000 ft。",
+ "25 NM 半徑 sector 內最低altitude，障礙以上 1000 ft。",
  ["Radius 25 NM (30 if needed)","Centered on radio navaid","1000 ft above highest obstacle","Emergency use on approach chart"],
  ["min-alt"],"Airspace FP03 photo 060908784; ATP Test Prep"),
 // ---- SID STAR Approach
 T("sid","SID / STAR / Approach","SID",
- "標準儀表離場：機場跑道連到航路點。",
+ "標準instrument離場：機場runway連到航路點。",
  ["Links runway to enroute point","Choose by runway + exit direction","Examine BEFORE start-up request","Obstacle + altitude restrictions"],
  ["sid-types","sid-hk","climb-grad"],"Airspace FP03 photo 041433953"),
 T("sid-types","SID / STAR / Approach","Radar vs Procedural SID",
@@ -261,7 +261,7 @@ T("climb-grad","SID / STAR / Approach","Climb Gradient",
  ["Example 3.4% / 3.8% in HK SIDs","ROC ~ GS(kt) x gradient% (ft/min)","250 kt, 3% ~ 760 ft/min","Weight, temp, density affect"],
  ["sid-hk","grad-factors"],"Airspace FP03 photos 050433575, 060908784"),
 T("grad-factors","SID / STAR / Approach","What Affects Climb Gradient",
- "重量、溫度、density altitude；考慮 one-engine-out。",
+ "weight、temperature、density altitude；考慮 one-engine-out。",
  ["Heavier → worse","Hotter/higher → worse","Headwind helps gradient","Plan engine-out gradient"],
  ["climb-grad","to-perf"],"Airspace FP03 photo 060908784"),
 T("star","SID / STAR / Approach","STAR",
@@ -277,11 +277,11 @@ T("approach","SID / STAR / Approach","Instrument Approach Overview",
  ["ILS 07L: precision (HK example)","RNP Z 25R: PBN","Initial + missed approach speed limits","MSA protects"],
  ["dh-mda","missed","app-lights"],"Airspace FP03 photos 052134611, 061830202; ATP Test Prep"),
 T("dh-mda","SID / STAR / Approach","DA/DH vs MDA",
- "Precision: DA/DH；non-precision: MDA；到點未見跑道就 missed approach。",
+ "Precision: DA/DH；non-precision: MDA；到點未見runway就 missed approach。",
  ["DH/DA: decision to land or go-around","MDA: lowest altitude, don't descend below","Need required visual reference","Visual segment must be clear"],
  ["approach","missed","cat"],"ATP Test Prep ch1-ch6 approach questions"),
 T("missed","SID / STAR / Approach","Missed Approach",
- "MAPt 未見就爬升跟 missed approach procedure。",
+ "MAPt 未見就climb跟 missed approach procedure。",
  ["Climb on published track","If unable RNP1, continue published MISAP","Min climb gradient on chart","Don't turn early below MAPt"],
  ["approach","dh-mda"],"Airspace FP03 photo 052134611, 061830202"),
 T("rnp-app","SID / STAR / Approach","RNP APCH (RNP Z 25R)",
@@ -326,7 +326,7 @@ T("to-example","Performance & Briefing","Take-off Chart Example",
  ["PA = elev + (1013-QNH) x 30","Ground roll 320 m → 368 m","Over obstacle 470 m → 540.5 m","DA40 chart, no wind"],
  ["to-perf"],"Scenario Based 18 Jun 2026"),
 T("to-min","Performance & Briefing","Take-off Minima (FAA)",
- "冇公佈：2 引擎或以下 1 SM；3 或以上 1/2 SM。",
+ "冇公佈：2 engine或以下 1 SM；3 或以上 1/2 SM。",
  ["Air carrier alternate: 800-2/900-1.5/1000-1","V1 = abort or continue speed","VR >= V1","FAA 121/91"],
  ["to-perf"],"ATP Test Prep ch6 Takeoff Procedures"),
 T("pax-brief","Performance & Briefing","Passenger Briefing",
@@ -401,10 +401,10 @@ const links=[
 ["fp.never-reserve","fp.mayday-fuel","食 reserve 要 MAYDAY"],
 ["fp.sid","fp.sid-types","SID 分 radar / procedural"],
 ["fp.sid-hk","fp.pbn","DALOL 1Y 要 RNP1"],
-["fp.climb-grad","fp.grad-factors","Gradient 受重量/溫度影響"],
+["fp.climb-grad","fp.grad-factors","Gradient 受weight/temperature影響"],
 ["fp.grad-factors","fp.to-perf","同一套 density altitude 原理"],
 ["fp.star","fp.approach","STAR 銜接 approach"],
-["fp.dh-mda","fp.missed","到 DA/MDA 未見跑道就 missed"],
+["fp.dh-mda","fp.missed","到 DA/MDA 未見runway就 missed"],
 ["fp.cat","fp.dh-mda","CAT 級數決定 DH"],
 ["fp.app-lights","fp.approach","燈光幫助 visual segment"],
 ["fp.hold","fp.hold-entry","入 hold 方式"],
@@ -423,7 +423,7 @@ const links=[
 ["fp.fuel-reqs","fp.final-res","Rule 決定 final reserve 分鐘"],
 ["fp.far-fuel","fp.fuel-reqs","FAA vs CASA 對照"],
 ["fp.vmc","fp.svfr","SVFR 係 VMC 例外"],
-["fp.msa","fp.min-alt","MSA 屬最低高度家族"]
+["fp.msa","fp.min-alt","MSA 屬最低altitude家族"]
 ];
 const cards=[
 C("fp.notam","📟","What does NOTAM item A) and E) mean?","A) is the location indicator; E) is the plain-language text of the notice.","地點 / 內容。"),
@@ -451,7 +451,7 @@ C("fp.threats","⚠️","What are the three threat types in TEM?","Expected, une
 C("fp.fuel-why","❓","What must you know before a flight about fuel?","Capacity vs usable fuel, consumption rate, fuel system, and fuel availability en route.","四項。"),
 C("fp.fuel-layers","🧱","List the layers of a fuel plan.","Taxi, trip (climb and cruise), variable, alternate, fixed reserve, holding.","疊成 bar。"),
 C("fp.fuel-layers","➕","How do you get Fuel Required?","Add taxi, trip, variable, alternate, final reserve and holding. Margin is extra beyond that.","總和。"),
-C("fp.taxi","🚕","What is taxi fuel?","Fuel used before take-off: start, taxi and run-up; DA40 uses 2 USG.","開機到起飛。"),
+C("fp.taxi","🚕","What is taxi fuel?","Fuel used before take-off: start, taxi and run-up; DA40 uses 2 USG.","開機到take-off。"),
 C("fp.trip","🛫","How do you compute trip fuel?","Climb time x climb burn plus cruise time x cruise burn, using wind-corrected groundspeed.","Burn rate x time。"),
 C("fp.climb-fuel","⏱️","Training shortcut for climb time?","Add 1 min to ETI for every 2000 ft climbed.","課堂簡化。"),
 C("fp.trip","🧪","Calc: cruise 45 min at 9.8 USG/hr?","45/60 x 9.8 = 7.35 USG.","時間 x burn。"),
@@ -493,7 +493,7 @@ C("fp.refuel","🔌","Bonding order when refuelling?","Attach earth to bare meta
 C("fp.refuel","🚷","Can passengers be on board during AVGAS refuelling?","No.","CASA。"),
 C("fp.fuel-conv","🔄","Convert 162 L avgas to kg.","About 117 kg (x0.72).","SG。"),
 C("fp.fuel-conv","🔄","1 USG in litres?","About 3.8 L.","換算。"),
-C("fp.range-end","🎯","Range vs endurance configuration?","Range gives maximum distance; endurance gives maximum time.","不同速度。"),
+C("fp.range-end","🎯","Range vs endurance configuration?","Range gives maximum distance; endurance gives maximum time.","不同speed。"),
 C("fp.airline-fpl","✈️","Gross error check on airline plan?","Check totals and sanity, e.g. contingency 5% trip and final reserve 30 min at 1500 ft.","Check。"),
 C("fp.airline-fpl","➕","Ramp weight vs ZFW difference?","Ramp weight is ZFW plus all fuel on board.","加油。"),
 C("fp.alt-summ","📑","What's in an alternate summary?","Distance, level, wind component, time and fuel to each alternate.","比較表。"),
@@ -503,9 +503,9 @@ C("fp.pnr","💨","Headwind outbound effect on PNR?","Lower O makes PNR time sho
 C("fp.etp","⚖️","ETP definition?","The point from which flight time to two aerodromes is equal.","等時點。"),
 C("fp.etp","🧪","ETP distance formula?","d = D x H / (O + H) from the start, with H GS toward the start.","公式。"),
 C("fp.alt-minima","🌥️","Cloud trigger for alternate (CASA)?","More than SCT cloud continuously below 1500 ft at ETA.","雲。"),
-C("fp.alt-minima","👁️","Visibility trigger?","Less than 8 km, or probability of fog, mist or dust reducing it.","能見度。"),
+C("fp.alt-minima","👁️","Visibility trigger?","Less than 8 km, or probability of fog, mist or dust reducing it.","visibility。"),
 C("fp.alt-minima","🌬️","Wind trigger?","Crosswind or tailwind above aircraft maximum.","風。"),
-C("fp.alt-minima","⛈️","Thunderstorm trigger?","TS or severe turbulence with 30% or more probability.","雷暴。"),
+C("fp.alt-minima","⛈️","Thunderstorm trigger?","TS or severe turbulence with 30% or more probability.","thunderstorm。"),
 C("fp.alt-minima","🕐","Time window for applying forecast conditions?","From 30 minutes before to 30 minutes after.","30 分鐘。"),
 C("fp.alt-minima","✅","When is no alternate needed?","Day VFR within 50 nm of departure.","50 nm。"),
 C("fp.inter-tempo","⏳","Holding required for INTER vs TEMPO?","INTER 30 minutes; TEMPO 60 minutes.","INTER/TEMPO。"),
@@ -517,7 +517,7 @@ C("fp.svfr","🟨","Special VFR conditions?","Class C/D only, pilot request, cle
 C("fp.vfr-on-top","⬆️","VFR on top fix requirement?","Visual fix every 30 min, or 2 hr by radio nav; VMC maintained.","30 min。"),
 C("fp.vfr-ifr","🆚","Benefits of IFR?","Can fly in cloud, more accurate tracking, suboptimal weather, and efficient high altitude.","IFR。"),
 C("fp.hk-airspace","🇭🇰","HK airspace classes?","A, C and G; Class A is IFR only.","HK。"),
-C("fp.hk-airspace","💨","HK speed limit?","250 KIAS below 10000 ft AMSL.","速度。"),
+C("fp.hk-airspace","💨","HK speed limit?","250 KIAS below 10000 ft AMSL.","speed。"),
 C("fp.ifr-vfr-mix","🔀","Can a GA flight be VFR and IFR?","Yes; the transition must be specified in the flight plan; ATC can downgrade.","混合。"),
 C("fp.ifr-required","🎓","When IR required (FAA)?","Under IFR, Class A, weather below VFR minima.","FAA。"),
 C("fp.ats-routes","🛣️","What's an ATS route?","A route designated to channel traffic for ATS; includes airways, advisory, arrival and departure routes.","Airway。"),
@@ -541,9 +541,9 @@ C("fp.star","🇭🇰","HK STAR example?","ABBEY 4A from the east.","ABBEY。"),
 C("fp.pilot-nav","🧭","Pilot NAV vs Vector DP?","Pilot NAV: pilot navigates; Vector: ATC radar guidance.","FAA。"),
 C("fp.approach","🛬","What's the structure of an approach?","Initial, intermediate, final, then missed approach.","段。"),
 C("fp.dh-mda","📉","DA/DH vs MDA?","DA/DH is for precision approaches; MDA is the lowest allowed altitude on non-precision approaches.","分別。"),
-C("fp.dh-mda","👀","At DH you do not see runway. Action?","Execute missed approach.","復飛。"),
-C("fp.missed","🔄","If unable RNP1 during MISAP?","Continue on the published MISAP track and climb.","復飛程序。"),
-C("fp.rnp-app","🌡️","RNP Z 25R temp restriction?","Baro VNAV not authorised below 0 °C.","溫度。"),
+C("fp.dh-mda","👀","At DH you do not see runway. Action?","Execute missed approach.","go-around。"),
+C("fp.missed","🔄","If unable RNP1 during MISAP?","Continue on the published MISAP track and climb.","go-around程序。"),
+C("fp.rnp-app","🌡️","RNP Z 25R temp restriction?","Baro VNAV not authorised below 0 °C.","temperature。"),
 C("fp.cat","🅲","CAT I / II / III?","CAT I DH>=200 ft; CAT II 100-200 ft with RVR>=1200 ft; CAT III below 100 ft or none.","級數。"),
 C("fp.app-lights","💡","PAPI indications?","4 white high; 3W1R slightly high; 2W2R on path; 1W3R slightly low; 4R low.","PAPI。"),
 C("fp.hold","🔁","Standard holding pattern?","Right turns, 1 minute outbound at or below 14000 ft, 1.5 minutes above.","Hold。"),
@@ -607,7 +607,7 @@ const anims=[
  const svg=H.svg(box,700,280),say=H.note(box);
  const P=[["RWY",60,230,"SID"],["ROVER",120,190,"SID"],["RAMEN",200,150,"SID"],["VEDVO",290,110,"SID"],["SEGPO",380,70,"SID"],["DALOL",470,50,"Airway"],["ABBEY",560,90,"STAR"],["IAF",600,150,"STAR"],["FAF",540,210,"Approach"],["RWY",440,235,"Approach"]];
  const col={SID:"#38bdf8",Airway:"#94a3b8",STAR:"#4ade80",Approach:"#fb923c"};
- const txt={SID:"SID：跟 waypoint、速度同 gradient 限制",Airway:"Enroute airway：ATS route",STAR:"STAR：標準到達路線，無 ATC 許可唔好落",Approach:"Approach：final → DA／MDA → land 或 missed"};
+ const txt={SID:"SID：跟 waypoint、speed同 gradient 限制",Airway:"Enroute airway：ATS route",STAR:"STAR：標準到達路線，無 ATC 許可唔好落",Approach:"Approach：final → DA／MDA → land 或 missed"};
  for(let i=0;i<P.length-1;i++)H.el("line",{x1:P[i][1],y1:P[i][2],x2:P[i+1][1],y2:P[i+1][2],stroke:col[P[i+1][3]],"stroke-width":3},svg);
  P.forEach((p,i)=>{H.el("circle",{cx:p[1],cy:p[2],r:5,fill:"#fff"},svg);const t=H.el("text",{x:p[1]+8,y:p[2]-8,fill:"#e2e8f0","font-size":12},svg);t.textContent=p[0]});
  const plane=H.el("polygon",{points:"12,0 -8,-7 -4,0 -8,7",fill:"#facc15"},svg);
@@ -619,7 +619,7 @@ const anims=[
  H.button(box,"Restart",()=>{seg=0;f=0});
  place();
 }},
-{title:"Holding Pattern 同 leg 長度",hint:"拉高度：>14000 ft 之後 inbound leg 變 1.5 min（FAA）",build(box,H){
+{title:"Holding Pattern 同 leg 長度",hint:"拉altitude：>14000 ft 之後 inbound leg 變 1.5 min（FAA）",build(box,H){
  const svg=H.svg(box,700,300),say=H.note(box);
  const path=H.el("polyline",{fill:"none",stroke:"#38bdf8","stroke-width":3},svg);
  H.el("circle",{cx:300,cy:60,r:6,fill:"#fff"},svg);
@@ -653,7 +653,7 @@ const anims=[
   let k;if(d>=250||d<70)k="DIRECT：直接入，右轉入 hold";else if(d<180)k="TEARDROP：outbound 偏 30° 再右轉 intercept inbound";else k="PARALLEL：平行 outbound，再左轉返 inbound";
   say("Heading "+d+"°（inbound course 360°、右轉 hold）→ "+k+"（FAA 70° line sectors，我唔確定 ICAO 分界完全一樣）")},1);
 }},
-{title:"DA／MDA：見唔見跑道？",hint:"調 DA 同 cloud base，撳 Fly approach",build(box,H){
+{title:"DA／MDA：見唔見runway？",hint:"調 DA 同 cloud base，撳 Fly approach",build(box,H){
  const svg=H.svg(box,700,260),say=H.note(box);const gy=220,Y=a=>gy-0.15*a,X=nm=>560-60*nm;
  const cloud=H.el("rect",{x:0,y:0,width:700,fill:"#64748b","fill-opacity":".6"},svg);
  H.el("rect",{x:0,y:gy,width:700,height:40,fill:"#334155"},svg);H.el("rect",{x:560,y:gy-2,width:120,height:5,fill:"#fff"},svg);
@@ -664,7 +664,7 @@ const anims=[
  function setup(){nm=4;alt=319*4;state=0;ang=0;cloud.setAttribute("height",Y(cb));dl.setAttribute("y1",Y(da));dl.setAttribute("y2",Y(da));dt.setAttribute("y",Y(da)-4);dt.textContent="DA／MDA "+da+" ft";draw();say("Final approach 3°…")}
  function draw(){plane.setAttribute("transform","translate("+X(nm)+","+Y(alt)+") rotate("+ang+")")}
  H.loop(()=>{if(state===0||state===3||state===4)return;
-  if(state===1){nm-=0.012;alt=319*nm;ang=18;if(alt<=da){if(cb>da){state=2;say("DA：見到 runway environment → 繼續落")}else{state=5;say("DA：未見跑道（cloud base "+cb+" ft 低過 DA）→ MISSED APPROACH")}}}
+  if(state===1){nm-=0.012;alt=319*nm;ang=18;if(alt<=da){if(cb>da){state=2;say("DA：見到 runway environment → 繼續落")}else{state=5;say("DA：未見runway（cloud base "+cb+" ft 低過 DA）→ MISSED APPROACH")}}}
   else if(state===2){nm-=0.012;alt=Math.max(319*nm,0);ang=18;if(nm<=0){state=3;say("Landed")}}
   else if(state===5){nm-=0.012;alt+=2.2;ang=-35;if(nm<-3){state=3}}
   draw()});
@@ -688,7 +688,7 @@ const anims=[
   pm.setAttribute("cx",px);pt.setAttribute("x",px);pt.textContent="PNR "+Math.round(dPNR)+" nm";
   em.setAttribute("cx",ex);et.setAttribute("x",ex);et.textContent="ETP "+Math.round(dETP)+" nm";
   ws.textContent=s.w===0?"Nil wind":(s.w>0?"→ Tailwind A→B "+s.w+" kt":"← Headwind A→B "+(-s.w)+" kt");
-  say("TAS 120 kt · GS out "+O+" / home "+Hh+" kt · PNR time "+(tPNR*60).toFixed(0)+" min"+(dPNR>s.D?"（PNR 超過 B：夠油去到再返）":"")+" · 逆風 out → PNR、ETP 都移向 A")};
+  say("TAS 120 kt · GS out "+O+" / home "+Hh+" kt · PNR time "+(tPNR*60).toFixed(0)+" min"+(dPNR>s.D?"（PNR 超過 B：夠油去到再返）":"")+" · headwind out → PNR、ETP 都移向 A")};
  H.slider(box,"Wind A→B (kt)",-50,50,0,v=>{s.w=v;update()},5);
  H.slider(box,"Safe endurance (hr)",1,8,4,v=>{s.E=v;update()},0.5);
  H.slider(box,"Route A–B (nm)",150,800,400,v=>{s.D=v;update()},10);
@@ -705,7 +705,7 @@ const anims=[
   hill.setAttribute("points",[X(4.7)+","+200,X(5)+","+Y(s.h),X(5.3)+","+200].join(" "));
   pl.setAttribute("transform","translate("+X(3)+","+Y(s.g*6076/100*3)+") rotate("+(Math.atan2(Y(s.g*60.76)-Y(0),100)*180/Math.PI)+")");
   const roc=s.gs*s.g*1.013;
-  say("ROC ≈ "+Math.round(roc)+" ft/min（GS×gradient%）· 5 nm 時高度 "+Math.round(hAt)+" ft vs 障礙 "+s.h+" ft → "+(hAt>=s.h?"CLEAR":"唔 clear：要更高 gradient"))};
+  say("ROC ≈ "+Math.round(roc)+" ft/min（GS×gradient%）· 5 nm 時altitude "+Math.round(hAt)+" ft vs 障礙 "+s.h+" ft → "+(hAt>=s.h?"CLEAR":"唔 clear：要更高 gradient"))};
  H.slider(box,"Groundspeed (kt)",80,300,150,v=>{s.gs=v;update()},10);
  H.slider(box,"Gradient (%)",1,10,3.3,v=>{s.g=v;update()},0.1);
  H.slider(box,"Obstacle height @5nm (ft)",200,1500,600,v=>{s.h=v;update()},50);

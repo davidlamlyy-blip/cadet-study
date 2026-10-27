@@ -42,12 +42,13 @@ const isNew=c=>!srs[c._k];
 function save(){try{localStorage.setItem("cadetSRS",JSON.stringify(srs))}catch(e){}try{localStorage.setItem("cadetCards",JSON.stringify(store));localStorage.setItem("cadetDaily",JSON.stringify(daily))}catch(e){}}
 
 /* ---------- V2：已讀 note、自訂編輯（topic／card 改、刪、新增）— 會同步 ---------- */
-let V2={noted:{},edits:{topics:{},cards:{},del:{},add:[]}};
+let V2={noted:{},edits:{topics:{},cards:{},del:{},add:[],notes:{}}};
 try{const x=JSON.parse(localStorage.getItem("cadetV2")||"null");if(x){V2.mcq=x.mcq||{};V2.noted=x.noted||{};V2.edits=Object.assign(V2.edits,x.edits||{})}}catch(e){}
 function v2save(){try{localStorage.setItem("cadetV2",JSON.stringify(V2))}catch(e){}save()}
 const uid=()=>"u"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 function applyEdits(){ // 將編輯覆蓋到 data（保留原本喺 _o，可還原）
-  const E=V2.edits;
+  const E=V2.edits;E.notes=E.notes||{};
+  [Cadet.lnotes,Cadet.notion].forEach(arr=>(arr||[]).forEach(n=>{if(!n._o)n._o={t:n.t,rec:n.rec,notes:n.notes,sum:n.sum};const e=E.notes[n.id];if(e&&!e.x){n.t=e.t||n._o.t;n.rec=e.rec||n._o.rec;n.notes=e.notes!=null?e.notes:n._o.notes;n.sum=e.sum!=null?e.sum:n._o.sum;n._ed=1}else{n.t=n._o.t;n.rec=n._o.rec;n.notes=n._o.notes;n.sum=n._o.sum;n._ed=0}}));
   Cadet.order.forEach(k=>{const S=Cadet.subjects[k];
     (S.topics||[]).forEach(t=>{const e=E.topics[t.id];if(!t._o)t._o={t:t.t,d:t.d,pts:t.pts};if(e&&!e.x){t.t=e.t!=null?e.t:t._o.t;t.d=e.d!=null?e.d:t._o.d;t.pts=e.pts||t._o.pts;t._ed=1}else{t.t=t._o.t;t.d=t._o.d;t.pts=t._o.pts;t._ed=0}});
     S.cards=(S.cards||[]).filter(c=>!c._u);

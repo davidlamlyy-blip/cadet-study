@@ -7,9 +7,9 @@ Cadet.add({
   src:"Airspace GNAV01/02 · RNAV01/02 · Compass & VFR Nav · AAEP NAV · ENZO Nav · Ebook Navigation (Aviation Theory Centre) · ATP Test Prep ch2",
   topics:[
   // ===== Earth & Position
-  T("earth","Earth & Position","Earth Shape","Earth 係 ellipsoid（兩極扁），導航當 perfect sphere。",["Equatorial dia 12751 km","Polar dia 12713 km","Maps / GPS 要用 ellipsoid","日常原理當球體"],["greatcircle","wgs84"],"GNAV01 ch1"),
+  T("earth","Earth & Position","Earth Shape","Earth 係 ellipsoid（兩極扁），navigation當 perfect sphere。",["Equatorial dia 12751 km","Polar dia 12713 km","Maps / GPS 要用 ellipsoid","日常原理當球體"],["greatcircle","wgs84"],"GNAV01 ch1"),
   T("greatcircle","Earth & Position","Great Circle","切開地球成兩半嘅圓，兩點間最短路線。",["Equator + 所有 meridian 都係","最短距離、慳油慳時間","方向要不斷改","Parallel（除 Equator）係 small circle"],["rhumb","latlong"],"GNAV01 ch1"),
-  T("rhumb","Earth & Position","Rhumb Line","切每條 meridian 角度相同嘅線，方向恆定。",["Constant track 易飛","比 great circle 長","除正南北東西，會螺旋向極點","Parallel 係 rhumb line"],["greatcircle","lambert"],"GNAV01 ch1"),
+  T("rhumb","Earth & Position","Rhumb Line","切每條 meridian 角度相同嘅線，方向恆定。",["Constant track 易飛","比 great circle 長","除正南北東西，會spin向極點","Parallel 係 rhumb line"],["greatcircle","lambert"],"GNAV01 ch1"),
   T("latlong","Earth & Position","Latitude & Longitude","用角度定位：Lat 由 Equator 起，Long 由 Prime Meridian 起。",["Lat 0–90 N/S","Long 0–180 E/W","Prime Meridian = Greenwich","Meridian 指 true N-S"],["nm","timearc"],"GNAV01 ch1"),
   T("nm","Earth & Position","Nautical Mile","地心 1 分角對應嘅弧長；1° = 60 nm。",["1 nm = 1852 m = 1.852 km","1 nm = 1.15 statute mile","沿 meridian 量 lat 即 nm","高緯度 1° long 距離變短"],["latlong","units","1in60"],"GNAV01 ch2"),
   T("timearc","Earth & Position","Time & Arc","地球 24h 轉 360°，即 15° = 1 hr，1° = 4 min。",["East 時間較早（加）","West 時間較遲（減）","UTC 係全球基準","Date line 喺太平洋"],["utc","daylight"],"Ebook Nav ch2"),
@@ -20,28 +20,28 @@ Cadet.add({
   T("var","Direction","Magnetic Variation","True N 同 Magnetic N 嘅夾角，視乎地點。",["West is Best, East is Least","T − E = M；T + W = M","Agonic line = Var 0","Magnetic pole 緩慢移動"],["tmvdc","isogonic","dev"],"GNAV01 ch3; ENZO Nav day 1; AAEP exercise"),
   T("isogonic","Direction","Isogonic / Agonic Lines","連接相同 Var 嘅線叫 isogonic；Var=0 叫 agonic。",["Chart 上有標示","VTC 上 VOR 有當地 Var","Var 隨年份變","Station Var vs Aircraft Var 要分"],["var","vorvar"],"GNAV01 ch3; RNAV01 (VOR Var question)"),
   T("dev","Direction","Compass Deviation","飛機內電路同金屬令 compass 偏差，叫 Deviation。",["M → C 之間嘅誤差","Compass correction card 提供","隨 heading 變","Compass swing 量度同修正"],["tmvdc","swing","compass"],"GNAV01 ch3; GNAV02 ch4"),
-  T("thdw","Direction","Track, Heading, Drift, WCA","Track = 飛去邊；Heading = 機頭指邊；差即 drift。",["Drift 由 wind 引起","WCA = 抵消 drift 嘅角度","Heading 要向 wind 方向偏","Track 用 TMG（made good）"],["windtri","1in60","tmvdc"],"GNAV01 ch3; Compass & VFR Nav"),
-  T("bearings","Direction","Relative Bearing & QDM etc.","RB 由機頭順時針量；MB = MH + RB。",["QDM 磁方位 to station","QDR 磁方位 from station","QUJ true to；QTE true from","Reciprocal = ±180°"],["rbi","vor"],"GNAV01 ch3 slides"),
+  T("thdw","Direction","Track, Heading, Drift, WCA","Track = 飛去邊；Heading = nose指邊；差即 drift。",["Drift 由 wind 引起","WCA = 抵消 drift 嘅角度","Heading 要向 wind 方向偏","Track 用 TMG（made good）"],["windtri","1in60","tmvdc"],"GNAV01 ch3; Compass & VFR Nav"),
+  T("bearings","Direction","Relative Bearing & QDM etc.","RB 由nose順時針量；MB = MH + RB。",["QDM 磁方位 to station","QDR 磁方位 from station","QUJ true to；QTE true from","Reciprocal = ±180°"],["rbi","vor"],"GNAV01 ch3 slides"),
   T("swing","Direction","Compass Swing","喺一系列 heading 量 deviation、修正、記錄 residual。",["量度 deviation","修正（compensate）","記 residual dev 入 card","磁性物件會影響"],["dev"],"GNAV02 ch4"),
   // ===== Compass errors
-  T("compass","Compass Errors","Standby Compass","獨立簡單磁羅盤，靠 Earth 磁場水平分量。",["無電源獨立","Float magnet + liquid","受 dip 影響","高緯度不可靠"],["dip","turnerr","accerr"],"GNAV02 ch4"),
+  T("compass","Compass Errors","Standby Compass","獨立簡單magnetic compass，靠 Earth 磁場水平分量。",["無電源獨立","Float magnet + liquid","受 dip 影響","高緯度不可靠"],["dip","turnerr","accerr"],"GNAV02 ch4"),
   T("dip","Compass Errors","Magnetic Dip","磁力線有垂直分量，磁針會傾；用 CG 偏移補償。",["Dip 近極點最大","Magnet CG 偏低於 pivot","引致 turn / accel error","Equator 附近 dip ≈ 0"],["compass","turnerr"],"GNAV02 ch4"),
-  T("turnerr","Compass Errors","Turning Error (UNOS)","轉彎時 compass 滯後或超前，北半球 UNOS。",["Undershoot North / Overshoot South","最明顯喺 N/S heading","轉向 N 要提早改平","南半球 ONUS"],["turnrule","accerr","dip"],"GNAV02 ch4"),
+  T("turnerr","Compass Errors","Turning Error (UNOS)","turn時 compass 滯後或超前，北半球 UNOS。",["Undershoot North / Overshoot South","最明顯喺 N/S heading","轉向 N 要提早改平","南半球 ONUS"],["turnrule","accerr","dip"],"GNAV02 ch4"),
   T("turnrule","Compass Errors","Compass Turn Rule","只睇最終 heading：北象限 undershoot，南象限 overshoot。",["Final 喺 N 側：提早改平","Final 喺 S 側：遲啲改平","E / W 最終：唔使","例：210→360 undershoot"],["turnerr"],"GNAV02 ch4 (Compass Turns)"),
   T("accerr","Compass Errors","Acceleration Error (ANDS)","E/W heading 加速 / 減速令 compass 假轉向。",["Accelerate North / Decelerate South","最明顯喺 E / W","北半球加速→似轉 N","南半球 SAND"],["turnerr","dip"],"GNAV02 ch4"),
   // ===== Speed & Units
-  T("speeds","Speed & Units","Airspeed Types","IAS → CAS → EAS → TAS，再加 wind 得 GS。",["ICET Is Pretty Cool Drink","TAS 用嚟計導航","TAS 距離 = NAM","GS 距離 = NGM"],["tas","gs","mach"],"GNAV02 ch5"),
-  T("tas","Speed & Units","True Airspeed (TAS)","相對氣團嘅速度；高度越高 TAS 比 CAS 越大。",["Flight computer 用 PA + OAT","粗略 ~2% / 1000 ft","TAS 轉 GS 要加 wind","TAS 轉 Mach 要 LSS"],["speeds","gs","pada"],"AAEP TAS exercise; Ebook Nav ch1/4"),
-  T("gs","Speed & Units","Ground Speed","相對地面嘅速度；TAS ± wind component。",["Headwind −；tailwind +","ETI = Dist / GS","DME 可量 GS","Wind triangle 求得"],["windtri","tas","dmegs"],"GNAV02 ch5"),
+  T("speeds","Speed & Units","Airspeed Types","IAS → CAS → EAS → TAS，再加 wind 得 GS。",["ICET Is Pretty Cool Drink","TAS 用嚟計navigation","TAS 距離 = NAM","GS 距離 = NGM"],["tas","gs","mach"],"GNAV02 ch5"),
+  T("tas","Speed & Units","True Airspeed (TAS)","相對氣團嘅speed；altitude越高 TAS 比 CAS 越大。",["Flight computer 用 PA + OAT","粗略 ~2% / 1000 ft","TAS 轉 GS 要加 wind","TAS 轉 Mach 要 LSS"],["speeds","gs","pada"],"AAEP TAS exercise; Ebook Nav ch1/4"),
+  T("gs","Speed & Units","Ground Speed","相對地面嘅speed；TAS ± wind component。",["Headwind −；tailwind +","ETI = Dist / GS","DME 可量 GS","Wind triangle 求得"],["windtri","tas","dmegs"],"GNAV02 ch5"),
   T("mach","Speed & Units","Mach Number","Mach = TAS / LSS；LSS 只靠 OAT。",["LSS = 38.945 √T(K)","越凍 LSS 越細","高空巡航用 Mach","Sonic = 1.0"],["tas"],"GNAV02 ch5"),
   T("units","Speed & Units","Unit Conversions","距離、質量、體積要識快轉，尤其 fuel。",["1 kg = 2.2 lb","1 imp gal = 4.546 L = 1.2 US gal","1 US gal = 3.785 L","km/h ÷ 1.852 = kt"],["sg","nm"],"GNAV02 ch5"),
   T("sg","Speed & Units","Specific Gravity & Fuel Mass","Mass = Volume × SG；avgas / Jet 約 0.7–0.82。",["Water SG = 1.0","kg = L × SG","lb = L × SG × 2.2","Fuel uplift 單位要核對"],["units","fuel"],"GNAV02 ch5"),
   T("dst","Speed & Units","Distance–Speed–Time","D = S × T；T = D ÷ S；S = D ÷ T。",["ETI(min) = D / GS × 60","60 knots = 1 nm / min","Mental math 先估答案","Fuel = time × flow"],["gs","fuel","tod"],"AAEP Nav Info 2; ENZO Nav day 1"),
   // ===== Altimetry
-  T("qnh","Altimetry","QNH, QFE, Standard","QNH 令 altimeter 讀 AMSL；1013 讀 pressure alt。",["QNH → elevation at aerodrome","Std 1013.2 hPa 用於 FL","Area QNH 俾 en-route","亂設 → 高度錯"],["pa","areaqnh","hemis"],"Ebook Nav ch1"),
+  T("qnh","Altimetry","QNH, QFE, Standard","QNH 令 altimeter 讀 AMSL；1013 讀 pressure alt。",["QNH → elevation at aerodrome","Std 1013.2 hPa 用於 FL","Area QNH 俾 en-route","亂設 → altitude錯"],["pa","areaqnh","hemis"],"Ebook Nav ch1"),
   T("areaqnh","Altimetry","Area QNH","一個區域嘅 forecast QNH，確保大家同一個基準。",["Min value for region","向 FIS / ATC 問","低 QNH → 實際飛低","Transition 用 std"],["qnh"],"Ebook Nav ch1; ENZO Nav"),
-  T("pa","Altimetry","Pressure Altitude","altimeter 設 1013 讀到嘅高度。",["PA = (1013 − QNH) × 30 + Elev","QNH 低 → PA 高過 elev","30 ft / hPa（教材近似）","DA 嘅起點"],["da","pada","qnh"],"AAEP PADA; Nav Info 1"),
-  T("da","Altimetry","Density Altitude","PA 按溫度修正：DA = PA + 120 × (OAT − ISA)。",["ISA = 15 − 2°C / 1000 ft","熱 → DA 高 → 性能差","120 ft / °C","Hot & high 起飛距離長"],["pa","pada","topdist"],"AAEP PADA; ENZO Scenario TO perf"),
+  T("pa","Altimetry","Pressure Altitude","altimeter 設 1013 讀到嘅altitude。",["PA = (1013 − QNH) × 30 + Elev","QNH 低 → PA 高過 elev","30 ft / hPa（教材近似）","DA 嘅起點"],["da","pada","qnh"],"AAEP PADA; Nav Info 1"),
+  T("da","Altimetry","Density Altitude","PA 按temperature修正：DA = PA + 120 × (OAT − ISA)。",["ISA = 15 − 2°C / 1000 ft","熱 → DA 高 → 性能差","120 ft / °C","Hot & high take-off距離長"],["pa","pada","topdist"],"AAEP PADA; ENZO Scenario TO perf"),
   T("pada","Altimetry","PA / DA Worked Example","例：Elev 2500, QNH 980, OAT 18°C → PA 3490, DA ≈ 4688。",["ΔQNH = 33 hPa → +990 ft","ISA at PA = 15 − 6.98 = 8.02°C","ISA var = +9.98°C","DA = 3490 + 120 × 9.98"],["pa","da"],"AAEP PADA Ex Ans r2"),
   T("topdist","Altimetry","Take-off Distance Chart","用 PA + OAT 入圖；最大重、無風、再乘 1.15。",["DA 唔使計出數，圖已包","Headwind 減；tailwind 加","Safety factor 1.15（< 5700 kg）","例：320 m → 368 m"],["da","windcomp"],"ENZO Scenario Based TO Perf (CASA)"),
   T("hemis","Altimetry","Hemispherical Rule (VFR)","Track 000–179M 用 odd + 500；180–359M 用 even + 500。",["Australia AIP ENR 1.7","用 Magnetic track","例：4500 ft 向東","其他體系要睇本地 AIP"],["qnh","prep"],"ENZO Nav day 1 slide 8 (CASA)", true),
@@ -54,10 +54,10 @@ Cadet.add({
   T("trackkeep","Wind & DR","Track-keeping","Actual wind ≠ forecast，一定有 off-track，要喺 checkpoint 改 heading。",["Fix every 5–10 min","時間改 ETA","計 TE + CA","唔好等偏太遠"],["1in60","dr","tolerance"],"GNAV02 ch6; ENZO Nav day 1"),
   T("computer","Wind & DR","Flight Computer","Circular slide rule 計 TAS、wind、time、fuel。",["Wind 面 → HDG + GS","Calc 面 → D/S/T","Wind 要轉 Magnetic","Equipment checklist 必備"],["windtri","dst"],"ENZO Nav day 1; Ebook Nav ch4"),
   T("fuel","Wind & DR","Fuel Plan","Taxi + cruise + alternate + reserve + holding + contingency。",["Final reserve 30 min（ENZO）","Holding 30 min / 每個機場","Taxi 5 min","Margin = FOB − total"],["dst","sg","navlog"],"ENZO Nav day 1 slides 18-19"),
-  T("tod","Wind & DR","Top of Descent","由巡航高度下降至 arrival alt，算 TOD 距離。",["Arrival alt = elev + circuit + 500","Descent 500 ft/min","Time = Δalt / 500","Dist = time × (GS/60)"],["dst","arrival"],"ENZO Nav day 1 slide 9"),
+  T("tod","Wind & DR","Top of Descent","由巡航altitudedescent至 arrival alt，算 TOD 距離。",["Arrival alt = elev + circuit + 500","Descent 500 ft/min","Time = Δalt / 500","Dist = time × (GS/60)"],["dst","arrival"],"ENZO Nav day 1 slide 9"),
   T("navlog","Wind & DR","Navigation Log","逐段記 TRK、wind、HDG、GS、dist、ETI、ETA、fuel。",["Planned vs actual","Revised ETA","SARTIME / Last light","Fuel actual vs min"],["fuel","workcycle","computer"],"ENZO Nav log v2.0"),
   // ===== 1 in 60
-  T("1in60","1 in 60 Rule","1 in 60 Rule","60 nm 外 1 nm = 1°；任何單位都得。",["Angle(°) ≈ off / dist × 60","Max angle ≈ 15°","距離或速度單位都可","Wingtip：1000 ft ≈ 1 nm（ENZO）"],["te","ca","corrections"],"Compass & VFR Nav ch6; AAEP Nav Info 2"),
+  T("1in60","1 in 60 Rule","1 in 60 Rule","60 nm 外 1 nm = 1°；任何單位都得。",["Angle(°) ≈ off / dist × 60","Max angle ≈ 15°","距離或speed單位都可","Wingtip：1000 ft ≈ 1 nm（ENZO）"],["te","ca","corrections"],"Compass & VFR Nav ch6; AAEP Nav Info 2"),
   T("te","1 in 60 Rule","Track Error (TE)","計劃 track 同 TMG 嘅夾角 = off ÷ flown × 60。",["TE = Off × 60 / Flown","例：2 nm @ 40 nm = 3°","TE 即 drift 嘅一部分","看 fix 同起點"],["1in60","ca","drift"],"GNAV02 ch6 Exercise 2"),
   T("ca","1 in 60 Rule","Closing Angle (CA)","向 destination 返 track 嘅角 = off ÷ remaining × 60。",["CA = Off × 60 / To go","改 heading = TE + CA","例 5 nm off，120 nm 前後 → 2.5 + 2.5","改後需追蹤確認"],["te","corrections"],"GNAV02 ch6; AAEP Nav Info 2"),
   T("corrections","1 in 60 Rule","Correction Methods","1×TE 平行；2×TE 同距離相交；3×TE 半程返。",["1×TE → parallel","2×TE → regain 同距離","3×TE → ½ distance","1½×TE → 2× distance"],["te","ca","trackkeep"],"AAEP Nav Info 1 p5"),
@@ -68,10 +68,10 @@ Cadet.add({
   T("lambert","Charts & VFR Nav","Lambert Conformal Conic","航圖常用投影：conformal，角度正確，scale 近乎恆定。",["Conformal = 角度唔變","Great circle ≈ 直線","Standard parallels 令 scale 準","Meridians 收斂"],["rhumb","scale"],"Ebook Nav ch3"),
   T("scale","Charts & VFR Nav","Chart Scale & Types","VTC 1:250,000；VNC 1:500,000；WAC 1:1,000,000。",["Scale 愈大細節愈多","1 cm @ 1:250k = 2.5 km","用對應 scale ruler","VTC / VNC 配 10 cent / 20 cent coin 畫圈"],["lambert","chartfeat"],"Ebook Nav ch3; ENZO Nav day 1"),
   T("chartfeat","Charts & VFR Nav","Chart Features","Contour、spot elevation、hypsometric tint、水、路、鐵路、障礙物。",["Contour 愈密愈斜","AMSL / AGL 同時標","Layer tint 顯示 relief","Silo, power line 作 pinpoint"],["pilotage","scale"],"GNAV02 ch7"),
-  T("airspace","Charts & VFR Nav","Airspace Classes","A–G：控制空域 vs 非控制。VFR 入 C/D 要 clearance。",["A：只限 IFR","C/D：IFR/SVFR/VFR","E：VFR 非控制","G：完全非控制"],["cta","tolerance"],"GNAV02 ch7 (Australia style)", true),
+  T("airspace","Charts & VFR Nav","Airspace Classes","A–G：控制airspace vs 非控制。VFR 入 C/D 要 clearance。",["A：只限 IFR","C/D：IFR/SVFR/VFR","E：VFR 非控制","G：完全非控制"],["cta","tolerance"],"GNAV02 ch7 (Australia style)", true),
   T("ersa","Charts & VFR Nav","ERSA / AIP","ERSA 有 aerodrome、NAVAID、frequency；AIP 有規則。",["VOR / NDB 位置、ident","Aerodrome 資料","Rated coverage 見 AIP GEN 1.5","要用最新版"],["prep","vorrange"],"Ebook Nav ch3/7; ENZO checklist"),
   T("prep","Charts & VFR Nav","Nav Preparation","地圖、log、天氣、W&B、flight notification 要齊。",["Equipment checklist","TOD + 1-in-60 markings","TAF, GAF, NOTAM, GPWT","Lodge flight plan + SARTIME"],["navlog","ctwo","daylight"],"ENZO Nav checklist V2.1; Nav day 1"),
-  T("ctwo","Charts & VFR Nav","CTWO Departure Brief","Chart、Terrain、Weather、Operational 四項 brief。",["Chart / SID","Terrain 高度","Weather 風","Operational：traffic"],["prep","workcycle"],"ENZO Nav day 1 slide 21-22"),
+  T("ctwo","Charts & VFR Nav","CTWO Departure Brief","Chart、Terrain、Weather、Operational 四項 brief。",["Chart / SID","Terrain altitude","Weather 風","Operational：traffic"],["prep","workcycle"],"ENZO Nav day 1 slide 21-22"),
   T("workcycle","Charts & VFR Nav","Nav Work Cycle & CLEAROFF","巡航循環：fix、log、ETA、fuel、下一個 TP。",["Fix 每 5–10 min","Time / Turn / Orientate","CLEAROFF：C L E A R O F F 八項檢查","唔好一路睇圖"],["tmg","navlog","fuel"],"ENZO Nav day 1 slides 23-28"),
   T("arrival","Charts & VFR Nav","Approaching an Aerodrome","TOD 前 CLEAROFF + brief；10 nm inbound call。",["Arrival brief：elev, join, alt","Overhead = elev + circuit + 500","Dead side join","Base / upwind calls"],["tod","cta"],"ENZO Nav day 1 slides 29-31; OCTA radio call"),
   T("cta","Charts & VFR Nav","CTA Clearance Call","入 CTA 前要 clearance；出 CTA 要 frequency / squawk change。",["Request code + clearance","Squawk 先 ident","VFR 可能被 approach 忘記","離開前通知 approach"],["airspace","arrival"],"ENZO CTA radio call (Australia)"),
@@ -80,8 +80,8 @@ Cadet.add({
   T("divmajor","Diversions & Lost","Major Diversion","由已知 pinpoint 轉：Heading、Altitude、Time、Check。",["Heading 由圖量 − Var","Alt 要 terrain safe","ETA 重算","用 pinpoint / 1-in-60 check"],["divminor","1in60"],"ENZO Nav day 1 slide 34"),
   T("uncertain","Diversions & Lost","Uncertain of Position","10–15 min 見唔到 checkpoint；先 check compass / DG。",["Log heading, time","DG vs compass","計 DR position","唔等於 lost"],["lost","dr"],"Ebook Nav ch5"),
   T("lost","Diversions & Lost","Lost Procedure","唔好亂飛：定計劃、MPP、10% 範圍、線形地標。",["Maintain heading","MPP + 10% 圓","爬高睇多啲","通知 ATC / FIS"],["uncertain","mpp"],"ENZO slide 35; Ebook ch5"),
-  T("mpp","Diversions & Lost","Most Probable Position","用 last fix + track + GS 推 MPP，周圍畫 ±10% 區。",["Arc ±30° × ±10% dist","或圓半徑 10%","搵安全高度","再擴大 10–20%"],["lost"],"Ebook Nav ch5"),
-  T("imc","Diversions & Lost","Inadvertent IMC","入雲：轉去儀表、最短路線出雲、Pitot heat on。",["通常 180° turn","Aviate, Navigate, Communicate","Autopilot 可用","Pitot heat 防結冰"],["lost"],"ENZO Nav day 1 slide 36"),
+  T("mpp","Diversions & Lost","Most Probable Position","用 last fix + track + GS 推 MPP，周圍畫 ±10% 區。",["Arc ±30° × ±10% dist","或圓半徑 10%","搵安全altitude","再擴大 10–20%"],["lost"],"Ebook Nav ch5"),
+  T("imc","Diversions & Lost","Inadvertent IMC","入雲：轉去instrument、最短路線出雲、Pitot heat on。",["通常 180° turn","Aviate, Navigate, Communicate","Autopilot 可用","Pitot heat 防icing"],["lost"],"ENZO Nav day 1 slide 36"),
   // ===== Radio basics
   T("radio","Radio Aids","Radio Wave Basics","Wave 有 amplitude、frequency；Hz → kHz → MHz → GHz。",["Cycle, amplitude, freq","Direct / surface / sky wave","VHF line of sight","Refraction, diffraction"],["propag","ndb","vor"],"RNAV01 basic radio"),
   T("propag","Radio Aids","Propagation Types","Direct 視線；Surface 沿地面；Sky 經 ionosphere 反射。",["VLF/LF 地波","HF 天波","VHF/UHF 直線","Diffraction 小幅沿地"],["radio","adferr"],"RNAV01 slides"),
@@ -97,18 +97,18 @@ Cadet.add({
   T("vor","VOR / DME","VOR Principle","VHF 108–118 MHz；比較 reference 同 rotating phase 得 radial。",["360 radials（magnetic）","Reference + variable phase","Ident ~每 10 s","Station 非 heading-sensitive"],["cdi","vorerr","vorrange"],"Ebook Nav ch7; RNAV01"),
   T("cdi","VOR / DME","OBS, CDI, TO/FROM","OBS 設 course；CDI 示偏差；flag 示 TO / FROM。",["5 dots × 2° = 10° full scale","Needle 示 course 喺邊","TO/FROM 解決歧義","Heading 唔影響"],["vor","tofrom","hsi"],"Ebook Nav ch7; RNAV01 cockpit display"),
   T("tofrom","VOR / DME","TO / FROM Logic","CDI centred 時：OBS 同 radial 同向 = FROM；反向 = TO。",["090 FROM = 270 TO","Radial = 離開 station","OFF flag = 唔用","先 ident 再用"],["cdi"],"Ebook Nav ch7"),
-  T("vorrange","VOR / DME","VOR / DME Rated Coverage","<5000 ft 60 nm；5000–10000 90；10000–15000 120；15000–20000 150；≥20000 180。",["Line of sight","高度愈高 range 愈大","日夜相同（VHF）","AIP GEN 1.5（Australia）"],["vor","dmeprinc"],"Ebook Nav ch7 (AIP GEN 1.5)"),
+  T("vorrange","VOR / DME","VOR / DME Rated Coverage","<5000 ft 60 nm；5000–10000 90；10000–15000 120；15000–20000 150；≥20000 180。",["Line of sight","altitude愈高 range 愈大","日夜相同（VHF）","AIP GEN 1.5（Australia）"],["vor","dmeprinc"],"Ebook Nav ch7 (AIP GEN 1.5)"),
   T("vorerr","VOR / DME","VOR Errors","Ground ±2°、site ±3°、scalloping ±2°；總體 ≤ ±5°。",["Doppler VOR 減 site error","Vertical polarisation：banking","Scalloping 針快抖","VOR 唔受 night effect"],["vor","vorcheck"],"Ebook Nav ch7"),
   T("vorvar","VOR / DME","Which Variation for VOR?","VOR radial 以 station 嘅 Var 為準；其他 VFR 計算用 aircraft/area Var。",["Radial = magnetic from station","圖上 compass rose 標示 station Var","轉 true 要用 station Var","Chart 對 plot 要小心"],["isogonic","vor"],"RNAV01 slide 120108", true),
   T("vorcheck","VOR / DME","VOR Accuracy Check (FAA)","VOT ±4°；airborne checkpoint ±6°；dual VOR 差 ≤ 4°。",["IFR 30 日內檢查","記錄日期 / 地點 / 誤差","VOT 發 360 radial","FAA 要求"],["vorerr"],"ATP Test Prep ch2 (FAA)"),
   T("hsi","VOR / DME","RMI & HSI","RMI 針尾 = radial；HSI 圖像化 CDI + heading。",["RMI 頭 = to station","HSI 似 plan view","Course arrow + bar","Heading bug"],["rbi","cdi"],"Ebook Nav ch7; ATP ch2"),
   T("dmeprinc","VOR / DME","DME Principle","UHF 960–1215 MHz；aircraft interrogator 同 ground transponder。",["Secondary radar","252 channels","配對 VOR 頻率","量時間 → 距離"],["slant","dmegs","dmefix"],"RNAV01 ch4; Ebook ch8"),
-  T("slant","VOR / DME","DME Slant Range","DME 量斜距，永遠 ≥ ground distance。",["Overhead 示高度 (nm)","30000 ft → ~4.9 nm","遠距誤差細","有 null zone"],["dmeprinc","dmegs"],"Ebook Nav ch8; ATP ch2"),
+  T("slant","VOR / DME","DME Slant Range","DME 量斜距，永遠 ≥ ground distance。",["Overhead 示altitude (nm)","30000 ft → ~4.9 nm","遠距誤差細","有 null zone"],["dmeprinc","dmegs"],"Ebook Nav ch8; ATP ch2"),
   T("dmegs","VOR / DME","GS from DME","直接飛向或離開 DME：GS = Δdist / Δtime。",["36 s 嘅距離 × 100 = GS","Abeam 唔準","高 + 近唔準","例：10 nm / 5 min = 120 kt"],["slant","gs","dst"],"Ebook Nav ch8"),
   T("dmefix","VOR / DME","Position Fixing","DME 係圓形 position line；配 VOR radial 得 fix。",["Co-located 交 90°","非同站要 ≥ 45° 交角","兩個 DME 圓 → 兩點歧義","第三 position line 解決"],["dmeprinc","vor"],"Ebook Nav ch8"),
   // ===== ILS
   T("ils","ILS","ILS Overview","Localiser 橫向 + Glide slope 縱向 + markers。",["LOC 108.1–111.95 MHz VHF","GS UHF paired","Markers 75 MHz","Cockpit：scan rate 重要"],["loc","glideslope","markers"],"RNAV01 ILS; ATP ch2"),
-  T("loc","ILS","Localiser","對準跑道中線，full-scale 約 ±2.5°。",["VHF band 同 VOR","Ident I + 3 letters","Front / back course","Reverse sensing 於 back course"],["ils","cdi"],"RNAV01 slide 123637; ATP ch2"),
+  T("loc","ILS","Localiser","對準runway中線，full-scale 約 ±2.5°。",["VHF band 同 VOR","Ident I + 3 letters","Front / back course","Reverse sensing 於 back course"],["ils","cdi"],"RNAV01 slide 123637; ATP ch2"),
   T("glideslope","ILS","Glide Slope","約 3° 下滑道；pointer 低 = 飛機高於 path。",["UHF 頻率","Needle below = too high","Fly toward the needle","Full scale ±0.7°（approx）"],["ils","rod"],"RNAV01 ILS; ATP ch2", true),
   T("rod","ILS","Rate of Descent Check","ROD = angle × GS / 60 × 100；3° → 約 5 × GS。",["GS 120 → ROD ~600","對照 GS 變","用作 cross-check","GS 越快 ROD 越大"],["glideslope","gs"],"RNAV01 slide 124619; ATP ch2"),
   T("markers","ILS","Marker Beacons","Outer 藍、Middle 琥珀、Inner 白；75 MHz。",["Outer：continuous dashes","Middle：dot-dash","Inner：continuous dots","Compass locator 可代"],["ils"],"ATP Test Prep ch2 (FAA)"),
@@ -128,7 +128,7 @@ Cadet.add({
   T("gpshf","GNSS","GPS Human Factors","Mode error、data entry error、complacency。",["Cross-check 其他 navaid","驗證 waypoint","Current database","保持 situational awareness"],["raim"],"Ebook ch9"),
   T("rnav","GNSS","RNAV & RNP","RNAV 容許任意航點；RNP 加 on-board monitoring + alerting。",["Conventional → RNAV → RNP","Curved paths","Narrow obstacle clearance","RNAV(RNP) approach 例子"],["gnss","raim"],"RNAV02 slide; ATP ch2", true),
   // ===== Radar
-  T("awr","Weather Radar","Airborne Weather Radar","Primary radar，探測降水 / convective cloud，避亂流。",["~9 GHz（3 cm）","Detect rain，唔係 CAT","Tilt ±15°","地面輻射有危險"],["radio"],"RNAV02 ch7"),
+  T("awr","Weather Radar","Airborne Weather Radar","Primary radar，探測降水 / convective cloud，避turbulent flow。",["~9 GHz（3 cm）","Detect rain，唔係 CAT","Tilt ±15°","地面輻射有危險"],["radio"],"RNAV02 ch7"),
   ],
   links:[
     ["nav.greatcircle","nav.lambert","Great circle 喺 Lambert chart 近乎直線"],
@@ -141,9 +141,9 @@ Cadet.add({
     ["nav.dip","nav.accerr","同一個 CG 偏移令加速產生 error"],
     ["nav.windtri","nav.gs","Wind triangle 結果之一係 GS"],
     ["nav.thdw","nav.windtri","Drift 同 WCA 由 wind 引起"],
-    ["nav.windcomp","nav.topdist","Headwind 減起飛距離"],
-    ["nav.pa","nav.da","DA 由 PA 加溫度修正"],
-    ["nav.da","nav.topdist","DA 愈高 → 引擎 / 翼 / 螺旋槳效率愈低 → 起飛愈長"],
+    ["nav.windcomp","nav.topdist","Headwind 減take-off距離"],
+    ["nav.pa","nav.da","DA 由 PA 加temperature修正"],
+    ["nav.da","nav.topdist","DA 愈高 → engine / 翼 / propeller效率愈低 → take-off愈長"],
     ["nav.qnh","nav.pa","改 QNH → PA 改變"],
     ["nav.te","nav.corrections","Correction 方法由 TE 倍數決定"],
     ["nav.ca","nav.te","改 heading = TE + CA"],
@@ -173,7 +173,7 @@ Cadet.add({
     ["nav.gpshf","nav.raim","自動化不能取代 integrity check"],
     ["nav.hemis","nav.qnh","Hemispherical 用 altitude，要 altimeter 啱"],
     ["nav.ersa","nav.vorrange","Rated coverage 喺 AIP / ERSA"],
-    ["nav.airspace","nav.cta","入控制空域要 clearance"],
+    ["nav.airspace","nav.cta","入控制airspace要 clearance"],
     ["nav.tolerance","nav.airspace","Tolerance 防止 infringement"],
     ["nav.tas","nav.pada","TAS 計算用 PA"],
     ["nav.computer","nav.windtri","Flight computer 解 wind triangle"],
@@ -185,7 +185,7 @@ Cadet.add({
     ["nav.dmeprinc","nav.slant","DME 量時間 → 得斜距"],
     ["nav.sps","nav.gpserr","SPS 無雙頻，iono error 較大"],
     ["nav.adferr","nav.ndbrange","夜晚 sky wave 令可用 range 縮短"],
-    ["nav.vor","nav.vorrange","VHF 視線 → range 受高度限制"],
+    ["nav.vor","nav.vorrange","VHF 視線 → range 受altitude限制"],
     ["nav.dr","nav.trackkeep","DR 估算同實際風有差 → 要 track-keeping"],
     ["nav.speeds","nav.gs","TAS + wind = GS"]
   ],
@@ -226,7 +226,7 @@ Cadet.add({
     C("bearings","🧮","Heading 090M, relative bearing 045. What is the magnetic bearing to the station?","MB = MH + RB = 135°M.","Calculation。"),
     C("compass","🧭","What is the standby compass?","A simple independent compass powered only by the Earth's magnetic field.","唔靠電。"),
     C("dip","⬇️","Why does the magnet dip?","Magnetic field lines have a vertical component; the compass is made pendulous to compensate.","磁針傾向地。"),
-    C("turnerr","🔄","What does UNOS mean?","Undershoot North, Overshoot South (northern hemisphere turning error).","北半球轉彎。"),
+    C("turnerr","🔄","What does UNOS mean?","Undershoot North, Overshoot South (northern hemisphere turning error).","北半球turn。"),
     C("turnerr","🔄","Turning from north to 030: when do you roll out?","Before 030, about 010 in the example, because the compass lags.","提早改平。"),
     C("turnerr","🔄","Turning from south to 150: when do you roll out?","After 150, about 130 in the example, as the compass leads.","遲啲改平。"),
     C("turnrule","🎯","What do you consider when applying compass turn rule?","Only the final heading, not the initial heading.","睇最終 heading。"),
@@ -364,7 +364,7 @@ Cadet.add({
     C("awr","🌩️","AWR frequency?","SHF ~9 GHz, 3 cm wavelength.","X band。")
   ],
   anims:[
-    {title:"Wind Triangle：Heading / GS / Drift", hint:"拉 track、TAS、風向、風速", build(box,H){
+    {title:"Wind Triangle：Heading / GS / Drift", hint:"拉 track、TAS、wind direction、wind speed", build(box,H){
       const svg=H.svg(box,700,440), say=H.note(box), el=H.el;
       const rad=d=>d*Math.PI/180, wrap=a=>((a%360)+360)%360, dir=a=>[Math.sin(rad(a)),-Math.cos(rad(a))];
       ["navbl","navor","navgr","navwh"].forEach((id,i)=>H.marker(svg,id,["#38bdf8","#f59e0b","#34d399","#e2e8f0"][i]));
@@ -397,7 +397,7 @@ Cadet.add({
         t2.textContent="Wind "+Math.round(wrap(wf))+"° / "+W;
         t3.textContent="TRK "+Math.round(trkA)+"° / GS "+Math.round(gs);
         const dr=Math.round(wca*10)/10; t4.textContent="Drift "+Math.abs(dr)+"° "+(dr>0?"R":dr<0?"L":"");
-        say(ok?("Wind from "+Math.round(wf)+"° 推機尾，要向風偏 "+Math.abs(dr)+"° → HDG "+Math.round(hdg)+"°，GS "+Math.round(gs)+" kt（藍+橙=綠）"):"風太強，TAS 唔夠保持呢條 track");
+        say(ok?("Wind from "+Math.round(wf)+"° 推tail，要向風偏 "+Math.abs(dr)+"° → HDG "+Math.round(hdg)+"°，GS "+Math.round(gs)+" kt（藍+橙=綠）"):"風太強，TAS 唔夠保持呢條 track");
       }
       let ph=0;
       H.loop(()=>{ if(!st.G)return; ph=(ph+0.01)%1; dot.setAttribute("cx",P0[0]+(st.G[0]-P0[0])*ph);dot.setAttribute("cy",P0[1]+(st.G[1]-P0[1])*ph)});
@@ -497,7 +497,7 @@ Cadet.add({
       H.slider(box,"OBS course °",0,359,90,v=>{st.o=v;upd()});
       H.slider(box,"Aircraft heading °",0,359,30,v=>{st.h=v;upd()});
     }},
-    {title:"ILS：Localiser + Glide Slope 偏差", hint:"拉橫向偏、高度、距離、GS", build(box,H){
+    {title:"ILS：Localiser + Glide Slope 偏差", hint:"拉橫向偏、altitude、距離、GS", build(box,H){
       const svg=H.svg(box,700,430), say=H.note(box), el=H.el;
       const txt=(x,y,c,t,sz,an)=>{const e=el("text",{x,y,fill:c,"font-size":sz||13,"text-anchor":an||"middle"},svg);e.textContent=t;return e};
       txt(240,18,"#94a3b8","Top view（橫向）",12);txt(240,228,"#94a3b8","Side view（縱向）",12);
@@ -530,14 +530,14 @@ Cadet.add({
         r1.textContent="LOC "+lat.toFixed(2)+"° "+(st.o>0?"右":st.o<0?"左":"中")+"（滿偏 ±2.5°）";
         r2.textContent="GP 實際 "+ang.toFixed(2)+"°（目標 3°）";
         r3.textContent="ROD ≈ 5 × "+st.g+" = "+(5*st.g)+" fpm";
-        say((Math.abs(lat)<0.2?"LOC 正中":"飛機喺跑道中線"+(st.o>0?"右":"左")+"邊，needle 偏"+(st.o>0?"左":"右")+" → 向針飛")+"；"+(Math.abs(gd)<0.1?"GS 正中":(gd>0?"高過 GS，needle 向下 → 加大 ROD":"低過 GS，needle 向上 → 減 ROD"))+"；此處 3° path 高度 ≈ "+Math.round(gpH)+" ft");
+        say((Math.abs(lat)<0.2?"LOC 正中":"飛機喺runway中線"+(st.o>0?"右":"左")+"邊，needle 偏"+(st.o>0?"左":"右")+" → 向針飛")+"；"+(Math.abs(gd)<0.1?"GS 正中":(gd>0?"高過 GS，needle 向下 → 加大 ROD":"低過 GS，needle 向上 → 減 ROD"))+"；此處 3° path altitude ≈ "+Math.round(gpH)+" ft");
       }
       H.slider(box,"距離 nm",1,10,5,v=>{st.d=v;upd()},0.5);
       H.slider(box,"橫向偏 ft（+右 / −左）",-1000,1000,300,v=>{st.o=v;upd()},50);
-      H.slider(box,"高度 ft（above threshold）",100,3500,1800,v=>{st.h=v;upd()},50);
+      H.slider(box,"altitude ft（above threshold）",100,3500,1800,v=>{st.h=v;upd()},50);
       H.slider(box,"GS kt",60,160,120,v=>{st.g=v;upd()});
     }},
-    {title:"DME：Slant Range 同 GS Check", hint:"揀高度、abeam 距離，撳 Fly", build(box,H){
+    {title:"DME：Slant Range 同 GS Check", hint:"揀altitude、abeam 距離，撳 Fly", build(box,H){
       const svg=H.svg(box,700,320), say=H.note(box), el=H.el;
       const txt=(x,y,c,t,sz,an)=>{const e=el("text",{x,y,fill:c,"font-size":sz||13,"text-anchor":an||"middle"},svg);e.textContent=t;return e};
       const SX=350,SY=130;
@@ -565,9 +565,9 @@ Cadet.add({
         const e=0.2, dd=Math.abs(dist(x+e)-dist(x-e))/(2*e)*120;
         rd.textContent="DME "+d.toFixed(1)+" nm（地面水平 "+Math.sqrt(x*x+off*off).toFixed(1)+" nm）";
         rg.textContent="用 DME 變化率計 GS = "+Math.round(dd)+" kt（真 GS 120 kt）";
-        say(Math.abs(x)<2&&off<1?"飛越台上面：DME 只讀到高度 "+(alt/6076).toFixed(1)+" nm，GS 讀數亂":off>=5?"Abeam 偏遠：距離變化慢，GS check 失準":"距離越遠，slant 同水平越接近，GS check 越準");
+        say(Math.abs(x)<2&&off<1?"飛越台上面：DME 只讀到altitude "+(alt/6076).toFixed(1)+" nm，GS 讀數亂":off>=5?"Abeam 偏遠：距離變化慢，GS check 失準":"距離越遠，slant 同水平越接近，GS check 越準");
       }
-      H.slider(box,"高度 ft",1000,40000,20000,v=>{alt=v;curveUpd();pos()},1000);
+      H.slider(box,"altitude ft",1000,40000,20000,v=>{alt=v;curveUpd();pos()},1000);
       H.slider(box,"Abeam 偏距 nm",0,20,0,v=>{off=v;curveUpd();pos()});
       H.button(box,"Fly / Pause",()=>{run=!run;if(run&&x>=30)x=-30});
       H.loop(()=>{if(!run)return;x+=0.12;if(x>30){x=30;run=false}pos()});
@@ -595,7 +595,7 @@ Cadet.add({
           el("line",{x1:R[0]-uy*35,y1:R[1]-ux*35,x2:R[0]+uy*35,y2:R[1]+ux*35,stroke:"#a78bfa","stroke-width":1},g)});
         const s=Math.min(180,dop*12);
         box2.setAttribute("x",R[0]-s/2);box2.setAttribute("y",R[1]-s/2-20);box2.setAttribute("width",s);box2.setAttribute("height",s);
-        const rs=N>=6?"RAIM 可偵測 + 排除故障星（FDE）":N===5?"RAIM 只可偵測故障（FD）":N===4?"可 3D fix，冇 RAIM":"只夠 2D fix（要已知高度）";
+        const rs=N>=6?"RAIM 可偵測 + 排除故障星（FDE）":N===5?"RAIM 只可偵測故障（FD）":N===4?"可 3D fix，冇 RAIM":"只夠 2D fix（要已知altitude）";
         t1.textContent="Satellites "+N+" / 簡化 DOP ≈ "+(dop>=99?"∞":dop.toFixed(1));
         t2.textContent=rs+"；"+(dop<3?"DOP<3：NPA 都得":dop<6?"DOP<6：en route 得":"DOP 太高：精度差");
         say(W<50?"星擠喺一邊 → 位置線近乎平行 → 紅框（誤差）好大":"星分散 → 位置線交角大 → 紅框細，DOP 低");

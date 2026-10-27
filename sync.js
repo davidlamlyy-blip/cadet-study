@@ -16,7 +16,7 @@ function mergeRemote(rm){
   V2.mcq=V2.mcq||{};for(const id in (r2.mcq||{}))if(!V2.mcq[id]||(r2.mcq[id].t||0)>(V2.mcq[id].t||0))V2.mcq[id]=r2.mcq[id];
   for(const id in (r2.noted||{}))V2.noted[id]=Math.max(V2.noted[id]||0,r2.noted[id]);
   const mg=(L,R)=>{for(const k in (R||{})){if(!L[k]||(R[k].tm||0)>(L[k].tm||0))L[k]=R[k]}};
-  mg(E.topics,re.topics);mg(E.cards,re.cards);mg(E.del,re.del);
+  E.notes=E.notes||{};mg(E.notes,re.notes);mg(E.topics,re.topics);mg(E.cards,re.cards);mg(E.del,re.del);
   (re.add||[]).forEach(a=>{const l=E.add.find(x=>x.id===a.id);if(!l)E.add.push(a);else if((a.tm||0)>(l.tm||0))Object.assign(l,a)});
   try{applyEdits()}catch(e){}}
 function persistLocal(){_save();if(_lsave)_lsave();try{localStorage.setItem('cadetV2',JSON.stringify(V2))}catch(e){}}

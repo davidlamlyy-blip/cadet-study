@@ -6,98 +6,98 @@ key:"perf", name:"Performance & Mass/Balance", emoji:"📊", color:"#f59e0b",
 src:"Airspace PERF02 · MB01 · AAEP PERF exercises · CASA workbook · BAK ch10-11 · ATP Test Prep · C172S POH · DA40 AFM",
 topics:[
 // ---------- Mass Basics
-{id:"perf.massweight",g:"Mass Basics",t:"Mass vs Weight",d:"Mass 係物質量；Weight 係重力拉力。輕飛機日常混用。",pts:["Mass: kg / lb","Weight = mass x g (N)","Light a/c 習慣講 weight"],rel:["perf.units"],src:"MB01; BAK ch10"},
-{id:"perf.units",g:"Mass Basics",t:"Units & Conversions",d:"kg、lb、litre、US gal 要識轉；fuel 要換成重量。",pts:["1 kg = 2.205 lb","1 US gal = 3.785 L","Avgas 0.72 kg/L (CASA)","1 lb = 0.454 kg"],rel:["perf.fuelsg"],src:"MB01; CASA workbook p3"},
+{id:"perf.massweight",g:"Mass Basics",t:"Mass vs Weight",d:"Mass 係物質量；Weight 係weight拉力。輕飛機日常混用。",pts:["Mass: kg / lb","Weight = mass x g (N)","Light a/c 習慣講 weight"],rel:["perf.units"],src:"MB01; BAK ch10"},
+{id:"perf.units",g:"Mass Basics",t:"Units & Conversions",d:"kg、lb、litre、US gal 要識轉；fuel 要換成weight。",pts:["1 kg = 2.205 lb","1 US gal = 3.785 L","Avgas 0.72 kg/L (CASA)","1 lb = 0.454 kg"],rel:["perf.fuelsg"],src:"MB01; CASA workbook p3"},
 {id:"perf.fuelsg",g:"Mass Basics",t:"Fuel Density",d:"Avgas 比水輕。CASA 考試統一用 0.72 kg/L。",pts:["Avgas ~0.71-0.72 kg/L","6 lb/US gal (C172 POH)","Jet A-1 較重 (~0.8)"],rel:["perf.units","perf.fuelburn"],src:"CASA workbook p3; BAK p362; C172S POH",check:true},
 {id:"perf.overweight",g:"Mass Basics",t:"Effects of Overweight",d:"超重令性能同操控全面變差，仲可能損壞結構。",pts:["Vs 同 takeoff speed 升","Takeoff run 變長","Climb 差、ceiling 低","Range 同 endurance 減","Landing roll 長"],rel:["perf.limittypes","perf.todweight","perf.climbfactors"],src:"MB01; BAK p360"},
 {id:"perf.limittypes",g:"Mass Basics",t:"Structural vs Performance Limit",d:"質量限制有兩種來源：結構強度，同當日性能。",pts:["Structural: MTOW, MLW, MZFM","Performance: runway, obstacle, DA","用較細嗰個"],rel:["perf.mtowmlw","perf.perflimited"],src:"MB01; BAK p361-362"},
 // ---------- Mass Terms
-{id:"perf.bem",g:"Mass Terms",t:"Basic Empty Mass",d:"機身+引擎+固定設備+unusable fuel+全滿 oil。",pts:["唔包 crew、payload、usable fuel","每架機唔同","喺 AFM / W&B report"],rel:["perf.dom","perf.oilcorr"],src:"MB01; BAK p361"},
+{id:"perf.bem",g:"Mass Terms",t:"Basic Empty Mass",d:"fuselage+engine+固定設備+unusable fuel+全滿 oil。",pts:["唔包 crew、payload、usable fuel","每架機唔同","喺 AFM / W&B report"],rel:["perf.dom","perf.oilcorr"],src:"MB01; BAK p361"},
 {id:"perf.dom",g:"Mass Terms",t:"Dry Operating Mass",d:"BEM + 為某任務準備嘅 variable load，未計 fuel 同 traffic load。",pts:["Crew + 行李","Catering、potable water","唔包 usable fuel"],rel:["perf.bem","perf.zfm"],src:"MB01 slides"},
 {id:"perf.zfm",g:"Mass Terms",t:"Zero Fuel Mass",d:"DOM + traffic load，即係除咗 usable fuel 之外全部。",pts:["ZFM = BEM + crew + pax + bag","喺 fuel 之前計"],rel:["perf.mzfm","perf.tom"],src:"MB01; BAK p361"},
-{id:"perf.mzfm",g:"Mass Terms",t:"Maximum Zero Fuel Mass",d:"結構限制，同 wing root bending moment 有關。",pts:["超出部分只可以係 wing fuel","Fuel 喺翼重量抵消 lift 彎矩","DA40: 1150 kg"],rel:["perf.zfm","perf.limittypes"],src:"MB01; DA40 W&B sheet"},
+{id:"perf.mzfm",g:"Mass Terms",t:"Maximum Zero Fuel Mass",d:"結構限制，同 wing root bending moment 有關。",pts:["超出部分只可以係 wing fuel","Fuel 喺翼weight抵消 lift 彎矩","DA40: 1150 kg"],rel:["perf.zfm","perf.limittypes"],src:"MB01; DA40 W&B sheet"},
 {id:"perf.tom",g:"Mass Terms",t:"Take-off Mass & Ramp Mass",d:"TOM = ZFM + take-off fuel。Ramp = TOM + start/taxi fuel。",pts:["Gross weight = ZFM + fuel","Ramp 可略高過 MTOW","C172S: ramp 2558 / MTOW 2550 lb"],rel:["perf.zfm","perf.mtowmlw","perf.blockfuel"],src:"MB01; BAK p361; C172S POH"},
-{id:"perf.mtowmlw",g:"Mass Terms",t:"MTOW & MLW",d:"最大起飛／着陸質量。有啲機 MLW 低過 MTOW，要燒夠油。",pts:["C172S: both 2550 lb","DA40: MTOW 1200 kg","DA40 MLW 1150 kg","Landing 唔准超 MLW"],rel:["perf.tom","perf.perflimited"],src:"C172S POH s2; DA W&B sheet; BAK p362",check:true},
+{id:"perf.mtowmlw",g:"Mass Terms",t:"MTOW & MLW",d:"最大take-off／着陸質量。有啲機 MLW 低過 MTOW，要燒夠油。",pts:["C172S: both 2550 lb","DA40: MTOW 1200 kg","DA40 MLW 1150 kg","Landing 唔准超 MLW"],rel:["perf.tom","perf.perflimited"],src:"C172S POH s2; DA W&B sheet; BAK p362",check:true},
 {id:"perf.blockfuel",g:"Mass Terms",t:"Block Fuel",d:"Ramp mass = ZFM + block fuel（全部計劃油量）。",pts:["Taxi + Trip","Contingency + Alternate","Final reserve","+ Additional / Extra"],rel:["perf.tom"],src:"MB01 slide"},
 {id:"perf.ballast",g:"Mass Terms",t:"Ballast",d:"用嚟調 CG 嘅死重（沙包、鉛），唔係 payload。",pts:["例：空機 ferry 加後箱 ballast","加完要再查 mass 同 CG"],rel:["perf.cgaddremove"],src:"BAK p362; AAEP Alpha 5"},
 // ---------- Moment & CG
 {id:"perf.datumarm",g:"Moment & CG",t:"Datum & Arm",d:"Datum 係量度基準線；arm 係物件距 datum 嘅距離。",pts:["C172S datum: firewall 前面","DA40 datum: 前於 stub wing root rib 2.194 m","Aft of datum 為正"],rel:["perf.moment"],src:"MB01; C172S POH s2; DA40 AFM s2"},
 {id:"perf.moment",g:"Moment & CG",t:"Moment",d:"Moment = weight x arm，即係旋轉效果。",pts:["kg.m、lb.in、kg.mm","天秤兩邊 moment 相等先平衡"],rel:["perf.datumarm","perf.cgcalc"],src:"MB01; BAK p363"},
 {id:"perf.cgcalc",g:"Moment & CG",t:"CG Calculation",d:"CG = total moment / total weight。",pts:["逐項 W x arm","全部 moment 加埋","除以 total weight"],rel:["perf.moment","perf.envelope"],src:"MB01; BAK p365"},
-{id:"perf.lateral",g:"Moment & CG",t:"Lateral CG",d:"一般只關心 longitudinal CG；橫向由機身設計限制。",pts:["特殊情況先要理 (軍機)","大型機 cargo 都有限重"],rel:["perf.cgcalc"],src:"MB01"},
+{id:"perf.lateral",g:"Moment & CG",t:"Lateral CG",d:"一般只關心 longitudinal CG；橫向由fuselage設計限制。",pts:["特殊情況先要理 (軍機)","大型機 cargo 都有限重"],rel:["perf.cgcalc"],src:"MB01"},
 {id:"perf.index",g:"Moment & CG",t:"Index Units",d:"Moment 除以固定數，數字細啲易計。",pts:["Charlie: IU = kg.mm / 100","CG(mm) = IU x 100 / weight","Bravo: moment/1000"],rel:["perf.loadsys","perf.cgcalc"],src:"CASA workbook p13; BAK"},
 {id:"perf.mac",g:"Moment & CG",t:"MAC & %MAC",d:"用 Mean Aerodynamic Chord 表達 CG。大型機用。",pts:["%MAC = (CG-LEMAC)/MAC x100","MAC = LEMAC 至 TEMAC","CG 常見 10-35% MAC"],rel:["perf.cgcalc","perf.envelope"],src:"MB01"},
-{id:"perf.cgshift",g:"Moment & CG",t:"Load to Shift",d:"搬貨令 CG 移位：移動重量 x 距離 = GW x CG 變化。",pts:["w x d = GW x ΔCG","GW 唔變","d = 兩個 station 距離"],rel:["perf.cgaddremove","perf.cgcalc"],src:"BAK p371"},
-{id:"perf.cgaddremove",g:"Moment & CG",t:"Add / Remove Weight",d:"加減重量：新 CG = 新總 moment / 新總 weight。",pts:["例: 450000 N, 15.6 m +10000 N@12 m","新 CG 15.52 m = 56% MAC"],rel:["perf.cgshift","perf.ballast"],src:"MB01 MAC question; BAK p371"},
-{id:"perf.fuelburn",g:"Moment & CG",t:"CG Shift with Fuel Burn",d:"燒油會改變 CG，所以 ZFW 同 TOW 兩點都要喺 envelope 入面。",pts:["Fuel arm 通常近 CG","兩點連線 = 燃油軌跡"],rel:["perf.zfwtow","perf.envelope"],src:"AAEP Alpha 6; CASA workbook"},
+{id:"perf.cgshift",g:"Moment & CG",t:"Load to Shift",d:"搬貨令 CG 移位：移動weight x 距離 = GW x CG 變化。",pts:["w x d = GW x ΔCG","GW 唔變","d = 兩個 station 距離"],rel:["perf.cgaddremove","perf.cgcalc"],src:"BAK p371"},
+{id:"perf.cgaddremove",g:"Moment & CG",t:"Add / Remove Weight",d:"加減weight：新 CG = 新總 moment / 新總 weight。",pts:["例: 450000 N, 15.6 m +10000 N@12 m","新 CG 15.52 m = 56% MAC"],rel:["perf.cgshift","perf.ballast"],src:"MB01 MAC question; BAK p371"},
+{id:"perf.fuelburn",g:"Moment & CG",t:"CG Shift with Fuel Burn",d:"燒油會改變 CG，所以 ZFW 同 TOW 兩點都要喺 envelope 入面。",pts:["Fuel arm 通常近 CG","兩點連線 = fuel軌跡"],rel:["perf.zfwtow","perf.envelope"],src:"AAEP Alpha 6; CASA workbook"},
 // ---------- Envelope & Loading
 {id:"perf.envelope",g:"CG Envelope & Loading",t:"CG Envelope",d:"Weight vs CG 圖，限定許可範圍（前限、後限、MTOW）。",pts:["前限隨 weight 變","後限常固定","出界 = 唔准飛"],rel:["perf.cgcalc","perf.zfwtow","perf.fwdcg","perf.aftcg"],src:"MB01; C172S POH s2/s6; DA40 AFM s2"},
-{id:"perf.zfwtow",g:"CG Envelope & Loading",t:"Check ZFW and TOW",d:"兩個點（零油、起飛）都要喺 envelope 入面。",pts:["先畫 ZFW 點","再畫 TOW 點","有時用重量限制先剔答案"],rel:["perf.fuelburn","perf.loadsteps"],src:"AAEP Loading Answer Key (Alpha 6)"},
+{id:"perf.zfwtow",g:"CG Envelope & Loading",t:"Check ZFW and TOW",d:"兩個點（零油、take-off）都要喺 envelope 入面。",pts:["先畫 ZFW 點","再畫 TOW 點","有時用weight限制先剔答案"],rel:["perf.fuelburn","perf.loadsteps"],src:"AAEP Loading Answer Key (Alpha 6)"},
 {id:"perf.loadsteps",g:"CG Envelope & Loading",t:"Loading Calculation Steps",d:"列表 weight/arm/moment → 加總 → 查 envelope。",pts:["BEW + oil 修正","Pax、bag、fuel","計 ZFW, TOW","檢查 limits + CG"],rel:["perf.zfwtow","perf.loadsys"],src:"BAK ch10; C172S POH s6"},
 {id:"perf.loadsys",g:"CG Envelope & Loading",t:"CASA Loading Systems",d:"CASA 考試有 Alpha（圖表）、Bravo（moment/1000）、Charlie（IU）。",pts:["Alpha: 6/7 seats, IU 刻度","Bravo: 4 seats, lb/in","Charlie: 4 seats, kg/mm IU","Fuel 0.72 kg/L"],rel:["perf.index","perf.loadsteps"],src:"CASA workbook p9-14; AAEP PERF 2"},
-{id:"perf.exfuel",g:"CG Envelope & Loading",t:"Max Fuel / Max Baggage Problems",d:"考試常問：滿載下尚可加幾多 fuel 或行李？",pts:["MTOW - 已載重量","再驗 CG 有冇出界","Alpha 2: 158 kg fuel"],rel:["perf.loadsteps","perf.zfwtow"],src:"AAEP Alpha 1-6, Bravo 1-2, Charlie 1-3"},
+{id:"perf.exfuel",g:"CG Envelope & Loading",t:"Max Fuel / Max Baggage Problems",d:"考試常問：滿載下尚可加幾多 fuel 或行李？",pts:["MTOW - 已載weight","再驗 CG 有冇出界","Alpha 2: 158 kg fuel"],rel:["perf.loadsteps","perf.zfwtow"],src:"AAEP Alpha 1-6, Bravo 1-2, Charlie 1-3"},
 {id:"perf.utility",g:"CG Envelope & Loading",t:"Normal vs Utility Category",d:"Utility 有較高 load factor，但 MTOW 低、後限前移。",pts:["C172S normal 2550 lb","C172S utility 2200 lb","Utility: 行李箱空、後座唔坐人"],rel:["perf.envelope"],src:"C172S POH s2; BAK p371"},
 {id:"perf.c172wb",g:"CG Envelope & Loading",t:"C172S W&B Data",d:"Cessna 172S 嘅 limits（ENZO 機隊）。",pts:["MTOW 2550 lb","Bag 1 120 lb, Bag 2 50 lb (合共 120)","CG fwd 35.0-41.0 in, aft 47.3 in","Fuel arm 48.0 in"],rel:["perf.envelope","perf.mtowmlw"],src:"C172S POH s2, s6"},
 {id:"perf.da40wb",g:"CG Envelope & Loading",t:"DA40 XLT W&B Data",d:"DA40 XLT 嘅 limits（ENZO 機隊，見 W&B sheet）。",pts:["MTOW 1200 / MZFM 1150 kg","Arms: seat 2.30, rear 3.25 m","Fuel 2.63 m, bag 3.89/4.54 m","CG aft limit 2.59 m (std tank)"],rel:["perf.envelope","perf.mzfm"],src:"DA40 W&B Updated; DA40 AFM s2",check:true},
-{id:"perf.oilcorr",g:"CG Envelope & Loading",t:"Oil Correction",d:"BEW 當油滿。若 dipstick 低過標準，要扣返缺油重量。",pts:["DA40: 8 quarts 滿","缺 2 qt ~1.7 kg","Charlie 8 qt = 7 kg"],rel:["perf.bem","perf.loadsteps"],src:"DA40 W&B sheet note; CASA workbook p14"},
+{id:"perf.oilcorr",g:"CG Envelope & Loading",t:"Oil Correction",d:"BEW 當油滿。若 dipstick 低過標準，要扣返缺油weight。",pts:["DA40: 8 quarts 滿","缺 2 qt ~1.7 kg","Charlie 8 qt = 7 kg"],rel:["perf.bem","perf.loadsteps"],src:"DA40 W&B sheet note; CASA workbook p14"},
 // ---------- CG Effects
 {id:"perf.tailforce",g:"CG Effects",t:"Tail Force & Longitudinal Balance",d:"CG 通常喺 CP 前面，tail 要向下壓去平衡。",pts:["Weight@CG vs Lift@CP","Tail 產生 downforce","CG 越前，downforce 越大"],rel:["perf.fwdcg","perf.aftcg","perf.trimdrag"],src:"MB01 slides"},
 {id:"perf.fwdcg",g:"CG Effects",t:"Forward CG",d:"穩定但笨重：nose-down、stall speed 高、range 減。",pts:["Nose-down tendency","Elevator authority 減","Vs 升 (apparent weight)","Climb、range 差","Nose wheel 受力大"],rel:["perf.tailforce","perf.trimdrag","perf.range"],src:"MB01"},
 {id:"perf.aftcg",g:"CG Effects",t:"Aft CG",d:"省油但不穩：pitch-up、stick 輕、易 overcontrol。",pts:["Pitch-up tendency","Stability 減","Vs 降","Range/endurance 增","Stick forces 輕，易 overstress"],rel:["perf.tailforce","perf.range"],src:"MB01"},
 {id:"perf.trimdrag",g:"CG Effects",t:"Trim Drag",d:"Tail 下壓越大，額外 drag 越大，耗油。",pts:["Fwd CG 增加 trim drag","導致 range 減"],rel:["perf.fwdcg","perf.tailforce"],src:"MB01"},
-{id:"perf.rss",g:"CG Effects",t:"Relaxed Static Stability",d:"現代客機將 CG 接近後限，用 fly-by-wire 補穩定性。",pts:["Tail downforce 細","tail 可以輕啲、細啲","B777 / MD-11 例子"],rel:["perf.aftcg","perf.trimdrag"],src:"MB01 slides"},
+{id:"perf.rss",g:"CG Effects",t:"Relaxed Static Stability",d:"現代客機將 CG 接近後限，用 fly-by-wire 補stability。",pts:["Tail downforce 細","tail 可以輕啲、細啲","B777 / MD-11 例子"],rel:["perf.aftcg","perf.trimdrag"],src:"MB01 slides"},
 {id:"perf.a350",g:"CG Effects",t:"A350 Trim Minimisation",d:"盡量唔郁 stabiliser 減 trim drag；DFS／variable camber 輔助。",pts:["DFS max 4°","Variable camber cruise","減 wing root 負荷"],rel:["perf.trimdrag"],src:"MB01 slides"},
 // ---------- Atmosphere
 {id:"perf.isa",g:"Atmosphere & Density",t:"ISA",d:"標準大氣：性能圖表嘅基準。",pts:["SL: 1013.2 hPa, +15°C","Lapse 2°C / 1000 ft","1 hPa ~ 30 ft","1°C ~ 120 ft density"],rel:["perf.pa","perf.da"],src:"BAK p381"},
 {id:"perf.pa",g:"Atmosphere & Density",t:"Pressure Altitude",d:"PA = elevation + (1013 - QNH) x 30。",pts:["Elev 1500, QNH 1000 → 1890 ft","QNH 低 → PA 高","altimeter set 1013 即 PA"],rel:["perf.isa","perf.da"],src:"BAK p382; AAEP PERF 1; ENZO scenario"},
 {id:"perf.da",g:"Atmosphere & Density",t:"Density Altitude",d:"DA = PA + 120 x (OAT - ISA temp)。越高越熱，性能越差。",pts:["ISA temp = 15 - 2 x PA/1000","ENZO 簡化用 ISA 15","DA 高 = 空氣稀"],rel:["perf.pa","perf.hothigh","perf.engdensity"],src:"BAK p381; ENZO scenario p2",check:true},
-{id:"perf.hothigh",g:"Atmosphere & Density",t:"Hot, High, Humid",d:"高海拔、高溫、高濕、低 QNH → density 低 → 性能差。",pts:["Engine 少 power","Prop 少 thrust","Wing 少 lift","Chart 唔計濕度，要自己留餘"],rel:["perf.da","perf.todda","perf.climbfactors"],src:"BAK p384-385; ENZO scenario"},
+{id:"perf.hothigh",g:"Atmosphere & Density",t:"Hot, High, Humid",d:"高海拔、高溫、高濕、低 QNH → density 低 → 性能差。",pts:["Engine 少 power","Prop 少 thrust","Wing 少 lift","Chart 唔計humidity，要自己留餘"],rel:["perf.da","perf.todda","perf.climbfactors"],src:"BAK p384-385; ENZO scenario"},
 // ---------- Take-off & Landing
 {id:"perf.todr",g:"Take-off & Landing",t:"Take-off Distance Required",d:"由靜止到 50 ft screen height 嘅距離；要 ≤ TODA。",pts:["Ground roll + clearance","Chart 以 ground roll / 50 ft 兩條線","TODR ≤ TODA"],rel:["perf.toss","perf.tsafety"],src:"BAK p383; DA40 AFM 5.3.6"},
-{id:"perf.toss",g:"Take-off & Landing",t:"Take-off Safety Speed",d:"50 ft 時要達到嘅速度，至少 1.2 Vs（單發）。",pts:["C172S short field: 56 KIAS @50 ft","DA40 climb-out 67 KIAS (1200 kg)","多發叫 V2"],rel:["perf.todr","perf.vspeeds"],src:"BAK p383; C172S POH; DA40 AFM"},
+{id:"perf.toss",g:"Take-off & Landing",t:"Take-off Safety Speed",d:"50 ft 時要達到嘅speed，至少 1.2 Vs（單發）。",pts:["C172S short field: 56 KIAS @50 ft","DA40 climb-out 67 KIAS (1200 kg)","多發叫 V2"],rel:["perf.todr","perf.vspeeds"],src:"BAK p383; C172S POH; DA40 AFM"},
 {id:"perf.tsafety",g:"Take-off & Landing",t:"Safety Factor 1.15",d:"Chart 距離再乘 1.15（CASA，MTOW <5700 kg）。",pts:["Ground roll 320 → 368 m","Over 50 ft 470 → 540.5 m","每張 CASA chart 都標 factor"],rel:["perf.todr","perf.chartuse"],src:"ENZO scenario p2; CASA workbook p5-8",check:true},
 {id:"perf.todweight",g:"Take-off & Landing",t:"Weight Effect on Take-off",d:"重啲：加速慢、Vs 高、TOSS 高 → 距離長。",pts:["+10% weight → +25% distance","口訣參考，唔係精確"],rel:["perf.overweight","perf.todr"],src:"BAK p383",check:true},
 {id:"perf.todwind",g:"Take-off & Landing",t:"Wind Effect",d:"Headwind 縮短，tailwind 延長；chart 唔計 tailwind 對 climb gradient 影響。",pts:["Gust: headwind 用最細","Crosswind 用最大 gust"],rel:["perf.todr","perf.slope","perf.xwind"],src:"BAK p384"},
-{id:"perf.slope",g:"Take-off & Landing",t:"Runway Slope & Surface",d:"Upslope、濕草、長草、軟地都令 TODR 增加。",pts:["DA40: 2% up ≈ +10%","DA40 草 <5 cm: +10% roll","草 5-10 cm: +15%；>10 cm: ≥+25%","濕草再 +10%；>25 cm 唔好起飛"],rel:["perf.todr","perf.todwind"],src:"BAK p385; DA40 AFM 5.3.6"},
-{id:"perf.slopewind",g:"Take-off & Landing",t:"Slope vs Tailwind",d:"若 tailwind ≤5 kt，順坡起飛可能比 headwind 逆坡好。",pts:["兩者要同時對照 chart","AAEP B5: RWY 13 tailwind 太大"],rel:["perf.slope","perf.todwind"],src:"BAK p385; AAEP Ex Answer Key B5"},
+{id:"perf.slope",g:"Take-off & Landing",t:"Runway Slope & Surface",d:"Upslope、濕草、長草、軟地都令 TODR 增加。",pts:["DA40: 2% up ≈ +10%","DA40 草 <5 cm: +10% roll","草 5-10 cm: +15%；>10 cm: ≥+25%","濕草再 +10%；>25 cm 唔好take-off"],rel:["perf.todr","perf.todwind"],src:"BAK p385; DA40 AFM 5.3.6"},
+{id:"perf.slopewind",g:"Take-off & Landing",t:"Slope vs Tailwind",d:"若 tailwind ≤5 kt，順坡take-off可能比 headwind 逆坡好。",pts:["兩者要同時對照 chart","AAEP B5: RWY 13 tailwind 太大"],rel:["perf.slope","perf.todwind"],src:"BAK p385; AAEP Ex Answer Key B5"},
 {id:"perf.todda",g:"Take-off & Landing",t:"Density Effect on TODR",d:"DA 越高，TODR 越長：C172S 4000 ft 20°C 比 SL 長好多。",pts:["C172S SL 20°C: 1690 ft @50 ft","8000 ft 20°C: 3880 ft","(2550 lb, flaps 10, 零風)"],rel:["perf.da","perf.todr"],src:"C172S POH s5 fig 5-5",check:true},
-{id:"perf.climblimit",g:"Take-off & Landing",t:"Climb Limit Weight",d:"Chart 另一條限制：起飛後要有足夠 climb gradient。",pts:["Take-off weight ≤ min(A, B)","B = climb limit","小機 gradient 常 6% (CASA)"],rel:["perf.perflimited","perf.climbfactors"],src:"BAK p395; CASA workbook p5, p7",check:true},
-{id:"perf.perflimited",g:"Take-off & Landing",t:"Performance-Limited TOM / LM",d:"短跑道、障礙、熱、高 DA → 可用最大質量低過結構 MTOW。",pts:["Runway, obstacle","Wind, slope, DA","Landing: 要留 go-around climb"],rel:["perf.limittypes","perf.climblimit","perf.chartuse"],src:"BAK p362"},
+{id:"perf.climblimit",g:"Take-off & Landing",t:"Climb Limit Weight",d:"Chart 另一條限制：take-off後要有足夠 climb gradient。",pts:["Take-off weight ≤ min(A, B)","B = climb limit","小機 gradient 常 6% (CASA)"],rel:["perf.perflimited","perf.climbfactors"],src:"BAK p395; CASA workbook p5, p7",check:true},
+{id:"perf.perflimited",g:"Take-off & Landing",t:"Performance-Limited TOM / LM",d:"短runway、障礙、熱、高 DA → 可用最大質量低過結構 MTOW。",pts:["Runway, obstacle","Wind, slope, DA","Landing: 要留 go-around climb"],rel:["perf.limittypes","perf.climblimit","perf.chartuse"],src:"BAK p362"},
 {id:"perf.chartuse",g:"Take-off & Landing",t:"Using a Take-off Chart",d:"PA → OAT → weight/ wind/ slope/ surface → TODR 或 MATOW。",pts:["先計 PA 同 OAT","跟 reference line 修正","Weight chart: 取較細嗰個"],rel:["perf.pa","perf.tsafety","perf.perflimited"],src:"AAEP PERF 1; CASA workbook; ENZO scenario"},
 {id:"perf.landdist",g:"Take-off & Landing",t:"Landing Distance",d:"受 DA、風、坡、地面、approach speed 影響；與 weight 關係較細。",pts:["Factor 1.15","Vref 高 → roll 長","Landing chart 另一個 climb limit"],rel:["perf.vref","perf.todda"],src:"CASA workbook p6, p8; BAK"},
-{id:"perf.vref",g:"Take-off & Landing",t:"Vref",d:"Final approach 參考速度，一般 1.3 Vso。",pts:["CASA chart: 58-65 KIAS 視機型","高 DA → GS 高"],rel:["perf.landdist","perf.vspeeds"],src:"ATP Test Prep ch4; CASA workbook"},
+{id:"perf.vref",g:"Take-off & Landing",t:"Vref",d:"Final approach 參考speed，一般 1.3 Vso。",pts:["CASA chart: 58-65 KIAS 視機型","高 DA → GS 高"],rel:["perf.landdist","perf.vspeeds"],src:"ATP Test Prep ch4; CASA workbook"},
 {id:"perf.xwind",g:"Take-off & Landing",t:"Crosswind Component",d:"Xwind = V x sin(角)；headwind = V x cos(角)。",pts:["30°≈0.5, 45°≈0.7, 60°≈0.9","C172S demonstrated 15 kt","DA40 demonstrated 20 kt","CASA charts: max 15 kt"],rel:["perf.todwind","perf.driftangle"],src:"C172S POH s4; DA40 AFM; CASA workbook"},
 {id:"perf.driftangle",g:"Take-off & Landing",t:"Drift Angle Rule",d:"TAS 120 kt 時 drift ≈ crosswind 一半。",pts:["1-in-60: drift = 60 x xw / TAS"],rel:["perf.xwind"],src:"ENZO briefing 09"},
 {id:"perf.shortfield",g:"Take-off & Landing",t:"Short-field Technique",d:"Short-field takeoff 用 flap、Vx 過障礙，之後轉 Vy。",pts:["C172S: flaps 10°, 56 KIAS @50 ft","清完障礙先收 flap","Landing: 重 brake"],rel:["perf.vx","perf.toss"],src:"ENZO 09; C172S POH"},
 // ---------- Thrust & Power
-{id:"perf.trequired",g:"Thrust & Power",t:"Thrust Required / Available",d:"Treq = drag（平飛）；Tav = 引擎提供嘅 thrust。",pts:["Treq = Drag","Treq > Tav → 平飛唔到","Treq = Tav 都爬唔到"],rel:["perf.excess","perf.propthrust"],src:"PERF02 slides"},
-{id:"perf.propthrust",g:"Thrust & Power",t:"Propeller Thrust vs Speed",d:"速度越高，blade AoA 越細，thrust 越少。",pts:["低速 thrust 最大","Prop efficiency 同速度有關"],rel:["perf.trequired","perf.prequired"],src:"PERF02 slides"},
+{id:"perf.trequired",g:"Thrust & Power",t:"Thrust Required / Available",d:"Treq = drag（level flight）；Tav = engine提供嘅 thrust。",pts:["Treq = Drag","Treq > Tav → level flight唔到","Treq = Tav 都爬唔到"],rel:["perf.excess","perf.propthrust"],src:"PERF02 slides"},
+{id:"perf.propthrust",g:"Thrust & Power",t:"Propeller Thrust vs Speed",d:"speed越高，blade AoA 越細，thrust 越少。",pts:["低速 thrust 最大","Prop efficiency 同speed有關"],rel:["perf.trequired","perf.prequired"],src:"PERF02 slides"},
 {id:"perf.prequired",g:"Thrust & Power",t:"Power Required / Available",d:"Power = Force x Velocity，所以 Preq = Drag x TAS。",pts:["Pav 同 prop efficiency 有關","最低 Preq = min power speed"],rel:["perf.trequired","perf.excess"],src:"PERF02 slides"},
-{id:"perf.excess",g:"Thrust & Power",t:"Excess Thrust & Excess Power",d:"爬升靠剩餘：thrust 決定角度，power 決定速率。",pts:["Excess T = Tav - Treq","Excess P = Pav - Preq"],rel:["perf.vx","perf.vy"],src:"PERF02 slides"},
-{id:"perf.dragcurve",g:"Thrust & Power",t:"Drag Curve",d:"Drag = parasite + induced；最低 drag 速度即 best L/D。",pts:["Vmd = min drag = best L/D","Vmd 以下 induced 主導","以上 parasite 主導"],rel:["perf.bestglide","perf.rangeprop"],src:"BAK ch6; PERF02; ATP ch4"},
+{id:"perf.excess",g:"Thrust & Power",t:"Excess Thrust & Excess Power",d:"climb靠剩餘：thrust 決定角度，power 決定速率。",pts:["Excess T = Tav - Treq","Excess P = Pav - Preq"],rel:["perf.vx","perf.vy"],src:"PERF02 slides"},
+{id:"perf.dragcurve",g:"Thrust & Power",t:"Drag Curve",d:"Drag = parasite + induced；最低 drag speed即 best L/D。",pts:["Vmd = min drag = best L/D","Vmd 以下 induced 主導","以上 parasite 主導"],rel:["perf.bestglide","perf.rangeprop"],src:"BAK ch6; PERF02; ATP ch4"},
 // ---------- Climb
-{id:"perf.climbtypes",g:"Climb",t:"Types of Climb",d:"Best angle、best rate、cruise、zoom 四種。",pts:["Vx: 高度/距離","Vy: 高度/時間","Cruise climb 較快、涼、睇得遠","Zoom: 換速度做高度"],rel:["perf.vx","perf.vy"],src:"PERF02; ENZO 04"},
+{id:"perf.climbtypes",g:"Climb",t:"Types of Climb",d:"Best angle、best rate、cruise、zoom 四種。",pts:["Vx: altitude/距離","Vy: altitude/時間","Cruise climb 較快、涼、睇得遠","Zoom: 換speed做altitude"],rel:["perf.vx","perf.vy"],src:"PERF02; ENZO 04"},
 {id:"perf.vx",g:"Climb",t:"Vx — Best Angle of Climb",d:"最短水平距離爬最多高；最大 excess thrust。",pts:["過障礙、short field","Vx < Vmd","C172S 62 KIAS (SL)","DA40 67 KIAS (T/O flap)"],rel:["perf.excess","perf.shortfield"],src:"PERF02; ENZO 04; C172S POH s4"},
 {id:"perf.vy",g:"Climb",t:"Vy — Best Rate of Climb",d:"最短時間爬最多高；最大 excess power。",pts:["日常訓練用 Vy","Vy > Vmd (教材)","C172S 74 KIAS (SL)","DA40 76 KIAS (flap up)"],rel:["perf.excess","perf.climbformula"],src:"PERF02; ENZO 04; C172S POH",check:true},
 {id:"perf.climbformula",g:"Climb",t:"Climb Formulas",d:"sin γ = (T - D)/W；RoC = excess power / W。",pts:["Angle ← excess thrust","Rate ← excess power","RoC 單位 fpm (VSI)"],rel:["perf.vx","perf.vy"],src:"PERF02 slides"},
-{id:"perf.climbfactors",g:"Climb",t:"Factors Affecting Climb",d:"高度、重量、溫度、flap、load factor → 都令 AoC 同 RoC 減。",pts:["Altitude, weight, temp ↑ → 差","Flap / gear drag → 差","Bank 增 induced drag"],rel:["perf.da","perf.overweight","perf.windclimb"],src:"PERF02; BAK p223"},
+{id:"perf.climbfactors",g:"Climb",t:"Factors Affecting Climb",d:"altitude、weight、temperature、flap、load factor → 都令 AoC 同 RoC 減。",pts:["Altitude, weight, temp ↑ → 差","Flap / gear drag → 差","Bank 增 induced drag"],rel:["perf.da","perf.overweight","perf.windclimb"],src:"PERF02; BAK p223"},
 {id:"perf.windclimb",g:"Climb",t:"Wind & Climb",d:"風唔影響 RoC，但影響 AoC（over ground）。",pts:["Headwind: 角度大啲","Tailwind: 角度細啲","時間不變 → RoC 不變"],rel:["perf.climbfactors"],src:"PERF02; BAK p223"},
 {id:"perf.ceiling",g:"Climb",t:"Service & Absolute Ceiling",d:"Absolute ceiling RoC=0；service ceiling 係剩餘小量 RoC。",pts:["Absolute: 0 fpm","Service: 100 fpm (prop)","Service: 500 fpm (jet)","Vx 同 Vy 向 ceiling 靠攏"],rel:["perf.climbfactors","perf.vx"],src:"PERF02; C172S POH s4"},
 {id:"perf.climbvalues",g:"Climb",t:"Climb Speeds by Type",d:"ENZO 簡報／POH 數值（標明機型）。",pts:["C172S: Vx 62, Vy 74, cruise ~80","DA40: Vx 67, Vy 76, cruise 80","單位 KIAS"],rel:["perf.vx","perf.vy"],src:"ENZO 04 slide 13-14",check:true},
 // ---------- Glide
-{id:"perf.bestglide",g:"Glide & Descent",t:"Best Glide Speed",d:"最佳 L/D 角度 → 同樣高度滑最遠。",pts:["~4° AoA (BAK)","Best glide = Vmd","C172S 68 KIAS","DA40 76-60 KIAS (視重量)"],rel:["perf.dragcurve","perf.glideratio"],src:"BAK p227; C172S POH fig 3-1; DA40 AFM 3.4"},
+{id:"perf.bestglide",g:"Glide & Descent",t:"Best Glide Speed",d:"最佳 L/D 角度 → 同樣altitude滑最遠。",pts:["~4° AoA (BAK)","Best glide = Vmd","C172S 68 KIAS","DA40 76-60 KIAS (視weight)"],rel:["perf.dragcurve","perf.glideratio"],src:"BAK p227; C172S POH fig 3-1; DA40 AFM 3.4"},
 {id:"perf.glideratio",g:"Glide & Descent",t:"Glide Ratio",d:"DA40 8.8:1 即每 1000 ft 約 1.45 NM。",pts:["Windmilling prop: 8.8","Stopped prop: 10.3 (1.70 NM)","Flap up"],rel:["perf.bestglide","perf.glideflap"],src:"DA40 AFM 3.4"},
-{id:"perf.glideweight",g:"Glide & Descent",t:"Weight in a Glide",d:"重量唔改變 glide angle，只提高最佳速度。",pts:["DA40: 76 kt @1200 kg","73 @1150, 68 @1000, 60 @850","實際：保持 best glide 速度"],rel:["perf.bestglide"],src:"ENZO 04 slide 30-31; DA40 AFM 3.4"},
+{id:"perf.glideweight",g:"Glide & Descent",t:"Weight in a Glide",d:"weight唔改變 glide angle，只提高最佳speed。",pts:["DA40: 76 kt @1200 kg","73 @1150, 68 @1000, 60 @850","實際：保持 best glide speed"],rel:["perf.bestglide"],src:"ENZO 04 slide 30-31; DA40 AFM 3.4"},
 {id:"perf.glideflap",g:"Glide & Descent",t:"Flap in a Glide",d:"Flap 增加 drag，glide 變陡、距離縮短。",pts:["確定到 field 先放 flap"],rel:["perf.glideratio"],src:"ENZO 04; BAK p228"},
 {id:"perf.glidewind",g:"Glide & Descent",t:"Wind in a Glide",d:"風只改 descent angle over ground 同 range。",pts:["Headwind: 角度大、range 短","Tailwind: 角度細、range 長"],rel:["perf.bestglide"],src:"ENZO 04 slide 33"},
-{id:"perf.glidestretch",g:"Glide & Descent",t:"Don't Stretch the Glide",d:"拉高機頭想滑遠只會更差：太慢 mush，太快 drag 大。",pts:["低於 undershoot 要加 power","每 1000 ft 暖引擎"],rel:["perf.bestglide"],src:"BAK p228"},
+{id:"perf.glidestretch",g:"Glide & Descent",t:"Don't Stretch the Glide",d:"拉高nose想滑遠只會更差：太慢 mush，太快 drag 大。",pts:["低於 undershoot 要加 power","每 1000 ft 暖engine"],rel:["perf.bestglide"],src:"BAK p228"},
 {id:"perf.descentfactors",g:"Glide & Descent",t:"Descent Factors Summary",d:"weight、flap、wind、power 對 angle / rate / range 的影響。",pts:["Flap down: 角度↑ range↓","H/W: 角度↑ range↓","Power↑: rate↓ range↑","Weight: rate↑, 角度不變"],rel:["perf.glidewind","perf.glideflap","perf.glideweight"],src:"ENZO 04 slide 35"},
 // ---------- Range & Endurance
-{id:"perf.rangeprop",g:"Range & Endurance",t:"Max Range (Propeller)",d:"最大航程喺 L/D max（最佳 glide 速度）。",pts:["Speed = Vmd","Range = 每單位 fuel 距離"],rel:["perf.dragcurve","perf.bestglide","perf.range"],src:"ATP ch4 cruise; BAK"},
+{id:"perf.rangeprop",g:"Range & Endurance",t:"Max Range (Propeller)",d:"最大航程喺 L/D max（最佳 glide speed）。",pts:["Speed = Vmd","Range = 每單位 fuel 距離"],rel:["perf.dragcurve","perf.bestglide","perf.range"],src:"ATP ch4 cruise; BAK"},
 {id:"perf.endurance",g:"Range & Endurance",t:"Max Endurance",d:"最長滯空：用最少 power，即 min power speed，比 Vmd 慢。",pts:["Min Preq / min fuel flow","慢過 max range speed"],rel:["perf.prequired","perf.rangeprop"],src:"ATP ch4; PERF02 curves",check:true},
-{id:"perf.range",g:"Range & Endurance",t:"Range vs Weight/CG",d:"重量重、forward CG → range 同 endurance 減。",pts:["Overweight 減 range","Aft CG 增加 range"],rel:["perf.overweight","perf.fwdcg","perf.aftcg"],src:"MB01"},
-{id:"perf.windcruise",g:"Range & Endurance",t:"Wind & Cruise Speed",d:"Headwind 要加速；tailwind 可減速。",pts:["縮短逆風時間","順風令 GS 補償"],rel:["perf.rangeprop"],src:"ATP ch4 cruise"},
-{id:"perf.weightcruise",g:"Range & Endurance",t:"Optimum Speed as Fuel Burns",d:"機愈輕，最佳速度愈低（或高度愈高，噴射機）。",pts:["Optimum AoA 不變","Jet: 升 altitude 或減速"],rel:["perf.rangeprop"],src:"ATP ch4 Q8381, 9077"},
+{id:"perf.range",g:"Range & Endurance",t:"Range vs Weight/CG",d:"weight重、forward CG → range 同 endurance 減。",pts:["Overweight 減 range","Aft CG 增加 range"],rel:["perf.overweight","perf.fwdcg","perf.aftcg"],src:"MB01"},
+{id:"perf.windcruise",g:"Range & Endurance",t:"Wind & Cruise Speed",d:"Headwind 要加速；tailwind 可減速。",pts:["縮短headwind時間","tailwind令 GS 補償"],rel:["perf.rangeprop"],src:"ATP ch4 cruise"},
+{id:"perf.weightcruise",g:"Range & Endurance",t:"Optimum Speed as Fuel Burns",d:"機愈輕，最佳speed愈低（或altitude愈高，噴射機）。",pts:["Optimum AoA 不變","Jet: 升 altitude 或減速"],rel:["perf.rangeprop"],src:"ATP ch4 Q8381, 9077"},
 {id:"perf.jetrange",g:"Range & Endurance",t:"Jet Best Range",d:"噴射機最佳 range speed 高過 L/Dmax。",pts:["高空更有效率","Mach cruise 常用"],rel:["perf.rangeprop"],src:"ATP ch4 cruise"},
 {id:"perf.engdensity",g:"Range & Endurance",t:"Engine Power & Density",d:"DA 升高，power 減；活塞機尤其受影響。",pts:["Normally aspirated: MAP 跌","DA40: ISA+15°C → power -3%","Turbo: critical altitude"],rel:["perf.da","perf.climbfactors"],src:"ATP ch4; DA40 AFM 5.2"},
 {id:"perf.vspeeds",g:"Range & Endurance",t:"Key V-Speeds",d:"Vs, Vso, Va, Vno, Vne, Vfe, Vref…",pts:["Va: 全舵面唔 overstress","Vno: 只可喺 smooth air 超過","Vne: 絕不超過","Vfe: flaps extended 最大"],rel:["perf.toss","perf.vref"],src:"BAK p382"}
@@ -106,10 +106,10 @@ links:[
 ["perf.overweight","perf.todweight","超重 → Vs 高、加速慢 → 距離長"],
 ["perf.overweight","perf.climbfactors","重 → Preq 升 → excess power 減"],
 ["perf.da","perf.todda","DA 高 → density 低 → 加速慢"],
-["perf.hothigh","perf.climbfactors","空氣稀 → power 同 lift 少 → 爬升差"],
+["perf.hothigh","perf.climbfactors","空氣稀 → power 同 lift 少 → climb差"],
 ["perf.excess","perf.vx","最大 excess thrust → Vx"],
 ["perf.excess","perf.vy","最大 excess power → Vy"],
-["perf.propthrust","perf.trequired","Prop thrust 隨速度跌 → Tav 線向下"],
+["perf.propthrust","perf.trequired","Prop thrust 隨speed跌 → Tav 線向下"],
 ["perf.prequired","perf.vy","Power 視角 → Vy"],
 ["perf.dragcurve","perf.bestglide","Min drag = best L/D = best glide"],
 ["perf.dragcurve","perf.rangeprop","Prop 最大 range 喺 L/Dmax"],
@@ -122,19 +122,19 @@ links:[
 ["perf.fuelburn","perf.zfwtow","燒油改變 CG → 要驗兩點"],
 ["perf.moment","perf.cgshift","搬貨 = moment 轉移"],
 ["perf.index","perf.loadsys","Charlie 用 IU 簡化計算"],
-["perf.pa","perf.da","DA 由 PA 再加溫度修正"],
+["perf.pa","perf.da","DA 由 PA 再加temperature修正"],
 ["perf.slopewind","perf.todwind","坡同風互相抵消"],
 ["perf.climblimit","perf.perflimited","Climb limit 令 TOM 低過 MTOW"],
 ["perf.tsafety","perf.todr","chart x 1.15 → TODR"],
 ["perf.toss","perf.todweight","重 → Vs 高 → TOSS 高 → 距離長"],
 ["perf.glideflap","perf.glideratio","Flap → L/D 減 → 滑唔遠"],
 ["perf.glidewind","perf.windcruise","風改變 GS，同一原理"],
-["perf.weightcruise","perf.glideweight","重量改最佳速度，唔改 L/D"],
+["perf.weightcruise","perf.glideweight","weight改最佳speed，唔改 L/D"],
 ["perf.vx","perf.shortfield","Vx 用於過障礙"],
 ["perf.xwind","perf.driftangle","Xwind 大 → drift 大"],
 ["perf.windclimb","perf.todwind","風影響距離，唔影響時間"],
 ["perf.engdensity","perf.da","DA 高 → engine power 低"],
-["perf.ceiling","perf.climbfactors","高度升 → excess power 減 → ceiling"],
+["perf.ceiling","perf.climbfactors","altitude升 → excess power 減 → ceiling"],
 ["perf.mzfm","perf.zfm","MZFM 限制 ZFM"],
 ["perf.limittypes","perf.mtowmlw","MTOW/MLW 係 structural 一類"],
 ["perf.oilcorr","perf.bem","BEM 假設油滿"],
@@ -152,13 +152,13 @@ cards:[
 {e:"⚖️",q:"What is the difference between mass and weight?",a:"Mass is the amount of matter; weight is the force of gravity acting on that mass.",zh:"Mass 係量，weight 係力。",topic:"perf.massweight",st:"ok"},
 {e:"⚖️",q:"Why do pilots say weight when they mean mass?",a:"On light aircraft near the earth's surface g is effectively constant, so the two are used interchangeably.",zh:"習慣用法。",topic:"perf.massweight",st:"ok"},
 {e:"🔢",q:"Convert 1 kg to lb, and 1 US gallon to litres.",a:"1 kg = 2.205 lb; 1 US gal = 3.785 L.",zh:"最常用轉換。",topic:"perf.units",st:"ok"},
-{e:"🔢",q:"Calculation: 30 US gal of avgas at 0.72 kg/L weighs how much?",a:"30 x 3.785 = 113.6 L; x 0.72 = 81.8 kg.",zh:"先換 L，再乘密度。",topic:"perf.units",st:"ok"},
+{e:"🔢",q:"Calculation: 30 US gal of avgas at 0.72 kg/L weighs how much?",a:"30 x 3.785 = 113.6 L; x 0.72 = 81.8 kg.",zh:"先換 L，再乘density。",topic:"perf.units",st:"ok"},
 {e:"⛽",q:"What density of avgas is used in CASA exams?",a:"0.72 kg per litre for all loading systems.",zh:"2021 workbook 統一。",topic:"perf.fuelsg",st:"ok"},
-{e:"⛽",q:"Why must fuel quantity be converted to weight in W&B?",a:"Mass limits and moments are based on weight, not volume.",zh:"Limit 用重量。",topic:"perf.fuelsg",st:"ok"},
+{e:"⛽",q:"Why must fuel quantity be converted to weight in W&B?",a:"Mass limits and moments are based on weight, not volume.",zh:"Limit 用weight。",topic:"perf.fuelsg",st:"ok"},
 {e:"📉",q:"List five effects of an overweight aircraft.",a:"Higher stall and take-off speed, longer take-off run, reduced climb, lower ceiling, shorter range and longer landing roll.",zh:"全面變差。",topic:"perf.overweight",st:"ok"},
 {e:"📉",q:"Why is an overweight aircraft dangerous apart from performance?",a:"It can be overstressed structurally, and flying it is illegal and may void insurance.",zh:"結構同法律。",topic:"perf.overweight",st:"ok"},
 {e:"🧱",q:"What are the two reasons for mass limitations?",a:"Structural limitation and performance limitation.",zh:"結構／性能。",topic:"perf.limittypes",st:"ok"},
-{e:"🧱",q:"Is MZFM a structural or performance limit?",a:"Structural: it relates to wing root bending moment.",zh:"翼根彎矩。",topic:"perf.limittypes",st:"ok"},
+{e:"🧱",q:"Is MZFM a structural or performance limit?",a:"Structural: it relates to wing root bending moment.",zh:"wing root彎矩。",topic:"perf.limittypes",st:"ok"},
 // Mass terms
 {e:"📋",q:"What is included in Basic Empty Mass?",a:"Airframe, engine, fixed equipment, unusable fuel and fluids, and full oil.",zh:"唔包 crew、payload。",topic:"perf.bem",st:"ok"},
 {e:"📋",q:"Does BEM include usable fuel?",a:"No. Only unusable fuel; usable fuel is added later.",zh:"Usable fuel 另計。",topic:"perf.bem",st:"ok"},
@@ -276,7 +276,7 @@ cards:[
 {e:"🌀",q:"Why does propeller thrust fall with speed?",a:"Blade angle of attack decreases as airspeed increases.",zh:"所以 Tav 線向下。",topic:"perf.propthrust",st:"ok"},
 {e:"⚡",q:"What is power required?",a:"Power required = drag x TAS in level flight.",zh:"Force x velocity。",topic:"perf.prequired",st:"ok"},
 {e:"⚡",q:"What does power available depend on?",a:"Engine output and propeller efficiency.",zh:"PERF02。",topic:"perf.prequired",st:"ok"},
-{e:"➕",q:"Define excess thrust and excess power.",a:"Tav-Treq and Pav-Preq respectively.",zh:"爬升來源。",topic:"perf.excess",st:"ok"},
+{e:"➕",q:"Define excess thrust and excess power.",a:"Tav-Treq and Pav-Preq respectively.",zh:"climb來源。",topic:"perf.excess",st:"ok"},
 {e:"📉",q:"What makes up the drag curve?",a:"Parasite drag (rises with speed) plus induced drag (falls with speed); minimum total drag is at best L/D.",zh:"Vmd。",topic:"perf.dragcurve",st:"ok"},
 {e:"📉",q:"Which speed gives minimum drag?",a:"Vmd, the speed for best lift-to-drag ratio.",zh:"同 best glide 一致。",topic:"perf.dragcurve",st:"ok"},
 // Climb
@@ -323,7 +323,7 @@ cards:[
 {e:"🅰️",q:"What is Vfe?",a:"Maximum speed with flaps extended; top of white arc.",zh:"BAK。",topic:"perf.vspeeds",st:"ok"}
 ],
 anims:[
-{title:"CG & Moment Calculator (DA40 XLT sample)",hint:"拉重量／油量滑桿，睇 ZFW 同 TOW 點喺唔喺 envelope",build(box,H){
+{title:"CG & Moment Calculator (DA40 XLT sample)",hint:"拉weight／油量滑桿，睇 ZFW 同 TOW 點喺唔喺 envelope",build(box,H){
  const svg=H.svg(box,700,340),say=H.note(box);
  const BEW=843.7,BM=2095.75,LIM=1200,MZ=1150;
  const x0=60,cw=360,y0=300,ch=280;
@@ -381,11 +381,11 @@ anims:[
   const stab=arm/95, vs=Math.sqrt(1+Ft*0.012)/1.18, rng=1-Ft*0.004;
   const v=[stab,Ft/42,vs,rng];
   bars.forEach((b,i)=>b.setAttribute("width",Math.max(4,Math.min(1,v[i])*300)));
-  say(s<30?"Forward CG: 穩但 nose-heavy，tail 壓大、Vs 高、range 減":s>70?"Aft CG: 穩定性低、stick 輕，Vs 低、range 增，易 pitch-up":"CG 喺中間範圍")}
+  say(s<30?"Forward CG: 穩但 nose-heavy，tail 壓大、Vs 高、range 減":s>70?"Aft CG: stability低、stick 輕，Vs 低、range 增，易 pitch-up":"CG 喺中間範圍")}
  H.slider(box,"CG 位置 (0=前 100=後)",0,100,50,v=>{s=v;upd()},1);
  H.loop(()=>{t0+=0.05;const a=Math.sin(t0)*(0.6+s/25)*(s>60?1:0.4);ac.setAttribute("transform","rotate("+a+" 330 150)")});
 }},
-{title:"Thrust & Power Curves: Vx and Vy",hint:"拉速度／高度／重量，睇 excess thrust 同 power",build(box,H){
+{title:"Thrust & Power Curves: Vx and Vy",hint:"拉speed／altitude／weight，睇 excess thrust 同 power",build(box,H){
  const svg=H.svg(box,700,360),say=H.note(box);
  const W0=9.81;let spd=70,alt=0,mass=1000;
  const L={x:45,w:270,y:30,h:200,tmax:3200,x2:385,pmax:110000};
@@ -424,7 +424,7 @@ anims:[
  H.slider(box,"Altitude ft",0,15000,0,v=>{alt=v;upd()},500);
  H.slider(box,"Mass kg",800,1100,1000,v=>{mass=v;upd()},25);
 }},
-{title:"Glide Range: Speed, Wind, Flap, Weight",hint:"改速度／風／flap，睇滑翔距離",build(box,H){
+{title:"Glide Range: Speed, Wind, Flap, Weight",hint:"改speed／風／flap，睇滑翔距離",build(box,H){
  const svg=H.svg(box,700,300),say=H.note(box);
  const gy=260,x0=50,pxNM=32,pxFT=0.028;
  H.el("rect",{x:0,y:gy,width:700,height:40,fill:"#3f6212"},svg);
@@ -440,7 +440,7 @@ anims:[
   const r0=alt/6076*8.8;refP.setAttribute("x1",x0);refP.setAttribute("y1",gy-alt*pxFT);refP.setAttribute("x2",x0+r0*pxNM);refP.setAttribute("y2",gy);
   out[0].textContent="Best glide IAS (this mass): "+c.vb.toFixed(0)+" kt";out[1].textContent="Glide ratio in air: "+c.ld.toFixed(1)+":1";
   out[2].textContent="Range over ground: "+c.rng.toFixed(1)+" NM";out[3].textContent="Rate of descent: ~"+c.rod.toFixed(0)+" fpm";
-  say("虛線=無風 best glide。偏離 best speed、放 flap、頂風都縮短距離；重量只改最佳速度。DA40 L/D 8.8 (AFM)，flap 係數為示意。 "+flapN[fl])}
+  say("虛線=無風 best glide。偏離 best speed、放 flap、頂風都縮短距離；weight只改最佳speed。DA40 L/D 8.8 (AFM)，flap 係數為示意。 "+flapN[fl])}
  H.slider(box,"Altitude AGL ft",1000,8000,4000,v=>{alt=v;upd()},500);
  H.slider(box,"IAS kt",50,110,73,v=>{spd=v;upd()},1);
  H.slider(box,"Wind (+tail / -head) kt",-30,30,0,v=>{wind=v;upd()},1);
@@ -448,7 +448,7 @@ anims:[
  H.button(box,"Cycle flap",()=>{fl=(fl+1)%3;upd()});
  H.loop(()=>{t=(t+0.004)%1;const e=range*pxNM*t;ac.setAttribute("cx",x0+e);ac.setAttribute("cy",gy-alt*pxFT*(1-t))});
 }},
-{title:"Range & Endurance vs Speed (propeller)",hint:"拉速度同風，睇 range／endurance 指數",build(box,H){
+{title:"Range & Endurance vs Speed (propeller)",hint:"拉speed同風，睇 range／endurance 指數",build(box,H){
  const svg=H.svg(box,700,330),say=H.note(box);
  const L={x:50,y:30,w:380,h:230,xmin:40,xmax:120,pmax:100};
  const xk=k=>L.x+(k-L.xmin)/(L.xmax-L.xmin)*L.w,yk=p=>L.y+L.h-p/L.pmax*L.h;
@@ -473,12 +473,12 @@ anims:[
   const ri=(spd+wind)/p/bestR*100,ei=bestE/p*100;
   out[0].textContent="Max-range speed "+vR+" kt";out[1].textContent="Max-endurance speed "+vE+" kt";
   out[2].textContent="你的 range index "+ri.toFixed(0)+"%";out[3].textContent="你的 endurance index "+ei.toFixed(0)+"%";
-  say("Range = 地速/耗油；max endurance 係最低 power 點(較慢)，max range 係由風原點引切線。逆風加速、機輕(燒咗油)最佳速度降。power 用簡化模型，指數為相對值。")}
+  say("Range = groundspeed/耗油；max endurance 係最低 power 點(較慢)，max range 係由風原點引切線。headwind加速、機輕(燒咗油)最佳speed降。power 用簡化模型，指數為相對值。")}
  H.slider(box,"Speed kt",40,120,80,v=>{spd=v;upd()},1);
  H.slider(box,"Wind (+tail / -head) kt",-30,30,0,v=>{wind=v;upd()},1);
  H.slider(box,"Mass kg (fuel burns →)",700,1000,1000,v=>{mass=v;upd()},25);
 }},
-{title:"Density Altitude & Take-off Distance",hint:"改 QNH／溫度／重量，睇 PA、DA 同 TODR",build(box,H){
+{title:"Density Altitude & Take-off Distance",hint:"改 QNH／temperature／weight，睇 PA、DA 同 TODR",build(box,H){
  const svg=H.svg(box,700,300),say=H.note(box);
  const out=[0,1,2,3,4].map(i=>tx(H,svg,30,30+i*24,13,"","#e2e8f0"));
  const bx=30,bw=620;
@@ -507,7 +507,7 @@ anims:[
  H.slider(box,"Runway m",400,1500,1200,v=>{tora=v;upd()},50);
  H.button(box,"Toggle x1.15 factor",()=>{sf=sf?0:1;upd()});
 }},
-{title:"Crosswind Component",hint:"改風向風速，睇 crosswind／headwind",build(box,H){
+{title:"Crosswind Component",hint:"改wind directionwind speed，睇 crosswind／headwind",build(box,H){
  const svg=H.svg(box,700,320),say=H.note(box);
  const cx=180,cy=160;
  H.el("rect",{x:cx-14,y:20,width:28,height:280,fill:"#475569"},svg);

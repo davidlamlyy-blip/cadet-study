@@ -11,7 +11,7 @@ const TP=[
 ["agk.loads","af","Design Loads","Ultimate load = 1.5 × limit load。",["Limit load：預期最大","Ultimate = 1.5 × limit","要承受 ultimate 不散"],["agk.stress","agk.structcat"],S1],
 ["agk.structcat","af","Structural Categories","按失效後果分四級。",["Critical：wing spar","Primary：rib、frame","Secondary：doors、fairing","Tertiary：內飾"],["agk.loads"],S1],
 ["agk.fuselage","af","Fuselage Types","Truss／Monocoque／Semi-monocoque／Composite。",["Truss：強、重、易修","Monocoque：蒙皮受力","Semi-mono：蒙皮＋stringer","Composite：輕、抗蝕"],["agk.wings"],S1],
-["agk.wings","af","Wing & Tail Layouts","高／低翼、dihedral、tail 類型各有利弊。",["High wing：穩、視野落","Low wing：roll 快","Dihedral → 橫向穩定","T-tail：deep stall 風險"],["agk.fuselage","agk.fatigue"],S1],
+["agk.wings","af","Wing & Tail Layouts","高／低翼、dihedral、tail 類型各有利弊。",["High wing：穩、視野落","Low wing：roll 快","Dihedral → lateral stability","T-tail：deep stall 風險"],["agk.fuselage","agk.fatigue"],S1],
 ["agk.fatigue","af","Metal Fatigue","反覆載荷令結構喺低過一次性載荷時失效。",["Cyclic loading","細載荷都可以裂","要定期檢查 airframe"],["agk.stress","agk.pressurisation"],S1],
 
 ["agk.fourstroke","pe","Four-Stroke Cycle","Intake→Compression→Power→Exhaust，曲軸轉兩圈。",["720° crank = 1 cycle","Intake valve 開 → 入混合氣","點火喺 TDC 前","Exhaust valve 開 → 排氣"],["agk.valves","agk.compratio","agk.ignswitch"],S1+" / "+S2],
@@ -21,7 +21,7 @@ const TP=[
 ["agk.firing","pe","Firing Order","影響 power 同震動；Lycoming 4 缸 1-3-2-4。",["不同廠牌可能唔同","1-3-2-4（Lycoming 手冊）","平衡力矩減震"],["agk.parts"],S1+" / Lycoming manual"],
 ["agk.horsepower","pe","Horsepower","1 hp = 745.7 W = 550 ft·lb/s。",["Indicated hp：理論無摩擦","Friction hp：損失","oil pump、alternator 都食力"],["agk.compratio"],S1],
 ["agk.sixsys","pe","6 Systems of Piston Engine","燃燒要 Air＋Fuel＋Heat，所以有六個系統。",["Ignition","Induction","Fuel","Lubrication","Cooling","Exhaust"],["agk.magneto","agk.fuelsys","agk.lube","agk.cooling","agk.exhaust"],S1+" / "+S2],
-["agk.detonation","pe","Detonation","燃料未受控地爆燃，高壓高溫引致。",["高 CR／低 octane／太熱","突然壓力峰值","震動、過熱、損壞 piston"],["agk.compratio","agk.preign"],S1+" / "+RB],
+["agk.detonation","pe","Detonation","燃料未受控地爆燃，高壓高溫引致。",["高 CR／低 octane／太熱","突然pressure峰值","震動、過熱、損壞 piston"],["agk.compratio","agk.preign"],S1+" / "+RB],
 ["agk.preign","pe","Pre-ignition","混合氣喺火花前被熱點點燃。",["Hot spot 引致","Rough、backfire","CHT 突然升","Piston 仲上升時已燃燒"],["agk.detonation","agk.egtcht"],S1],
 
 ["agk.magneto","ig","Magneto","旋轉磁鐵產生高壓電，自給自足。",["Primary／secondary circuit","Breaker、condenser","Distributor 分配去 plug","唔連 aircraft electrical"],["agk.dualign","agk.ignswitch"],S2],
@@ -31,46 +31,46 @@ const TP=[
 
 ["agk.fuelsys","fi","Fuel System","Tank → selector → strainer → pump → engine。",["Boost／aux pump electric","Engine-driven pump","Strainer 濾水同雜質","Vent 防真空"],["agk.fuelinj","agk.carb","agk.c172sp"],S2+" / "+C172],
 ["agk.carb","fi","Carburettor","Venturi 低壓抽油；throttle 控量、mixture 控比。",["Throttle ＝ butterfly valve","Mixture ＝ needle","Float chamber 控油面","Venturi 引致降溫"],["agk.carbice","agk.mixture"],S1+" / "+S2],
-["agk.carbice","fi","Carburettor Icing","三種：induction、fuel evaporation、throttle ice。",["Venturi 冷卻 → 結冰","可喺 OAT 高時發生","RPM 跌、rough"],["agk.carb","agk.carbheat"],S2+" / "+RB],
+["agk.carbice","fi","Carburettor Icing","三種：induction、fuel evaporation、throttle ice。",["Venturi 冷卻 → icing","可喺 OAT 高時發生","RPM 跌、rough"],["agk.carb","agk.carbheat"],S2+" / "+RB],
 ["agk.carbheat","fi","Carburettor Heat","用熱空氣融冰，但會令 power 少啲。",["Hot air 繞過 air filter","RPM 先跌後升＝有冰","C172SP 係 fuel injected → 冇 carb heat"],["agk.carbice","agk.altair"],S2+" / "+C172],
-["agk.fuelinj","fi","Fuel Injection","Pump、control unit、distributor、nozzle。",["優：少 icing、反應快","優：分配平均、易冷啟動","缺：熱機難起動","缺：vapour lock"],["agk.carb","agk.mixture","agk.c172sp"],S1+" / "+FC],
+["agk.fuelinj","fi","Fuel Injection","Pump、control unit、distributor、nozzle。",["優：少 icing、反應快","優：分trim均、易冷啟動","缺：熱機難起動","缺：vapour lock"],["agk.carb","agk.mixture","agk.c172sp"],S1+" / "+FC],
 ["agk.mixture","fi","Mixture & Leaning","混合比；巡航 lean、落降前 rich。",["Rich：冷卻較好","Lean：慳油、EGT 升","DA40 lean assist：peak 後 enrich −100","落降前一定 full rich"],["agk.egtcht","agk.carb","agk.fuelinj"],FC+" / "+C172],
-["agk.altair","fi","Alternate Air","Air filter 塞咗，開 door 吸機艙空氣。",["C172SP：spring-loaded door","全油門約失 10% power","DA40：手動 lever","MAP 突降時用"],["agk.carbheat","agk.fuelinj"],C172+" / "+DA],
-["agk.egtcht","fi","EGT vs CHT","EGT＝排氣溫；CHT＝缸頭溫。",["EGT 準確反映混合比","CHT 反映 power stroke 熱量","DA40 CHT max 500°F"],["agk.mixture","agk.cooling"],S2+" / "+DA],
+["agk.altair","fi","Alternate Air","Air filter 塞咗，開 door 吸機艙空氣。",["C172SP：spring-loaded door","全throttle約失 10% power","DA40：手動 lever","MAP 突降時用"],["agk.carbheat","agk.fuelinj"],C172+" / "+DA],
+["agk.egtcht","fi","EGT vs CHT","EGT＝排temperature；CHT＝缸頭溫。",["EGT 準確反映混合比","CHT 反映 power stroke 熱量","DA40 CHT max 500°F"],["agk.mixture","agk.cooling"],S2+" / "+DA],
 ["agk.boost","fi","Supercharger vs Turbocharger","加壓進氣令高空保持 manifold pressure。",["Super：齒輪由 engine 驅動","Turbo：排氣驅動 turbine","Wastegate 控 boost","落 MAP 計睇"],["agk.critalt","agk.mapcsp"],S4],
-["agk.critalt","fi","Rated vs Critical Altitude","Turbo 擎維持 MAP 嘅最高高度。",["Rated power：最大連續 power","Rated altitude＝full throttle height","Critical alt：以上 MAP 維持唔到","空氣密度隨高度跌"],["agk.boost"],S4],
+["agk.critalt","fi","Rated vs Critical Altitude","Turbo 擎維持 MAP 嘅最高altitude。",["Rated power：最大連續 power","Rated altitude＝full throttle height","Critical alt：以上 MAP 維持唔到","空氣density隨altitude跌"],["agk.boost"],S4],
 
 ["agk.lube","oc","Lubrication System","減摩、冷卻、清潔、密封。",["Oil tank、pump、filter、cooler","Pressure relief valve","Cooler bypass","Scavenge pump（dry sump）"],["agk.oilind","agk.cooling"],S2+" / "+RB],
-["agk.oilind","oc","Oil Indications","睇 oil pressure、temp、quantity。",["高溫：油少／cooler 塞","低壓：pump 弱／漏油","又高溫又低壓：嚴重","C172SP 壓力 green 50–90 psi"],["agk.lube","agk.da40"],S2+" / "+C172],
-["agk.cooling","oc","Air Cooling","Ram air 經 baffle 流過缸頭。",["Cowling 入口＋baffles","C172SP 冇 cowl flap","爬升慢速 → CHT 易高","落降要避免過冷"],["agk.egtcht","agk.lube"],S2+" / "+C172],
+["agk.oilind","oc","Oil Indications","睇 oil pressure、temp、quantity。",["高溫：油少／cooler 塞","低壓：pump 弱／漏油","又高溫又低壓：嚴重","C172SP pressure green 50–90 psi"],["agk.lube","agk.da40"],S2+" / "+C172],
+["agk.cooling","oc","Air Cooling","Ram air 經 baffle 流過缸頭。",["Cowling 入口＋baffles","C172SP 冇 cowl flap","climb慢速 → CHT 易高","落降要避免過冷"],["agk.egtcht","agk.lube"],S2+" / "+C172],
 ["agk.exhaust","oc","Exhaust System","排氣經 riser 去 muffler；有 shroud 暖艙。",["EGT probe 喺 exhaust","暖艙 muff 漏 → CO","CO detector 變色"],["agk.egtcht","agk.comon"],S2+" / "+C172],
 ["agk.comon","oc","CO Risk (Cabin Heat)","暖氣 muff 裂 → 一氧化碳入艙。",["無色無味","Dark spot detector","懷疑：關暖氣、開風、著陸"],["agk.exhaust"],S7],
 
-["agk.proptwist","pr","Propeller Twist","葉由根到尖 blade angle 逐漸變細。",["尖速度快、根慢","令全葉 AoA 差唔多","唔 twist：根負 AoA、尖失速"],["agk.pitch","agk.propforces"],S4],
+["agk.proptwist","pr","Propeller Twist","葉由根到尖 blade angle 逐漸變細。",["尖speed快、根慢","令全葉 AoA 差唔多","唔 twist：根負 AoA、尖stall"],["agk.pitch","agk.propforces"],S4],
 ["agk.propforces","pr","Forces on Propeller","葉片受幾種力。",["Centrifugal force","Thrust bending","Torque bending","Aerodynamic／centrifugal twisting"],["agk.proptwist"],S4],
 ["agk.pitch","pr","Blade Angle vs Pitch","Pitch＝無 slip 時每轉前進距離。",["Geometric pitch：理論","Effective pitch：實際","差＝slip","Fine＝低角、高 RPM；Coarse＝高角、低 RPM"],["agk.fixedprop","agk.csu"],S4],
-["agk.fixedprop","pr","Fixed-Pitch Propeller","一個角度，只喺一個速度／RPM 最高效。",["C172SP：76 in，McCauley","Ground-adjustable 都算 fixed","RPM 係 power 指示"],["agk.pitch","agk.csu","agk.c172sp"],S4+" / "+C172],
+["agk.fixedprop","pr","Fixed-Pitch Propeller","一個角度，只喺一個speed／RPM 最高效。",["C172SP：76 in，McCauley","Ground-adjustable 都算 fixed","RPM 係 power 指示"],["agk.pitch","agk.csu","agk.c172sp"],S4+" / "+C172],
 ["agk.csu","pr","Constant Speed Unit (CSU)","Governor 調 oil 去 hub，保持設定 RPM。",["Pilot valve、speeder spring、flyweight","Governor oil pump","Prop lever 設 RPM","Throttle 設 MAP"],["agk.csu1","agk.csu2","agk.mapcsp"],S4+" / "+S5],
 ["agk.csu1","pr","CSP Force Pair 1 (Hub)","Hub 內：spring＋CTM vs oil pressure。",["Spring > oil → fine pitch","Spring < oil → coarse pitch","Fine：低 AoA、高 RPM","Coarse：高 AoA、低 RPM"],["agk.csu2","agk.proploss"],S5+" / "+HZ],
 ["agk.csu2","pr","CSP Force Pair 2 (Governor)","Governor：speeder spring vs flyweight。",["Lever 前 → spring 緊 → valve 落","Oil 洩走 → fine → RPM 升","Overspeed：flyweight 外飛 → oil 入","On-speed：valve 中立"],["agk.csu1","agk.csu"],S5],
-["agk.mapcsp","pr","MAP as Power Indicator","CSP 嘅 RPM 已固定，用 MAP 睇 power。",["MAP＝進氣歧管絕對壓力","單位 inHg","Throttle 改 MAP","停機時 MAP＝環境氣壓"],["agk.csu","agk.boost"],S4],
+["agk.mapcsp","pr","MAP as Power Indicator","CSP 嘅 RPM 已固定，用 MAP 睇 power。",["MAP＝進氣歧管絕對pressure","單位 inHg","Throttle 改 MAP","停機時 MAP＝環境pressure"],["agk.csu","agk.boost"],S4],
 ["agk.proploss","pr","Loss of Oil Pressure","按 prop 設計，葉會去 fine 或 feather。",["單發 CSP：→ fine（高 RPM）","Feathering twin：→ feather","用 throttle 控 RPM"],["agk.csu1","agk.feather","agk.da40"],DA+" / "+HZ],
 ["agk.feather","pr","Feather vs Windmilling","Feather：葉近 90°，drag 最細。",["Windmill：葉被風推轉 → 大 drag","Hartzell -2：oil 去 low pitch","失油 → counterweight/spring → feather","Latches 防停機時 feather（~800 RPM）"],["agk.proploss","agk.critical"],S5+" / "+HZ],
 
 ["agk.critical","me","Critical Engine","失效後對 control／performance 影響最大。",["Conventional twin：Left 係 critical","原因：P-factor、slipstream×2、torque","Counter-rotating → 冇 critical"],["agk.pfactor","agk.vmc"],S5],
-["agk.pfactor","me","P-factor & Slipstream Effects","高 AoA 時下行葉推力較大。",["Thrust centre 偏右","L 失效 → arm 較長 → yaw 大","Accelerated slipstream：roll","Spiral slipstream／torque 都向 L 引向"],["agk.critical","agk.vmc"],S5],
-["agk.vmc","me","Vmc","Critical 失效仍可保持控制嘅最低速。",["Calibrated airspeed","直線飛、bank ≤ 5°（lecture）","Rudder 隨速度失效","「Live leg, live engine」"],["agk.critical","agk.vmcg","agk.vmca"],S5],
-["agk.vmcg","me","Vmcg (Ground)","起飛滑行中 engine 失效，偏離 centreline 唔過 30 ft。",["只用 primary aerodynamic controls","取決於 thrust","V1 唔可低過 Vmcg"],["agk.vmc","agk.vmca"],S5],
-["agk.vmca","me","Vmca (Airborne)","同 Vmcg 類似，但可 5° bank 向 live 邊。",["「5° to the live」","VR 唔可低過 Vmca","不利：max thrust、aft CG、windmill","最不利重量需對照手冊"],["agk.vmc","agk.vmcg"],S5,true],
+["agk.pfactor","me","P-factor & Slipstream Effects","高 AoA 時下行葉thrust較大。",["Thrust centre 偏右","L 失效 → arm 較長 → yaw 大","Accelerated slipstream：roll","Spiral slipstream／torque 都向 L 引向"],["agk.critical","agk.vmc"],S5],
+["agk.vmc","me","Vmc","Critical 失效仍可保持控制嘅最低速。",["Calibrated airspeed","直線飛、bank ≤ 5°（lecture）","Rudder 隨speed失效","「Live leg, live engine」"],["agk.critical","agk.vmcg","agk.vmca"],S5],
+["agk.vmcg","me","Vmcg (Ground)","take-off滑行中 engine 失效，偏離 centreline 唔過 30 ft。",["只用 primary aerodynamic controls","取決於 thrust","V1 唔可低過 Vmcg"],["agk.vmc","agk.vmca"],S5],
+["agk.vmca","me","Vmca (Airborne)","同 Vmcg 類似，但可 5° bank 向 live 邊。",["「5° to the live」","VR 唔可低過 Vmca","不利：max thrust、aft CG、windmill","最不利weight需對照手冊"],["agk.vmc","agk.vmcg"],S5,true],
 ["agk.counterrot","me","Counter-rotating vs Contra-rotating","Counter：兩 engine 反向；Contra：同一 engine 兩 prop。",["Counter-rotating 平衡 torque","冇 critical engine","唔好混淆"],["agk.critical"],S5],
 
 ["agk.brayton","gt","Brayton Cycle","連續燃燒：Intake→Compress→Burn→Expand。",["比 Otto 連續 power","Power-to-weight 高","T = m(Vj − Vi)","Newton 2nd／3rd law"],["agk.turbtypes","agk.compressor","agk.turbine"],S6],
-["agk.turbtypes","gt","Turbine Engine Types","Turbojet／turbofan／turboprop／turboshaft。",["Fan 加推力（bypass）","Turboprop：推 prop","Turboshaft：驅動 rotor","Cold section／hot section"],["agk.brayton","agk.spools"],S6],
-["agk.intake","gt","Intake","Divergent duct：升靜壓、氣流平順亞音速。",["最少能量損失","Smooth、subsonic","GE90 static test 用特別 intake"],["agk.compressor"],S6],
+["agk.turbtypes","gt","Turbine Engine Types","Turbojet／turbofan／turboprop／turboshaft。",["Fan 加thrust（bypass）","Turboprop：推 prop","Turboshaft：驅動 rotor","Cold section／hot section"],["agk.brayton","agk.spools"],S6],
+["agk.intake","gt","Intake","Divergent duct：升static pressure、airflow平順亞speed of sound。",["最少能量損失","Smooth、subsonic","GE90 static test 用特別 intake"],["agk.compressor"],S6],
 ["agk.compressor","gt","Compressor","Centrifugal／Axial／Compound。",["Centrifugal：夠 robust、少 surge","Axial：高效、高 ratio、易 FOD","每 stage ratio ~1.1–1.2:1","Compound＝兩者結合"],["agk.intake","agk.combustor","agk.spools"],S6,true],
 ["agk.combustor","gt","Combustor","Can／annular；diffuser 降速增壓。",["Diffuser：全 engine 最高壓","Fuel nozzle：約 15:1 stoichiometric（lecture）","Igniter 只喺起動用","Primary／dilution／cooling air"],["agk.compressor","agk.turbine"],S6],
-["agk.turbine","gt","Turbine","抽取熱氣能量驅動 compressor。",["Impulse：像水車","Reaction：氣動升力","NGV 導向","同 compressor 同軸"],["agk.combustor","agk.turbcool","agk.brayton"],S6],
-["agk.turbcool","gt","Turbine Cooling","第一級溫度最高（約 1500°C，lecture）。",["Internal cooling","Film cooling","Thermal coating","高熔點材料"],["agk.turbine"],S6,true],
+["agk.turbine","gt","Turbine","抽取熱氣能量驅動 compressor。",["Impulse：像水車","Reaction：氣動lift","NGV 導向","同 compressor 同軸"],["agk.combustor","agk.turbcool","agk.brayton"],S6],
+["agk.turbcool","gt","Turbine Cooling","第一級temperature最高（約 1500°C，lecture）。",["Internal cooling","Film cooling","Thermal coating","高熔點材料"],["agk.turbine"],S6,true],
 ["agk.nozzle","gt","Exhaust & Nozzle","將氣體轉成 propulsive thrust。",["Convergent propelling nozzle","Suppressor nozzle 降噪","Exhaust cone、struts"],["agk.turbine","agk.brayton"],S6],
 ["agk.spools","gt","Multi-Spool","N1／N2（／N3）各自最佳 RPM。",["高壓段高 RPM 更高效","加速更快（每 spool 質量細）","Rolls-Royce triple spool"],["agk.turbtypes","agk.compressor"],S6],
 
@@ -84,22 +84,22 @@ const TP=[
 ["agk.cb","el","Circuit Breakers & Fuses","防過流；數字＝amp rating。",["Short circuit → 跳掣","Push／pull-off 類型","唔好反覆 reset"],["agk.bus","agk.elecfail"],S7],
 ["agk.elecfail","el","Electrical Failure","Alternator fail → 用 battery、卸載、落地。",["C172SP：ammeter、VOLTS annunciator","DA40：essential bus 約 30 分鐘","DA40 emergency switch","Overvoltage：關 ALT 保留 BAT"],["agk.battery","agk.ammeter","agk.da40"],C172+" / "+DA+" / "+S7],
 ["agk.acairliner","el","Airliner AC System","115 V、400 Hz、3-phase；TR 轉 28 V DC。",["IDG／CSD、APU gen","BTC bus tie 分擔","AC bus 供大 power 設備"],["agk.acdc","agk.elecback"],S7],
-["agk.elecback","el","Backup Power","Emer gen（hyd 驅動）／RAT／battery。",["Gen 全失 → emergency config","RAT 隨速度變","Battery 40 Ah only ESS bus","Static inverter DC → AC"],["agk.acairliner","agk.hydsource"],S7],
+["agk.elecback","el","Backup Power","Emer gen（hyd 驅動）／RAT／battery。",["Gen 全失 → emergency config","RAT 隨speed變","Battery 40 Ah only ESS bus","Static inverter DC → AC"],["agk.acairliner","agk.hydsource"],S7],
 
-["agk.hydprin","hy","Hydraulic Principles","液體不可壓縮；Pascal：壓力平均傳遞。",["P = F / A","F = P × A","Force × distance 守恆","細 area 行得遠"],["agk.hydparts","agk.brakes"],S7+" / "+S8],
+["agk.hydprin","hy","Hydraulic Principles","液體不可壓縮；Pascal：pressure平均傳遞。",["P = F / A","F = P × A","Force × distance 守恆","細 area 行得遠"],["agk.hydparts","agk.brakes"],S7+" / "+S8],
 ["agk.hydfluid","hy","Hydraulic Fluid","Mineral（MIL-5606）／Skydrol。",["低黏度、不燃、低凝點","唔可以混用","Skydrol：phosphate-ester、防火","配 butyl 類 seal"],["agk.hydparts"],S8],
 ["agk.hydparts","hy","Hydraulic Components","Reservoir、pump、filter、accumulator。",["Filter bypass pop-up indicator","Pump 後有 pressure sensor","Actuator：single／double acting","Hydraulic motor"],["agk.hydprin","agk.accum","agk.hydvalves"],S7+" / "+S8],
 ["agk.hydvalves","hy","Hydraulic Valves","Check、relief、selector valve。",["Check：單向","Relief：限壓回 reservoir","Selector：揀流向"],["agk.hydparts"],S8],
-["agk.accum","hy","Accumulator","氮氣＋油；穩壓、緊急壓力、停車 brake。",["Floating piston","減輕壓力波動","Pump fail → 儲備","檢查 charge 要先洩壓"],["agk.hydparts","agk.hydsource"],S8],
+["agk.accum","hy","Accumulator","氮氣＋油；穩壓、緊急pressure、停車 brake。",["Floating piston","減輕pressure波動","Pump fail → 儲備","檢查 charge 要先洩壓"],["agk.hydparts","agk.hydsource"],S8],
 ["agk.hydsource","hy","Pressure Sources","EDP、electric pump、PTU、hand pump、RAT。",["Airliner 約 3000 psi","A350 可高至 5000 psi","A330：Green／Yellow／Blue","PTU 令一系統借另一系統動力"],["agk.accum","agk.elecback"],S8],
-["agk.brakes","lg","Brakes","小機 single disc；大機 multi-disc powered。",["Unpowered：pilot 踩 pedal 增壓","Powered：用 system 壓力（~3000 psi 要減壓）","Fusible plug 防 tyre burst"],["agk.hydprin","agk.fusible","agk.hydroplane"],S7+" / "+S8+" / "+C172],
+["agk.brakes","lg","Brakes","小機 single disc；大機 multi-disc powered。",["Unpowered：pilot 踩 pedal 增壓","Powered：用 system pressure（~3000 psi 要減壓）","Fusible plug 防 tyre burst"],["agk.hydprin","agk.fusible","agk.hydroplane"],S7+" / "+S8+" / "+C172],
 
-["agk.geargroup","lg","Gear Structure","Strut、trunnion、drag／side／jury strut。",["Trunnion beam：連機翼 spar、容許 retract","Drag strut：前後力","Side strut：側向力","Jury strut：鎖 down-lock"],["agk.gearsafe","agk.gearcfg"],S8],
+["agk.geargroup","lg","Gear Structure","Strut、trunnion、drag／side／jury strut。",["Trunnion beam：連wing spar、容許 retract","Drag strut：前後力","Side strut：側向力","Jury strut：鎖 down-lock"],["agk.gearsafe","agk.gearcfg"],S8],
 ["agk.gearsafe","lg","Gear Safety Features","Over-centre、ground pin、bungee spring。",["Over-centre 越重越鎖","Ground safety pin","Bungee：無 hydraulic 都拉鎖","Nose gear 後軸線設計"],["agk.geargroup"],S8],
 ["agk.gearcfg","lg","Tricycle vs Taildragger","兩種配置各有取捨。",["Tail gear：刹車易翻頭、視野差","Tricycle：刹車安全","Nose gear 吸收刹車動力負荷"],["agk.geargroup"],S8],
 ["agk.nosegear","lg","Nose Gear Parts","Torque link、steering、shimmy damper。",["Torque link 防內缸轉","Steering actuator","Shimmy damper 防擺動"],["agk.geargroup"],S8],
 ["agk.hydroplane","lg","Hydroplaning","三種：dynamic、reverted rubber、viscous。",["Dynamic：水楔","Reverted rubber：鎖死生蒸氣","Viscous：薄水層","Speed ≈ 9 × √tyre psi（kt）"],["agk.brakes"],S7,true],
-["agk.fusible","lg","Fusible Plug","熱融合金釋放 tyre 氣防爆。",["超溫先融","重量 abort 後 tyre 可能慢慢放氣"],["agk.brakes"],S8],
+["agk.fusible","lg","Fusible Plug","熱融合金釋放 tyre 氣防爆。",["超溫先融","weight abort 後 tyre 可能慢慢放氣"],["agk.brakes"],S8],
 
 ["agk.pneu","pn","Pneumatic / Bleed Air","用壓縮空氣傳力；airliner 用 bleed air。",["Engine compressor／APU／ground","Bleed valve、check valve、X-bleed","Over-pressure valve"],["agk.aircon","agk.compressor"],S7],
 ["agk.pneuuse","pn","Uses of Bleed Air","起動、空調、anti-ice、reservoir 增壓。",["Engine start","Air-con & pressurisation","Wing anti-ice","Cargo heating"],["agk.pneu"],S7],
@@ -108,12 +108,12 @@ const TP=[
 
 ["agk.pitotstatic","in","Pitot-Static System","Pitot＝total pressure；Static＝環境壓。",["ASI：pitot＋static","ALT、VSI：static","Pitot heat 防冰（C172SP 5 A）","Alternate static：艙內氣"],["agk.asi","agk.blockage"],C172+" / "+RB],
 ["agk.asi","in","Airspeed Indicator","差壓＝dynamic pressure → IAS。",["C172SP green 48–129 kt、red 163","可讀 TAS window","Instrument／position error"],["agk.pitotstatic","agk.blockage"],C172],
-["agk.altvsi","in","Altimeter & VSI","靜壓隨高度降。",["ALT：aneroid、QNH 調整","VSI：壓力變化率（有 lag）","Static blocked → ALT 凍結、VSI 0"],["agk.pitotstatic","agk.blockage"],C172+" / "+RB],
-["agk.blockage","in","Pitot/Static Blockage","幾種堵塞對 ASI／ALT／VSI 影響唔同。",["Pitot ram＋drain 塞：爬升 ASI over-read","Pitot 全塞（drain 通）：ASI 歸零","Static 塞：爬升 ASI under-read","Static 塞：ALT 凍、VSI 0"],["agk.pitotstatic","agk.altvsi"],RB+" / "+C172],
+["agk.altvsi","in","Altimeter & VSI","static pressure隨altitude降。",["ALT：aneroid、QNH 調整","VSI：pressure變化率（有 lag）","Static blocked → ALT 凍結、VSI 0"],["agk.pitotstatic","agk.blockage"],C172+" / "+RB],
+["agk.blockage","in","Pitot/Static Blockage","幾種堵塞對 ASI／ALT／VSI 影響唔同。",["Pitot ram＋drain 塞：climb ASI over-read","Pitot 全塞（drain 通）：ASI 歸零","Static 塞：climb ASI under-read","Static 塞：ALT 凍、VSI 0"],["agk.pitotstatic","agk.altvsi"],RB+" / "+C172],
 ["agk.gyro","in","Gyroscopic Properties","Rigidity 同 Precession。",["Rigidity：質量大＋快轉＝穩","Precession：力作用後 90° 發生","HI 會漂移要對返 compass","Artificial horizon 用 rigidity"],["agk.vacuum","agk.attind"],RB],
 ["agk.attind","in","Attitude & Heading Instruments","AI、HI（真空）；turn coordinator（電）。",["C172SP：vacuum AI＋DI","Turn coordinator：electric","Vacuum fail → partial panel"],["agk.gyro","agk.vacuum"],C172+" / "+RB],
 ["agk.vacuum","in","Vacuum System","兩個 engine-driven pump；吸氣驅動 gyro。",["正常 4.5–5.5 inHg","< 3.0 inHg → L VAC／VAC R","Check valve 防倒流","Relief valve 防過高"],["agk.gyro","agk.attind"],C172+" / "+RB],
-["agk.compass","in","Magnetic Compass","Dip 令轉彎同加速出錯。",["Turning error：UNOS","Accel error：ANDS","要水平直線飛先準","Alternator off 時 deviation 可達 25°（C172SP）"],["agk.gyro"],RB+" / "+C172,true],
+["agk.compass","in","Magnetic Compass","Dip 令turn同加速出錯。",["Turning error：UNOS","Accel error：ANDS","要水平直線飛先準","Alternator off 時 deviation 可達 25°（C172SP）"],["agk.gyro"],RB+" / "+C172,true],
 
 ["agk.afcs","ap","AFCS Philosophy","減疲勞、提升穩定、增加決策容量。",["Sensors → Computers → Output","Feedback loop","FD、AP、A/THR、envelope protection"],["agk.fd","agk.ap"],S10],
 ["agk.fd","ap","Flight Director","Command bar 顯示要做嘅動作，唔直接控制 aircraft。",["FCU 揀 mode","FDC 計 path","Pilot 決定跟唔跟"],["agk.afcs","agk.fma","agk.ap"],S10],
@@ -121,13 +121,13 @@ const TP=[
 ["agk.athr","ap","Auto-thrust vs Auto-throttle","Airbus：lever 唔郁；Boeing：lever 會動。",["Speed／Mach mode","Thrust mode：CLB、IDLE","FADEC 計 thrust"],["agk.ap","agk.fma"],S10],
 ["agk.fma","ap","FMA","Flight Mode Annunciator：一定要核對。",["綠＝active，藍＝armed","改 mode 必睇 FMA","顯示 lateral／vertical／A/THR"],["agk.fd","agk.athr"],S10],
 ["agk.failpass","ap","Fail-Passive vs Fail-Operational","Autoland 冗餘概念。",["Fail-passive：2 AP，失效無 autoland","Fail-operational：3 AP","Airbus：CAT 3 SINGLE vs DUAL"],["agk.ap"],S10],
-["agk.envprot","ap","Flight Envelope Protection","喺安全邊界內保護，唔等於不會失速。",["Bank、pitch、load factor、AoA 限制","AP 用到 limit","嚴重 upset 保護可能失效"],["agk.afcs"],S10,true],
+["agk.envprot","ap","Flight Envelope Protection","喺安全邊界內保護，唔等於不會stall。",["Bank、pitch、load factor、AoA 限制","AP 用到 limit","嚴重 upset 保護可能失效"],["agk.afcs"],S10,true],
 
 ["agk.warnclass","wn","Warning Classes","Warning／Caution／Advisory。",["Warning：red、即時行動","Caution：amber","EASA CS 25.1322 顏色","Aural＋visual"],["agk.configwarn","agk.fire"],S11],
-["agk.configwarn","wn","Configuration & Gear Warnings","起飛 config 同 gear 位置警告。",["起飛 horn：trim／brake／flap／slat","Gear warning：未鎖下","Gear position vs lever 不符"],["agk.warnclass"],S11],
-["agk.fire","wn","Fire & Yaw Damper Warnings","Engine fire：紅燈＋bell。",["Fire bell inhibit：起飛至 400 ft AGL","Yaw damper inop：amber","Evacuation signal"],["agk.warnclass"],S11],
+["agk.configwarn","wn","Configuration & Gear Warnings","take-off config 同 gear 位置警告。",["take-off horn：trim／brake／flap／slat","Gear warning：未鎖下","Gear position vs lever 不符"],["agk.warnclass"],S11],
+["agk.fire","wn","Fire & Yaw Damper Warnings","Engine fire：紅燈＋bell。",["Fire bell inhibit：take-off至 400 ft AGL","Yaw damper inop：amber","Evacuation signal"],["agk.warnclass"],S11],
 ["agk.gpws","wn","GPWS","地形接近警告，用 radio altimeter 等輸入。",["Inputs：airspeed、baro、radio alt、G/S、flap","Visual＋aural","EGPWS 加 look-ahead terrain"],["agk.gpwsmodes","agk.gpwsrec"],S11],
-["agk.gpwsmodes","wn","GPWS Modes 1–7","七個 mode 覆蓋唔同情況。",["1：sink rate；2：terrain closure","3：起飛後掉高度","4：gear/flap 不足","5：G/S 下偏；6：bank；7：windshear"],["agk.gpws"],S11],
+["agk.gpwsmodes","wn","GPWS Modes 1–7","七個 mode 覆蓋唔同情況。",["1：sink rate；2：terrain closure","3：take-off後掉altitude","4：gear/flap 不足","5：G/S 下偏；6：bank；7：windshear"],["agk.gpws"],S11],
 ["agk.gpwsrec","wn","GPWS Recovery","Pull-up 動作。",["AP、A/THR off","Max thrust","Wings level，pitch 約 20°","收 speedbrake，gear／flap 不改"],["agk.gpws","agk.windshear"],S11],
 ["agk.tcas","wn","TCAS","TA（遠）→ RA（近）。",["TA：「Traffic」；約 40 s","RA：「Climb／Descend」；約 25 s","Symbols：白、藍、琥珀、紅","Clear of Conflict"],["agk.gpws"],S11],
 ["agk.windshear","wn","Windshear Warning","Mode 7；escape maneuver。",["Predictive／reactive","AP off、TO/GA、max thrust","Pitch 約 15°","唔好改 flap／gear"],["agk.gpwsrec","agk.gpwsmodes"],S11],
@@ -139,17 +139,17 @@ const topics=TP.map(r=>({id:r[0],g:G[r[1]],t:r[2],d:r[3],pts:r[4],rel:r[5],src:r
 
 const links=[
 ["agk.fourstroke","agk.valves","Valve overlap 令排氣帶走新混合氣"],
-["agk.compratio","agk.detonation","CR 高 → 壓力溫度高 → 易爆燃"],
+["agk.compratio","agk.detonation","CR 高 → pressuretemperature高 → 易爆燃"],
 ["agk.detonation","agk.preign","兩種異常燃燒，一個係太早點燃"],
 ["agk.magneto","agk.dualign","兩個 mag 令燃燒更完全＋有 redundancy"],
 ["agk.ignswitch","agk.magneto","Switch 接地 primary circuit"],
-["agk.carb","agk.carbice","Venturi 降溫 → 結冰"],
+["agk.carb","agk.carbice","Venturi 降溫 → icing"],
 ["agk.carbice","agk.carbheat","Heat 融冰但會失 power"],
 ["agk.carbheat","agk.fuelinj","Fuel injection 無 carb icing，所以冇 carb heat"],
 ["agk.mixture","agk.egtcht","Mixture 改變 EGT；EGT 反映混合比"],
 ["agk.altair","agk.fuelinj","Filter 塞 → 開 alternate air"],
 ["agk.boost","agk.critalt","加壓只可維持到 critical altitude"],
-["agk.lube","agk.oilind","Oil 狀態反映喺壓力／溫度"],
+["agk.lube","agk.oilind","Oil 狀態反映喺pressure／temperature"],
 ["agk.cooling","agk.egtcht","缸頭過熱同 CHT 相關"],
 ["agk.exhaust","agk.comon","Exhaust muff 裂 → CO"],
 ["agk.proptwist","agk.pitch","Twist 令 blade angle 由根到尖不同"],
@@ -209,7 +209,7 @@ K("agk.structcat","What is the difference between primary and secondary structur
 K("agk.fuselage","What is a semi-monocoque fuselage?","Skin plus internal supports like stringers and bulkheads share the load, giving high strength-to-weight and damage tolerance.","蒙皮加內部支架共同受力。");
 K("agk.fuselage","Compare truss and monocoque fuselage.","Truss is strong and easy to repair but heavy with more drag; monocoque skin carries all loads, light but deforms between formers.","Truss 重易修；mono 輕。");
 K("agk.wings","Why does a high-wing aircraft feel more stable?","The pendulum effect keeps the weight below the wing, giving lateral stability.","Pendulum effect。");
-K("agk.wings","What does dihedral do?","Wing tips higher than the root increase lateral (roll) stability.","上反角增橫向穩定。");
+K("agk.wings","What does dihedral do?","Wing tips higher than the root increase lateral (roll) stability.","上反角增lateral stability。");
 K("agk.wings","What is a risk of a T-tail?","Deep stall, because the tailplane sits in the wake of a stalled wing.","T-tail 有 deep stall 風險。");
 K("agk.fatigue","What is metal fatigue?","Failure under repeated load cycles at a stress lower than a single static load would cause.","反覆載荷令金屬裂。");
 K("agk.fatigue","Why must airframes be inspected for fatigue?","Even low loads can start cracks over time, so cyclic parts like the pressurised fuselage are monitored.","低載荷都會累積裂紋。");
@@ -246,11 +246,11 @@ K("agk.fuelsys","Trace fuel from tank to engine in a light aircraft.","Tank, sel
 K("agk.fuelsys","What is the purpose of the auxiliary fuel pump?","To prime the engine, provide pressure if the engine pump fails and help with vapour.","起動／備用。");
 K("agk.carb","What does a venturi do in a carburettor?","It accelerates the air, creating low pressure that draws fuel from the discharge nozzle.","Venturi 低壓抽油。");
 K("agk.carb","What do throttle and mixture each control in a carburettor?","Throttle controls the quantity of mixture via the butterfly valve; mixture controls the fuel-to-air ratio via the needle.","量同比例。");
-K("agk.carbice","What are the three types of carburettor icing?","Induction (impact) icing, fuel evaporation icing and throttle icing.","三種結冰。");
+K("agk.carbice","What are the three types of carburettor icing?","Induction (impact) icing, fuel evaporation icing and throttle icing.","三種icing。");
 K("agk.carbice","Why can carburettor ice form on a warm day?","Fuel vaporisation and venturi pressure drop cool the air; moist air then freezes even at several degrees above zero.","汽化降溫。");
 K("agk.carbheat","How do you recognise and clear carburettor ice?","RPM drops and runs rough; apply carb heat, RPM falls then recovers as the ice melts.","用 carb heat。");
-K("agk.carbheat","Why does carb heat reduce power?","Hot air is less dense and bypasses the filter, so mixture richens and power falls.","熱空氣密度低。");
-K("agk.fuelinj","List advantages of fuel injection.","Less icing, better fuel distribution, faster throttle response, precise mixture and easier cold starts.","少結冰、分配好。");
+K("agk.carbheat","Why does carb heat reduce power?","Hot air is less dense and bypasses the filter, so mixture richens and power falls.","熱空氣density低。");
+K("agk.fuelinj","List advantages of fuel injection.","Less icing, better fuel distribution, faster throttle response, precise mixture and easier cold starts.","少icing、分配好。");
 K("agk.fuelinj","What are disadvantages of fuel injection?","Hot start difficulty, vapour lock on hot days and restart problems after fuel starvation.","熱機難起動。");
 K("agk.mixture","When must the mixture be full rich?","Before descent, landing, go-around and high power settings, as extra fuel cools the engine.","落降前 rich。");
 K("agk.mixture","Describe Enzo's DA40 lean-assist procedure.","Lean slowly until peak temperature difference is zero, then enrich until it shows about minus 100.","到 peak 再 enrich。");
@@ -274,11 +274,11 @@ K("agk.comon","What is the risk with exhaust-muff cabin heat?","A cracked muff c
 
 // ---- Propeller
 K("agk.proptwist","Why is a propeller blade twisted?","The tip moves faster than the root, so blade angle decreases outward to keep a similar AoA and uniform lift.","尖速快，角細。");
-K("agk.proptwist","What if a propeller had no twist?","The root would have negative AoA while the tip would stall, so it would be inefficient.","根負 AoA、尖失速。");
+K("agk.proptwist","What if a propeller had no twist?","The root would have negative AoA while the tip would stall, so it would be inefficient.","根負 AoA、尖stall。");
 K("agk.propforces","Name forces acting on a propeller.","Centrifugal force, thrust bending, torque bending, plus twisting forces and vibration.","受力。");
 K("agk.pitch","What is propeller pitch?","The distance the propeller would advance in one revolution with no slip.","每轉前進距離。");
 K("agk.pitch","Geometric versus effective pitch?","Geometric is theoretical advance without slip; effective is the actual advance including slip.","理論 vs 實際。");
-K("agk.pitch","What are fine and coarse pitch used for?","Fine pitch gives low AoA and high RPM for take-off and climb; coarse gives high AoA and low RPM for cruise.","Fine 爬升；Coarse 巡航。");
+K("agk.pitch","What are fine and coarse pitch used for?","Fine pitch gives low AoA and high RPM for take-off and climb; coarse gives high AoA and low RPM for cruise.","Fine climb；Coarse 巡航。");
 K("agk.fixedprop","Why is a fixed-pitch propeller inefficient?","Its blade angle is optimum only at one speed and RPM, so it is a compromise for the rest of flight.","只一點最高效。");
 K("agk.fixedprop","What is the C172SP propeller?","A two-bladed, fixed-pitch, 76-inch McCauley propeller.","C172SP prop。");
 K("agk.csu","What does a constant speed unit do?","The governor modulates oil pressure to the hub to change pitch and hold selected RPM.","調油控 pitch。");
@@ -289,7 +289,7 @@ K("agk.csu2","Describe the second force pair in a governor.","Speeder spring pus
 K("agk.csu2","What happens in an overspeed condition?","Flyweights fly outward, lift the pilot valve, oil flows to the hub, pitch coarsens, RPM falls.","過速 → coarse。");
 K("agk.csu2","What happens if the prop lever is moved forward?","Speeder spring tension increases, valve moves down, oil drains from the hub, pitch fines and RPM rises.","Lever 前 → RPM 升。");
 K("agk.mapcsp","Why use MAP with a constant speed prop?","RPM is held by the governor so cannot show power; manifold pressure shows engine power.","RPM 固定。");
-K("agk.mapcsp","What does MAP measure?","Absolute pressure in the induction manifold just before the inlet valves, in inches of mercury.","進氣壓。");
+K("agk.mapcsp","What does MAP measure?","Absolute pressure in the induction manifold just before the inlet valves, in inches of mercury.","進pressure。");
 K("agk.proploss","Where do blades go with oil loss on a single-engine CSP?","To fine pitch (high RPM) as spring and twisting moment are no longer opposed; control RPM with throttle.","失油 → fine。");
 K("agk.proploss","What happens on loss of oil in a DA40?","The governor sets the finest pitch, giving high RPM; regulate RPM with throttle and avoid exceeding 2700 RPM.","DA40 失油。");
 K("agk.feather","What is feathering?","Blades rotate to almost 90 degrees so the leading edge faces the airflow, giving minimum drag.","葉近 90°。");
@@ -300,11 +300,11 @@ K("agk.feather","Why do Hartzell feathering props have latches?","Springs engage
 K("agk.critical","What is the critical engine?","The engine whose failure has the most adverse effect on control and performance.","最不利嘅 engine。");
 K("agk.critical","Which engine is critical on a conventional twin and why?","The left engine, because of P-factor, accelerated slipstream, spiral slipstream and torque.","Left 係 critical。");
 K("agk.critical","Which designs have no critical engine?","Counter-rotating propellers balance torque and P-factor.","Counter-rotating。");
-K("agk.pfactor","What is P-factor?","At high AoA the descending blade produces more thrust, moving the thrust centre toward the descending side.","下行葉推力大。");
+K("agk.pfactor","What is P-factor?","At high AoA the descending blade produces more thrust, moving the thrust centre toward the descending side.","下行葉thrust大。");
 K("agk.pfactor","Why does P-factor make the left engine critical?","Thrust acts further from the centreline on the right engine, so failure of the left has a greater yawing arm.","Arm 較長。");
 K("agk.vmc","Define Vmc.","The calibrated airspeed at which, with the critical engine suddenly inoperative, control can be kept in straight flight with up to 5 degrees bank.","Vmc 定義。");
 K("agk.vmc","How is yaw countered on engine failure?","Primary control is rudder: live leg, live engine; dead leg, dead engine.","Rudder 主控。");
-K("agk.vmc","Why does rudder fail at low speed?","Aerodynamic force depends on airspeed, so below a certain speed there is not enough force.","力隨速度。");
+K("agk.vmc","Why does rudder fail at low speed?","Aerodynamic force depends on airspeed, so below a certain speed there is not enough force.","力隨speed。");
 K("agk.vmcg","What is Vmcg?","Minimum speed on the ground at which directional control can be kept within 30 ft laterally using primary aerodynamic controls.","Vmcg。");
 K("agk.vmcg","How does thrust affect Vmcg?","More thrust gives more yawing moment on failure, needing more aerodynamic force and therefore higher speed.","Thrust ↑ Vmcg ↑。");
 K("agk.vmca","What is Vmca?","Minimum control speed airborne, like Vmcg but with a small bank (5 degrees) toward the live engine allowed.","5° to the live。");
@@ -324,7 +324,7 @@ K("agk.combustor","When is the igniter used?","Only for start; combustion is con
 K("agk.turbine","What does the turbine do?","Extracts energy from hot gas to turn the compressor and accessories.","驅動 compressor。");
 K("agk.turbine","Impulse vs reaction turbine?","Impulse turns by gas impact like a water wheel; reaction turns from aerodynamic lift of the blades.","衝動式 vs 反作用式。");
 K("agk.turbcool","How are turbine blades cooled?","Internal cooling air, film cooling over the surface, thermal barrier coatings and high-melting-point alloys.","內部／薄膜冷卻。");
-K("agk.nozzle","What is the exhaust section's function?","To convert turbine exit gas into propulsive thrust through a convergent nozzle.","轉成推力。");
+K("agk.nozzle","What is the exhaust section's function?","To convert turbine exit gas into propulsive thrust through a convergent nozzle.","轉成thrust。");
 K("agk.spools","Why use multi-spool engines?","Each spool runs at its own optimum RPM for efficiency and stable airflow, and accelerates faster.","各 spool 最佳 RPM。");
 K("agk.spools","What are N1 and N2?","N1 is the low-pressure spool and N2 the high-pressure spool.","N1 低壓、N2 高壓。");
 
@@ -371,7 +371,7 @@ K("agk.brakes","Symptoms of impending brake failure on the C172SP?","Gradual los
 K("agk.fusible","What is a fusible plug?","A heat-sensitive plug in the wheel that melts to deflate the tyre and prevent burst.","防 tyre 爆。");
 K("agk.geargroup","What does the jury strut do?","It locks the retractable gear in the down position and is the last to move when locking, first when retracting.","Jury strut 鎖定。");
 K("agk.geargroup","Drag versus side strut?","Drag strut takes fore-aft loads; side strut takes lateral loads.","前後 vs 側向。");
-K("agk.geargroup","What is the trunnion beam?","The structure joining shock strut to the airframe, allowing the gear to rotate for retraction.","連接機翼。");
+K("agk.geargroup","What is the trunnion beam?","The structure joining shock strut to the airframe, allowing the gear to rotate for retraction.","連接wing。");
 K("agk.gearsafe","Name gear safety features.","Over-centre locking, ground safety pins, bungee springs and rearward wheel axis.","安全設計。");
 K("agk.gearsafe","What does the bungee spring do?","It pulls the jury strut into lock during alternate extension with no hydraulics and keeps it locked.","無液壓都鎖。");
 K("agk.gearcfg","Advantages of tricycle over tail gear?","Heavy braking cannot nose over, better forward visibility, no tail-down incidence.","Tricycle 刹車安全。");
@@ -390,12 +390,12 @@ K("agk.pressurisation","What are the relief valves?","Positive safety relief and
 
 // ---- Instruments
 K("agk.pitotstatic","Which instruments use pitot and static?","ASI uses both; altimeter and VSI use static only.","ASI 用 pitot＋static。");
-K("agk.pitotstatic","What is the C172SP alternate static source?","A cabin-pressure source for static instruments when the external port is blocked.","艙內靜壓。");
+K("agk.pitotstatic","What is the C172SP alternate static source?","A cabin-pressure source for static instruments when the external port is blocked.","艙內static pressure。");
 K("agk.pitotstatic","Maximum C172SP alternate static error?","About 4 knots airspeed and 30 feet altitude variation with windows closed.","4 kt／30 ft。");
-K("agk.asi","How does an ASI work?","It measures the difference between pitot (total) and static pressure, which is dynamic pressure.","動壓。");
+K("agk.asi","How does an ASI work?","It measures the difference between pitot (total) and static pressure, which is dynamic pressure.","dynamic pressure。");
 K("agk.altvsi","Why does the altimeter read less when static ports block in climb?","It keeps the trapped static pressure from where the blockage occurred, so it freezes.","凍結。");
-K("agk.blockage","Pitot ram and drain blocked: effect in climb?","Pitot pressure stays constant while static falls, so the ASI over-reads in a climb and under-reads in a descent.","爬升 over-read。");
-K("agk.blockage","Static blocked: effect on ASI in climb?","Trapped static is higher than actual, so differential is smaller and ASI under-reads; in descent it over-reads.","爬升 under-read。");
+K("agk.blockage","Pitot ram and drain blocked: effect in climb?","Pitot pressure stays constant while static falls, so the ASI over-reads in a climb and under-reads in a descent.","climb over-read。");
+K("agk.blockage","Static blocked: effect on ASI in climb?","Trapped static is higher than actual, so differential is smaller and ASI under-reads; in descent it over-reads.","climb under-read。");
 K("agk.blockage","Pitot fully blocked at take-off roll?","The ASI reads zero as only trapped static pressure reaches it.","歸零。");
 K("agk.gyro","What are the two gyroscopic properties?","Rigidity in space and precession.","Rigidity、precession。");
 K("agk.gyro","Define precession.","A force applied to a spinning gyro acts as if applied 90 degrees later in the direction of rotation.","90° 後發生。");
@@ -419,8 +419,8 @@ K("agk.envprot","What does flight envelope protection do?","Keeps the aircraft w
 // ---- Warnings
 K("agk.warnclass","What are the three alert levels?","Warnings (immediate action), cautions (action soon) and advisories (when convenient).","三級。");
 K("agk.warnclass","Colours under CS 25.1322?","Red for warning, amber for caution, green for safe operation.","紅、琥珀、綠。");
-K("agk.warnclass","What are inhibits?","Alerts suppressed in critical phases, for example fire bell from nose wheel off to 400 ft AGL.","起飛抑制。");
-K("agk.configwarn","What triggers a take-off configuration warning?","Thrust advanced with stabiliser trim, park brake, flaps, slats or speed brake out of take-off setting.","起飛 config。");
+K("agk.warnclass","What are inhibits?","Alerts suppressed in critical phases, for example fire bell from nose wheel off to 400 ft AGL.","take-off抑制。");
+K("agk.configwarn","What triggers a take-off configuration warning?","Thrust advanced with stabiliser trim, park brake, flaps, slats or speed brake out of take-off setting.","take-off config。");
 K("agk.configwarn","What gear warning is required?","Aural warning if landing attempted gear not locked down, or position inconsistent with lever.","Gear 警告。");
 K("agk.fire","How does the engine fire warning appear?","Steady red warning light for the affected engine plus an alarm bell.","紅燈＋bell。");
 K("agk.fire","What does a yaw damper inoperative light mean?","Rudder yaw damping (dutch roll control) has malfunctioned; amber light.","Yaw damper 故障。");
@@ -441,7 +441,7 @@ K("agk.windshear","Indications of windshear?","Windshear warning siren and call,
 K("agk.c172sp","What engine does the C172SP have?","Lycoming IO-360-L2A, 180 BHP at 2700 RPM, fuel-injected, horizontally opposed four-cylinder.","IO-360-L2A。");
 K("agk.c172sp","C172SP fuel capacity?","56 US gallons total, 53 usable, 3 unusable; tanks 28 gal each.","56／53 gal。");
 K("agk.c172sp","C172SP oil capacity and fuel grade?","Sump 8 US quarts; 100LL (blue).","8 qt、100LL。");
-K("agk.da40","What engine and prop does the DA40 XLT have?","Lycoming IO-360-M1A, 180 HP at 2700 RPM, with an mt-Propeller 3-blade constant speed prop.","DA40 引擎。");
+K("agk.da40","What engine and prop does the DA40 XLT have?","Lycoming IO-360-M1A, 180 HP at 2700 RPM, with an mt-Propeller 3-blade constant speed prop.","DA40 engine。");
 K("agk.da40","DA40 oil, fuel pressure and CHT limits?","Oil pressure green 55–95 psi, fuel pressure 14–35 psi, CHT max 500°F, oil temp max 245°F.","DA40 限制。");
 K("agk.da40","DA40 static RPM and FCU relief?","Static RPM 2680±20 per Enzo FCOM; after shutdown advance mixture slightly to relieve fuel control unit pressure.","DA40 FCOM。");
 K("agk.da40","Static RPM comparison?","C172SP fixed pitch about 2300–2400 RPM static; DA40 CSP about 2680±20.","對比。");
@@ -471,7 +471,7 @@ const A=[
  const mk=H.el("path",{d:"M0,0L-6,-12L6,-12Z",fill:"#fbbf24"},svg);
  X(H,svg,380,175,"TDC","#cbd5e1",10);X(H,svg,640,175,"720°","#cbd5e1",10);
  X(H,svg,500,200,"例子 timing：intake 開 15° BTDC，閂 50° ABDC","#94a3b8",11);
- X(H,svg,500,218,"點火喺 TDC 前（約 20°），最大壓力約 30° ATDC","#94a3b8",11);
+ X(H,svg,500,218,"點火喺 TDC 前（約 20°），最大pressure約 30° ATDC","#94a3b8",11);
  const info=["Piston 落 → 吸入 air-fuel","Piston 上 → 壓縮，兩 valve 閂","火花 → 爆 → 推 piston 落（做功）","Piston 上 → 排廢氣"];
  let th=0, playing=true, sl;
  function draw(){
@@ -500,7 +500,7 @@ const A=[
 }},
 
 // 2. Carb icing
-{title:"Carburettor Icing（結冰風險）",hint:"改溫度、濕度、冷卻幅度；試開 carb heat",build(box,H){
+{title:"Carburettor Icing（icing風險）",hint:"改temperature、humidity、冷卻幅度；試開 carb heat",build(box,H){
  const svg=H.svg(box,700,260), say=H.note(box);
  H.el("path",{d:"M60,70 L260,70 L300,110 L340,70 L560,70 L560,190 L340,190 L300,150 L260,190 L60,190Z",fill:"#1e293b",stroke:"#64748b","stroke-width":2},svg);
  X(H,svg,150,60,"Air in","#38bdf8",12);X(H,svg,300,205,"Venturi","#e2e8f0",12);X(H,svg,470,60,"Throttle (butterfly)","#e2e8f0",11);
@@ -511,7 +511,7 @@ const A=[
  const t2=X(H,svg,620,125,"","#e2e8f0",12,"end"),t3=X(H,svg,620,150,"","#fde047",13,"end");
  let oat=15,rh=70,drop=25,heat=false,risk=0,ph=0;
  const sOat=H.slider(box,"OAT °C",-10,35,15,v=>{oat=v;calc()});
- const sRh=H.slider(box,"相對濕度 %",20,100,70,v=>{rh=v;calc()});
+ const sRh=H.slider(box,"相對humidity %",20,100,70,v=>{rh=v;calc()});
  const sDr=H.slider(box,"Venturi＋汽化降溫 °C（概念值）",10,35,25,v=>{drop=v;calc()});
  const bt=H.button(box,"Carb heat：OFF",()=>{heat=!heat;bt.textContent="Carb heat："+(heat?"ON":"OFF");calc()});
  function calc(){
@@ -519,17 +519,17 @@ const A=[
   const moist=ct<=dew+0.5;
   risk=(!heat||ct<0)&&ct<=0.5&&moist?Math.min(1,(1-ct/20)*(rh/100)+0.2):0;
   if(ct>0.5||!moist)risk=0;
-  txt.textContent=`入口溫度 ${inT.toFixed(0)}°C → carb 內 ${ct.toFixed(0)}°C`;
+  txt.textContent=`入口temperature ${inT.toFixed(0)}°C → carb 內 ${ct.toFixed(0)}°C`;
   t2.textContent=`露點（近似）${dew.toFixed(0)}°C`;
-  t3.textContent=risk>0?"⚠ 結冰：RPM 跌、rough":"✔ 暫時冇冰";
+  t3.textContent=risk>0?"⚠ icing：RPM 跌、rough":"✔ 暫時冇冰";
   ice.setAttribute("rx",risk*30);ice.setAttribute("ry",risk*18);
-  say(heat?"Carb heat：熱空氣融冰，但 power 少咗，要預期 RPM 先跌後升":(oat>20&&risk>0?"OAT 高都可以結冰：汽化降溫＋濕空氣":"留意：C172SP 係 fuel injected，冇 carb heat，只有 alternate air"));
+  say(heat?"Carb heat：熱空氣融冰，但 power 少咗，要預期 RPM 先跌後升":(oat>20&&risk>0?"OAT 高都可以icing：汽化降溫＋濕空氣":"留意：C172SP 係 fuel injected，冇 carb heat，只有 alternate air"));
  }
  H.loop(()=>{ph+=2;arrows.forEach((a,i)=>{const x=60+((ph*1.5+i*70)%500);a.setAttribute("cx",x);a.setAttribute("cy",x>260&&x<340?130:(110+ (i%2)*40));a.setAttribute("fill",x>260&&x<340?"#93c5fd":"#38bdf8")})});
 }},
 
 // 3. CSU governor
-{title:"Constant Speed Prop：Governor 運作",hint:"拉 RPM 設定／MAP／速度，睇 pitch 點跟；再試失油",build(box,H){
+{title:"Constant Speed Prop：Governor 運作",hint:"拉 RPM 設定／MAP／speed，睇 pitch 點跟；再試失油",build(box,H){
  const svg=H.svg(box,700,300), say=H.note(box);
  X(H,svg,110,22,"Governor","#34d399",13);
  H.el("rect",{x:60,y:35,width:100,height:30,fill:"#475569"},svg);X(H,svg,110,55,"Speeder spring","#fff",10);
@@ -645,7 +645,7 @@ const A=[
 }},
 
 // 6. Hydraulic Pascal
-{title:"Hydraulics：Pascal ＆ Mechanical Advantage",hint:"改力同面積，睇壓力、輸出力同位移",build(box,H){
+{title:"Hydraulics：Pascal ＆ Mechanical Advantage",hint:"改力同面積，睇pressure、輸出力同位移",build(box,H){
  const svg=H.svg(box,700,280), say=H.note(box);
  H.el("rect",{x:100,y:100,width:60,height:130,fill:"#334155",stroke:"#94a3b8"},svg);
  H.el("rect",{x:400,y:100,width:160,height:130,fill:"#334155",stroke:"#94a3b8"},svg);
@@ -670,7 +670,7 @@ const A=[
 }},
 
 // 7. Pitot-static blockage
-{title:"Pitot／Static 堵塞：ASI、ALT、VSI",hint:"揀堵塞類型，拉高度變化同速度",build(box,H){
+{title:"Pitot／Static 堵塞：ASI、ALT、VSI",hint:"揀堵塞類型，拉altitude變化同speed",build(box,H){
  const svg=H.svg(box,700,300), say=H.note(box);
  X(H,svg,120,28,"ASI","#38bdf8",14);X(H,svg,350,28,"ALT","#38bdf8",14);X(H,svg,580,28,"VSI","#38bdf8",14);
  H.el("path",{d:"M30,180 A90,90 0 0 1 210,180",fill:"none",stroke:"#64748b","stroke-width":3},svg);
@@ -681,15 +681,15 @@ const A=[
  const diag=X(H,svg,350,260,"","#fde047",13);
  let sc=0,v0=100,dh=0,vs=0;
  H.slider(box,"真實 IAS kt",60,140,100,v=>{v0=v;calc()});
- H.slider(box,"自堵塞後高度變化 ft（＋爬升／－下降）",-3000,3000,0,v=>{dh=v;calc()},100);
+ H.slider(box,"自堵塞後altitude變化 ft（＋climb／－descent）",-3000,3000,0,v=>{dh=v;calc()},100);
  H.slider(box,"實際 rate of climb fpm",-1000,1000,0,v=>{vs=v;calc()},100);
  ["正常","Pitot ram＋drain 都塞","Pitot ram 塞（drain 通）","Static 塞"].forEach((n,i)=>H.button(box,n,()=>{sc=i;calc()}));
  function calc(){
   const q0=0.5*1.225*Math.pow(v0*0.5144,2);
   let ias=v0,alt=5000+dh,v=vs,msg="正常：三個儀錶都準";
-  if(sc==1){const q=q0+3300*dh/1000;ias=Math.sqrt(2*Math.max(0,q)/1.225)/0.5144;msg=dh>0?"Pitot 壓力被鎖住，static 隨爬升下降 → ASI over-read（像 altimeter）":(dh<0?"下降 → ASI under-read":"高度冇變 → 暫時準")}
-  if(sc==2){ias=0;msg="Ram 塞但 drain 通：pitot 壓力洩走 → ASI 歸零"}
-  if(sc==3){const q=q0-3300*dh/1000;ias=Math.sqrt(2*Math.max(0,q)/1.225)/0.5144;alt=5000;v=0;msg=dh>0?"Static 被鎖住：ALT 凍結、VSI 0；爬升 ASI under-read":"Static 被鎖住：ALT 凍結、VSI 0；下降 ASI over-read（危險）"}
+  if(sc==1){const q=q0+3300*dh/1000;ias=Math.sqrt(2*Math.max(0,q)/1.225)/0.5144;msg=dh>0?"Pitot pressure被鎖住，static 隨climbdescent → ASI over-read（像 altimeter）":(dh<0?"descent → ASI under-read":"altitude冇變 → 暫時準")}
+  if(sc==2){ias=0;msg="Ram 塞但 drain 通：pitot pressure洩走 → ASI 歸零"}
+  if(sc==3){const q=q0-3300*dh/1000;ias=Math.sqrt(2*Math.max(0,q)/1.225)/0.5144;alt=5000;v=0;msg=dh>0?"Static 被鎖住：ALT 凍結、VSI 0；climb ASI under-read":"Static 被鎖住：ALT 凍結、VSI 0；descent ASI over-read（危險）"}
   const f=cl(ias/200,0,1)*Math.PI;
   nd.setAttribute("x2",120-Math.cos(f)*80);nd.setAttribute("y2",180-Math.sin(f)*80);
   asiT.textContent=Math.round(ias)+" kt";asiN.textContent="真實 "+v0+" kt";
@@ -712,7 +712,7 @@ const A=[
  X(H,svg,520,60,"紅 ×：施力（推入紙面）","#f87171",13,"start");
  X(H,svg,520,85,"綠 ●：效果出現位置","#34d399",13,"start");
  const bar=H.el("rect",{x:520,y:140,height:14,fill:"#fbbf24"},svg);
- X(H,svg,520,130,"傾斜速度（越細越穩 = rigidity）","#cbd5e1",11,"start");
+ X(H,svg,520,130,"傾斜speed（越細越穩 = rigidity）","#cbd5e1",11,"start");
  const res=X(H,svg,520,190,"","#e2e8f0",13,"start");
  let fa=0,spin=50,dir=1,ph=0;
  H.slider(box,"施力位置（°，0＝頂部，順時針）",0,359,0,v=>{fa=v;upd()},15);

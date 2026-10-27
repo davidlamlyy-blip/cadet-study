@@ -35,26 +35,26 @@ Cadet.add({
   {id:"rt.time",g:"Phonetic & Numbers",t:"Zulu Time",d:"國際用 UTC (Zulu)；本地通訊通常只講分鐘。",pts:["24 小時制","0830Z → ZE-RO AIT TREE ZE-RO","本地：講分鐘就夠","UTC = EST − 10 小時","中部時區差 30 分鐘 (CST −9:30)"],rel:["rt.numrules"],src:"BAK p.45-46",check:false},
   {id:"rt.units",g:"Phonetic & Numbers",t:"Wind, QNH, Oktas",d:"ATIS／clearance 常見單位同讀法。",pts:["Wind：方向 + knots","QNH 1023 → one zero two three","Cloud 用 oktas（八分一）","5/8 → FIFE OK-tas","Temp、dew point 分開講"],rel:["rt.atis","rt.numrules"],src:"Airspeaks p.3-6; BAK p.45",check:false},
   // ===== Call Structure =====
-  {id:"rt.struct",g:"Call Structure",t:"Who / Where / What",d:"每個 call 都係：叫邊個、我係邊個、喺邊／狀態、要咩。",pts:["WHO you call（電台名）","WHO you are（callsign）","WHERE／state（位置、高度、ATIS）","WHAT you want（request／intention）","短、順序固定"],rel:["rt.firstcontact","rt.callsign"],src:"Airspeaks Typical exchanges; ENZO Mass briefing 01 slides 16-21",check:false},
+  {id:"rt.struct",g:"Call Structure",t:"Who / Where / What",d:"每個 call 都係：叫邊個、我係邊個、喺邊／狀態、要咩。",pts:["WHO you call（電台名）","WHO you are（callsign）","WHERE／state（位置、altitude、ATIS）","WHAT you want（request／intention）","短、順序固定"],rel:["rt.firstcontact","rt.callsign"],src:"Airspeaks Typical exchanges; ENZO Mass briefing 01 slides 16-21",check:false},
   {id:"rt.firstcontact",g:"Call Structure",t:"Initial Contact Examples",d:"ENZO 例：taxi、ready、inbound 都跟同一骨架。",pts:["Taxi：Ground, NBJ, Apron, info D, request taxi","Ready：Tower, NBJ, Ready runway 21R","Inbound：Tower, NBJ, Outer Harbour, 1500, inbound"],rel:["rt.struct","rt.parafield"],src:"ENZO Mass briefing 01 slides 16-21; Study Guide 10",check:false},
   {id:"rt.instr",g:"ATC Instructions",t:"Common ATC Instructions",d:"最常聽到嘅指令，要即刻明同讀返。",pts:["Hold short／Cross runway","Climb and maintain／Descend and maintain","Turn left/right heading","Contact Tower／Approach／Departure","Squawk · Report position"],rel:["rt.readback","rt.holdwords"],src:"ENZO ATC Phraseology (Common ATC Instructions)",check:false},
   {id:"rt.unusual",g:"ATC Instructions",t:"Less Common Instructions",d:"少見但會考嘅指令：option、expedite、orbit、vectors。",pts:["Cleared for the option","Expedite · Orbit left/right","Say intentions · Unable","Expect vectors · Resume own navigation","Radar contact lost"],rel:["rt.instr"],src:"ENZO ATC Phraseology (Unusual ATC Instructions)",check:false},
-  {id:"rt.holdwords",g:"ATC Instructions",t:"Hold Short / Line Up / Hold Position",d:"三個唔同意思，揪錯會入錯 runway。",pts:["Hold short = 喺指定點前停","Line up and wait = 入 runway 等","Hold position = 原地唔好郁","Cleared for take-off 先可以起飛","Behind landing traffic, line up behind"],rel:["rt.lineup","rt.takeoff"],src:"ENZO ATC Phraseology 'At the Hold Point'; Airspeaks 1.6",check:false},
+  {id:"rt.holdwords",g:"ATC Instructions",t:"Hold Short / Line Up / Hold Position",d:"三個唔同意思，揪錯會入錯 runway。",pts:["Hold short = 喺指定點前停","Line up and wait = 入 runway 等","Hold position = 原地唔好郁","Cleared for take-off 先可以take-off","Behind landing traffic, line up behind"],rel:["rt.lineup","rt.takeoff"],src:"ENZO ATC Phraseology 'At the Hold Point'; Airspeaks 1.6",check:false},
   // ===== Flight phases =====
   {id:"rt.atis",g:"Flight Phases",t:"ATIS",d:"開車前先聽 ATIS；順序固定，之後要報 info 字母。",pts:["Info 字母、runway、wind","Visibility、cloud、temp/dew point","QNH、trend (no sig)","首次 call 報『received information D』","Parafield ATIS 120.9 (ENZO)"],rel:["rt.units","rt.aelpatis"],src:"Airspeaks 1.1; ENZO Mass briefing 01 slide 15",check:false},
   {id:"rt.routeclr",g:"Flight Phases",t:"IFR Route Clearance",d:"Controller 一次過讀長 clearance，pilot 完整 readback。",pts:["Ready to copy → 寫低","Cleared to 目的地 via route／SID","Level、frequency、squawk","逐項 readback","Controller：That is correct"],rel:["rt.readback","rt.xpdr"],src:"Airspeaks 1.2 p.10-12",check:false},
-  {id:"rt.ctaclr",g:"Flight Phases",t:"Airways Clearance (Class C)",d:"入 controlled airspace 前要 clearance；入面所有改動都要批。",pts:["喺邊界先要 code 同 clearance","Squawk 即刻設置","Request → readback 或 Say again","唔想入：cancel clearance request","出空域：radar services terminated"],rel:["rt.xpdr","rt.freqchange"],src:"ENZO ATC Phraseology (airways clearance)",check:false},
+  {id:"rt.ctaclr",g:"Flight Phases",t:"Airways Clearance (Class C)",d:"入 controlled airspace 前要 clearance；入面所有改動都要批。",pts:["喺邊界先要 code 同 clearance","Squawk 即刻設置","Request → readback 或 Say again","唔想入：cancel clearance request","出airspace：radar services terminated"],rel:["rt.xpdr","rt.freqchange"],src:"ENZO ATC Phraseology (airways clearance)",check:false},
   {id:"rt.startup",g:"Flight Phases",t:"Start-up & Push-back",d:"報 stand、ATIS、目的地；ATC 批或叫你 stand by。",pts:["Ground, callsign, stand, info, request start-up","Start-up approved → Starting up","Delay 有原因同時間","Push-back：request from stand ___","Holding position 就停"],rel:["rt.struct","rt.atis"],src:"Airspeaks 1.3, 1.4 p.14-27",check:false},
-  {id:"rt.taxi",g:"Flight Phases",t:"Taxi Instructions",d:"Taxi 指令包括 route、holding point，同讓路。",pts:["Taxi via ___ to holding point ___","第一／第二個轉彎、左／右","Give way to ___ → Traffic in sight","要 readback route","唔肯定就 Say again"],rel:["rt.runwaycross","rt.readback"],src:"Airspeaks 1.5 p.29-40; ENZO Mass briefing 01 slides 16-19",check:false},
+  {id:"rt.taxi",g:"Flight Phases",t:"Taxi Instructions",d:"Taxi 指令包括 route、holding point，同讓路。",pts:["Taxi via ___ to holding point ___","第一／第二個turn、左／右","Give way to ___ → Traffic in sight","要 readback route","唔肯定就 Say again"],rel:["rt.runwaycross","rt.readback"],src:"Airspeaks 1.5 p.29-40; ENZO Mass briefing 01 slides 16-19",check:false},
   {id:"rt.runwaycross",g:"Flight Phases",t:"Hold Points & Runway Crossing",d:"去到 holding point 要 hold short，除非 ATC 批你 cross。",pts:["Approaching holding point ___","Request cross runway ___","Cross undershoot 都要批","Run-up bay 完先 request further taxi"],rel:["rt.taxi","rt.holdwords"],src:"Airspeaks 1.5.2; ENZO Mass briefing 01 slide 18-19",check:false},
-  {id:"rt.lineup",g:"Flight Phases",t:"Line-up",d:"Line up and wait 只係入 runway，未可以起飛。",pts:["Ready at holding point ___","Line up and wait → Lining up","Traffic on final：report in sight","Behind the landing ___ line up behind","Hold position = 唔入"],rel:["rt.holdwords","rt.takeoff"],src:"Airspeaks 1.6; ENZO ATC Phraseology",check:false},
-  {id:"rt.takeoff",g:"Flight Phases",t:"Take-off Clearance",d:"Cleared for take-off 先起飛；readback runway；Parafield 一分鐘內要走。",pts:["Ready → Cleared for take-off, wind","Readback：Runway __ cleared for take-off","Traffic in sight 就答","Parafield：一分鐘內開始起飛","ATC 可以叫你 stop／vacate"],rel:["rt.lineup","rt.clr"],src:"Airspeaks 2.2 p.66; ENZO Study Guide 10",check:false},
+  {id:"rt.lineup",g:"Flight Phases",t:"Line-up",d:"Line up and wait 只係入 runway，未可以take-off。",pts:["Ready at holding point ___","Line up and wait → Lining up","Traffic on final：report in sight","Behind the landing ___ line up behind","Hold position = 唔入"],rel:["rt.holdwords","rt.takeoff"],src:"Airspeaks 1.6; ENZO ATC Phraseology",check:false},
+  {id:"rt.takeoff",g:"Flight Phases",t:"Take-off Clearance",d:"Cleared for take-off 先take-off；readback runway；Parafield 一分鐘內要走。",pts:["Ready → Cleared for take-off, wind","Readback：Runway __ cleared for take-off","Traffic in sight 就答","Parafield：一分鐘內開始take-off","ATC 可以叫你 stop／vacate"],rel:["rt.lineup","rt.clr"],src:"Airspeaks 2.2 p.66; ENZO Study Guide 10",check:false},
   {id:"rt.depreport",g:"Flight Phases",t:"Departure & Climb Calls",d:"離場後按指示報位；climb 要 readback level。",pts:["TTA：Turn, Track, Altitude","Parafield 唔需要 departure report","Report reaching level","Further climb → readback","唔批就唔可以自己轉"],rel:["rt.takeoff","rt.freqchange"],src:"ENZO Study Guide 10; Airspeaks 2.3-2.5",check:false},
   {id:"rt.freqchange",g:"Flight Phases",t:"Frequency Change",d:"Contact ___ goodbye：readback frequency，轉頻後先 call。",pts:["Contact 128.6 → 讀返 frequency","轉頻前唔好 call 新台","新頻：Station + Callsign + 情況","Monitor = 聽，但唔使 call"],rel:["rt.freq","rt.ctaclr"],src:"Airspeaks 2.4 p.82-84; ENZO ATC Phraseology",check:false},
-  {id:"rt.posrep",g:"Flight Phases",t:"Position Reports",d:"報：邊個 point、時間、高度、下個 point 同 ETA。",pts:["Callsign + point + time","Flight level／altitude","Estimating next at ___","Controller：Next report at ___","按 Wilco／Roger 回覆"],rel:["rt.struct","rt.numrules"],src:"Airspeaks 3.2 p.116-119",check:false},
+  {id:"rt.posrep",g:"Flight Phases",t:"Position Reports",d:"報：邊個 point、時間、altitude、下個 point 同 ETA。",pts:["Callsign + point + time","Flight level／altitude","Estimating next at ___","Controller：Next report at ___","按 Wilco／Roger 回覆"],rel:["rt.struct","rt.numrules"],src:"Airspeaks 3.2 p.116-119",check:false},
   {id:"rt.traffic",g:"Flight Phases",t:"Traffic Information",d:"Traffic 用鐘點位置、距離、方向報告；你要 in sight 或 negative contact。",pts:["10 o'clock, 5 miles, crossing","Traffic in sight / Negative contact","Request vectors","Clear of traffic, resume own navigation","沒見到要講，唔好扮"],rel:["rt.ask","rt.instr"],src:"Airspeaks 3.3 p.122-126; ENZO Mass briefing 07",check:false},
   {id:"rt.descent",g:"Flight Phases",t:"Descent",d:"Leaving level, descending to level：逐步 readback，被問先報 passing。",pts:["Squawk ident → radar contact","Descend to ___","Leaving FL___ descending to ___","Report passing ___","Pressurisation 問題要講明"],rel:["rt.approach","rt.readback"],src:"Airspeaks 3.4 p.130-135",check:false},
-  {id:"rt.approach",g:"Flight Phases",t:"Approach",d:"報 flight level 同 ATIS，收 squawk、速度同 approach 類型。",pts:["Station, callsign, level, info","Expect ILS runway __","Reduce speed to ___","Report established","Contact Tower ___"],rel:["rt.landing","rt.atis"],src:"Airspeaks 4.2 p.156-161",check:false},
+  {id:"rt.approach",g:"Flight Phases",t:"Approach",d:"報 flight level 同 ATIS，收 squawk、speed同 approach 類型。",pts:["Station, callsign, level, info","Expect ILS runway __","Reduce speed to ___","Report established","Contact Tower ___"],rel:["rt.landing","rt.atis"],src:"Airspeaks 4.2 p.156-161",check:false},
   {id:"rt.landing",g:"Flight Phases",t:"Landing Clearance",d:"Cleared to land 先着陸；Roll through = 跑到尾先出。",pts:["Cleared to land runway __","Readback runway","Roll through approved","Cleared for the option = 多種選擇","Traffic ahead？Number 2"],rel:["rt.goaround","rt.clr"],src:"Airspeaks 4.3; ENZO ATC Phraseology",check:false},
   {id:"rt.goaround",g:"Flight Phases",t:"Go-around Call",d:"Go around 要即刻通知，有人喺 runway 就更加要。",pts:["Callsign, going around","ATC 亦可以叫 Go around","之後跟 ATC 新指示","Circuit 內：向 circuit traffic 講"],rel:["rt.landing","rt.circuit"],src:"ENZO Mass briefing 07 (Go-around radio call)",check:false},
   {id:"rt.afterland",g:"Flight Phases",t:"After Landing",d:"Runway vacated 先報；Parafield 視乎有冇 traffic 報 clear。",pts:["Runway vacated","Taxi to stand ___","Contact Ground ___","冇其他 traffic：clear of all runways 就夠","有 traffic：clear duty runway"],rel:["rt.freqchange","rt.parafield"],src:"Airspeaks 4.4 p.175; ENZO Study Guide 10 'CLEAR ALL RUNWAYS'",check:false},
@@ -67,7 +67,7 @@ Cadet.add({
   // ===== Emergency =====
   {id:"rt.distress_urgency",g:"Emergency & Lost Comms",t:"Distress vs Urgency",d:"Distress = 即時危險；Urgency = 有危險但唔需要即時援助。",pts:["Distress → MAYDAY","Urgency → PAN-PAN","Safety → SECURITY","唔確定：寧可早 declare","每個情況都要獨立判斷"],rel:["rt.mayday","rt.panpan"],src:"Airspeaks 2.1 p.61; BAK p.50",check:false},
   {id:"rt.mayday",g:"Emergency & Lost Comms",t:"MAYDAY Call",d:"Mayday ×3，callsign，問題，意圖，位置，其他。",pts:["MAYDAY MAYDAY MAYDAY","Callsign (ENZO: ×3)","Nature of emergency","Intentions","Position / level / heading · POB"],rel:["rt.emerg_codes","rt.priority"],src:"Airspeaks p.62; BAK p.51; ENZO Mass briefing 10 slides 33-34",check:false},
-  {id:"rt.panpan",g:"Emergency & Lost Comms",t:"PAN-PAN Call",d:"結構同 Mayday 一樣，只係用 PAN-PAN ×3。",pts:["PAN-PAN ×3","同 Mayday 同一結構","例：病人、迷路、燃油疑慮","PSL：早啲 PAN，專心落地","可以升級做 Mayday"],rel:["rt.mayday"],src:"Airspeaks p.63; BAK p.51; ENZO Mass briefing 12 slides 10, 14",check:false},
+  {id:"rt.panpan",g:"Emergency & Lost Comms",t:"PAN-PAN Call",d:"結構同 Mayday 一樣，只係用 PAN-PAN ×3。",pts:["PAN-PAN ×3","同 Mayday 同一結構","例：病人、迷路、fuel疑慮","PSL：早啲 PAN，專心落地","可以升級做 Mayday"],rel:["rt.mayday"],src:"Airspeaks p.63; BAK p.51; ENZO Mass briefing 12 slides 10, 14",check:false},
   {id:"rt.security",g:"Emergency & Lost Comms",t:"Security (Safety) Call",d:"第三級：SECURITY ×3，用於安全資訊。",pts:["Mayday > Pan-Pan > Security","同樣重複三次","例子教材冇詳列"],rel:["rt.distress_urgency"],src:"BAK p.50",check:true},
   {id:"rt.emerg_levels",g:"Emergency & Lost Comms",t:"When to Declare",d:"有疑問就早講；有 loss of control／受傷風險就 Mayday。",pts:["有時間性：至少 Pan-Pan","LOC 或受傷風險：Mayday","Hard-and-fast 規則冇","早講好過遲講","PIC 負最終責任"],rel:["rt.distress_urgency","rt.priority"],src:"BAK p.50",check:false},
   {id:"rt.emerg_freq",g:"Emergency & Lost Comms",t:"Where to Call (121.5)",d:"先用現有 frequency；冇回應再試 FIS，最後 121.5 MHz。",pts:["現行 freq 先","冇回覆：FIS frequency","再冇：121.5 MHz","Squawk 7700","Mayday 之後 ATC 會令全站靜音"],rel:["rt.mayday","rt.emerg_codes"],src:"BAK p.51; Airspeaks 3.4.2",check:false},
@@ -79,13 +79,13 @@ Cadet.add({
   {id:"rt.elt",g:"Emergency & Lost Comms",t:"ELT & 121.5",d:"ELT 發射 emergency frequency；開機前後可以監聽 121.5。",pts:["121.5／243 MHz（教材）","電池到期要檢查","太易誤觸發","開飛前同收機後聽 121.5","PSL 前考慮開 ELT"],rel:["rt.emerg_freq"],src:"BAK p.52; ENZO Mass briefing 12 slide 10",check:true},
   {id:"rt.minfuel",g:"Emergency & Lost Comms",t:"Minimum Fuel Advisory (FAA)",d:"FAA：Min fuel 唔係 emergency，只係通知唔可以等。",pts:["Minimum fuel advisory","唔等於 priority","延誤會變 emergency","只係 FAA 教材"],rel:["rt.distress_urgency"],src:"ATP Test Prep ch7 'minimum fuel advisory'",check:true},
   // ===== Equipment =====
-  {id:"rt.xpdr",g:"Transponder & Radar",t:"Transponder Modes & Usage",d:"改碼先 SBY，再 ALT；唔同空域用唔同碼。",pts:["OFF/SBY/ON/ALT/TST","Circuit：1200 + SBY","Training area：1200 + ALT","CTA：clearance 碼 + ALT","Squawk ident = 閃 symbol"],rel:["rt.emerg_codes","rt.ctaclr"],src:"BAK Table 2-8 p.49",check:false},
+  {id:"rt.xpdr",g:"Transponder & Radar",t:"Transponder Modes & Usage",d:"改碼先 SBY，再 ALT；唔同airspace用唔同碼。",pts:["OFF/SBY/ON/ALT/TST","Circuit：1200 + SBY","Training area：1200 + ALT","CTA：clearance 碼 + ALT","Squawk ident = 閃 symbol"],rel:["rt.emerg_codes","rt.ctaclr"],src:"BAK Table 2-8 p.49",check:false},
   {id:"rt.radar",g:"Transponder & Radar",t:"Primary vs Secondary Radar",d:"Primary 反射；SSR 靠 transponder 回應，有 code 同 altitude。",pts:["Primary：有回波","SSR：transponder 回應","Squawk 來自 IFF","CTA 內要有 transponder（Class G 例外）"],rel:["rt.xpdr"],src:"BAK p.48",check:false},
   // ===== Listening / Comprehension =====
   {id:"rt.confuse_num",g:"Listening / Comprehension",t:"Number Confusions",d:"最易混淆：5/9、15/50、13/30、2/to、4/for。",pts:["FIFE vs NIN-er","15 = WUN FIFE · 50 = FIFE ZE-RO","13 = WUN TREE · 30 = TREE ZE-RO","Squawk 7600 vs 7060","聽 digit 之間停頓"],rel:["rt.digits","rt.readback"],src:"BAK p.44; 自己補充",check:false},
   {id:"rt.confuse_sound",g:"Listening / Comprehension",t:"Sound-alike Words",d:"相近聲音：to/two、for/four、left/lift、hold/cold。",pts:["Climb to vs 2","Hold short vs Cold short","Cleared vs Clear","Right vs Light","聽 context 同 readback 確認"],rel:["rt.phonetic","rt.readback"],src:"自己補充（教材冇專章）",check:true},
   {id:"rt.expect",g:"Listening / Comprehension",t:"Hearing What You Expect",d:"人傾向聽自己預期嘅嘢。要特別留意數字同否定句。",pts:["預期 = 錯聽來源","Negative／not 容易漏","Readback 逼你重新聽","教材：Airspeaks Foreword"],rel:["rt.readback","rt.why"],src:"Airspeaks Foreword p.ix",check:false},
-  {id:"rt.copy",g:"Listening / Comprehension",t:"Copy & Chunk",d:"聽長 clearance：寫低、拆成段、逐項 readback。",pts:["Ready to copy","寫：callsign、高度、頻率、squawk","拆 chunk：做咩→去邊→幾耐","寫速記符號"],rel:["rt.routeclr","rt.readback"],src:"Airspeaks 1.2; 自己補充",check:false},
+  {id:"rt.copy",g:"Listening / Comprehension",t:"Copy & Chunk",d:"聽長 clearance：寫低、拆成段、逐項 readback。",pts:["Ready to copy","寫：callsign、altitude、頻率、squawk","拆 chunk：做咩→去邊→幾耐","寫速記符號"],rel:["rt.routeclr","rt.readback"],src:"Airspeaks 1.2; 自己補充",check:false},
   {id:"rt.ask",g:"Listening / Comprehension",t:"Ask When Unsure",d:"聽唔清就 Say again，唔好估。唔見 traffic 要講。",pts:["Say again","Confirm ___?","Unable","Negative contact","FAQ：唔識就直接講"],rel:["rt.fix","rt.traffic"],src:"ENZO Mass briefing 07 slide 436; AELP FAQ Q12",check:false},
   {id:"rt.noise",g:"Listening / Comprehension",t:"Noise & Impediments",d:"噪音、阻塞、同時發射、cockpit 嘈雜都影響聽力。",pts:["Blocked frequency","Simultaneous transmissions","Background noise","口音／母語影響","用 readability 確認"],rel:["rt.wordstwice","rt.readability"],src:"Airspeaks Foreword p.ix",check:false},
   {id:"rt.practice",g:"Listening / Comprehension",t:"Practice Method",d:"Listen → Repeat → Write → Check → Speak 五步循環。",pts:["Airspeaks 5 步","先聽再睇 transcript","複誦 pilot 部分","角色扮演 controller","練車牌、街牌"],rel:["rt.phonetic","rt.copy"],src:"Airspeaks Notes to the learner p.xvii; BAK p.43",check:false},
@@ -113,7 +113,7 @@ Cadet.add({
     ["rt.priority","rt.mayday","Aviate 先，之後 Mayday"],
     ["rt.distress_urgency","rt.panpan","分級決定用邊個字"],
     ["rt.emerg_freq","rt.elt","121.5 MHz 係共同緊急頻"],
-    ["rt.ctaclr","rt.freqchange","入出空域伴隨頻率轉換"],
+    ["rt.ctaclr","rt.freqchange","入出airspace伴隨頻率轉換"],
     ["rt.atis","rt.firstcontact","首次 call 要報 ATIS 字母"],
     ["rt.atis","rt.aelpatis","AELP Part 2 用 ATIS"],
     ["rt.copy","rt.routeclr","長 clearance 要寫低再讀返"],
@@ -205,7 +205,7 @@ Cadet.add({
     C("rt.unusual","What does Say intentions mean?","The controller asks you to state your plan.","講計劃。"),
     C("rt.unusual","What does Unable mean?","You cannot comply with the instruction.","做唔到。"),
     C("rt.unusual","What does Expedite mean?","Do it quickly, for example climb or descend.","加快。"),
-    C("rt.holdwords","Is 'line up and wait' permission to take off?","No, it only allows you to enter and wait on the runway.","未可起飛。"),
+    C("rt.holdwords","Is 'line up and wait' permission to take off?","No, it only allows you to enter and wait on the runway.","未可take-off。"),
     C("rt.holdwords","What does Hold position mean?","Stay where you are; do not move.","原地唔郁。"),
     C("rt.holdwords","What should you do if traffic is on short final?","ATC may say line up behind the landing aircraft; read back the instruction.","讀返。"),
     // Phases
@@ -225,7 +225,7 @@ Cadet.add({
     C("rt.runwaycross","Why report from run-up bay?","To request further taxi after checks.","檢查後才請求。"),
     C("rt.lineup","What do you answer to 'Line up and wait'?","'Lining up' with your callsign.","Lining up。"),
     C("rt.lineup","If an aircraft is on final, what might ATC say?","'Report the aircraft in sight' then 'Behind the landing aircraft, line up behind'.","先見到先。"),
-    C("rt.takeoff","What is the readback for take-off clearance?","'Runway 21R, cleared for take-off, callsign'.","讀返跑道。"),
+    C("rt.takeoff","What is the readback for take-off clearance?","'Runway 21R, cleared for take-off, callsign'.","讀返runway。"),
     C("rt.takeoff","How soon must you take off at Parafield?","Within one minute of receiving departure instructions.","一分鐘。","🎧","check"),
     C("rt.depreport","What does TTA stand for?","Turn, Track, Altitude.","離場報告格式。"),
     C("rt.depreport","Is a departure report required at Parafield?","No.","唔需要。"),
@@ -234,11 +234,11 @@ Cadet.add({
     C("rt.posrep","What does a position report include?","Callsign, position, time, level and next estimate.","五項。"),
     C("rt.traffic","How does ATC describe traffic?","Clock position, distance and direction.","鐘點、距離、方向。"),
     C("rt.traffic","What do you say if you cannot see the traffic?","'Negative contact' and request vectors if needed.","唔見就講。"),
-    C("rt.descent","What do you say when starting descent?","'Leaving [level], descending to [level]'.","離開、下降。"),
+    C("rt.descent","What do you say when starting descent?","'Leaving [level], descending to [level]'.","離開、descent。"),
     C("rt.approach","What do you report on approach?","'Established' when established on the approach.","報 established。"),
     C("rt.approach","What do you give at first contact with Approach?","Callsign, level, ATIS information.","三項。"),
     C("rt.landing","What does 'Roll through approved' mean?","Land and continue to the end; do not exit early.","唔好提早出。"),
-    C("rt.landing","What is the readback for landing clearance?","'Cleared to land runway [xx], callsign'.","讀返跑道。"),
+    C("rt.landing","What is the readback for landing clearance?","'Cleared to land runway [xx], callsign'.","讀返runway。"),
     C("rt.goaround","What do you say when going around?","'Callsign, going around'.","通知。"),
     C("rt.goaround","Why tell ATC when going around?","Because they must re-sequence traffic and runway use.","重排。"),
     C("rt.afterland","When do you report runway vacated?","Once clear of the runway.","離開後。"),
@@ -252,14 +252,14 @@ Cadet.add({
     C("rt.ctaf","What is the default upper limit of a Broadcast Area?","5,000 ft AMSL.","5000 ft。"),
     C("rt.certuncr","Is a radio mandatory at CERT, REG and MIL aerodromes?","Yes; do not approach unless radio equipped and broadcasting.","必須。"),
     C("rt.certuncr","What should you do at UNCR aerodromes if you have a radio?","Make the same broadcasts as at other non-towered fields.","照樣廣播。"),
-    C("rt.nontowered","What call do you make when overflying to inspect the windsock?","'[Aerodrome] traffic, [callsign] overflying at [altitude] for windsock inspection'.","報高度。"),
+    C("rt.nontowered","What call do you make when overflying to inspect the windsock?","'[Aerodrome] traffic, [callsign] overflying at [altitude] for windsock inspection'.","報altitude。"),
     C("rt.nontowered","Where is the safest place to join the circuit?","Crosswind from the dead side.","Dead side。"),
     C("rt.nontowered","What altitude is used for overflight per ENZO?","Elevation + circuit altitude + 500 ft.","加 500 ft。"),
     // Emergency
     C("rt.distress_urgency","Define distress.","A dangerous situation requiring immediate assistance.","即時援助。"),
     C("rt.distress_urgency","Define urgency.","A dangerous situation not requiring immediate assistance.","唔需要即時。"),
     C("rt.distress_urgency","Give an example of an urgency situation.","A seriously ill passenger.","病人。"),
-    C("rt.distress_urgency","Give an example of a distress situation.","An uncontrollable engine fire.","發動機火。"),
+    C("rt.distress_urgency","Give an example of a distress situation.","An uncontrollable engine fire.","engine火。"),
     C("rt.mayday","What are the elements of a Mayday call?","Mayday x3, aircraft identification, nature, intention, position/level/heading, other information.","六項。"),
     C("rt.mayday","Give an engine failure Mayday example.","'Mayday, Mayday, Mayday, NBJ, engine failure, forced landing, ten miles north of St Kilda, 3,000 ft, two POB'.","ENZO 例子。"),
     C("rt.mayday","What do you do after a Mayday call?","Squawk 7700 and continue to fly the aircraft.","7700。"),
@@ -291,7 +291,7 @@ Cadet.add({
     // Transponder
     C("rt.xpdr","What do you select first when changing a code?","SBY.","先 SBY。"),
     C("rt.xpdr","Which code and mode in the training area?","1200 and ALT.","1200＋ALT。"),
-    C("rt.xpdr","What does ALT mode transmit?","The code and the aircraft altitude.","碼＋高度。"),
+    C("rt.xpdr","What does ALT mode transmit?","The code and the aircraft altitude.","碼＋altitude。"),
     C("rt.radar","How is secondary radar different from primary?","It relies on the transponder response.","靠 transponder。"),
     // Listening
     C("rt.confuse_num","Which two digits are most often confused?","5 (FIFE) and 9 (NIN-er).","5／9。"),
@@ -322,7 +322,7 @@ Cadet.add({
         {n:"Inbound",p:["Parafield Tower","Diamond Star NBJ","Outer Harbour, 1500, received information D","Inbound"]},
         {n:"En route",p:["Winton Control","Sunair 153","Lake VOR at 15, FL270","Estimating Blackrock at 48"]}];
       const TT=["WHO you call","WHO you are","WHERE / state","WHAT you want"],CL=["#38bdf8","#4ade80","#fbbf24","#f472b6"];
-      const MN=["電台名先講（首次聯絡）","Callsign（可加機型）","位置、高度、ATIS 字母","要求或意圖，越短越好"];
+      const MN=["電台名先講（首次聯絡）","Callsign（可加機型）","位置、altitude、ATIS 字母","要求或意圖，越短越好"];
       let sc=0,step=4,sel=-1;
       function draw(){clr(g);const S=SC[sc];
         for(let i=0;i<4;i++){const x=15+i*172;
@@ -345,7 +345,7 @@ Cadet.add({
         ["NBJ, contact Approach 128.6.","Approach 124.2, NBJ.",false,"錯：Frequency 讀錯。"],
         ["NBJ, hold short runway 21R.","Roger.",false,"錯：Roger 唔係 readback，要讀返 hold short。"],
         ["NBJ, line up and wait.","Line up and wait, NBJ.",true,"啱。"],
-        ["NBJ, runway 03L clear for take-off.","Runway 03R clear for take-off, NBJ.",false,"錯：L 變成 R，會入錯跑道。"],
+        ["NBJ, runway 03L clear for take-off.","Runway 03R clear for take-off, NBJ.",false,"錯：L 變成 R，會入錯runway。"],
         ["NBJ, descend to 3500.","Climb to 3500, NBJ.",false,"錯：descend 讀成 climb。"],
         ["NBJ, report approaching.","Wilco, NBJ.",true,"啱：Report 類唔使完整 readback。"],
         ["NBJ, remain clear of Class C, contact Approach 128.6.","Remain clear of Class C, contact Approach 128.6, NBJ.",true,"啱：兩項都讀返。"]];
@@ -372,7 +372,7 @@ Cadet.add({
         {t:"Squawk 7600",r:[["7","SEV-en"],["6","SIX"],["0","ZE-RO"],["0","ZE-RO"]],n:"Radio failure code"},
         {t:"Number 10",r:[["1","WUN"],["0","ZE-RO"]],n:"唔係 ten，要 WUN ZE-RO"},
         {t:"Time 0830Z",r:[["0","ZE-RO"],["8","AIT"],["3","TREE"],["0","ZE-RO"]],n:"Zulu time 逐位"},
-        {t:"Runway 26L",r:[["2","TOO"],["6","SIX"],["L","LEFT","s"]],n:"跑道號逐位＋方向字"},
+        {t:"Runway 26L",r:[["2","TOO"],["6","SIX"],["L","LEFT","s"]],n:"runway號逐位＋方向字"},
         {t:"Callsign NBJ",r:[["N","NO-VEM-ber"],["B","BRAH-voh"],["J","JEW-lee-ETT"]],n:"Phonetic，留意重音"},
         {t:"5 vs 9",r:[["5","FIFE"]],r2:[["9","NIN-er"]],n:"FIFE vs NIN-er，兩個最易錯"},
         {t:"15 vs 50",r:[["1","WUN"],["5","FIFE"]],r2:[["5","FIFE"],["0","ZE-RO"]],n:"15 = WUN FIFE；50 = FIFE ZE-RO"},
@@ -416,7 +416,7 @@ Cadet.add({
         ["Clearance","Ready to copy → 完整 readback → squawk","A"],
         ["Ground","Start-up／taxi：readback route、holding point","A"],
         ["Tower","Ready → line up → cleared for take-off","A"],
-        ["Departure","報 level、heading；按指示爬升","F"],
+        ["Departure","報 level、heading；按指示climb","F"],
         ["Centre","Position report、contact ___ goodbye","F"],
         ["Approach","Squawk、descend、Established","F"],
         ["Tower","Cleared to land；go-around call","A"],
@@ -437,8 +437,8 @@ Cadet.add({
     {title:"Lost comms 步驟",hint:"揀 VFR／IFR，拉滑桿逐步睇",build(box,H){
       const svg=H.svg(box,700,300),say=H.note(box),g=E("g",{},svg);
       const M={
-        VFR:["Aviate：控制飛機，再檢查 radio（頻率、音量、PTT）","Squawk 7600","Transmit blind：callsign、位置、level、意圖","查 ERSA／AIP 無線電故障程序（Parafield：ERSA EMERG-3）","睇 Tower 燈號（穩綠＝cleared to land）","FAA VFR：維持 VFR，盡快落地"],
-        IFR:["Squawk 7600","Route：assigned → vectored 直去 → expected → filed","Altitude：assigned／MEA／expected 取最高","離 clearance limit：按 EFC，冇就按 ETA","Approach：喺 EFC 或 ETA 開始下降／進場"]};
+        VFR:["Aviate：控制飛機，再檢查 radio（頻率、音量、PTT）","Squawk 7600","Transmit blind：callsign、位置、level、意圖","查 ERSA／AIP radio故障程序（Parafield：ERSA EMERG-3）","睇 Tower 燈號（穩綠＝cleared to land）","FAA VFR：維持 VFR，盡快落地"],
+        IFR:["Squawk 7600","Route：assigned → vectored 直去 → expected → filed","Altitude：assigned／MEA／expected 取最高","離 clearance limit：按 EFC，冇就按 ETA","Approach：喺 EFC 或 ETA 開始descent／approach"]};
       const SRC={VFR:"來源：ENZO Mass briefing 08；BAK p.52；ATP p.7-3 (FAA)",IFR:"來源：ATP Test Prep p.7-3（FAA 14 CFR 91.185）"};
       let mode="VFR",step=1;
       function draw(){clr(g);const L=M[mode];tx(g,350,24,mode+" lost comms（"+(mode==="VFR"?"AU＋FAA 混合":"FAA 教材")+"）",{sz:15,w:700});

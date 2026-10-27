@@ -135,7 +135,7 @@ T("threattypes",G3,"Anticipated · Unanticipated · Latent","三類 threat：預
 T("threatmgmt",G3,"Manage Threats (NTS 2.1)","識別 threat→ 定 countermeasure→ monitor 結果。",["識別 environment／operational threats","競爭 priorities 都係 threat","落實 countermeasures","Monitor；唔安全就改 plan"],["threats","countermeasures"],"Pilot in Command-NTS s7"),
 T("tem_errors",G3,"Errors in TEM","Flight crew 嘅行動或不作為，令偏離預期、縮 margin。",["Handling：flap／power 錯、manual flying","Procedural：briefing、checklist、callout","Communication：read-back 錯、clearance 錯","Mismanaged error＝引致另一 error／UAS"],["errtypes","errmgmt_tem","uas"],"CASA b8 p6-8"),
 T("errmgmt_tem",G3,"Manage Errors (NTS 2.2)","用 checklist／SOP 預防，UAS 前搵出 error。",["Monitor：systems、environment、其他 crew","喺 UAS 前 correct","目標：error 變 inconsequential","Single pilot：self-direction"],["tem_errors","uas","countermeasures"],"Pilot in Command-NTS s8"),
-T("uas",G3,"Undesired Aircraft State","Pilot 造成嘅位置／速度偏差或 config 錯，safety margin 減。",["例：wrong altitude／heading／IAS","Hi／Lo on glidepath；unstable approach","Unnecessary weather penetration","最後機會避免 unsafe outcome","NTS 2.3：recognise、prioritise、recover"],["tem_flow","aviatenav","cfit"],"CASA b8 p8; NTS s9-10"),
+T("uas",G3,"Undesired Aircraft State","Pilot 造成嘅位置／speed偏差或 config 錯，safety margin 減。",["例：wrong altitude／heading／IAS","Hi／Lo on glidepath；unstable approach","Unnecessary weather penetration","最後機會避免 unsafe outcome","NTS 2.3：recognise、prioritise、recover"],["tem_flow","aviatenav","cfit"],"CASA b8 p8; NTS s9-10"),
 T("tem_flow",G3,"TEM Flow","Threat → Error → UAS → Incident；每道關都可以截。",["Threat 唔管理 → error 機會↑","Error 冇發現 → UAS","UAS 冇 recover → LOC／CFIT","每步都有 countermeasure"],["threats","tem_errors","uas","swiss"],"CASA b8; NTS s10"),
 T("countermeasures",G3,"TEM Countermeasures","Plan → Direct → Control：briefing、checklist、monitor。",["Plan：pre-flight 識別 threats","Direct：SOP、checklist、approved procedures","Control：monitor progress、amend","保留 reserve capacity"],["threatmgmt","errmgmt_tem","dmimprove"],"CASA b8 p4"),
 T("tem_stall",G3,"TEM Example: Stall","Stall 係經典 TEM：threat→ error→ UAS→ recover。",["Threat：distraction、turbulence、fuel imbalance","Error：用 aileron 改 stall／過多 rudder","UAS：low airspeed＋high AOA → stall","Manage：HASELL、lookout、verbalise"],["tem_flow","lookout"],"Mass briefing 06 Stalling s30-31"),
@@ -153,7 +153,7 @@ T("resa",G4,"Re-establishing SA","SA 丟失要識重建，唔係淨係'維持'�
 T("tunnel",G4,"Fixation / Tunnel Vision","盯住一樣嘢，忽略其他；stress 加劇。",["例：checklist 項目令無 lookout","Eastern 401 壞燈膽","Instrument fixation (BIF)","解法：scan pattern、aviate first"],["sa_loss","amygdala","trustinst"],"NTS 03 s41; CASA b1"),
 T("tasksat",G4,"Task Saturation / Underload","工作太多會漏嘢，太少會 complacent。",["Overload：miss radio、forget instructions","Single pilot 特別易","Underload：cruise 放鬆、唔再諗","Aviate-Navigate-Communicate 排序"],["workload","sa_factors","aviatenav"],"CASA b6 p10; AC 61-08 §5.3"),
 T("cfit",G4,"CFIT","Airworthy aircraft 受控飛入地形，crew 通常唔知。",["Loss of terrain awareness","唔跟 SOP","VFR into IMC；低 cloud／visibility","常見 SA loss 後果","TAWS／EGPWS 幫手"],["sa","sms_lockhart","uas"],"CASA b6 p6; SMS b6"),
-T("lookout",G4,"Effective Lookout (NTS 1.1)","有系統咁掃：機內機外，視覺係主要資訊來源。",["每次 10–15° 移動，停低先再移","重點：左右 60°、上下 20°","Size 同 contrast 決定見唔見","Airspace cleared procedure 先轉彎","Alerted search：radio、ADS-B、TCAS"],["inatt","vision","sa1"],"AC 61-08 §4"),
+T("lookout",G4,"Effective Lookout (NTS 1.1)","有系統咁掃：機內機外，視覺係主要資訊來源。",["每次 10–15° 移動，停低先再移","重點：左右 60°、上下 20°","Size 同 contrast 決定見唔見","Airspace cleared procedure 先turn","Alerted search：radio、ADS-B、TCAS"],["inatt","vision","sa1"],"AC 61-08 §4"),
 T("collision",G4,"Constant Bearing","對方喺 windscreen 同一位置唔郁＝會撞。",["Constant bearing, decreasing range","要主動避，唔好等","FAA scan：10° 一個 sector、約 1 秒","54 s 掃 180°×30°；避撞約 12.5 s"],["lookout","sa3"],"AC 61-08 §1.2, §4.2.7"),
 T("inatt",G4,"Inattentional Blindness","Looking but not seeing：冇 attention 就唔見。",["Kerang 火車事故例（陸上）","Empty-field myopia：眼睛 default 1–2 m","Focal traps：窗上污點","望遠處（wingtip）再 refocus"],["lookout","vision"],"CASA b6 p4-6; b9 p7"),
 // ---------- Decision Making
@@ -168,7 +168,7 @@ T("ooda",G5,"OODA Loop","Observe, Orient, Decide, Act；快過對手個 loop。"
 T("threep",G5,"3P Model","Perceive, Process, Perform：FAA 風險管理循環。",["Perceive：搵 hazards（PAVE）","Process：評估 effect 同 risk","Perform：mitigate／決定","非 CASA 教材；一般知識"],["dm","imsafe"],"FAA 一般知識（非教材）"),
 T("fordec",G5,"FORDEC","Facts, Options, Risks&benefits, Decision, Execution, Check。",["Lufthansa／DLR 設計","適合有少少時間嘅 crew","Check＝閉環","非 CASA 教材；一般知識"],["dm","dodar"],"一般航空知識（非教材）"),
 T("dmtraps",G5,"Decision Traps","Jump to assumptions、唔考慮 options、唔敢 challenge。",["Complacency；假設冇時間","唔溝通、唔 consult","唔 evaluate／review","Confirmation bias"],["pressure","bias","dmimprove"],"CASA b7 p17"),
-T("pressure",G5,"Press-on / Get-there-itis","Plan bias：天氣差都繼續；macho、sunk cost。",["NASA-Ames：常見 error＝繼續飛","Get-there-itis：公司／自己壓力","Macho：'I can handle this'","VFR into IMC 風險隨飛行時間↑"],["gonogo","dmtraps","stress"],"CASA b7 p12; ATSB Batt&O'Hare"),
+T("pressure",G5,"Press-on / Get-there-itis","Plan bias：天氣差都繼續；macho、sunk cost。",["NASA-Ames：常見 error＝繼續飛","Get-there-itis：公司／自己pressure","Macho：'I can handle this'","VFR into IMC 風險隨飛行時間↑"],["gonogo","dmtraps","stress"],"CASA b7 p12; ATSB Batt&O'Hare"),
 T("gonogo",G5,"Go / No-Go & Diversion","早啲決定；拖得越耐，options 越少。",["Charter seafood case：遲飛＋天氣＋夜","Precautionary landing 好過飛入 IMC","Last light、fuel、weather 係 hard limits","Operations vs safety：safety 先"],["pressure","i_safety","aviatenav"],"CASA b7 p13-16; Scenario Port Augusta"),
 T("dmimprove",G5,"Improving DM","唔能 improvise 好決定，要預先準備。",["Briefing；用 checklist","Reserve capacity","Delegate；big picture","事前通知；有時間就 involve others"],["countermeasures","dm"],"CASA b7 p17-18"),
 T("aviatenav",G5,"Aviate · Navigate · Communicate","優先次序：先控制機，然後方向，最後溝通。",["Malfunction 先於 ATC 要求","先 fix UAS，後諗點解","QF32 都堅持呢個 mantra","單頻道處理器：一次做一樣"],["workload","uas","emp"],"AC 61-08 §7; CASA b7 p11"),
@@ -182,23 +182,23 @@ T("stress",G6,"Stress","Acute 或 chronic；adrenaline／cortisol 提高 HR、BP
 T("arousal",G6,"Stress–Performance Curve","倒 U：太少會悶，適中最好，過多就 panic／burnout。",["No stress：lethargic","Optimum：focused、motivated","Overload：panic、anger","Prolonged：burnout","Yerkes-Dodson 一類曲線"],["stress","amygdala","tunnel"],"CASA b3 p9 fig"),
 T("stresscope",G6,"Coping with Stress","準備→ 預見→ 計劃→ 溝通→ 用 resources→ CRM→ 時間管理。",["Preparation & practice 減 stress","Anticipate & plan","Share tasks；ask for help","Avoid alcohol 作 coping","Mindfulness／運動／睡眠"],["stress","crm","i_stress"],"CASA b3 p10-13"),
 T("amygdala",G6,"Amygdala Hijack","Amygdala 快過 PFC，引致 freeze、tunnel vision。",["Goleman 提出","Thalamus → Amygdala（跳過邏輯）","Cortisol／adrenaline、淺呼吸","Fix：stabilise、box breathing、verbalise 情緒"],["arousal","tunnel","i_stress"],"ENZO Amygdala Hijack docx"),
-T("hypoxia",G6,"Hypoxia","腦部缺氧；高度越高越易，自己可能唔察覺。",["Hypoxic：氧分壓低；Anaemic／CO 亦類似","約 10,000 ft 以上 mental／vision 變差","症狀：dizzy、tingling、判斷力差","吸煙＝+4,000–5,000 ft 效果","捐血後 2–3 日唔好飛"],["tuc","hyperv","co"],"BAK ch8 p278; ATP Test Prep"),
+T("hypoxia",G6,"Hypoxia","腦部缺氧；altitude越高越易，自己可能唔察覺。",["Hypoxic：氧分壓低；Anaemic／CO 亦類似","約 10,000 ft 以上 mental／vision 變差","症狀：dizzy、tingling、判斷力差","吸煙＝+4,000–5,000 ft 效果","捐血後 2–3 日唔好飛"],["tuc","hyperv","co"],"BAK ch8 p278; ATP Test Prep"),
 T("tuc",G6,"Time of Useful Consciousness","突然失氧後仲有用嘅時間；越高越短。",["又叫 effective performance time (EPT)","18,000 ft 約 20–30 min","30,000 ft 約 1 min 級數","40,000 ft 約十幾秒","表 OCR 唔清；數值係參考"],["hypoxia"],"BAK ch8 Table 8-1",true),
 T("hyperv",G6,"Hyperventilation","過度呼吸沖走 CO2；症狀似 hypoxia 但 recovery 快。",["由焦慮引起；自我強化","手腳、唇麻痺","慢呼吸／講嘢／袋呼吸","冇好轉就當 hypoxia"],["hypoxia","stress"],"BAK ch8 p280; ATP"),
-T("co",G6,"Carbon Monoxide","無色無味；hb 結合 CO 多過 O2。",["來源：exhaust leak、cabin heat、煙","頭痛、dizzy、judgement 差","Cherry red 皮膚（晚期）","行動：關暖氣、通風、盡快降落","Detector 有 expiry"],["hypoxia"],"BAK ch8 p281"),
-T("baro",G6,"Pressure Effects","Barotrauma、ears、decompression、潛水後飛行。",["Eustachian tube 塞住：落機痛","氣體膨脹：爬升時 gut、牙","AU 建議：潛水後 4 h／12 h／48 h 唔好飛","感冒：don't fly"],["hypoxia","health"],"BAK ch8 p279-282"),
+T("co",G6,"Carbon Monoxide","無色無味；hb 結合 CO 多過 O2。",["來源：exhaust leak、cabin heat、煙","頭痛、dizzy、judgement 差","Cherry red 皮膚（晚期）","行動：關暖氣、通風、盡快landing","Detector 有 expiry"],["hypoxia"],"BAK ch8 p281"),
+T("baro",G6,"Pressure Effects","Barotrauma、ears、decompression、潛水後飛行。",["Eustachian tube 塞住：落機痛","氣體膨脹：climb時 gut、牙","AU 建議：潛水後 4 h／12 h／48 h 唔好飛","感冒：don't fly"],["hypoxia","health"],"BAK ch8 p279-282"),
 T("alcohol",G6,"Alcohol & Drugs","少量都影響 judgement；唔可靠時間表。",["BAK：最少 8 h，每杯多 1 h","FAA 14 CFR 91.17：8 h","HK CAD 規定我唔確定","Medication：假設會 ground 你","Anaesthetic：local 24 h／general 72 h (AU)"],["health","imsafe"],"BAK ch8 p283, 287; ATP 9354",true),
 T("imsafe",G6,"IMSAFE · PAVE","Fitness 自查：Illness, Medication, Stress, Alcohol, Fatigue, Eating。",["PAVE：Personal, Aircraft, enVironment, External","External pressure 係 threat","CIGAR：run-up check","Personal minimums"],["alcohol","fatigue","threep"],"CASA b9 p19; AOPA"),
-T("health",G6,"Health & Fitness","Dehydration、diet、DVT、食物中毒、吸煙。",["Dehydration：爬升都漏水；唔好等渴","Food poisoning 係最常見 in-flight incapacitation","機組食唔同餐","DVT：每小時郁腳","吸煙＝慢性缺氧"],["baro","fatigue"],"BAK ch8 p282-286"),
+T("health",G6,"Health & Fitness","Dehydration、diet、DVT、食物中毒、吸煙。",["Dehydration：climb都漏水；唔好等渴","Food poisoning 係最常見 in-flight incapacitation","機組食唔同餐","DVT：每小時郁腳","吸煙＝慢性缺氧"],["baro","fatigue"],"BAK ch8 p282-286"),
 // ---------- Perception & Illusions
 T("infoproc",G7,"Information Processing","Sense → Perceive → Decide → Act，加 memory 同 attention。",["Perception 失敗→ SA 差","Sensory memory 1–5 s","Single-channel processor","限制：time、overload、expectation、fatigue"],["memory","bias","sa"],"CASA b9 p4; AC 61-08 §3"),
 T("vision",G7,"Vision","眼睛係主要資訊來源；夜間靠 peripheral。",["夜視適應約 30 min","夜間睇偏 10–15° 先見","強光 → flash blindness","Scan：每次 ≤10°、≥1 s"],["lookout","inatt","blackhole"],"CASA b9 p6-7"),
 T("vestib",G7,"Vestibular & 3 Senses","Visual、vestibular、musculoskeletal；視覺最 dominant。",["Semicircular canals：pitch／roll／yaw","慢 roll 可能感覺唔到","Otoliths：linear acceleration／tilt","衝突時眼睛優先"],["sd","leans","trustinst"],"CASA b9 p7; BIF s9-11"),
 T("sd",G7,"Spatial Disorientation","對 attitude／altitude／airspeed 理解錯；任何人都會。",["~10% GA accidents，其中 90% fatal (ATSB 2013)","Lake Eyre 2011：dark night","預防：instruments／固定地面參考","通常係'when 唔係 if'"],["vestib","trustinst","leans"],"CASA b9 p5, 14"),
 T("leans",G7,"The Leans","Roll 慢→ 感覺平；改正又覺得向反方向 bank。",["Fluid 穩定→ 以為 level","放返 level → 覺得向另一邊 bank","唔好跟感覺 re-roll","Standard rate turn；scan attitude"],["graveyard","sd"],"CASA b9 p14; BIF s15"),
-T("graveyard",G7,"Graveyard Spiral","持續轉彎→ fluid 停→ 以為 level descent→ 拉桿收緊螺旋。",["Turn 夠耐，內耳停止反應","放平時覺得反向轉","拉 back pressure 更緊更跌","信 attitude indicator"],["leans","somato"],"CASA b9 p15; BIF s16"),
+T("graveyard",G7,"Graveyard Spiral","持續turn→ fluid 停→ 以為 level descent→ 拉桿收緊spin。",["Turn 夠耐，內耳停止反應","放平時覺得反向轉","拉 back pressure 更緊更跌","信 attitude indicator"],["leans","somato"],"CASA b9 p15; BIF s16"),
 T("somato",G7,"Somatogravic Illusion","急加速→ 感覺 nose-up→ 推桿向下。",["Take-off／go-around 冇 horizon","急減速相反→ 拉高→ stall","Cessna 310 Bathurst Island 例","信 instruments"],["graveyard","sd"],"CASA b9 p15-16; BIF s14"),
-T("vest_other",G7,"Inversion · Elevator · Coriolis","其他 vestibular illusions：運動突變令內耳誤判。",["Inversion：climb→ level 覺得後翻","Elevator：updraft 覺得要推桿","Coriolis：轉彎中急轉頭","慢、穩定嘅 control inputs"],["sd","leans"],"CASA b9 p17; ATP"),
+T("vest_other",G7,"Inversion · Elevator · Coriolis","其他 vestibular illusions：運動突變令內耳誤判。",["Inversion：climb→ level 覺得後翻","Elevator：updraft 覺得要推桿","Coriolis：turn中急轉頭","慢、穩定嘅 control inputs"],["sd","leans"],"CASA b9 p17; ATP"),
 T("blackhole",G7,"Black Hole Illusion","無燈地區 straight-in approach：容易太低或太高。",["海岸、outback、極清晰空氣","城市光令覺得更近","避免長 straight-in；用 glide slope／instruments","Mt Gambier 例"],["visill","trustinst"],"CASA b9 p9-10"),
 T("visill",G7,"Other Visual Illusions","False horizon、autokinesis、flicker vertigo、runway 形狀。",["Wide runway 覺得太低；narrow 覺得太高","上坡地形：覺得太高","雨令燈更亮→ 覺得太低；霧令覺得太遠","Autokinesis：望側面"],["blackhole","trustinst"],"CASA b9 p9-13"),
 T("lowill",G7,"Illusions Close to Ground","低飛：into-wind 覺得慢、downwind 覺得快。",["Into wind：感覺慢","Downwind：感覺快","轉 downwind 覺得 slip；轉 upwind 覺得 skid","Aviate first；唔好 over-focus 場地"],["visill","tem_solo"],"Mass briefing 12 PSL s6"),
@@ -218,7 +218,7 @@ T("crmroles",G8,"Task Sharing","分工：一個飛，一個處理 comms／checkl
 T("singlecrm",G8,"Single-Pilot CRM","一個人都用 CRM：passengers、ATC、company 都係 resource。",["Brief pax 令佢哋幫手 lookout","Overweight 例：assertiveness＋conflict resolution","Leadership 面向 pax／company","Seek ATC help"],["crm","assert","i_safety"],"CASA b5 p16-17; b4 p24"),
 // ---------- Automation & Design
 T("auto",G9,"Automation Paradox","自動化抹走小 error，但製造大 error 機會。",["Wiener 觀點","Pilot 變 monitor：boring 又高風險","Shuttle 例：北緯當南緯","Know when to disconnect"],["mode","complacency"],"CASA b10 p17"),
-T("mode",G9,"Mode Confusion","搞唔清 AP／FMS 喺邊個 mode。",["Boeing 737 FL390 2013：誤選 mode 爬升超 900 ft","Crew 以為 AP re-engaged 但無","Fatigue 加劇","Verify FMA／annunciators"],["auto","fatigue"],"CASA b10 p18; b3 p6"),
+T("mode",G9,"Mode Confusion","搞唔清 AP／FMS 喺邊個 mode。",["Boeing 737 FL390 2013：誤選 mode climb超 900 ft","Crew 以為 AP re-engaged 但無","Fatigue 加劇","Verify FMA／annunciators"],["auto","fatigue"],"CASA b10 p18; b3 p6"),
 T("complacency",G9,"Complacency & Startle","過度信任 automation；突發事件令 startle／surprise。",["Startle＝反射（fight-or-flight）","Surprise＝與預期唔合","Over-reliance","Training 準備 unexpected"],["auto","amygdala"],"CASA b10"),
 T("design",G9,"Design & Human Error","設計差令 error 更易；'pilot error' 常係 design problem。",["Gear／flap lever 太近","Fuel gauge 唔準","Error-reversible design","Hardware–liveware match"],["shell","errmgmt"],"CASA b1 p11; b10"),
 // ---------- Interview Link
@@ -256,7 +256,7 @@ links:[
 ["hf.leans","hf.graveyard","Leans 若 re-roll 就變 graveyard spiral"],
 ["hf.somato","hf.sd","加速感覺 pitch-up 屬 spatial disorientation"],
 ["hf.blackhole","hf.visill","同屬 visual illusions on approach"],
-["hf.hypoxia","hf.tuc","高度越高，TUC 越短"],
+["hf.hypoxia","hf.tuc","altitude越高，TUC 越短"],
 ["hf.hypoxia","hf.hyperv","症狀相似，要分辨"],
 ["hf.co","hf.hypoxia","CO 令血液運氧失效，效果似缺氧"],
 ["hf.aviatenav","hf.uas","先 fix UAS，再諗原因"],
@@ -273,7 +273,7 @@ links:[
 ["hf.qf32","hf.crmroles","QF32 分工例子"],
 ["hf.i_err","hf.just","面試講 error 要展示 just culture 態度"],
 ["hf.i_speak","hf.authgrad","面試題對應 authority gradient"],
-["hf.i_stress","hf.arousal","面試答壓力用 arousal 概念"],
+["hf.i_stress","hf.arousal","面試答pressure用 arousal 概念"],
 ["hf.i_safety","hf.gonogo","面試答 safety vs pressure"],
 ["hf.i_dm","hf.agrade","用 A-GRADE 答 decision 題"],
 ["hf.memory","hf.sa_loss","Memory 滿 → 漏 ATC 指示"],
@@ -297,8 +297,8 @@ links:[
 ["hf.alcohol","hf.imsafe","IMSAFE 的 A"],
 ["hf.health","hf.fatigue","Dehydration／diet 影響 fatigue"],
 ["hf.ndm","hf.i_adapt","面試答適應變化用 NDM"],
-["hf.stress","hf.i_stress","面試壓力題"],
-["hf.tuc","hf.baro","高度同壓力效果"],
+["hf.stress","hf.i_stress","面試pressure題"],
+["hf.tuc","hf.baro","altitude同pressure效果"],
 ["hf.stresscope","hf.i_stress","Coping 步驟用嚟答"],
 ["hf.cultstages","hf.just","成熟文化需要 just culture"],
 ["hf.vest_other","hf.somato","同屬 vestibular illusions"],
@@ -554,7 +554,7 @@ anims:[
     else lab.textContent="Level 3：預測 CPA "+Math.round(d)+" 單位"+(d<25?" → 要避！":" → 安全");
     say(lvl==1?"只睇到，唔知有冇事":lvl==2?"理解咗意思：traffic 喺 windscreen 位置變唔變":"預計之後位置，提早決定轉向")});
 }},
-{title:"Hypoxia: Time of Useful Consciousness",hint:"揀高度，撳 Fail，趁未暈掣 Mask",build(box,H){
+{title:"Hypoxia: Time of Useful Consciousness",hint:"揀altitude，撳 Fail，趁未暈掣 Mask",build(box,H){
   const svg=H.svg(box,700,260),say=H.note(box);
   const tab=[[18000,1500],[22000,600],[25000,240],[28000,150],[30000,90],[35000,40],[40000,15]];
   function tuc(a){if(a<=tab[0][0])return tab[0][1];for(let i=1;i<tab.length;i++){if(a<=tab[i][0]){const f=(a-tab[i-1][0])/(tab[i][0]-tab[i-1][0]);return Math.exp(Math.log(tab[i-1][1])*(1-f)+Math.log(tab[i][1])*f)}}return 15}
@@ -565,15 +565,15 @@ anims:[
   const info=H.el("text",{x:350,y:195,"text-anchor":"middle",fill:"#e2e8f0","font-size":14},svg);
   const sym=H.el("text",{x:350,y:225,"text-anchor":"middle",fill:"#fbbf24","font-size":13},svg);
   let alt=25000,p=-1,total=0,saved=false;
-  function idle(){info.textContent="高度 "+alt+" ft → TUC 約 "+(tuc(alt)>=120?Math.round(tuc(alt)/60)+" min":Math.round(tuc(alt))+" s")}
+  function idle(){info.textContent="altitude "+alt+" ft → TUC 約 "+(tuc(alt)>=120?Math.round(tuc(alt)/60)+" min":Math.round(tuc(alt))+" s")}
   H.slider(box,"Altitude ft",18000,40000,25000,v=>{alt=v;if(p<0)idle()},1000);
   H.button(box,"Oxygen Fail ⚠",()=>{p=0;saved=false;total=tuc(alt)});
   H.button(box,"Don mask 😷",()=>{if(p>=0&&p<1){saved=true;p=-1;bar.setAttribute("width",580);bar.setAttribute("fill","#22c55e");face.setAttribute("opacity",1);sym.textContent="Mask on，100% O2：recover";idle()}});
   idle();
-  H.loop(()=>{if(p<0)return;p+=.006;if(p>=1){p=1;sym.textContent="Unconscious — 太遲";face.setAttribute("opacity",.3);bar.setAttribute("width",0);say("TUC 過咗：高度越高，越短");return}
+  H.loop(()=>{if(p<0)return;p+=.006;if(p>=1){p=1;sym.textContent="Unconscious — 太遲";face.setAttribute("opacity",.3);bar.setAttribute("width",0);say("TUC 過咗：altitude越高，越短");return}
     bar.setAttribute("width",580*(1-p));bar.setAttribute("fill",p<.4?"#22c55e":p<.7?"#f59e0b":"#ef4444");face.setAttribute("opacity",1-p*.5);
     sym.textContent=p<.3?"Tingling、dizzy":p<.6?"Tunnel vision、判斷力差":"Euphoria／發藍、行動慢";
-    say("模擬速度已加快；真實 TUC 約 "+(total>=120?Math.round(total/60)+" min":Math.round(total)+" s")+"。未必覺得自己有事")});
+    say("模擬speed已加快；真實 TUC 約 "+(total>=120?Math.round(total/60)+" min":Math.round(total)+" s")+"。未必覺得自己有事")});
   say("TUC 數值係參考（教材表 OCR 唔清，待驗證）");
 }},
 {title:"Vestibular Illusion: Graveyard Spiral",hint:"拉 turn 時間，睇真實 vs 感覺轉速",build(box,H){
@@ -581,17 +581,17 @@ anims:[
   H.el("line",{x1:60,y1:140,x2:660,y2:140,stroke:"#475569"},svg);
   const act=H.el("polyline",{fill:"none",stroke:"#22d3ee","stroke-width":3},svg),sen=H.el("polyline",{fill:"none",stroke:"#f87171","stroke-width":3},svg);
   const mk=H.el("line",{y1:30,y2:250,stroke:"#fff","stroke-width":1.5},svg);
-  const l1=H.el("text",{x:70,y:34,fill:"#67e8f9","font-size":12},svg);l1.textContent="真實 roll／轉彎速度";
+  const l1=H.el("text",{x:70,y:34,fill:"#67e8f9","font-size":12},svg);l1.textContent="真實 roll／turnspeed";
   const l2=H.el("text",{x:70,y:50,fill:"#fca5a5","font-size":12},svg);l2.textContent="內耳感覺";
   const msg=H.el("text",{x:350,y:268,"text-anchor":"middle",fill:"#fde047","font-size":13},svg);
   let D=25,t=0;const tau=8;
   function sensed(s){return s<D?Math.exp(-s/tau):(Math.exp(-D/tau)-1)*Math.exp(-(s-D)/tau)}
   function plot(){let a="",b="";for(let s=0;s<=60;s+=1){const x=60+s*10;a+=x+","+(s>=1&&s<D?60:140)+" ";b+=x+","+(140-80*sensed(s)*(s>=1?1:0))+" "}act.setAttribute("points",a);sen.setAttribute("points",b)}
-  H.slider(box,"持續轉彎 s",5,50,25,v=>{D=v;plot()});
+  H.slider(box,"持續turn s",5,50,25,v=>{D=v;plot()});
   plot();
   H.button(box,"Replay",()=>{t=0});
   H.loop(()=>{t+=.15;if(t>60)t=0;mk.setAttribute("x1",60+t*10);mk.setAttribute("x2",60+t*10);
-    if(t<D)msg.textContent=t>3*tau?"轉咗好耐：內耳覺得自己冇轉（以為 level）":"轉彎開始，內耳識感覺";
+    if(t<D)msg.textContent=t>3*tau?"轉咗好耐：內耳覺得自己冇轉（以為 level）":"turn開始，內耳識感覺";
     else msg.textContent=(sensed(t)<-.15?"放平後：感覺向反方向轉 → 想再 bank 返（graveyard spiral／leans）":"漸漸恢復")});
   say("真相：信 attitude indicator，唔好跟感覺 re-roll（τ=8 s 係示意）");
 }},
@@ -607,7 +607,7 @@ anims:[
   let complex=false,v=50;
   function draw(){const c=complex?35:50;let p="";for(let x=0;x<=100;x+=2)p+=(60+x*5.8)+","+(240-190*f(x,c))+" ";path.setAttribute("points",p);upd()}
   function upd(){const c=complex?35:50;dot.setAttribute("cx",60+v*5.8);dot.setAttribute("cy",240-190*f(v,c));
-    const tx=v<c-25?"太悶／低警覺：慢、漏嘢":v<c+15?"Optimum：focused、motivated":v<c+35?"過載：tunnel vision、panic、amygdala hijack":"Prolonged：burnout";
+    const tx=v<c-25?"太悶／低警覺：慢、漏嘢":v<c+15?"Optimum：focused、motivated":v<c+35?"load factor：tunnel vision、panic、amygdala hijack":"Prolonged：burnout";
     say(tx+(complex?"（複雜任務：optimum 靠左）":"（簡單任務）"))}
   H.slider(box,"Arousal",0,100,50,x=>{v=x;upd()});
   H.button(box,"簡單／複雜任務切換",()=>{complex=!complex;draw()});

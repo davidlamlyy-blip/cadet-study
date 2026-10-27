@@ -13,7 +13,7 @@ T("icao","Framework & Authority","ICAO & Annexes","ICAO（Chicago Convention）�
 T("hk","Framework & Authority","HK Rules (CAD)","香港民航處（CAD）規例教材冇，未驗證；AAEP 教 CASA 體系。",["AAEP＝CASA RPL 地面課","CAD 參觀名單冇內容","HK 規例要另外查","面試要分清體系"],["fw","icao","hkair"],"AAEP Programme Outline; Visit (public) PDFs",true),
 T("pic","Framework & Authority","PIC Authority","PIC 有最終權力：飛機、乘客紀律同安全，直至飛行結束。",["Final authority（CASR 91.215）","可指示乘客落機／限制行為","負責 persons & cargo 安全","緊急時可偏離規例"],["fw","paxb","row"],"CASR 91.215/91.220"),
 T("docs","Framework & Authority","Documents on Board","飛行要帶齊：licence、medical、AFM、maintenance release 等。",["Flight crew licence＋rating","Medical certificate","AFM／checklists","Maintenance release","Journey log（Enzo 要求）"],["mr","lic","med"],"OPS01 slide; Ops Manual 2.1.1"),
-T("eqp","Framework & Authority","Min Equipment (Day VFR)","Day VFR 最少儀表：ASI、altimeter、clock、compass。",["Airspeed Indicator","Altimeter","Timepiece","Magnetic compass","Airwork：OAT、turn coord."],["docs","mr"],"OPS01 slide"),
+T("eqp","Framework & Authority","Min Equipment (Day VFR)","Day VFR 最少instrument：ASI、altimeter、clock、compass。",["Airspeed Indicator","Altimeter","Timepiece","Magnetic compass","Airwork：OAT、turn coord."],["docs","mr"],"OPS01 slide"),
 T("mr","Framework & Authority","Maintenance Release","Maintenance Release＝飛機適航憑證，分 Part 1／Part 2 記錄。",["飛前要檢查有效","Part 2 記缺陷同檢查","每日檢查：drains、fuel grade","唔啱就唔准飛"],["docs","eqp","fuelq"],"OPS01 slide; CAAP 43-01"),
 T("atsbcasa","Framework & Authority","CASA vs ATSB","CASA＝監管（regulator）；ATSB＝獨立調查，不追究責任。",["CASA：licence／規例執法","ATSB：investigate, no blame","ATSB 由 TSI Act 設立","目的＝防止再發生"],["tsi","irm","just"],"AIP ENR 1.14 1.1"),
 // ---- Airspace
@@ -23,39 +23,39 @@ T("cc","Airspace Classes","Class C","IFR 同 VFR 都要 clearance；IFR 同 VFR 
 T("cd","Airspace Classes","Class D","Control zone：要 clearance；VFR 只收 traffic info。",["Clearance required","IFR 同 IFR 分隔","VFR：traffic info only","200 kt ≤2,500ft AAL 4NM","一般到 4,500 ft"],["classes","cc","vmc","svfr"],"AIP ENR 1.4 2.1.3, table"),
 T("ce","Airspace Classes","Class E","Controlled，但 VFR 唔使 clearance；IFR 有 ATC 分隔。",["IFR：ATC service","VFR：冇 clearance","VFR 要 radio（表列）","SIS on request","Special VFR 唔准"],["classes","cg","svfr"],"AIP ENR 1.4 2.1.4; ENR 1.2 1.2.3"),
 T("cg","Airspace Classes","Class G","Uncontrolled：冇 ATC，只有 FIS；責任喺 PIC see-and-avoid。",["冇 clearance","FIA 內有 FIS／SAR","CTAF／broadcast area","Squawk 1200 (VFR)","PIC 自己負責避撞"],["classes","fia","vmc","xpdr"],"AIP ENR 1.4 s3; BAK p159"),
-T("hier","Airspace Classes","Airspace Hierarchy","相鄰空域，交界按較寬鬆（less restrictive）嗰類。",["P/R/MOA > A > C > D > E > G","垂直或橫向相鄰一樣","Inactive RA/CTR→G 服務","Active → 受管制"],["classes","prd","ctr"],"AIP ENR 1.4 1.1.7"),
-T("ctr","Airspace Classes","CTA & CTR","CTA＝由某高度向上；CTR＝由地面向上，圍住受控機場。",["CTA：lower limit 起","CTR：surface 起","塔台開放時間先 active","要睇 ERSA／NOTAM"],["hier","cc","cd"],"AIP ENR 1.4 1.2/1.3"),
+T("hier","Airspace Classes","Airspace Hierarchy","相鄰airspace，交界按較寬鬆（less restrictive）嗰類。",["P/R/MOA > A > C > D > E > G","垂直或橫向相鄰一樣","Inactive RA/CTR→G 服務","Active → 受管制"],["classes","prd","ctr"],"AIP ENR 1.4 1.1.7"),
+T("ctr","Airspace Classes","CTA & CTR","CTA＝由某altitude向上；CTR＝由地面向上，圍住受控機場。",["CTA：lower limit 起","CTR：surface 起","塔台開放時間先 active","要睇 ERSA／NOTAM"],["hier","cc","cd"],"AIP ENR 1.4 1.2/1.3"),
 T("prd","Airspace Classes","Prohibited / Restricted / Danger","P：禁；R：要批准；D：危險，自己負責。",["Prohibited：唔准入","Restricted：要 clearance","Danger：冇需 clearance，要警覺","查 chart／ERSA"],["hier","fia"],"OPS01 slide; BAK p161"),
 T("fia","Airspace Classes","FIA, CTAF & Broadcast Area","Class G 入面有 FIA（FIS）；機場用 CTAF 自我廣播。",["FIA：FIS＋SAR alerting","Broadcast area 預設 surface–5,000 ft AMSL","CTAF 自報位置意圖","詳細要求睇 ERSA"],["cg","xpdr","nontower"],"AIP ENR 1.4 3.2"),
 T("speed","Airspace Classes","Speed Limits","Class C／D／E／G：<10,000 ft AMSL 250 kt IAS；D 近機場 200 kt。",["250 kt IAS <10,000 ft","D：≤2,500ft AAL＋4NM → 200 kt","VFR 要 subsonic","CASR 91.283"],["cc","cd","vfr"],"AIP ENR 1.4 table"),
-T("xpdr","Airspace Classes","Transponder & Squawk","VFR G 類 squawk 1200；管制空域跟 ATC。緊急 7700／7600／7500。",["1200 VFR（澳洲 OPS01）","ATC 指定碼","7700 emergency","7600 radio failure","7500 hijack"],["cg","sig","rf"],"OPS01 slides; BAK p3238"),
-T("hkair","Airspace Classes","HK Airspace","香港空域分類／規例教材冇，未驗證。",["HK 唔係 CASA 體系","要睇 HK AIP","面試前補查"],["hk","classes"],"教材冇",true),
+T("xpdr","Airspace Classes","Transponder & Squawk","VFR G 類 squawk 1200；管制airspace跟 ATC。緊急 7700／7600／7500。",["1200 VFR（澳洲 OPS01）","ATC 指定碼","7700 emergency","7600 radio failure","7500 hijack"],["cg","sig","rf"],"OPS01 slides; BAK p3238"),
+T("hkair","Airspace Classes","HK Airspace","香港airspace分類／規例教材冇，未驗證。",["HK 唔係 CASA 體系","要睇 HK AIP","面試前補查"],["hk","classes"],"教材冇",true),
 // ---- VFR & VMC
 T("vfr","VFR & VMC","VFR Conditions","VFR 只可喺 VMC、日間、subsonic；夜間要 rating。",["必須 VMC","≤2,000 ft AGL 要睇到地面","日間（NVFR 先夜飛）","Subsonic","Class A 要 approval"],["vmc","svfr","night","cruise"],"AIP ENR 1.2 1.1; CASR 91.273–91.285"),
-T("vmc","VFR & VMC","VMC Criteria (CASA)","VMC＝飛行能見度＋離雲距離，按空域同高度而定。",["≥10,000 ft：8 km, 1500 m / 1000 ft","<10,000 ft：5 km, 1500 m / 1000 ft","D：5 km, 600 m / 1000 ft 上 500 ft 下","G 低層：5 km, clear of cloud, 見地面"],["vfr","cd","cg","svfr"],"Part 91 MOS 2.07; OPS01 slides"),
+T("vmc","VFR & VMC","VMC Criteria (CASA)","VMC＝飛行visibility＋離雲距離，按airspace同altitude而定。",["≥10,000 ft：8 km, 1500 m / 1000 ft","<10,000 ft：5 km, 1500 m / 1000 ft","D：5 km, 600 m / 1000 ft 上 500 ft 下","G 低層：5 km, clear of cloud, 見地面"],["vfr","cd","cg","svfr"],"Part 91 MOS 2.07; OPS01 slides"),
 T("svfr","VFR & VMC","Special VFR","VMC 唔夠時，ATC 可批 SVFR：clear of cloud，vis ≥1,600 m。",["日間，喺 CTR／毗鄰 CTA","Clear of cloud","Aeroplane vis ≥1,600 m","Heli ≥800 m","Class E 唔准"],["vmc","ce","cd"],"AIP ENR 1.2 1.2"),
 T("cruise","VFR & VMC","VFR Cruising Levels","按 magnetic track 揀：000–179 奇數千＋500；180–359 偶數千＋500。",["東行：1500, 3500, 5500…","西行：2500, 4500, 6500…","<3,000 ft AMSL 唔使","≥3,000 但 <1,500 AGL 唔使","ATC 指示優先"],["vfr","qnh"],"Part 91 MOS 2.09; CASR 91.275; OPS01 slide"),
 T("minh","VFR & VMC","Minimum Heights","Populous area 1,000 ft（600 m 半徑）；其他地方 500 ft（300 m）。",["Populous／gathering：1,000 ft","其他：500 ft","起降、training circuits 等例外","Aeroplane vs rotorcraft 半徑唔同"],["vfr","night"],"CASR 91.265/91.267"),
-T("night","VFR & VMC","Night VFR","夜 VFR 要 NVFR rating；有 minimum height（LSALT／1,000 ft+10NM）。",["要 night rating＋裝備","最低高度規則 91.277","final reserve 45 min","Alternate：1 小時內"],["vfr","frf","minh"],"CASR 91.277; MOS Table 19.02; MOS 8.05"),
+T("night","VFR & VMC","Night VFR","夜 VFR 要 NVFR rating；有 minimum height（LSALT／1,000 ft+10NM）。",["要 night rating＋裝備","最低altitude規則 91.277","final reserve 45 min","Alternate：1 小時內"],["vfr","frf","minh"],"CASR 91.277; MOS Table 19.02; MOS 8.05"),
 T("qnh","VFR & VMC","QNH & Altimetry","<10,000 ft：開車前設 local／area QNH；高過用 1013 standard。",["QNH＝讀出標高 AMSL","10,000 ft 以上 standard","Altimeter 讀得準先分隔","ATIS 攞 QNH"],["cruise","vfr"],"BAK p154; AIP ENR 1.7（細節我記憶）",true),
 // ---- Collision avoidance
 T("row","Collision Avoidance","Right of Way Rules","原則：避免碰撞；有 right of way 嘅保持 heading 同 speed。",["Emergency landing 優先","Landing aircraft 優先","Converging：右邊優先","Head-on 各向右","Overtaking：超車者讓"],["conv","head","overt","land","cat","hold"],"CASR 91.330–91.340; BAK p152"),
-T("conv","Collision Avoidance","Converging Aircraft","同高度會合：對方喺你右邊，你讓。",["Aircraft on right has priority","見到右邊有機＝你讓","唔好喺對方前面橫過","右邊嗰架都要留意"],["row","head","hold"],"CASR 91.330 item 6"),
-T("head","Collision Avoidance","Head-On","面對面：雙方都向右轉。",["Both alter heading right","Risk of collision 先適用","唔好爬升／下降對沖"],["row","conv"],"CASR 91.335(3)"),
-T("overt","Collision Avoidance","Overtaking","超車一方讓，向右過，保持喺右邊直至通過。",["Overtaker gives way","Pass to the right","唔好靠爬升／下降超","被超嗰架有 right of way"],["row","hold"],"CASR 91.335(2); BAK p153（70° 區）"),
+T("conv","Collision Avoidance","Converging Aircraft","同altitude會合：對方喺你右邊，你讓。",["Aircraft on right has priority","見到右邊有機＝你讓","唔好喺對方前面橫過","右邊嗰架都要留意"],["row","head","hold"],"CASR 91.330 item 6"),
+T("head","Collision Avoidance","Head-On","面對面：雙方都向右轉。",["Both alter heading right","Risk of collision 先適用","唔好climb／descent對沖"],["row","conv"],"CASR 91.335(3)"),
+T("overt","Collision Avoidance","Overtaking","超車一方讓，向右過，保持喺右邊直至通過。",["Overtaker gives way","Pass to the right","唔好靠climb／descent超","被超嗰架有 right of way"],["row","hold"],"CASR 91.335(2); BAK p153（70° 區）"),
 T("land","Collision Avoidance","Landing & Lower Aircraft","Landing 嘅優先；approach 時低機優先，但唔准 cut in。",["Landing 最優先（次於 emergency）","Higher gives way to lower","低機唔可借機 cut in final","Power-driven 讓 glider"],["row","nontower","cat"],"CASR 91.330 items 1–3"),
 T("cat","Collision Avoidance","Category Priority","同區：balloon > parachutist > glider > airship > tow > powered。",["Balloon 最優先","Glider 優於動力機","Towing aircraft 優於 powered","Powered 要讓晒"],["row","land"],"CASR 91.330 item 5"),
 T("hold","Collision Avoidance","Maintain Heading & Speed","有 right of way 要保持 heading＋speed；讓路方唔可以貼近橫過。",["Priority aircraft 保持航向","Giving way：唔好 pass 前面太近","避撞必要時可違例","TCAS RA 優先"],["row","conv","seeavoid"],"CASR 91.335(1)(4)(5)"),
-T("nontower","Collision Avoidance","Non-Towered Separation","冇塔：前機過咗 upwind end／開始轉彎先起飛。",["起飛：前機過咗跑道末或轉彎","MTOW <2,000 kg：前機 ≥600 m 前方","著陸：前機已離開／安全距離","用 CTAF 廣播"],["land","fia"],"BAK p154"),
-T("seeavoid","Collision Avoidance","See-and-Avoid","Class G 靠眼睛：collision course＝相對位置不變、只係變大。",["Constant bearing＝危險","Scan：快掃＋慢看","Alerted see-and-avoid","Transponder 保持 ON","盲區要轉機身睇"],["hold","cg"],"BAK p155–156"),
+T("nontower","Collision Avoidance","Non-Towered Separation","冇塔：前機過咗 upwind end／開始turn先take-off。",["take-off：前機過咗runway末或turn","MTOW <2,000 kg：前機 ≥600 m 前方","著陸：前機已離開／安全距離","用 CTAF 廣播"],["land","fia"],"BAK p154"),
+T("seeavoid","Collision Avoidance","See-and-Avoid","Class G 靠眼睛：collision course＝相對位置不變、只係變大。",["Constant bearing＝危險","Scan：快掃＋慢看","Alerted see-and-avoid","Transponder 保持 ON","盲區要轉fuselage睇"],["hold","cg"],"BAK p155–156"),
 // ---- Flight prep & fuel
-T("prep","Flight Prep & Fuel","Pre-Flight Planning","PIC 要睇晒：天氣、燃油、W&B、起降要求、NOTAM、備降。",["Weather：TAF／Area forecast","Fuel planning","Weight & balance","Take-off/landing performance","NOTAM、alternate"],["taf","alt","fuelc"],"OPS01 slides; CASR 91.230"),
+T("prep","Flight Prep & Fuel","Pre-Flight Planning","PIC 要睇晒：天氣、fuel、W&B、起降要求、NOTAM、備降。",["Weather：TAF／Area forecast","Fuel planning","Weight & balance","Take-off/landing performance","NOTAM、alternate"],["taf","alt","fuelc"],"OPS01 slides; CASR 91.230"),
 T("taf","Flight Prep & Fuel","TAF Terms","TAF 要喺有效期；ATIS 唔可用嚟做計劃。",["CAVOK、FM、BECMG","TEMPO：最長 60 分鐘","INTER：最長 30 分鐘","PROB30/40","唔好用 ATIS 計劃"],["prep","alt"],"OPS01 slides; MOS 8.04"),
 T("alt","Flight Prep & Fuel","Alternate Aerodrome","預測天氣差（relevant weather）就要 nominate alternate，或帶足 holding fuel。",["VFR 日間 ≤50 NM 離場場：豁免","INTER：holding 30 分鐘","TEMPO：holding 60 分鐘","夜 VFR：alternate ≤1 小時","SCT 以上低雲／vis<8 km／crosswind"],["prep","fuelc","taf"],"MOS 8.04–8.05; OPS01 slide"),
 T("fuelc","Flight Prep & Fuel","Fuel Components","開飛時至少：taxi＋trip＋alternate＋holding＋contingency＋final reserve。",["Taxi fuel","Trip fuel","Destination alternate（如要）","Holding fuel（如要）","Final reserve（永不計劃用）"],["frf","alt","minfuel"],"Part 91 MOS 19.04"),
 T("frf","Flight Prep & Fuel","Final Reserve Fuel","小型 piston 機：VFR 30 min、Night VFR／IFR 45 min。",["≤5,700 kg piston VFR：30 min","Night VFR：45 min","IFR：45 min","Heavy piston >5,700：45＋5%","1,500 ft AAL holding speed"],["fuelc","minfuel","night"],"Part 91 MOS 19.02 Table; OPS01"),
 T("minfuel","Flight Prep & Fuel","Minimum Fuel vs MAYDAY FUEL","Minimum fuel＝唔係 emergency；少過 final reserve＝MAYDAY FUEL。",["Minimum fuel：任何更改會低過 final reserve","唔會有 priority","Emergency fuel：MAYDAY×3 FUEL","Distress message"],["frf","sig","fuelc"],"Part 91 MOS 19.06/19.07"),
-T("fuelq","Flight Prep & Fuel","Fuel Quality Checks","燃油要 grade 啱、冇污染；日常檢查 drain 同水。",["Drains 要工作","啱 fuel grade","查水／污染物","CASR 91.465 禁用劣質油"],["mr","fuelc"],"OPS01 slide; CASR 91.465"),
+T("fuelq","Flight Prep & Fuel","Fuel Quality Checks","fuel要 grade 啱、冇污染；日常檢查 drain 同水。",["Drains 要工作","啱 fuel grade","查水／污染物","CASR 91.465 禁用劣質油"],["mr","fuelc"],"OPS01 slide; CASR 91.465"),
 // ---- Licensing
 T("lic","Licensing & Medical","Licence Structure (CASA)","RPL → PPL → CPL → ATPL（MPL 係另一條路）。",["RPL：日間 VFR，≤1,500 kg 單發","PPL：私人運作","CPL：商業運作","ATPL：airline 機長","Instrument／night 要 rating"],["rpl","ppl","cpl","atpl","endorse"],"CASR Part 61; OPS01 slide"),
 T("rpl","Licensing & Medical","RPL","RPL：單發、≤1,500 kg、日間 VFR、私人或受訓。",["≤1,500 kg 單發","Day VFR only","超過 1 乘客／>10,000 ft：要 class 1/2 med","OPS01：25 小時（check）"],["lic","med","ppl"],"CASR 61.460/61.465",true),
@@ -63,7 +63,7 @@ T("ppl","Licensing & Medical","PPL","PPL 私人運作；經驗：integrated 35 �
 T("cpl","Licensing & Medical","CPL","CPL：商業運作；integrated 150 h／non-integrated 200 h。",["Integrated：150 h","Non-integrated：200 h","300 NM X-country","10 h instrument","<750 h 唔可做大型單人 air transport"],["lic","ppl","atpl"],"CASR 61.570/61.590/61.610（2024 版）；OPS01 寫 250 h 同規例矛盾",true),
 T("atpl","Licensing & Medical","ATPL & MPL","ATPL 要 1,500 h aeronautical experience；MPL 240 h（含 sim）。",["ATPL：1,500 h","MPL：240 h","Multi-crew course","Single-pilot IFR 要 IR／IPC"],["lic","cpl"],"CASR 61.660/61.665/ ATPL exp",true),
 T("med","Licensing & Medical","Medical Certificates","Class 1 商業；Class 2 私人／solo；RPL 可用 RAMPC。",["Class 1：commercial","Class 2：private／solo","RPL：class 1/2 或 RAMPC","要帶喺機上"],["lic","docs","rpl"],"CASR 61.405–61.415; OPS01 slide"),
-T("recent","Licensing & Medical","Recent Experience","載客：90 日內 3 次起飛＋3 次降落（夜載客要夜間）。",["90 days","3 take-offs＋3 landings","夜載客：夜間 3＋3","起飛後爬 ≥500 ft AGL","Flight review／check 可代替"],["lic","review"],"CASR 61.395"),
+T("recent","Licensing & Medical","Recent Experience","載客：90 日內 3 次take-off＋3 次landing（夜載客要夜間）。",["90 days","3 take-offs＋3 landings","夜載客：夜間 3＋3","take-off後爬 ≥500 ft AGL","Flight review／check 可代替"],["lic","review"],"CASR 61.395"),
 T("review","Licensing & Medical","Flight Review","Flight review：要向有權人士示範 competency。",["Instructor／CASA／approved 做","喺啱 rating 嘅機或 sim","評 competency units"],["recent","lic"],"CASR 61.400"),
 T("endorse","Licensing & Medical","Ratings & Endorsements","Type、night、instrument、instructor；FROL、aerobatic、formation 等。",["Type rating","Night／NVFR","MECIR／IR","Instructor rating","FROL、aerobatic、formation endorsement"],["lic","night"],"OPS01 slide"),
 T("fdp","Licensing & Medical","Fatigue & Fitness","按 CAO 48.1；用 I'M SAFE 同 Samn-Perelli 自評。",["I'M SAFE：Illness…Eating","Samn-Perelli 6–7 要停","CAO 48.1 Appendix 6","PIC 唔准疲勞飛行"],["pic","alc","just"],"Ops Manual 1.14.2; CAO 48.1"),
@@ -72,12 +72,12 @@ T("alc","Licensing & Medical","Alcohol & Drugs","酒精／藥物影響下唔准�
 T("sig","Emergency & Briefings","MAYDAY vs PAN-PAN","MAYDAY＝distress；PAN-PAN＝urgency；121.5 MHz 係國際緊急頻率。",["MAYDAY：life 即時危險","PAN-PAN：urgency","7700 squawk","121.5 MHz","ELT／SARTIME"],["xpdr","rf","sar","forced"],"OPS01 slides; ICAO 通用"),
 T("sar","Emergency & Briefings","ELT & SARTIME","SARTIME＝預報到達時間；過時間冇報＝SAR 啟動。",["ELT：撞擊自動發射","SARTIME 通知 ATS／人","Landing before last light","Enzo：ELT 要攜帶"],["sig","eqp2"],"OPS01 slide; BAK p179; Ops Manual 2.1.9"),
 T("eqp2","Emergency & Briefings","Emergency Equipment","ELT、救生衣（over-water 超過 gliding 距離）、滅火筒、sick bag。",["ELT（壞咗帶 portable）","Life jackets：過水距離","Portable fire extinguisher","乘客要知位置"],["sar","paxb"],"Ops Manual 2.1.8–2.1.9; Passenger briefing"),
-T("efato","Emergency & Briefings","Engine Failure Takeoff (TOSB)","Take-off safety brief：跑道上收油煞車；轉彎前唔好掉頭。",["跑道：close throttle, brake","Crosswind 前：低機頭，±30° 揀地","唔好 turn back","Crosswind 後：可掉頭落"],["forced","depb"],"TOSB V1.0"),
+T("efato","Emergency & Briefings","Engine Failure Takeoff (TOSB)","Take-off safety brief：runway上收油煞車；turn前唔好掉頭。",["runway：close throttle, brake","Crosswind 前：低nose，±30° 揀地","唔好 turn back","Crosswind 後：可掉頭落"],["forced","depb"],"TOSB V1.0"),
 T("forced","Emergency & Briefings","Forced Landing","AVIATE（glide speed）→ NAVIGATE（揀場）→ COMMUNICATE。",["Aviate：glide speed、fuel check","Navigate：wind、surface、size、shape、slope","Communicate：MAYDAY、7700","Brief pax、shutdown"],["efato","sig","xpdr"],"OPS01 slide"),
-T("rf","Emergency & Briefings","Radio Failure","近機場：squawk 7600，VFR，盲發，睇 light signals。",["Squawk 7600","保持 VFR","Transmit blind","判斷跑道方向、入 circuit","Watch light signals（ERSA）"],["xpdr","light","sig"],"OPS01 slide（OCR 寫 squawk 碼不清，7600 係標準）",true),
+T("rf","Emergency & Briefings","Radio Failure","近機場：squawk 7600，VFR，盲發，睇 light signals。",["Squawk 7600","保持 VFR","Transmit blind","判斷runway方向、入 circuit","Watch light signals（ERSA）"],["xpdr","light","sig"],"OPS01 slide（OCR 寫 squawk 碼不清，7600 係標準）",true),
 T("light","Emergency & Briefings","Light Signals","塔台 light gun：綠＝許可，紅＝停／讓／唔好著陸。",["Steady green：cleared","Flashing green：return for landing（空）","Steady red：give way","Flashing red：aerodrome unsafe","Flashing white：返起點（地面）"],["rf"],"OPS01 slide; CASR 91.670"),
-T("paxb","Emergency & Briefings","Passenger Briefing","起飛前 PIC 要簡報：禁煙、安全帶、出口、控制座位、緊急設備。",["No smoking","Seatbelts 全程","Emergency exits","唔好掂／踢 controls","Hi-vis jacket、apron"],["pic","eqp2"],"Passenger briefing; CASR 91.565"),
-T("depb","Emergency & Briefings","Departure Brief (CTWO)","CTWO：Chart、Terrain、Weather、Operation；之後 EFIS 設定。",["Chart：跑道、航向、高度","Terrain：最低安全高度","Weather：風、雲、能見度","Operation：離場限制","EFIS：comm、QNH、transponder"],["efato"],"Departure Brief docx"),
+T("paxb","Emergency & Briefings","Passenger Briefing","take-off前 PIC 要簡報：禁煙、安全帶、出口、控制座位、緊急設備。",["No smoking","Seatbelts 全程","Emergency exits","唔好掂／踢 controls","Hi-vis jacket、apron"],["pic","eqp2"],"Passenger briefing; CASR 91.565"),
+T("depb","Emergency & Briefings","Departure Brief (CTWO)","CTWO：Chart、Terrain、Weather、Operation；之後 EFIS 設定。",["Chart：runway、航向、altitude","Terrain：最低安全altitude","Weather：風、雲、visibility","Operation：離場限制","EFIS：comm、QNH、transponder"],["efato"],"Departure Brief docx"),
 // ---- SMS
 T("sms","Safety Management (SMS)","SMS Four Components","ICAO SMS：Policy → Risk Mgmt → Assurance → Promotion。",["Safety policy & objectives","Safety risk management","Safety assurance","Safety promotion","ICAO Annex 19；CASR Part 119"],["haz","assure","promo","icao"],"CASA SMS book 1 p7"),
 T("haz","Safety Management (SMS)","Hazard vs Risk","Hazard＝可造成傷害嘅「而家」嘢；Risk＝likelihood × severity。",["Hazard：現存","Risk：未來後果","例：白鷺（hazard）→ bird strike（risk）","Hazard register 記錄"],["srm","matrix","sms"],"SMS book 1 p9"),
@@ -104,8 +104,8 @@ L("hk","icao","HK CAD 亦按 ICAO，但細節唔同"),
 L("pic","fdp","PIC 有責任唔疲勞飛行"),
 L("pic","paxb","PIC 負責乘客安全＝要 brief"),
 L("mr","docs","Maintenance release 係必帶文件"),
-L("classes","vmc","VMC 數值按空域類別而定"),
-L("classes","hier","相鄰空域取較寬鬆類別"),
+L("classes","vmc","VMC 數值按airspace類別而定"),
+L("classes","hier","相鄰airspace取較寬鬆類別"),
 L("cc","speed","C/D/E/G 都有 250 kt 限制"),
 L("cd","svfr","D 內 VMC 唔夠先用 SVFR"),
 L("ce","svfr","E 唔准 Special VFR"),
@@ -116,8 +116,8 @@ L("xpdr","sig","Squawk 7700 係 MAYDAY 配套"),
 L("xpdr","rf","7600 通知 ATC radio failure"),
 L("vfr","vmc","VFR 前提：必須 VMC"),
 L("vmc","svfr","低過 VMC 先需要 SVFR"),
-L("cruise","qnh","巡航高度以 altimeter（QNH）為準"),
-L("minh","night","夜 VFR 有另一套最低高度"),
+L("cruise","qnh","巡航altitude以 altimeter（QNH）為準"),
+L("minh","night","夜 VFR 有另一套最低altitude"),
 L("row","hold","有 right of way 要保持航向"),
 L("conv","head","兩者都靠「向右」原則"),
 L("overt","head","超車同對頭都向右"),
@@ -133,7 +133,7 @@ L("recent","review","Flight review 可以代替 recency"),
 L("fdp","alc","Fitness：fatigue＋alcohol 都係 I'M SAFE"),
 L("sig","forced","Forced landing 要發 MAYDAY"),
 L("sar","sig","ELT／SARTIME 係 distress 後備"),
-L("efato","forced","TOSB 係 forced landing 嘅起飛版本"),
+L("efato","forced","TOSB 係 forced landing 嘅take-off版本"),
 L("eqp2","paxb","乘客要識用緊急設備"),
 L("sms","icao","ICAO Annex 19 定 SMS 框架"),
 L("haz","matrix","Hazard 再按 likelihood×severity 評級"),
@@ -219,7 +219,7 @@ C("🔦","sar","What is SARTIME?","A nominated time by which you must report arr
 C("🧯","eqp2","What emergency equipment is carried?","ELT (portable if fixed one u/s), life jackets for extended over-water, portable fire extinguisher and sick bags.","Enzo 2.1.8–9。"),
 C("🛫","efato","What do you do for engine failure on the runway during take-off?","Close the throttle and brake as required.","TOSB。"),
 C("🛫","efato","Engine failure airborne before the crosswind turn?","Lower the nose, choose a spot within 30° of the nose, flaps as required, and land; do not turn back.","唔好掉頭。"),
-C("🛫","efato","Engine failure after the crosswind turn?","Lower the nose, flaps as required, and turn back for a downwind landing on the grass or runway.","轉彎後可掉頭。"),
+C("🛫","efato","Engine failure after the crosswind turn?","Lower the nose, flaps as required, and turn back for a downwind landing on the grass or runway.","turn後可掉頭。"),
 C("🛬","forced","State the forced-landing priorities.","Aviate (glide speed, fuel check), navigate (field: wind, surface, size, shape, slope), communicate (MAYDAY, 7700), brief passengers.","ANC。"),
 C("📻","rf","What do you do with radio failure near the departure aerodrome?","Squawk 7600, remain VFR, transmit blind, determine landing direction, join the circuit and watch for light signals.","OPS01（碼不清）。","check"),
 C("💡","light","What does a steady red light signal to an aircraft in flight?","Give way to other aircraft and continue circling.","Light gun。"),
@@ -294,7 +294,7 @@ C("🛰️","tsi","Does the ATSB investigate to blame?","No; its function under 
 C("🔐","just","How does just culture relate to REPCON?","Confidential, non-punitive reporting encourages people to share safety information.","SMS／AIP。"),
 ],
 anims:[
-{title:"Airspace 立體切層：飛機穿越變 requirements", hint:"拉距離＋高度滑桿（示意圖，非真實 chart）", build(box,H){
+{title:"Airspace 立體切層：飛機穿越變 requirements", hint:"拉距離＋altitude滑桿（示意圖，非真實 chart）", build(box,H){
   const svg=H.svg(box,700,320),say=H.note(box),E=H.el;
   const yA=a=>290-a/20000*270, xP=v=>40+v;
   E("rect",{x:0,y:0,width:700,height:320,fill:"#0f172a"},svg);
@@ -312,17 +312,17 @@ anims:[
   const cls=()=>{if(al>=18000)return "A";if(d>=260&&d<=360&&al<4500)return "D";if((d>=160&&d<=460&&al>=4500&&al<12500)||(d>=210&&d<=410&&al>=2500&&al<4500))return "C";if(al>=8500)return "E";return "G"};
   const upd=()=>{ac.setAttribute("cx",xP(d));ac.setAttribute("cy",yA(al));const k=cls();say("而家喺 "+al+" ft："+info[k])};
   H.slider(box,"距離（機場喺中間）",0,640,60,v=>{d=v;upd()},5);
-  H.slider(box,"高度 ft",0,20000,3000,v=>{al=v;upd()},250);
+  H.slider(box,"altitude ft",0,20000,3000,v=>{al=v;upd()},250);
 }},
 {title:"Right of Way：點擊邊架要讓路", hint:"撳你覺得要讓路嘅飛機", build(box,H){
   const svg=H.svg(box,700,300),say=H.note(box),E=H.el;
   const S=[
-   {n:"Converging：同高度會合",a:[{x:200,y:260,h:45,s:1.3,l:"A"},{x:500,y:260,h:315,s:1.3,l:"B"}],ans:0,w:"B 喺 A 右邊 → A 讓（轉右）"},
+   {n:"Converging：同altitude會合",a:[{x:200,y:260,h:45,s:1.3,l:"A"},{x:500,y:260,h:315,s:1.3,l:"B"}],ans:0,w:"B 喺 A 右邊 → A 讓（轉右）"},
    {n:"Head-on：對頭",a:[{x:100,y:150,h:90,s:1.3,l:"A"},{x:600,y:150,h:270,s:1.3,l:"B"}],ans:-1,w:"兩架都向右轉"},
    {n:"Overtaking：超車",a:[{x:100,y:150,h:90,s:2,l:"A (快)"},{x:300,y:150,h:90,s:1,l:"B (慢)"}],ans:0,w:"超車者 A 讓，向右過"},
    {n:"Approach to land：兩架 final",a:[{x:330,y:170,h:180,s:.7,l:"A 低"},{x:370,y:100,h:180,s:.7,l:"B 高"}],ans:1,w:"高機 B 讓低機 A（但 A 唔可 cut in）"},
    {n:"Powered vs Glider",a:[{x:500,y:260,h:315,s:1.3,l:"A 動力機"},{x:200,y:260,h:45,s:1.3,l:"G 滑翔機"}],ans:0,w:"動力機 A 讓 glider（category 優先於 right 規則）"},
-   {n:"Emergency：A 發動機故障要降落",a:[{x:200,y:260,h:45,s:1.3,l:"A 緊急"},{x:500,y:260,h:315,s:1.3,l:"B"}],ans:1,w:"B 讓 compelled-to-land 嘅 A（emergency 最優先）"}];
+   {n:"Emergency：A engine故障要landing",a:[{x:200,y:260,h:45,s:1.3,l:"A 緊急"},{x:500,y:260,h:315,s:1.3,l:"B"}],ans:1,w:"B 讓 compelled-to-land 嘅 A（emergency 最優先）"}];
   let cur=0,t=0,run=false,P=[],G=[];
   const nm=E("text",{x:12,y:22,"font-size":14,fill:"#fbbf24"},svg);
   E("rect",{x:0,y:0,width:700,height:300,fill:"#0f172a",opacity:.4},svg);
@@ -368,15 +368,15 @@ anims:[
   const tag=E("text",{x:40,y:24,"font-size":12,fill:"#fca5a5"},svg);tag.textContent="Hazard";
   const out=E("text",{x:560,y:24,"font-size":16,fill:"#fff"},svg);
   const redraw=()=>{hs.forEach((h,i)=>h.setAttribute("cy",holes[i]));ln.setAttribute("y1",hy);ln.setAttribute("y2",hy);if(!run){hz.setAttribute("cy",hy);px=40;hz.setAttribute("cx",40)}};
-  H.slider(box,"Hazard 高度",40,260,150,v=>{hy=v;redraw()});
+  H.slider(box,"Hazard altitude",40,260,150,v=>{hy=v;redraw()});
   names.forEach((n,i)=>H.slider(box,n.split("\n")[0]+" 洞位置",40,260,150,v=>{holes[i]=v;redraw()}));
   H.button(box,"放 hazard 入去",()=>{run=true;px=40;stop=-1;out.textContent="";say("Hazard 前進…")});
   H.loop(()=>{if(!run)return;px+=3;hz.setAttribute("cx",px);hz.setAttribute("cy",hy);
     for(let i=0;i<4;i++){if(stop<0&&px>=X[i]-18&&Math.abs(holes[i]-hy)>24){stop=i;px=X[i]-22;run=false;out.textContent="BLOCKED";say("喺「"+names[i].split("\n")[0]+"」被擋住：洞冇對齊 → 冇事故")}}
     if(run&&px>=680){run=false;out.textContent="ACCIDENT";say("四個洞對齊 → hazard 穿過所有 defences = accident。SMS 目標：補洞、令洞唔對齊")}});
-  redraw();say("先拉洞對齊 hazard 高度，再撳「放 hazard」");
+  redraw();say("先拉洞對齊 hazard altitude，再撳「放 hazard」");
 }},
-{title:"VMC Minima：高度／空域／雲距離", hint:"揀空域，拉高度同雲距離睇係咪 VMC", build(box,H){
+{title:"VMC Minima：altitude／airspace／雲距離", hint:"揀airspace，拉altitude同雲距離睇係咪 VMC", build(box,H){
   const svg=H.svg(box,700,280),say=H.note(box),E=H.el;
   E("rect",{x:0,y:0,width:700,height:280,fill:"#0f172a"},svg);
   let K="G",al=2000,vis=6,hz=800,vz=500,above=true;
@@ -392,16 +392,16 @@ anims:[
   function upd(){const r=req();t1.textContent=r.txt;ring.setAttribute("r",Math.max(6,vis*20));need.setAttribute("r",r.v*20);
     const cx=350+Math.max(60,hz/2000*260+55),cy=above?140-Math.max(30,vz/1500*100+26):140+Math.max(30,vz/1500*100+26);cl.setAttribute("cx",cx);cl.setAttribute("cy",cy);
     const visOK=vis>=r.v;let cOK;if(r.h===0)cOK=hz>0||vz>0;else{const vn=above?r.vu:r.vd;cOK=hz>=r.h||vz>=vn}
-    const ok=visOK&&cOK;t2.textContent=ok?"VMC ✓ 可以 VFR":"IMC ✗ "+(visOK?"離雲太近":"能見度不足");t2.setAttribute("fill",ok?"#4ade80":"#f87171");
-    say("藍圈＝你嘅能見度；粉紅圈＝最低要求。橫距 或 豎距 其一達標即可（唔入雲）")}
+    const ok=visOK&&cOK;t2.textContent=ok?"VMC ✓ 可以 VFR":"IMC ✗ "+(visOK?"離雲太近":"visibility不足");t2.setAttribute("fill",ok?"#4ade80":"#f87171");
+    say("藍圈＝你嘅visibility；粉紅圈＝最低要求。橫距 或 豎距 其一達標即可（唔入雲）")}
   H.button(box,"Class G",()=>{K="G";upd()});H.button(box,"Class C／E",()=>{K="E";upd()});H.button(box,"Class D",()=>{K="D";upd()});
   H.button(box,"雲喺上／下",()=>{above=!above;upd()});
-  H.slider(box,"高度 ft AMSL",500,14000,2000,v=>{al=v;upd()},500);
-  H.slider(box,"能見度 km",1,12,6,v=>{vis=v;upd()},.5);
+  H.slider(box,"altitude ft AMSL",500,14000,2000,v=>{al=v;upd()},500);
+  H.slider(box,"visibility km",1,12,6,v=>{vis=v;upd()},.5);
   H.slider(box,"雲橫距 m",0,2000,800,v=>{hz=v;upd()},50);
   H.slider(box,"雲豎距 ft",0,1500,500,v=>{vz=v;upd()},50);
 }},
-{title:"Fuel Stack：開飛要帶幾多油", hint:"拉飛行時間／燃油消耗，睇每層油", build(box,H){
+{title:"Fuel Stack：開飛要帶幾多油", hint:"拉飛行時間／fuel消耗，睇每層油", build(box,H){
   const svg=H.svg(box,700,300),say=H.note(box),E=H.el;
   E("rect",{x:0,y:0,width:700,height:300,fill:"#0f172a"},svg);
   let trip=1.5,burn=36,night=false,hold=0,alt=false;

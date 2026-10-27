@@ -4,122 +4,122 @@ Cadet.add({
   src:"Areodynamics Lectures 1-21 · Airspace POF02/03/05 · PHAK ch4-6 · RPL BAK · ATP Test Prep ch3 · ENZO briefings",
   topics:[
   // ===== Air & Atmosphere
-  {id:"pof.atmos",g:"Air & Atmosphere",t:"Atmosphere & ISA",d:"空氣有質量、重量、密度；ISA 係標準參考大氣。",pts:["78% N₂, 21% O₂, 1% others","ISA sea level: 15°C, 1013.25 hPa","Density 隨高度下降","Temp/humidity ↑ → density ↓"],rel:["pof.densalt","pof.liftformula"],src:"PHAK ch4; RPL ch1 & ch6"},
+  {id:"pof.atmos",g:"Air & Atmosphere",t:"Atmosphere & ISA",d:"空氣有質量、weight、density；ISA 係標準參考大氣。",pts:["78% N₂, 21% O₂, 1% others","ISA sea level: 15°C, 1013.25 hPa","Density 隨altitudedescent","Temp/humidity ↑ → density ↓"],rel:["pof.densalt","pof.liftformula"],src:"PHAK ch4; RPL ch1 & ch6"},
   {id:"pof.viscosity",g:"Air & Atmosphere",t:"Viscosity & Friction",d:"空氣係 fluid，有 viscosity；貼面空氣被 friction 拖慢。",pts:["Air = fluid, low viscosity","Surface 微觀上都粗糙","→ Boundary layer","→ Skin friction drag"],rel:["pof.bl","pof.parasite"],src:"PHAK ch4"},
-  {id:"pof.densalt",g:"Air & Atmosphere",t:"Density Altitude",d:"熱、高、濕 → 空氣疏 → 性能差。",pts:["DA = pressure alt 按非 ISA 溫度修正","Hot, high, humid = high DA","Lift, thrust, prop 效率都降","Takeoff roll 同 climb 變差","同一 IAS → TAS 更大"],rel:["pof.liftformula","pof.perf"],src:"PHAK ch4"},
-  {id:"pof.speeds",g:"Air & Atmosphere",t:"IAS, TAS & Mach",d:"IAS 反映 dynamic pressure；高空同一 IAS 要更大 TAS。",pts:["IAS ∝ √dynamic pressure","TAS = IAS 按 density 修正","Mach = TAS ÷ speed of sound","Stall IAS 唔隨高度變"],rel:["pof.stallfactors","pof.machnum"],src:"ATP ch3; RPL ch6"},
+  {id:"pof.densalt",g:"Air & Atmosphere",t:"Density Altitude",d:"熱、高、濕 → 空氣疏 → 性能差。",pts:["DA = pressure alt 按非 ISA temperature修正","Hot, high, humid = high DA","Lift, thrust, prop 效率都降","Takeoff roll 同 climb 變差","同一 IAS → TAS 更大"],rel:["pof.liftformula","pof.perf"],src:"PHAK ch4"},
+  {id:"pof.speeds",g:"Air & Atmosphere",t:"IAS, TAS & Mach",d:"IAS 反映 dynamic pressure；高空同一 IAS 要更大 TAS。",pts:["IAS ∝ √dynamic pressure","TAS = IAS 按 density 修正","Mach = TAS ÷ speed of sound","Stall IAS 唔隨altitude變"],rel:["pof.stallfactors","pof.machnum"],src:"ATP ch3; RPL ch6"},
   // ===== Lift Generation
   {id:"pof.fourforces",g:"Lift Generation",t:"Four Forces",d:"Lift, Weight, Thrust, Drag；勻速直線飛行時成對平衡。",pts:["Lift ⟂ relative wind","Thrust/Drag ∥ relative wind","Weight 指向地心","Lift 唔一定垂直向上","S&L: L = W, T = D"],rel:["pof.liftformula","pof.drag","pof.climb"],src:"PHAK ch5; ATP ch3"},
-  {id:"pof.aoa",g:"Lift Generation",t:"Angle of Attack",d:"AoA = chord line 同 relative wind 夾角，唔係機頭指向。",pts:["Attitude ≠ flightpath ≠ AoA","Relative wind 與 flightpath 相反","Stall 同 AoA 有關，唔同速度","Critical AoA ≈ 16–20°","細機多數冇 AoA indicator"],rel:["pof.stall","pof.clcurve"],src:"PHAK ch5; RPL ch6"},
-  {id:"pof.liftformula",g:"Lift Generation",t:"Lift Formula",d:"L = CL · ½ρV² · S；速度影響最大（平方）。",pts:["CL: AoA, camber, flap","ρ: air density","V 加倍 → lift ×4","S: wing area","Pilot: Lift = AoA × IAS"],rel:["pof.stallfactors","pof.clcurve","pof.densalt"],src:"ENZO 06 Stalling; RPL ch6; ATP ch3"},
-  {id:"pof.bernoulli",g:"Lift Generation",t:"Bernoulli's Principle",d:"流速快 → 靜壓低；翼上面流速高所以壓力低。",pts:["Total P = static + dynamic","Venturi 窄位流速高、壓低","上翼面 suction ≈ ⅔ lift","只係『footprint』，唔係完整 why","沿 streamline、inviscid 先成立"],rel:["pof.newton","pof.u.bernlaplace"],src:"PHAK ch4; RPL ch6; Lecture 8"},
-  {id:"pof.newton",g:"Lift Generation",t:"Newton & Downwash",d:"Wing 將空氣向下偏轉 (downwash)，reaction 就係 lift。",pts:["Momentum：空氣向下 → 機向上","Newton's 3rd law","Bernoulli 同 Newton 講同一件事","Coandă：氣流貼面","Kutta condition：後緣平順離開"],rel:["pof.bernoulli","pof.u.liftcause"],src:"PHAK ch4; Lecture 13a"},
-  {id:"pof.liftmyth",g:"Lift Generation",t:"Lift Misconceptions",d:"『Equal transit time』係錯：上下氣流唔會同時到後緣。",pts:["Equal transit time ✗","『空氣彈走』✗","每個講法只講到一部分","真正：mass/momentum/energy 守恆","Pressure 同 flow turning 同時成立"],rel:["pof.bernoulli","pof.newton"],src:"Lecture 13a"},
+  {id:"pof.aoa",g:"Lift Generation",t:"Angle of Attack",d:"AoA = chord line 同 relative wind 夾角，唔係nose指向。",pts:["Attitude ≠ flightpath ≠ AoA","Relative wind 與 flightpath 相反","Stall 同 AoA 有關，唔同speed","Critical AoA ≈ 16–20°","細機多數冇 AoA indicator"],rel:["pof.stall","pof.clcurve"],src:"PHAK ch5; RPL ch6"},
+  {id:"pof.liftformula",g:"Lift Generation",t:"Lift Formula",d:"L = CL · ½ρV² · S；speed影響最大（平方）。",pts:["CL: AoA, camber, flap","ρ: air density","V 加倍 → lift ×4","S: wing area","Pilot: Lift = AoA × IAS"],rel:["pof.stallfactors","pof.clcurve","pof.densalt"],src:"ENZO 06 Stalling; RPL ch6; ATP ch3"},
+  {id:"pof.bernoulli",g:"Lift Generation",t:"Bernoulli's Principle",d:"流速快 → static pressure低；翼上面流速高所以pressure低。",pts:["Total P = static + dynamic","Venturi 窄位流速高、壓低","上翼面 suction ≈ ⅔ lift","只係『footprint』，唔係完整 why","沿 streamline、inviscid 先成立"],rel:["pof.newton","pof.u.bernlaplace"],src:"PHAK ch4; RPL ch6; Lecture 8"},
+  {id:"pof.newton",g:"Lift Generation",t:"Newton & Downwash",d:"Wing 將空氣向下偏轉 (downwash)，reaction 就係 lift。",pts:["Momentum：空氣向下 → 機向上","Newton's 3rd law","Bernoulli 同 Newton 講同一件事","Coandă：airflow貼面","Kutta condition：後緣平順離開"],rel:["pof.bernoulli","pof.u.liftcause"],src:"PHAK ch4; Lecture 13a"},
+  {id:"pof.liftmyth",g:"Lift Generation",t:"Lift Misconceptions",d:"『Equal transit time』係錯：上下airflow唔會同時到後緣。",pts:["Equal transit time ✗","『空氣彈走』✗","每個講法只講到一部分","真正：mass/momentum/energy 守恆","Pressure 同 flow turning 同時成立"],rel:["pof.bernoulli","pof.newton"],src:"Lecture 13a"},
   {id:"pof.clcurve",g:"Lift Generation",t:"CL–α Curve",d:"CL 隨 AoA 線性升到 CLmax，之後跌 = stall。",pts:["Thin airfoil: slope ≈ 2π /rad","CLmax @ critical AoA","Camber/flap → 曲線上移","Cambered: α₀ 為負","Symmetric: CL = 0 @ α = 0"],rel:["pof.stall","pof.u.thin","pof.flaps"],src:"RPL ch6; Lecture 12; ENZO 06"},
   {id:"pof.cp",g:"Lift Generation",t:"Centre of Pressure",d:"CP = 總空氣動力作用點；AoA ↑ CP 前移，stall 後 CP 後移。",pts:["Total reaction through CP","AoA ↑ → CP 前移","Stall → CP 後移 → nose drops","Transonic: CP 後移 → Mach tuck","Cm 約 quarter-chord (thin airfoil)"],rel:["pof.stall","pof.machtuck","pof.longstab"],src:"RPL ch6; PHAK ch5; Lecture 12 p9"},
   // ===== Airfoil & Wing
   {id:"pof.airfoil",g:"Airfoil & Wing",t:"Airfoil Terminology",d:"Chord、camber、thickness、LE/TE 係基本名詞。",pts:["Chord line: LE → TE 直線","Mean camber line: 上下面中線","t/c 同 LE radius","Max camber 約 30% chord","NACA 4412: 4% camber, 12% thick"],rel:["pof.camber","pof.clcurve"],src:"PHAK ch4; RPL ch6; Lecture 13 & 14"},
   {id:"pof.camber",g:"Airfoil & Wing",t:"Camber & Airfoil Types",d:"Cambered 高 lift 適合低速；symmetric 用喺 tail；laminar foil 低 drag。",pts:["Positive camber = 高 CL","Symmetric: α=0 時 lift=0","Tailplane 可有 negative camber","Laminar-flow foil: 最厚點靠後","薄 foil → LE stall；厚 → TE stall"],rel:["pof.airfoil","pof.flaps","pof.u.dragsep"],src:"RPL ch6; Lecture 13 & 14"},
   {id:"pof.aspect",g:"Airfoil & Wing",t:"Aspect Ratio",d:"AR = span² ÷ area；AR 高 → induced drag 低。",pts:["AR = b²/S","High AR: glider","Low AR: fighter, delta","CDi = CL²/(π·e·AR)","代價：結構重"],rel:["pof.induced","pof.u.lifting"],src:"Lecture 16; PHAK ch5"},
-  {id:"pof.planform",g:"Airfoil & Wing",t:"Wing Planform",d:"Rectangular / tapered / elliptical / swept / delta 各有取捨。",pts:["Elliptical: min induced drag","Tapered: 近 elliptical、較輕","Rectangular: 簡單、root 先 stall","Swept: 高 Mcrit、tip stall","Delta: 超音速、低 AR"],rel:["pof.induced","pof.sweep","pof.washout"],src:"PHAK ch5; RPL ch6; Lecture 13/16"},
+  {id:"pof.planform",g:"Airfoil & Wing",t:"Wing Planform",d:"Rectangular / tapered / elliptical / swept / delta 各有取捨。",pts:["Elliptical: min induced drag","Tapered: 近 elliptical、較輕","Rectangular: 簡單、root 先 stall","Swept: 高 Mcrit、tip stall","Delta: 超speed of sound、低 AR"],rel:["pof.induced","pof.sweep","pof.washout"],src:"PHAK ch5; RPL ch6; Lecture 13/16"},
   {id:"pof.wingcfg",g:"Airfoil & Wing",t:"Wing Configuration",d:"高/低翼、dihedral、sweep 影響穩定、效率、視野。",pts:["High wing: pendulum 穩定","Low wing: ground effect 較強","Dihedral: roll 穩定","Anhedral: 較靈活較唔穩","Biplane vs monoplane"],rel:["pof.latstab","pof.groundeffect"],src:"Lecture 13"},
-  {id:"pof.washout",g:"Airfoil & Wing",t:"Washout & Stall Strips",d:"令翼根先 stall，保住翼尖 aileron 控制。",pts:["Washout: tip 角度細過 root","Stall strip: root 前緣細楔","DA40 有 stall strip","Root 先 stall → aileron 仍有效","Nose drops 易 recover"],rel:["pof.stall","pof.aileron"],src:"POF02; PHAK ch5; RPL ch6"},
+  {id:"pof.washout",g:"Airfoil & Wing",t:"Washout & Stall Strips",d:"令wing root先 stall，保住wingtip aileron 控制。",pts:["Washout: tip 角度細過 root","Stall strip: root 前緣細楔","DA40 有 stall strip","Root 先 stall → aileron 仍有效","Nose drops 易 recover"],rel:["pof.stall","pof.aileron"],src:"POF02; PHAK ch5; RPL ch6"},
   // ===== Drag
   {id:"pof.drag",g:"Drag",t:"Drag Overview",d:"Drag 分 parasite 同 induced 兩大類。",pts:["Parasite: form+skin+interference","Induced: 因 lift 而生","Total = parasite + induced","Parasite ∝ V²","Induced ∝ 1/V²"],rel:["pof.parasite","pof.induced","pof.dragcurve"],src:"PHAK ch5; RPL ch6"},
-  {id:"pof.parasite",g:"Drag",t:"Parasite Drag",d:"同 lift 無關：form、skin friction、interference。",pts:["Form: 形狀/frontal area","Skin friction: 表面粗糙度","Interference: wing root 交界","Fairings 減 interference","速度加倍 → ×4"],rel:["pof.bl","pof.drag"],src:"PHAK ch5; RPL ch6"},
-  {id:"pof.induced",g:"Drag",t:"Induced Drag",d:"Lift 嘅副產品：downwash 令 lift vector 向後傾。",pts:["Tip vortices → downwash","Effective AoA ↓, lift 後傾","低速高 AoA 最大","重量 ↑ → induced ↑","減：high AR, winglet"],rel:["pof.vortices","pof.aspect","pof.u.finite"],src:"PHAK ch5; RPL ch6; Lecture 15"},
+  {id:"pof.parasite",g:"Drag",t:"Parasite Drag",d:"同 lift 無關：form、skin friction、interference。",pts:["Form: 形狀/frontal area","Skin friction: 表面粗糙度","Interference: wing root 交界","Fairings 減 interference","speed加倍 → ×4"],rel:["pof.bl","pof.drag"],src:"PHAK ch5; RPL ch6"},
+  {id:"pof.induced",g:"Drag",t:"Induced Drag",d:"Lift 嘅副產品：downwash 令 lift vector 向後傾。",pts:["Tip vortices → downwash","Effective AoA ↓, lift 後傾","低速高 AoA 最大","weight ↑ → induced ↑","減：high AR, winglet"],rel:["pof.vortices","pof.aspect","pof.u.finite"],src:"PHAK ch5; RPL ch6; Lecture 15"},
   {id:"pof.vortices",g:"Drag",t:"Wingtip Vortices",d:"高壓翼下漏去低壓翼上；旋轉方向固定。",pts:["Tip: 下面 → 上面漏","由後面睇：右翼 CCW、左翼 CW","重、慢、clean 最強","Winglet/fence 減弱","Wake turbulence 來源"],rel:["pof.wake","pof.induced"],src:"PHAK ch5; RPL ch6"},
   {id:"pof.winglet",g:"Drag",t:"Winglets & Tip Devices",d:"Winglet / wing fence 減 tip 漏氣 → 降 induced drag。",pts:["阻擋 spanwise leakage","Vortex 變弱","高 CL 時效益大","另一方法：加 AR","Wingtip tank 亦改 tip flow"],rel:["pof.vortices","pof.aspect"],src:"RPL ch6; Lecture 15"},
   {id:"pof.bl",g:"Drag",t:"Boundary Layer",d:"貼面薄層空氣；laminar 摩擦低，turbulent 摩擦高但抗 separation。",pts:["Laminar → transition → turbulent","Turbulent: skin friction 較高","Turbulent 較難 separate","Adverse pressure gradient → separation","Separation = stall / form drag"],rel:["pof.viscosity","pof.stall","pof.u.dragsep"],src:"PHAK ch5; RPL ch6; Lecture 14"},
   {id:"pof.dragcurve",g:"Drag",t:"Drag vs Airspeed",d:"Total drag 曲線有最低點 = minimum drag speed ≈ best L/D。",pts:["慢：induced 主導","快：parasite 主導","Min drag @ L/DMAX","約 4° AoA (light a/c)","Weight ↑ → induced ↑"],rel:["pof.ld","pof.induced","pof.parasite"],src:"PHAK ch5; RPL ch6; ATP ch3"},
-  {id:"pof.ld",g:"Drag",t:"Lift/Drag Ratio",d:"L/D 越高越有效率；L/DMAX 即最佳滑翔 AoA。",pts:["L/D = CL/CD","L/DMAX = min total drag","Glide ratio = L/D (still air)","Best glide speed = L/DMAX speed","重量唔改 ratio，只改速度"],rel:["pof.dragcurve","pof.glide"],src:"PHAK ch5; ENZO 04"},
+  {id:"pof.ld",g:"Drag",t:"Lift/Drag Ratio",d:"L/D 越高越有效率；L/DMAX 即最佳滑翔 AoA。",pts:["L/D = CL/CD","L/DMAX = min total drag","Glide ratio = L/D (still air)","Best glide speed = L/DMAX speed","weight唔改 ratio，只改speed"],rel:["pof.dragcurve","pof.glide"],src:"PHAK ch5; ENZO 04"},
   // ===== Stall & Spin
-  {id:"pof.stall",g:"Stall & Spin",t:"Stall",d:"AoA 超 critical → 氣流分離 → lift 驟跌、drag 升。",pts:["任何 attitude、任何速度","Wing 未完全冇 lift，只係唔夠","Critical AoA 固定","Nose drops：CP 喺 CG 後","Recover = 減 AoA"],rel:["pof.aoa","pof.clcurve","pof.stallrec"],src:"PHAK ch5; RPL ch6; ENZO 06"},
-  {id:"pof.stallsym",g:"Stall & Spin",t:"Stall Warning & Symptoms",d:"IAS 低/減、機頭高、控制軟、buffet、warning horn。",pts:["Low & decreasing IAS","High nose attitude","Sloppy controls, 機艙靜","Buffet; horn 高過 stall 5–10 kt","Full stall: sink, nose/wing drop"],rel:["pof.stall","pof.ctrleff"],src:"ENZO 06; RPL ch6"},
+  {id:"pof.stall",g:"Stall & Spin",t:"Stall",d:"AoA 超 critical → flow separation → lift 驟跌、drag 升。",pts:["任何 attitude、任何speed","Wing 未完全冇 lift，只係唔夠","Critical AoA 固定","Nose drops：CP 喺 CG 後","Recover = 減 AoA"],rel:["pof.aoa","pof.clcurve","pof.stallrec"],src:"PHAK ch5; RPL ch6; ENZO 06"},
+  {id:"pof.stallsym",g:"Stall & Spin",t:"Stall Warning & Symptoms",d:"IAS 低/減、nose高、控制軟、buffet、warning horn。",pts:["Low & decreasing IAS","High nose attitude","Sloppy controls, 機艙靜","Buffet; horn 高過 stall 5–10 kt","Full stall: sink, nose/wing drop"],rel:["pof.stall","pof.ctrleff"],src:"ENZO 06; RPL ch6"},
   {id:"pof.stallfactors",g:"Stall & Spin",t:"Factors Affecting Stall Speed",d:"Stall AoA 唔變，stall speed 會變。",pts:["Weight ↑ → Vs ↑","Flap down → Vs ↓","Power on → Vs ↓","Load factor n → Vs × √n","Ice/frost/dirt → Vs ↑"],rel:["pof.loadfactor","pof.liftformula","pof.flaps","pof.icing"],src:"ENZO 06; RPL ch6; PHAK ch5"},
-  {id:"pof.stallrec",g:"Stall & Spin",t:"Stall Recovery",d:"先減 AoA，再 power、balance、climb。",pts:["Control column 向前 (unstall)","Full power 同時降機頭","Rudder 止 yaw / wing drop","Unstall 後先用 aileron 水平","Incipient：warning 就 recover"],rel:["pof.stall","pof.advstall"],src:"ENZO 06; RPL ch6"},
-  {id:"pof.accstall",g:"Stall & Spin",t:"Accelerated Stall",d:"任何速度都可 stall；load factor ↑ → stall speed ↑。",pts:["Steep turn / pull-up / gust","Vs_new = Vs × √n","60° bank: n=2, Vs ×1.41","Dive pull-up：AoA 突然升","高過 VA → 結構風險"],rel:["pof.loadfactor","pof.turnforces","pof.va"],src:"PHAK ch5; POF03; ENZO 06"},
+  {id:"pof.stallrec",g:"Stall & Spin",t:"Stall Recovery",d:"先減 AoA，再 power、balance、climb。",pts:["Control column 向前 (unstall)","Full power 同時降nose","Rudder 止 yaw / wing drop","Unstall 後先用 aileron 水平","Incipient：warning 就 recover"],rel:["pof.stall","pof.advstall"],src:"ENZO 06; RPL ch6"},
+  {id:"pof.accstall",g:"Stall & Spin",t:"Accelerated Stall",d:"任何speed都可 stall；load factor ↑ → stall speed ↑。",pts:["Steep turn / pull-up / gust","Vs_new = Vs × √n","60° bank: n=2, Vs ×1.41","Dive pull-up：AoA 突然升","高過 VA → 結構風險"],rel:["pof.loadfactor","pof.turnforces","pof.va"],src:"PHAK ch5; POF03; ENZO 06"},
   {id:"pof.advstall",g:"Stall & Spin",t:"Advanced Stalls",d:"Climbing-turn（wing-drop）stall 同 approach stall。",pts:["Climbing turn stall → wing drop","Approach stall：flap down, idle","用 rudder，唔用 aileron 抬翼","HASELL 前、HELL 後","學校：3000 ft AGL 前 recover"],rel:["pof.stallrec","pof.spin"],src:"ENZO Study Guide 23"},
-  {id:"pof.spin",g:"Stall & Spin",t:"Spin",d:"Stalled + yaw → autorotation；一翼更深 stall，螺旋下降。",pts:["要 stall 加 yaw/roll","IAS 低而穩、ROD 高","下沉翼更 stalled","入口：stall 時 yaw","拉桿只會更差"],rel:["pof.stall","pof.spinrec","pof.spiral"],src:"RPL ch6; POF03; PHAK ch5"},
+  {id:"pof.spin",g:"Stall & Spin",t:"Spin",d:"Stalled + yaw → autorotation；一翼更深 stall，spindescent。",pts:["要 stall 加 yaw/roll","IAS 低而穩、ROD 高","下沉翼更 stalled","入口：stall 時 yaw","拉桿只會更差"],rel:["pof.stall","pof.spinrec","pof.spiral"],src:"RPL ch6; POF03; PHAK ch5"},
   {id:"pof.spinrec",g:"Stall & Spin",t:"Spin Recovery",d:"Power idle、aileron neutral、opposite rudder、nose forward。",pts:["Power idle","Ailerons neutral","Full opposite rudder","Control column 向前至停轉","Wings level, ease out of dive"],rel:["pof.spin"],src:"POF03; RPL ch6",check:true},
-  {id:"pof.spiral",g:"Stall & Spin",t:"Spiral Dive vs Spin",d:"Spiral：未 stall、速度升；Spin：stall、速度低。",pts:["Spiral: IAS 升、g 升","Spin: IAS 低、wings stalled","Spiral 復原：idle, 水平翼, ease out","拉桿 → 收緊 spiral","夜間/IMC 要提防"],rel:["pof.spin","pof.spiralinst"],src:"POF03; PHAK ch5"},
-  {id:"pof.icing",g:"Stall & Spin",t:"Ice & Contamination",d:"Ice/frost/dirt 令 BL 早 separate：Vs ↑、lift ↓。",pts:["PHAK: 0.8 mm ice → lift −25%","Weight ↑","Stall AoA 變低","Frost 都危險","污染機翼唔好起飛"],rel:["pof.stallfactors","pof.bl"],src:"PHAK ch5; RPL ch6"},
+  {id:"pof.spiral",g:"Stall & Spin",t:"Spiral Dive vs Spin",d:"Spiral：未 stall、speed升；Spin：stall、speed低。",pts:["Spiral: IAS 升、g 升","Spin: IAS 低、wings stalled","Spiral 復原：idle, 水平翼, ease out","拉桿 → 收緊 spiral","夜間/IMC 要提防"],rel:["pof.spin","pof.spiralinst"],src:"POF03; PHAK ch5"},
+  {id:"pof.icing",g:"Stall & Spin",t:"Ice & Contamination",d:"Ice/frost/dirt 令 BL 早 separate：Vs ↑、lift ↓。",pts:["PHAK: 0.8 mm ice → lift −25%","Weight ↑","Stall AoA 變低","Frost 都危險","污染wing唔好take-off"],rel:["pof.stallfactors","pof.bl"],src:"PHAK ch5; RPL ch6"},
   // ===== Flight Controls
   {id:"pof.axes",g:"Flight Controls",t:"Axes & Moments",d:"三軸過 CG：roll=longitudinal, pitch=lateral, yaw=normal。",pts:["Longitudinal → Roll (aileron)","Lateral → Pitch (elevator)","Normal/vertical → Yaw (rudder)","全部圍繞 CG","Moment = force × arm"],rel:["pof.aileron","pof.elevator","pof.rudder"],src:"ENZO 02; PHAK ch5; RPL ch6"},
   {id:"pof.aileron",g:"Flight Controls",t:"Ailerons",d:"Primary effect roll；secondary adverse yaw。",pts:["Down aileron: lift ↑ drag ↑","Up aileron: lift ↓","Roll rate 隨 stick 動作","Secondary: adverse yaw","Tertiary: spiral dive"],rel:["pof.advyaw","pof.axes"],src:"ENZO 02; POF02; PHAK ch6"},
-  {id:"pof.advyaw",g:"Flight Controls",t:"Adverse Yaw",d:"Down-going aileron drag 大 → 機頭 yaw 向轉彎相反方向。",pts:["Down aileron: induced drag ↑","Nose 向反方向","Cure: coordinated rudder","Differential ailerons","Frise ailerons"],rel:["pof.aileron","pof.rudder","pof.turncoord","pof.ailerontypes"],src:"ENZO 02 & 05; POF03; PHAK ch6"},
+  {id:"pof.advyaw",g:"Flight Controls",t:"Adverse Yaw",d:"Down-going aileron drag 大 → nose yaw 向turn相反方向。",pts:["Down aileron: induced drag ↑","Nose 向反方向","Cure: coordinated rudder","Differential ailerons","Frise ailerons"],rel:["pof.aileron","pof.rudder","pof.turncoord","pof.ailerontypes"],src:"ENZO 02 & 05; POF03; PHAK ch6"},
   {id:"pof.ailerontypes",g:"Flight Controls",t:"Aileron Designs",d:"Differential、Frise、coupled、flaperon 用來減 adverse yaw。",pts:["Differential: up > down 偏轉","Frise: up aileron 鼻突出增 drag","Coupled ailerons+rudder","Flaperon: aileron+flap","DA40: differential + Frise"],rel:["pof.advyaw"],src:"POF03; ENZO 02; PHAK ch6"},
-  {id:"pof.elevator",g:"Flight Controls",t:"Elevator & Pitch",d:"Elevator 控制 pitch；改 pitch → AoA、速度、高度都變。",pts:["Back stick → nose up","Primary: pitch (lateral axis)","Tertiary: altitude & speed","Tail downforce 平衡 wing","Slipstream 令更有力"],rel:["pof.longstab","pof.trim"],src:"ENZO 02; PHAK ch6"},
-  {id:"pof.rudder",g:"Flight Controls",t:"Rudder & Yaw",d:"Rudder 控制 yaw；secondary effect roll（外翼快）。",pts:["Primary: yaw (normal axis)","Secondary: roll","唔係轉彎嘅力","抵消 adverse yaw","Slipstream 令更有力"],rel:["pof.advyaw","pof.turncoord"],src:"ENZO 02; PHAK ch5"},
-  {id:"pof.ctrleff",g:"Flight Controls",t:"Control Effectiveness",d:"速度越高、slipstream 越強，舵面越有效。",pts:["IAS ↑ → 更有效","Slipstream: rudder & elevator，唔係 aileron","近 stall：控制軟","高速：細動作","Tail 設計上唔先 stall"],rel:["pof.stallsym","pof.rudder"],src:"ENZO 02; RPL ch6"},
-  {id:"pof.tail",g:"Flight Controls",t:"Tail Configurations",d:"Conventional、T-tail、stabilator、canard、V-tail。",pts:["T-tail: 避開 wing wake","Stabilator: 整塊 pivot","Canard: 前翼都出 lift","V-tail: ruddervator","T-tail 要留意高 AoA 氣流"],rel:["pof.elevator","pof.trimstab"],src:"PHAK ch6",check:true},
+  {id:"pof.elevator",g:"Flight Controls",t:"Elevator & Pitch",d:"Elevator 控制 pitch；改 pitch → AoA、speed、altitude都變。",pts:["Back stick → nose up","Primary: pitch (lateral axis)","Tertiary: altitude & speed","Tail downforce 平衡 wing","Slipstream 令更有力"],rel:["pof.longstab","pof.trim"],src:"ENZO 02; PHAK ch6"},
+  {id:"pof.rudder",g:"Flight Controls",t:"Rudder & Yaw",d:"Rudder 控制 yaw；secondary effect roll（外翼快）。",pts:["Primary: yaw (normal axis)","Secondary: roll","唔係turn嘅力","抵消 adverse yaw","Slipstream 令更有力"],rel:["pof.advyaw","pof.turncoord"],src:"ENZO 02; PHAK ch5"},
+  {id:"pof.ctrleff",g:"Flight Controls",t:"Control Effectiveness",d:"speed越高、slipstream 越強，舵面越有效。",pts:["IAS ↑ → 更有效","Slipstream: rudder & elevator，唔係 aileron","近 stall：控制軟","高速：細動作","Tail 設計上唔先 stall"],rel:["pof.stallsym","pof.rudder"],src:"ENZO 02; RPL ch6"},
+  {id:"pof.tail",g:"Flight Controls",t:"Tail Configurations",d:"Conventional、T-tail、stabilator、canard、V-tail。",pts:["T-tail: 避開 wing wake","Stabilator: 整塊 pivot","Canard: 前翼都出 lift","V-tail: ruddervator","T-tail 要留意高 AoA airflow"],rel:["pof.elevator","pof.trimstab"],src:"PHAK ch6",check:true},
   {id:"pof.spoilers",g:"Flight Controls",t:"Spoilers & Speedbrakes",d:"Spoilers 減 lift 加 drag；單邊 roll，雙邊 speedbrake。",pts:["Flight spoiler: roll + speedbrake","Ground spoiler: 着陸 dump lift","配合 aileron","增加 sink rate","同 high-lift device 相反"],rel:["pof.aileron","pof.hydraulic"],src:"ATP ch3; PHAK ch6"},
-  {id:"pof.hydraulic",g:"Flight Controls",t:"Powered Controls",d:"Jet 氣動力大，用 hydraulic actuator；有 manual reversion。",pts:["Hydraulic actuator 推舵面","Inboard aileron 全程用","Outboard aileron 只喺 flap 放出","Control tab 於 manual reversion","Aileron/spoiler mix 隨速度變"],rel:["pof.spoilers","pof.tabs"],src:"ATP ch3; PHAK ch6"},
+  {id:"pof.hydraulic",g:"Flight Controls",t:"Powered Controls",d:"Jet 氣動力大，用 hydraulic actuator；有 manual reversion。",pts:["Hydraulic actuator 推舵面","Inboard aileron 全程用","Outboard aileron 只喺 flap 放出","Control tab 於 manual reversion","Aileron/spoiler mix 隨speed變"],rel:["pof.spoilers","pof.tabs"],src:"ATP ch3; PHAK ch6"},
   // ===== High-Lift & Trim
-  {id:"pof.flaps",g:"High-Lift & Trim",t:"Flaps",d:"加 camber/面積：CLmax ↑、Vs ↓，但 drag ↑、stall AoA ↓。",pts:["TO flap: lift > drag","LDG flap: drag 大 → 較斜進場","放 flap 機頭 balloon/向前 pitch","DA40: TO≤108, LDG≤91 KIAS","Raise flap 要有 positive climb"],rel:["pof.stallfactors","pof.flaptypes","pof.clcurve"],src:"POF02; ENZO 02; PHAK ch6"},
-  {id:"pof.flaptypes",g:"High-Lift & Trim",t:"Flap Types",d:"Plain、split、slotted、Fowler；Fowler 加面積加 camber。",pts:["Plain: 只有 hinge","Split: 只下表面","Slotted: 氣流經縫","Fowler: 後滑 + 加面積","Triple-slotted Fowler (airliner)"],rel:["pof.flaps","pof.slats"],src:"POF02; PHAK ch6"},
-  {id:"pof.slats",g:"High-Lift & Trim",t:"Slats, Slots & LE Devices",d:"前緣 device 延遲 separation，令 stall AoA 升高。",pts:["Slat: 縫令高能量氣流過上面","Krueger flap: 伸出加 camber","Fixed slot / LE cuff","後掠翼 jet 常用","CLmax ↑ → 起降速度 ↓"],rel:["pof.flaps","pof.sweep"],src:"ATP ch3; PHAK ch6; POF02"},
+  {id:"pof.flaps",g:"High-Lift & Trim",t:"Flaps",d:"加 camber/面積：CLmax ↑、Vs ↓，但 drag ↑、stall AoA ↓。",pts:["TO flap: lift > drag","LDG flap: drag 大 → 較斜approach","放 flap nose balloon/向前 pitch","DA40: TO≤108, LDG≤91 KIAS","Raise flap 要有 positive climb"],rel:["pof.stallfactors","pof.flaptypes","pof.clcurve"],src:"POF02; ENZO 02; PHAK ch6"},
+  {id:"pof.flaptypes",g:"High-Lift & Trim",t:"Flap Types",d:"Plain、split、slotted、Fowler；Fowler 加面積加 camber。",pts:["Plain: 只有 hinge","Split: 只下表面","Slotted: airflow經縫","Fowler: 後滑 + 加面積","Triple-slotted Fowler (airliner)"],rel:["pof.flaps","pof.slats"],src:"POF02; PHAK ch6"},
+  {id:"pof.slats",g:"High-Lift & Trim",t:"Slats, Slots & LE Devices",d:"前緣 device 延遲 separation，令 stall AoA 升高。",pts:["Slat: 縫令高能量airflow過上面","Krueger flap: 伸出加 camber","Fixed slot / LE cuff","sweepback翼 jet 常用","CLmax ↑ → 起降speed ↓"],rel:["pof.flaps","pof.sweep"],src:"ATP ch3; PHAK ch6; POF02"},
   {id:"pof.trim",g:"High-Lift & Trim",t:"Trim Tabs",d:"Trim 消除 control force，令舵面自己保持位置。",pts:["Tab 動向同舵面相反","Relieves stick pressure","配合 attitude & speed 設定","Nose-up trim → tab 向下","Stabilator: anti-servo/adjustable"],rel:["pof.elevator","pof.tabs"],src:"PHAK ch6; ENZO 02"},
-  {id:"pof.tabs",g:"High-Lift & Trim",t:"Servo, Balance & Anti-servo Tabs",d:"Tab 幫手移舵面或增減 control force。",pts:["Servo: 氣流推舵面","Balance: 反向 → 減輕力","Anti-servo: 同向 → 加重","Control tab: manual reversion","Ground-adjustable tab"],rel:["pof.trim","pof.hydraulic"],src:"ATP ch3; PHAK ch6"},
+  {id:"pof.tabs",g:"High-Lift & Trim",t:"Servo, Balance & Anti-servo Tabs",d:"Tab 幫手移舵面或增減 control force。",pts:["Servo: airflow推舵面","Balance: 反向 → 減輕力","Anti-servo: 同向 → 加重","Control tab: manual reversion","Ground-adjustable tab"],rel:["pof.trim","pof.hydraulic"],src:"ATP ch3; PHAK ch6"},
   // ===== Stability
   {id:"pof.stability",g:"Stability",t:"Static & Dynamic Stability",d:"Static = 初步反應；Dynamic = 隨時間嘅振盪。",pts:["Positive static: 返回平衡","Neutral: 停喺新位置","Negative: 發散","Dynamic +: 振盪縮細","Dynamic −: 振盪放大"],rel:["pof.longstab","pof.stabcontrol"],src:"PHAK ch5; ATP ch3"},
   {id:"pof.stabcontrol",g:"Stability",t:"Stability vs Control",d:"越穩定越難操縱；戰機故意放寬穩定換機動性。",pts:["多穩定 → 少機動","Airliner: 穩定","Fighter: relaxed stability + FBW","太少穩定 → workload ↑","CG 位置調節"],rel:["pof.stability","pof.cg"],src:"RPL ch1",check:true},
-  {id:"pof.longstab",g:"Stability",t:"Longitudinal Stability",d:"Pitch 穩定：tail 提供恢復力矩；CG 喺 neutral point 前。",pts:["Horizontal stabiliser = 主要來源","CG 在 neutral point 前面","Tail download 平衡 nose-heavy wing","速度 ↑ → tail download ↑","Power/thrust line 影響 pitch"],rel:["pof.cg","pof.elevator","pof.cp"],src:"PHAK ch5; ATP ch3"},
+  {id:"pof.longstab",g:"Stability",t:"Longitudinal Stability",d:"Pitch 穩定：tail 提供恢復力矩；CG 喺 neutral point 前。",pts:["Horizontal stabiliser = 主要來源","CG 在 neutral point 前面","Tail download 平衡 nose-heavy wing","speed ↑ → tail download ↑","Power/thrust line 影響 pitch"],rel:["pof.cg","pof.elevator","pof.cp"],src:"PHAK ch5; ATP ch3"},
   {id:"pof.cg",g:"Stability",t:"CG Location",d:"CG 前移更穩定；後移較唔穩但 cruise 快、Vs 略低。",pts:["Forward CG: 穩定、tail load 大","Aft CG: 不穩、Vs 略低","Aft CG: cruise 快 (trim drag ↓)","超後限：stall 或 recover 唔到","前限：flare elevator 未必夠"],rel:["pof.longstab","pof.stall"],src:"PHAK ch5; ATP ch3"},
-  {id:"pof.latstab",g:"Stability",t:"Lateral Stability (Roll)",d:"Dihedral、sweep、翼位置令機翼自動返水平。",pts:["Dihedral: 低翼 AoA ↑","Sweepback 有 dihedral effect","High wing: keel effect","Sideslip → 恢復 roll","太強 → Dutch roll"],rel:["pof.wingcfg","pof.dutch"],src:"PHAK ch5"},
-  {id:"pof.dirstab",g:"Stability",t:"Directional Stability (Yaw)",d:"Fin 令機頭自動朝 relative wind（weathercock）。",pts:["Vertical fin = 主要來源","Sideslip → fin 出 lift → 機頭回正","後機身 keel surface 都有份","太強 vs dihedral → spiral instability","Weathercocking 同原理"],rel:["pof.weathercock","pof.spiralinst","pof.dutch"],src:"PHAK ch5; RPL ch1"},
-  {id:"pof.dutch",g:"Stability",t:"Dutch Roll",d:"Roll + yaw 耦合振盪，機頭畫 figure-8。",pts:["Dir. 穩定強、lateral 弱","Roll/yaw 相位差","後掠翼 jet 常見","Yaw damper 處理","輕機通常幾下就收"],rel:["pof.latstab","pof.dirstab","pof.hsctrl"],src:"PHAK ch5"},
-  {id:"pof.spiralinst",g:"Stability",t:"Spiral Instability",d:"方向穩定強、dihedral 弱 → bank 越來越斜、慢慢螺旋下降。",pts:["Fin 強、dihedral 弱","外翼較快 → overbank","機頭跌、速度升","所以唔可以 hands-off","唔好拉桿：收緊 spiral"],rel:["pof.spiral","pof.dirstab"],src:"PHAK ch5"},
+  {id:"pof.latstab",g:"Stability",t:"Lateral Stability (Roll)",d:"Dihedral、sweep、翼位置令wing自動返水平。",pts:["Dihedral: 低翼 AoA ↑","Sweepback 有 dihedral effect","High wing: keel effect","Sideslip → 恢復 roll","太強 → Dutch roll"],rel:["pof.wingcfg","pof.dutch"],src:"PHAK ch5"},
+  {id:"pof.dirstab",g:"Stability",t:"Directional Stability (Yaw)",d:"Fin 令nose自動朝 relative wind（weathercock）。",pts:["Vertical fin = 主要來源","Sideslip → fin 出 lift → nose回正","後fuselage keel surface 都有份","太強 vs dihedral → spiral instability","Weathercocking 同原理"],rel:["pof.weathercock","pof.spiralinst","pof.dutch"],src:"PHAK ch5; RPL ch1"},
+  {id:"pof.dutch",g:"Stability",t:"Dutch Roll",d:"Roll + yaw 耦合振盪，nose畫 figure-8。",pts:["Dir. 穩定強、lateral 弱","Roll/yaw 相位差","sweepback翼 jet 常見","Yaw damper 處理","輕機通常幾下就收"],rel:["pof.latstab","pof.dirstab","pof.hsctrl"],src:"PHAK ch5"},
+  {id:"pof.spiralinst",g:"Stability",t:"Spiral Instability",d:"directional stability強、dihedral 弱 → bank 越來越斜、慢慢spindescent。",pts:["Fin 強、dihedral 弱","外翼較快 → overbank","nose跌、speed升","所以唔可以 hands-off","唔好拉桿：收緊 spiral"],rel:["pof.spiral","pof.dirstab"],src:"PHAK ch5"},
   // ===== Turning & Load Factor
-  {id:"pof.turnforces",g:"Turning & Load Factor",t:"Forces in a Turn",d:"Lift 傾斜：垂直分力托 weight，水平分力 = centripetal force。",pts:["Bank → lift vector 傾斜","垂直分力 = W (要加 AoA)","水平分力令機轉彎","Centrifugal = reaction","Rudder 唔係轉彎力"],rel:["pof.loadfactor","pof.rot","pof.turncoord"],src:"POF03; PHAK ch5; ENZO 05"},
+  {id:"pof.turnforces",g:"Turning & Load Factor",t:"Forces in a Turn",d:"Lift 傾斜：垂直分力托 weight，水平分力 = centripetal force。",pts:["Bank → lift vector 傾斜","垂直分力 = W (要加 AoA)","水平分力令機turn","Centrifugal = reaction","Rudder 唔係turn力"],rel:["pof.loadfactor","pof.rot","pof.turncoord"],src:"POF03; PHAK ch5; ENZO 05"},
   {id:"pof.turncoord",g:"Turning & Load Factor",t:"Balanced Turn: Slip & Skid",d:"Ball 喺中間 = balanced；偏內 slip，偏外 skid。",pts:["Ball 偏內: slipping","Ball 偏外: skidding","Slip: bank 多過 ROT 所需","Skid: ROT 多過 bank 所需","『Step on the ball』"],rel:["pof.advyaw","pof.rudder"],src:"POF03; ENZO 05; PHAK ch5"},
   {id:"pof.rot",g:"Turning & Load Factor",t:"Rate & Radius of Turn",d:"Rate 1 = 3°/s；bank ↑ 或 TAS ↓ → radius ↓。",pts:["Rate 1 = 360° 喺 2 min","AoB ≈ TAS/10 + 7 (rule of thumb)","同 bank：TAS ↑ → radius ↑","同 TAS：bank ↑ → radius ↓","747 vs DA40：747 radius 大"],rel:["pof.turnforces"],src:"POF03; ENZO 05; PHAK ch5"},
-  {id:"pof.loadfactor",g:"Turning & Load Factor",t:"Load Factor (n)",d:"n = Lift ÷ Weight；level turn 只由 bank 決定：n = 1/cos φ。",pts:["S&L: n = 1","30° → 1.15; 45° → 1.41","60° → 2.0 g","75° → 3.9; 80° → 5.76","同速度、weight 無關"],rel:["pof.stallfactors","pof.accstall","pof.vg"],src:"POF03; PHAK ch5; ATP ch3"},
+  {id:"pof.loadfactor",g:"Turning & Load Factor",t:"Load Factor (n)",d:"n = Lift ÷ Weight；level turn 只由 bank 決定：n = 1/cos φ。",pts:["S&L: n = 1","30° → 1.15; 45° → 1.41","60° → 2.0 g","75° → 3.9; 80° → 5.76","同speed、weight 無關"],rel:["pof.stallfactors","pof.accstall","pof.vg"],src:"POF03; PHAK ch5; ATP ch3"},
   {id:"pof.overbank",g:"Turning & Load Factor",t:"Overbanking & Underbanking",d:"外翼行得遠、較快 → overbank；climbing turn 更甚。",pts:["外翼較快 → lift ↑","Level turn: aileron 略向外","Climbing turn: 外翼 AoA ↑ → 更多","Descending turn: 內翼 AoA ↑ → underbank","ENZO：descent 兩者大致抵消"],rel:["pof.turnforces","pof.aileron"],src:"POF03; ENZO 05",check:true},
-  {id:"pof.va",g:"Turning & Load Factor",t:"Maneuvering Speed VA",d:"VA 以下單一舵面全偏轉一次，先 stall 後過載。",pts:["低過 VA：先 stall 再超 limit","舊輕機約 1.7 × Vs","重量輕 → VA 降","唔保護多軸/反覆輸入","亂流減至 VA"],rel:["pof.vg","pof.limitload","pof.accstall"],src:"PHAK ch5; RPL ch6"},
-  {id:"pof.vg",g:"Turning & Load Factor",t:"V-g Diagram",d:"Flight envelope：速度 vs load factor；左邊 stall 限，右邊結構限。",pts:["左曲線：stall 限 g","Corner = VA","Normal: +3.8 / −1.52 g","右邊：VNE","包絡外 = 結構損壞"],rel:["pof.va","pof.loadfactor","pof.limitload"],src:"PHAK ch5; RPL ch6"},
-  {id:"pof.limitload",g:"Turning & Load Factor",t:"Limit vs Ultimate Load",d:"Limit load 開始永久變形；ultimate = limit × 1.5。",pts:["Normal +3.8, utility +4.4, acro +6.0","Safety factor 1.5","超 limit → 永久變形","Gust：減速","懷疑過載要 report"],rel:["pof.vg","pof.va"],src:"PHAK ch5; RPL ch6"},
+  {id:"pof.va",g:"Turning & Load Factor",t:"Maneuvering Speed VA",d:"VA 以下單一舵面全偏轉一次，先 stall 後load factor。",pts:["低過 VA：先 stall 再超 limit","舊輕機約 1.7 × Vs","weight輕 → VA 降","唔保護多軸/反覆輸入","turbulent flow減至 VA"],rel:["pof.vg","pof.limitload","pof.accstall"],src:"PHAK ch5; RPL ch6"},
+  {id:"pof.vg",g:"Turning & Load Factor",t:"V-g Diagram",d:"Flight envelope：speed vs load factor；左邊 stall 限，右邊結構限。",pts:["左曲線：stall 限 g","Corner = VA","Normal: +3.8 / −1.52 g","右邊：VNE","包絡外 = 結構損壞"],rel:["pof.va","pof.loadfactor","pof.limitload"],src:"PHAK ch5; RPL ch6"},
+  {id:"pof.limitload",g:"Turning & Load Factor",t:"Limit vs Ultimate Load",d:"Limit load 開始永久變形；ultimate = limit × 1.5。",pts:["Normal +3.8, utility +4.4, acro +6.0","Safety factor 1.5","超 limit → 永久變形","Gust：減速","懷疑load factor要 report"],rel:["pof.vg","pof.va"],src:"PHAK ch5; RPL ch6"},
   // ===== Climb & Performance
   {id:"pof.climb",g:"Climb & Performance",t:"Forces in Climb & Descent",d:"Climb 靠 excess thrust；weight 有 rearward component。",pts:["T > D in climb","Steady climb: L 略 < W","Weight 後向分力","Descent：前向分力","Power + Attitude = Performance"],rel:["pof.fourforces","pof.vxvy"],src:"ENZO 04; PHAK ch5"},
-  {id:"pof.vxvy",g:"Climb & Performance",t:"Vx & Vy",d:"Vx = 最大 angle（excess thrust）；Vy = 最大 rate（excess power）。",pts:["Vx：越障","Vy：最短時間爬升","DA40 Vx 67 / Vy 76 KIAS","C172SP Vx 62 / Vy 74 KIAS","Vx < Vy"],rel:["pof.climb","pof.powercurve"],src:"ENZO 04"},
+  {id:"pof.vxvy",g:"Climb & Performance",t:"Vx & Vy",d:"Vx = 最大 angle（excess thrust）；Vy = 最大 rate（excess power）。",pts:["Vx：越障","Vy：最短時間climb","DA40 Vx 67 / Vy 76 KIAS","C172SP Vx 62 / Vy 74 KIAS","Vx < Vy"],rel:["pof.climb","pof.powercurve"],src:"ENZO 04"},
   {id:"pof.powercurve",g:"Climb & Performance",t:"Power Curve & Back of Power",d:"慢過 min-power speed，減速反而要更多 power。",pts:["Min power ≈ best endurance","低過佢 → power req ↑","Region of reverse command","Min drag ≈ best range / glide","近 landing flare 區"],rel:["pof.dragcurve","pof.vxvy"],src:"ENZO 04 revision; 一般航空知識",check:true},
-  {id:"pof.glide",g:"Climb & Performance",t:"Glide Performance",d:"Best glide speed = L/DMAX speed；headwind 縮短距離。",pts:["Glide angle = 1/(L/D)","重量：ratio 同，速度快啲","Headwind：distance ↓","Flap down：ratio ↓","停頓 prop：drag ↑"],rel:["pof.ld","pof.dragcurve"],src:"ENZO 04; PHAK ch5"},
+  {id:"pof.glide",g:"Climb & Performance",t:"Glide Performance",d:"Best glide speed = L/DMAX speed；headwind 縮短距離。",pts:["Glide angle = 1/(L/D)","weight：ratio 同，speed快啲","Headwind：distance ↓","Flap down：ratio ↓","停頓 prop：drag ↑"],rel:["pof.ld","pof.dragcurve"],src:"ENZO 04; PHAK ch5"},
   {id:"pof.perf",g:"Climb & Performance",t:"Weight, Density & Wind Effects",d:"重、高 DA、flap 放出都令 climb 差。",pts:["Weight ↑: climb ↓, Vs ↑","High DA: power/thrust ↓","同 IAS → TAS ↑","Headwind: 地面 climb angle 較斜","Flap：drag ↑"],rel:["pof.densalt","pof.vxvy"],src:"ENZO 04"},
   // ===== Left-Turning Tendencies
-  {id:"pof.ltt",g:"Left-Turning Tendencies",t:"Left-Turning Tendencies",d:"Prop 順時針（駕駛位睇）嘅機有四個令機頭向左嘅效應。",pts:["Torque reaction","Corkscrew slipstream","Gyroscopic precession","P-factor","高 power 低速最明顯 → rudder"],rel:["pof.torque","pof.pfactor","pof.gyro","pof.corkscrew"],src:"PHAK ch5; POF03"},
-  {id:"pof.torque",g:"Left-Turning Tendencies",t:"Torque Reaction",d:"Prop 順時針轉 → 機身逆時針反作用 → roll 左。",pts:["Newton's 3rd law","空中：roll 向左","地面：左輪壓力大 → 偏左","高 power 低速最強","Offset engine / aileron trim"],rel:["pof.ltt"],src:"PHAK ch5"},
-  {id:"pof.pfactor",g:"Left-Turning Tendencies",t:"P-Factor (Asymmetric Thrust)",d:"高 AoA 時下行 blade 咬位大 → thrust 中心偏右 → yaw 左。",pts:["Prop disc 對 airflow 傾斜先有","高機頭、低速、高 power","下行(右)blade thrust 大","Thrust centre 移右","加右 rudder"],rel:["pof.ltt","pof.critengine"],src:"POF03; PHAK ch5"},
+  {id:"pof.ltt",g:"Left-Turning Tendencies",t:"Left-Turning Tendencies",d:"Prop 順時針（駕駛位睇）嘅機有四個令nose向左嘅效應。",pts:["Torque reaction","Corkscrew slipstream","Gyroscopic precession","P-factor","高 power 低速最明顯 → rudder"],rel:["pof.torque","pof.pfactor","pof.gyro","pof.corkscrew"],src:"PHAK ch5; POF03"},
+  {id:"pof.torque",g:"Left-Turning Tendencies",t:"Torque Reaction",d:"Prop 順時針轉 → fuselage逆時針反作用 → roll 左。",pts:["Newton's 3rd law","空中：roll 向左","地面：左輪pressure大 → 偏左","高 power 低速最強","Offset engine / aileron trim"],rel:["pof.ltt"],src:"PHAK ch5"},
+  {id:"pof.pfactor",g:"Left-Turning Tendencies",t:"P-Factor (Asymmetric Thrust)",d:"高 AoA 時下行 blade 咬位大 → thrust 中心偏右 → yaw 左。",pts:["Prop disc 對 airflow 傾斜先有","高nose、低速、高 power","下行(右)blade thrust 大","Thrust centre 移右","加右 rudder"],rel:["pof.ltt","pof.critengine"],src:"POF03; PHAK ch5"},
   {id:"pof.gyro",g:"Left-Turning Tendencies",t:"Gyroscopic Precession",d:"Prop 係 gyro；力喺旋轉方向 90° 後生效。",pts:["Rigidity & precession","力 → 90° ahead of rotation","Tail up → 力喺頂 → yaw 左","Pitch ↔ Yaw 互相耦合","Tailwheel a/c 最明顯"],rel:["pof.ltt"],src:"POF03; PHAK ch5"},
-  {id:"pof.corkscrew",g:"Left-Turning Tendencies",t:"Corkscrew Slipstream",d:"螺旋形 slipstream 打 fin → yaw 左（順時針 prop）。",pts:["Slipstream 螺旋形","打 vertical fin 側面","低速高 power 螺旋密 → 強","速度 ↑ 螺旋拉長 → 弱","亦產生 rolling moment"],rel:["pof.ltt","pof.ctrleff"],src:"PHAK ch5"},
-  {id:"pof.weathercock",g:"Left-Turning Tendencies",t:"Weathercocking",d:"Crosswind 令機頭轉向風來嘅方向（fin 效應）。",pts:["Fin 似 weathervane","左 crosswind → 機頭向左","起飛滑跑同空中都有","輕機/tailwheel 較明顯","Rudder / crab 處理"],rel:["pof.dirstab"],src:"POF03"},
-  {id:"pof.critengine",g:"Left-Turning Tendencies",t:"Critical Engine (Twin)",d:"P-factor 令一邊 engine fail 影響較大 = critical engine。",pts:["順時針 prop：左 engine critical","失效側 thrust line 靠近中線","VMC = 最低控制速度","VMC 隨高度降 (non-turbo)","向好 engine bank ≥5°"],rel:["pof.pfactor"],src:"ATP ch3"},
+  {id:"pof.corkscrew",g:"Left-Turning Tendencies",t:"Corkscrew Slipstream",d:"spin形 slipstream 打 fin → yaw 左（順時針 prop）。",pts:["Slipstream spin形","打 vertical fin 側面","低速高 power spin密 → 強","speed ↑ spin拉長 → 弱","亦產生 rolling moment"],rel:["pof.ltt","pof.ctrleff"],src:"PHAK ch5"},
+  {id:"pof.weathercock",g:"Left-Turning Tendencies",t:"Weathercocking",d:"Crosswind 令nose轉向風來嘅方向（fin 效應）。",pts:["Fin 似 weathervane","左 crosswind → nose向左","take-off滑跑同空中都有","輕機/tailwheel 較明顯","Rudder / crab 處理"],rel:["pof.dirstab"],src:"POF03"},
+  {id:"pof.critengine",g:"Left-Turning Tendencies",t:"Critical Engine (Twin)",d:"P-factor 令一邊 engine fail 影響較大 = critical engine。",pts:["順時針 prop：左 engine critical","失效側 thrust line 靠近中線","VMC = 最低控制speed","VMC 隨altitude降 (non-turbo)","向好 engine bank ≥5°"],rel:["pof.pfactor"],src:"ATP ch3"},
   // ===== Ground effect & wake
   {id:"pof.groundeffect",g:"Ground Effect & Wake",t:"Ground Effect",d:"離地約 1 wingspan 內，downwash 受限 → induced drag ↓、lift ↑。",pts:["Within ~1 wingspan","Vortex 弱、downwash 少","Flare 時 float","離開 GE：induced ↑、AoA ↑","Low wing 更明顯"],rel:["pof.induced","pof.wingcfg"],src:"PHAK ch5; RPL ch6; ATP ch3"},
   {id:"pof.wake",g:"Ground Effect & Wake",t:"Wake Turbulence",d:"重、慢、clean 嘅機 tip vortices 最強，會令後機 roll。",pts:["Heavy/clean/slow 最強","Vortices 下沉","近地面向外移","Approach 喺前機 flightpath 上方","喺前機 touchdown 點之後着陸"],rel:["pof.vortices","pof.groundeffect"],src:"PHAK ch5"},
   // ===== High-Speed Flight
-  {id:"pof.machnum",g:"High-Speed Flight",t:"Mach Number & Speed of Sound",d:"Mach = TAS ÷ a；a 只隨溫度變，高空 a 細啲。",pts:["a = √(γRT)","Mach 1 = speed of sound","ISA SL: a ≈ 661 kt","Machmeter 顯示 % of a","Compressibility 重要由 M≈0.3"],rel:["pof.regimes","pof.u.compress","pof.speeds"],src:"ATP ch3; PHAK ch5; Lecture 17"},
+  {id:"pof.machnum",g:"High-Speed Flight",t:"Mach Number & Speed of Sound",d:"Mach = TAS ÷ a；a 只隨temperature變，高空 a 細啲。",pts:["a = √(γRT)","Mach 1 = speed of sound","ISA SL: a ≈ 661 kt","Machmeter 顯示 % of a","Compressibility 重要由 M≈0.3"],rel:["pof.regimes","pof.u.compress","pof.speeds"],src:"ATP ch3; PHAK ch5; Lecture 17"},
   {id:"pof.regimes",g:"High-Speed Flight",t:"Flow Regimes",d:"Subsonic / transonic / supersonic / hypersonic。",pts:["< M0.3: incompressible","0.3–0.5: compressibility 可忽略","約 0.75–1.2: transonic","1.2–5: supersonic","> 5: hypersonic"],rel:["pof.mcrit","pof.u.hyper"],src:"POF05; ATP ch3"},
-  {id:"pof.mcrit",g:"High-Speed Flight",t:"Critical Mach Number",d:"Mcrit：機身 Mach 數，令翼面最快處剛好 M=1。",pts:["Wing 面流速 > 機身速度","Local M=1，freestream <1","高過 Mcrit → shock 出現","每款機唔同","升 Mcrit：薄、sweep、supercritical"],rel:["pof.wavedrag","pof.sweep","pof.supercrit"],src:"POF05; PHAK ch5; ATP ch3"},
+  {id:"pof.mcrit",g:"High-Speed Flight",t:"Critical Mach Number",d:"Mcrit：fuselage Mach 數，令翼面最快處剛好 M=1。",pts:["Wing 面流速 > fuselagespeed","Local M=1，freestream <1","高過 Mcrit → shock 出現","每款機唔同","升 Mcrit：薄、sweep、supercritical"],rel:["pof.wavedrag","pof.sweep","pof.supercrit"],src:"POF05; PHAK ch5; ATP ch3"},
   {id:"pof.wavedrag",g:"High-Speed Flight",t:"Shock Waves & Wave Drag",d:"Shock 後 flow 分離，drag 急升 = wave drag。",pts:["M ↑ → shock 向後移","Shock 強 → 分離","Drag divergence","M≈1: bow wave","Supersonic 後 drag 相對回落"],rel:["pof.mcrit","pof.machtuck","pof.shocktypes"],src:"POF05; PHAK ch5"},
   {id:"pof.shocktypes",g:"High-Speed Flight",t:"Types of Shock Waves",d:"Normal、oblique、expansion fan 嘅比較。",pts:["Normal: M>1→M<1，損耗大","Oblique: 轉向，M 仍 >1","Expansion fan: 加速，P↓，損耗小","Normal 唔轉向","Blunt body: detached bow wave"],rel:["pof.wavedrag","pof.u.normal","pof.u.oblique"],src:"POF05; Lecture 18 & 19"},
-  {id:"pof.machtuck",g:"High-Speed Flight",t:"Mach Tuck",d:"CP 後移 + tail 氣流差 → 機頭自己向下。",pts:["Shock 令 flow 分離","CP 後移 → nose-down moment","Tail 氣流混亂、效力降","Fix: sweep","Fix: trimmable stabilizer"],rel:["pof.cp","pof.sweep","pof.trimstab"],src:"POF05; ATP ch3"},
+  {id:"pof.machtuck",g:"High-Speed Flight",t:"Mach Tuck",d:"CP 後移 + tail airflow差 → nose自己向下。",pts:["Shock 令 flow 分離","CP 後移 → nose-down moment","Tail airflow混亂、效力降","Fix: sweep","Fix: trimmable stabilizer"],rel:["pof.cp","pof.sweep","pof.trimstab"],src:"POF05; ATP ch3"},
   {id:"pof.sweep",g:"High-Speed Flight",t:"Sweepback",d:"只有垂直前緣嘅分量影響 shock 同 lift → Mcrit ↑。",pts:["Effective M = M·cosΛ","延遲 drag rise","代價：CLmax ↓ → 要大 flap/slat","低速 tip 先 stall","Spanwise flow"],rel:["pof.mcrit","pof.slats","pof.fwdsweep"],src:"POF05; ATP ch3; PHAK ch5"},
   {id:"pof.fwdsweep",g:"High-Speed Flight",t:"Forward & Variable Sweep",d:"Forward sweep CP 前移；swing-wing（F-14）兼顧低速。",pts:["Su-47 forward swept","CP 前移 → 另類操控問題","Variable sweep: F-14","低速：翼向前","高速：翼向後"],rel:["pof.sweep"],src:"POF05"},
   {id:"pof.supercrit",g:"High-Speed Flight",t:"Supercritical Airfoil",d:"上面平、後緣 aft-loaded → shock 弱、延後 drag rise。",pts:["Flat upper surface","LE radius 大","弱 shock 喺後面","後部 camber 出 lift","Blunt trailing edge"],rel:["pof.mcrit","pof.wavedrag"],src:"POF05"},
-  {id:"pof.trimstab",g:"High-Speed Flight",t:"Trimmable Horizontal Stabilizer",d:"整塊 stabilizer 偏轉，足夠力矩抵銷 Mach tuck。",pts:["Hydraulic / autopilot 驅動","Trim authority 大","取代 elevator trim tab","抗 nose-down tuck","處理大 CG/速度範圍"],rel:["pof.machtuck","pof.trim"],src:"POF05; PHAK ch5"},
+  {id:"pof.trimstab",g:"High-Speed Flight",t:"Trimmable Horizontal Stabilizer",d:"整塊 stabilizer 偏轉，足夠力矩抵銷 Mach tuck。",pts:["Hydraulic / autopilot 驅動","Trim authority 大","取代 elevator trim tab","抗 nose-down tuck","處理大 CG/speed範圍"],rel:["pof.machtuck","pof.trim"],src:"POF05; PHAK ch5"},
   {id:"pof.vmo",g:"High-Speed Flight",t:"Vmo / Mmo & Buffet Boundary",d:"Vmo/Mmo = 最大 operating speed；超過有 buffet、flutter、Mach tuck 風險。",pts:["Barber pole 紅白條","低空 Vmo (IAS)，高空 Mmo (Mach)","Low-speed buffet = stall 側","High-speed buffet = shock 側","Coffin corner：兩者相遇"],rel:["pof.mcrit","pof.stall"],src:"POF05; PHAK ch5"},
   {id:"pof.hsctrl",g:"High-Speed Flight",t:"High-Speed Control Devices",d:"Yaw damper、vortex generator、Mach trim、aileron lockout。",pts:["Yaw damper 對 Dutch roll","Vortex generators 激勵 BL","Outboard aileron 高速鎖死","Spoilers 輔助 roll","Mach trim 對 Mach tuck"],rel:["pof.dutch","pof.bl","pof.machtuck"],src:"PHAK ch5; ATP ch3",check:true},
   {id:"pof.supfoil",g:"High-Speed Flight",t:"Supersonic Airfoil",d:"薄、尖前緣 → 弱 oblique shock、bow wave 細。",pts:["尖 LE: attached oblique shock","薄 → wave drag 低","鈍 LE: detached bow wave","Shock-expansion 理論估力","Diamond / double-wedge"],rel:["pof.shocktypes","pof.u.oblique"],src:"POF05 key topics; Lecture 19",check:true},
-  {id:"pof.arearule",g:"High-Speed Flight",t:"Transonic Area Rule",d:"總截面積沿機長要平滑，減 wave drag（蜂腰機身）。",pts:["截面積分佈平滑","Wing 位置機身收窄","減 transonic wave drag","Anti-shock body","同 Mcrit 唔同方法"],rel:["pof.wavedrag"],src:"POF05 key topics（內容未能讀到，一般航空知識）",check:true},
-  {id:"pof.intakes",g:"High-Speed Flight",t:"Supersonic Engine Intakes",d:"Jet engine 只收 subsonic 氣流 → intake 用 shock 減速。",pts:["Engine 要 subsonic inlet flow","Oblique shocks 再 normal shock","Ramp / variable geometry","Shock 要受控制","Spike / ramp intake"],rel:["pof.shocktypes"],src:"POF05 key topics（內容未能讀到，一般航空知識）",check:true},
+  {id:"pof.arearule",g:"High-Speed Flight",t:"Transonic Area Rule",d:"總截面積沿機長要平滑，減 wave drag（蜂腰fuselage）。",pts:["截面積分佈平滑","Wing 位置fuselage收窄","減 transonic wave drag","Anti-shock body","同 Mcrit 唔同方法"],rel:["pof.wavedrag"],src:"POF05 key topics（內容未能讀到，一般航空知識）",check:true},
+  {id:"pof.intakes",g:"High-Speed Flight",t:"Supersonic Engine Intakes",d:"Jet engine 只收 subsonic airflow → intake 用 shock 減速。",pts:["Engine 要 subsonic inlet flow","Oblique shocks 再 normal shock","Ramp / variable geometry","Shock 要受控制","Spike / ramp intake"],rel:["pof.shocktypes"],src:"POF05 key topics（內容未能讀到，一般航空知識）",check:true},
   // ===== Advanced: Flow Basics
   {id:"pof.u.hows",g:"Advanced: Flow Basics",t:"How We Study Aerodynamics",d:"【進階】Theory、wind tunnel、CFD 三條路互相驗證。",pts:["Theory：方程式","Experiment：wind tunnel / flight test","CFD：數值模擬","Steady flow 假設常用","三者交叉驗證"],rel:["pof.u.conserve"],src:"Lecture 1（手寫，OCR 讀唔到，靠標題）",check:true},
   {id:"pof.u.variables",g:"Advanced: Flow Basics",t:"Flow Variables, Forces & Moments",d:"【進階】p, ρ, T, V；body force 分 L, D, M，用 CL, CD, Cm 無因次化。",pts:["Pressure + shear 積分 → force","Lift ⟂ V∞，Drag ∥ V∞","Moment 要講明參考點","CL = L / (q∞ S)","q∞ = ½ρV²"],rel:["pof.liftformula","pof.u.reynolds"],src:"Lecture 2 & 3（手寫，OCR 差）",check:true},
   {id:"pof.u.reynolds",g:"Advanced: Flow Basics",t:"Reynolds Number & Similarity",d:"【進階】Re = ρVL/μ = inertia ÷ viscous；Re、Mach 相同 → 流場相似。",pts:["Re 大：inertia 主導","Re 細：viscous 主導","Wind tunnel 要配 Re & M","Re 決定 laminar→turbulent","Re_crit ≈ 5×10⁵ (flat plate)"],rel:["pof.bl","pof.u.dragsep","pof.u.bio"],src:"Lecture 4, 14 & 21"},
   {id:"pof.u.conserve",g:"Advanced: Flow Basics",t:"Conservation Laws",d:"【進階】Mass、momentum (F=ma)、energy 三條守恆律 = 一切嘅起點。",pts:["Continuity: ρAV = const","Momentum → Euler / Navier-Stokes","Energy → h + V²/2 = const","Incompressible: ρ = const","由此推 Bernoulli"],rel:["pof.u.bernlaplace","pof.u.compress","pof.newton"],src:"Lecture 5（OCR 差）",check:true},
-  {id:"pof.u.streamlines",g:"Advanced: Flow Basics",t:"Streamlines & Stream Function",d:"【進階】Streamline 切線＝速度方向；steady 時 pathline=streakline=streamline。",pts:["Flow 唔會穿過 streamline","Streamlines 收窄 → 流速 ↑","ψ = const 即 streamline","Δψ = mass flow","Smoke / tuft 用作可視化"],rel:["pof.u.vorticity","pof.u.elem"],src:"Lecture 6"},
+  {id:"pof.u.streamlines",g:"Advanced: Flow Basics",t:"Streamlines & Stream Function",d:"【進階】Streamline 切線＝speed方向；steady 時 pathline=streakline=streamline。",pts:["Flow 唔會穿過 streamline","Streamlines 收窄 → 流速 ↑","ψ = const 即 streamline","Δψ = mass flow","Smoke / tuft 用作可視化"],rel:["pof.u.vorticity","pof.u.elem"],src:"Lecture 6"},
   {id:"pof.u.vorticity",g:"Advanced: Flow Basics",t:"Vorticity, Circulation & Potential",d:"【進階】Vorticity ζ=∇×V 量度自轉；irrotational (ζ=0) 可用 velocity potential φ。",pts:["ζ≠0 rotational；ζ=0 irrotational","Circulation Γ = ∮V·ds","Γ 同 lift 相關","V = ∇φ（irrotational）","BL 內 rotational"],rel:["pof.u.kj","pof.u.bernlaplace"],src:"Lecture 7"},
-  {id:"pof.u.bernlaplace",g:"Advanced: Flow Basics",t:"Bernoulli & Laplace (Ideal Flow)",d:"【進階】Inviscid + incompressible：p+½ρV²=const；φ、ψ 滿足 ∇²=0。",pts:["Bernoulli 只沿 streamline","Irrotational → 處處成立","Laplace → 可疊加解","適用 BL 外、低速 M<0.3","風洞：用 Δp 量速度"],rel:["pof.bernoulli","pof.u.elem","pof.u.vorticity"],src:"Lecture 8"},
+  {id:"pof.u.bernlaplace",g:"Advanced: Flow Basics",t:"Bernoulli & Laplace (Ideal Flow)",d:"【進階】Inviscid + incompressible：p+½ρV²=const；φ、ψ 滿足 ∇²=0。",pts:["Bernoulli 只沿 streamline","Irrotational → 處處成立","Laplace → 可疊加解","適用 BL 外、低速 M<0.3","風洞：用 Δp 量speed"],rel:["pof.bernoulli","pof.u.elem","pof.u.vorticity"],src:"Lecture 8"},
   // ===== Advanced: Airfoil Theory
   {id:"pof.u.elem",g:"Advanced: Airfoil Theory",t:"Elementary Flows",d:"【進階】Uniform、source/sink、doublet、vortex：可疊加成真實形狀。",pts:["Uniform: V∞","Source/sink: 向外/向內","Doublet: source+sink 合體","Vortex: 環繞，帶 Γ","Superposition"],rel:["pof.u.cylinder","pof.u.bernlaplace","pof.u.panel"],src:"Lecture 9"},
   {id:"pof.u.cylinder",g:"Advanced: Airfoil Theory",t:"Flow Over a Cylinder",d:"【進階】Uniform + doublet = 靜止圓柱：無 lift 無 drag；加 vortex → 有 lift。",pts:["Rankine oval = uniform+source+sink","Stationary cylinder: L=0, D=0","d'Alembert paradox","加 vortex (Γ) → rotating cyl","Stagnation point 位置隨 Γ 移"],rel:["pof.u.elem","pof.u.kj"],src:"Lecture 9 & 10"},
@@ -127,11 +127,11 @@ Cadet.add({
   {id:"pof.u.kutta",g:"Advanced: Airfoil Theory",t:"Kutta Condition",d:"【進階】後緣 flow 平順離開 → 決定 Γ 大小，鎖定 stagnation 位置。",pts:["尖後緣：上下流同速離開","唔加條件 → Γ 不定","非 lift：stagnation 自然","Lifting：要 Kutta 修正","粘性令 flow 真係咁做"],rel:["pof.u.kj","pof.newton","pof.u.panel"],src:"Lecture 11 & 13a"},
   {id:"pof.u.panel",g:"Advanced: Airfoil Theory",t:"Panel Methods",d:"【進階】將形狀分成 panels，放 source/vortex，令 streamlines = 物體表面。",pts:["Source panel：non-lifting 專用","Vortex panel：lifting body","No-penetration boundary condition","Kutta condition 加埋","概念設計快速計算 (PANAIR)"],rel:["pof.u.elem","pof.u.kutta","pof.u.thin"],src:"Lecture 11"},
   {id:"pof.u.thin",g:"Advanced: Airfoil Theory",t:"Thin Airfoil Theory",d:"【進階】用 chord line 上嘅 vortex sheet 代表 camber：CL = 2π(α − α₀)。",pts:["Symmetric: CL = 2πα (α in rad)","Cambered: 有 α_L=0","Cm 約 quarter-chord","Fourier 級數解 γ(θ)","適用小角、薄 foil"],rel:["pof.clcurve","pof.u.panel","pof.camber"],src:"Lecture 12"},
-  {id:"pof.u.liftcause",g:"Advanced: Airfoil Theory",t:"What Causes Lift? (Full Picture)",d:"【進階】Flow 貼面、轉向下；mass/momentum/energy 守恆解釋力。",pts:["Flow 加速→壓力降 (Bernoulli)","Coandă / entrainment：flow 貼面","Kutta：後緣平順離開","Air 被轉向下 → momentum","Equal-transit 係錯"],rel:["pof.newton","pof.liftmyth","pof.u.kutta"],src:"Lecture 13a"},
+  {id:"pof.u.liftcause",g:"Advanced: Airfoil Theory",t:"What Causes Lift? (Full Picture)",d:"【進階】Flow 貼面、轉向下；mass/momentum/energy 守恆解釋力。",pts:["Flow 加速→pressure降 (Bernoulli)","Coandă / entrainment：flow 貼面","Kutta：後緣平順離開","Air 被轉向下 → momentum","Equal-transit 係錯"],rel:["pof.newton","pof.liftmyth","pof.u.kutta"],src:"Lecture 13a"},
   {id:"pof.u.dragsep",g:"Advanced: Airfoil Theory",t:"Drag, Separation & Pressure Gradient",d:"【進階】Skin friction (Cf) vs pressure drag；adverse gradient 令 flow separate。",pts:["Laminar Cf ∝ Re^-½；turbulent 較高","Re_crit 決定 transition","Favourable gradient: 加速","Adverse gradient: 減速 → separation","Separated：失 lift + 加 drag"],rel:["pof.bl","pof.stall","pof.u.reynolds"],src:"Lecture 14"},
   // ===== Advanced: Finite Wing
   {id:"pof.u.finite",g:"Advanced: Finite Wing",t:"Finite Wing: Downwash & Induced AoA",d:"【進階】Tip vortex 產生 downwash，令 effective AoA 細過 geometric AoA。",pts:["2D 係理想 (b→∞)","Downwash w → α_i","α_eff = α − α_i","Lift 向後傾 → induced drag","Lift 沿翼展分佈 L'(y)"],rel:["pof.induced","pof.u.biot","pof.u.lifting"],src:"Lecture 15"},
-  {id:"pof.u.biot",g:"Advanced: Finite Wing",t:"Biot–Savart & Helmholtz",d:"【進階】Vortex filament 對周圍誘導速度；Helmholtz 規則解釋 tip vortex。",pts:["半無限 vortex: V = Γ/(4πh)","無限: V = Γ/(2πh)","Strength 沿線唔變","Vortex 唔可以喺 fluid 中終止","→ horseshoe vortex"],rel:["pof.u.finite","pof.vortices"],src:"Lecture 15 & 16"},
+  {id:"pof.u.biot",g:"Advanced: Finite Wing",t:"Biot–Savart & Helmholtz",d:"【進階】Vortex filament 對周圍誘導speed；Helmholtz 規則解釋 tip vortex。",pts:["半無限 vortex: V = Γ/(4πh)","無限: V = Γ/(2πh)","Strength 沿線唔變","Vortex 唔可以喺 fluid 中終止","→ horseshoe vortex"],rel:["pof.u.finite","pof.vortices"],src:"Lecture 15 & 16"},
   {id:"pof.u.lifting",g:"Advanced: Finite Wing",t:"Prandtl Lifting-Line Theory",d:"【進階】Horseshoe vortices 疊加求 Γ(y)；elliptical 分佈 → CDi = CL²/(π·AR)。",pts:["預測 L'(y)、總 lift、induced drag","Elliptical Γ：α_i 恆定","CDi = CL² / (π·e·AR)","e ≤ 1 (span efficiency)","適用中高 AR 直翼"],rel:["pof.aspect","pof.planform","pof.induced","pof.u.finite"],src:"Lecture 16"},
   // ===== Advanced: Compressible Flow
   {id:"pof.u.compress",g:"Advanced: Compressible",t:"Compressible Flow Basics",d:"【進階】M > 0.3：ρ 變化 >5%；kinetic ↔ internal energy 互換；a = √(γRT)。",pts:["Perfect gas: p = ρRT","γ = 1.4 (air)","Isentropic = adiabatic + reversible","Stagnation T0 = T(1+(γ−1)/2·M²)","Subsonic 都可以 compressible"],rel:["pof.machnum","pof.u.normal","pof.u.conserve"],src:"Lecture 17"},
@@ -141,13 +141,13 @@ Cadet.add({
   {id:"pof.u.bio",g:"Advanced: Flow Basics",t:"Swimming & Flying Animals",d:"【進階】Re 細 → viscous 主導；Re 大 → inertia 主導；flapping wing 靠 unsteady 效應。",pts:["Re 大：drag ∝ ρV²L²","Re 細：Stokes drag ∝ μVL","Lift-based vs drag-based thrust","Added mass","Leading-edge vortex"],rel:["pof.u.reynolds"],src:"Lecture 21"}
   ],
   links:[
-  ["pof.aoa","pof.stall","AoA 過 critical → stall（同速度無關）"],
+  ["pof.aoa","pof.stall","AoA 過 critical → stall（同speed無關）"],
   ["pof.liftformula","pof.densalt","DA 高 → ρ 低 → 同 IAS 下 lift 要更高 TAS"],
   ["pof.liftformula","pof.stallfactors","L=W 時 Vs=√(2W/ρSCLmax)，所以 W、flap 影響 Vs"],
   ["pof.clcurve","pof.stall","CLmax 之後曲線跌 = stall"],
   ["pof.flaps","pof.clcurve","Flap 令 CL–α 曲線上移、CLmax ↑"],
   ["pof.flaps","pof.stallfactors","Flap 放出 → Vs ↓"],
-  ["pof.bernoulli","pof.newton","同一件事兩個角度：壓力差 = 動量變化"],
+  ["pof.bernoulli","pof.newton","同一件事兩個角度：pressure差 = 動量變化"],
   ["pof.newton","pof.induced","Downwash 愈大，lift 後傾愈多 → induced drag"],
   ["pof.vortices","pof.induced","Tip vortex 產生 downwash → induced drag"],
   ["pof.vortices","pof.wake","同一 vortex 留喺後面 = wake turbulence"],
@@ -163,8 +163,8 @@ Cadet.add({
   ["pof.spiralinst","pof.spiral","Spiral instability 發展成 spiral dive"],
   ["pof.loadfactor","pof.stallfactors","n ↑ → Vs × √n"],
   ["pof.turnforces","pof.loadfactor","Bank ↑ → lift 要 ↑ → n = 1/cosφ"],
-  ["pof.turnforces","pof.rot","Horizontal lift 決定轉彎快慢"],
-  ["pof.accstall","pof.va","高於 VA 失速：load 可超 limit"],
+  ["pof.turnforces","pof.rot","Horizontal lift 決定turn快慢"],
+  ["pof.accstall","pof.va","高於 VA stall：load 可超 limit"],
   ["pof.va","pof.vg","VA 係 V-g 包絡嘅 corner"],
   ["pof.limitload","pof.vg","V-g 圖頂線 = limit load"],
   ["pof.advyaw","pof.rudder","Rudder 用嚟抵消 adverse yaw"],
@@ -179,7 +179,7 @@ Cadet.add({
   ["pof.ltt","pof.weathercock","兩者都係 yaw 方向嘅效應"],
   ["pof.groundeffect","pof.induced","近地 vortex 受限 → induced drag ↓"],
   ["pof.climb","pof.vxvy","Excess thrust/power 決定 Vx/Vy"],
-  ["pof.ld","pof.glide","L/DMAX 速度 = best glide"],
+  ["pof.ld","pof.glide","L/DMAX speed = best glide"],
   ["pof.mcrit","pof.wavedrag","超過 Mcrit → shock → wave drag"],
   ["pof.wavedrag","pof.machtuck","Shock 分離 → CP 後移 + tail 差 → tuck"],
   ["pof.sweep","pof.mcrit","Sweep → effective M ↓ → Mcrit ↑"],
@@ -219,12 +219,12 @@ Cadet.add({
   _pofC("pof.viscosity","🧈","What is viscosity and how does it affect an aircraft?","Viscosity is a fluid's resistance to flow; it makes air stick to the skin, creating a boundary layer and skin friction drag.","空氣 viscosity 低但唔係零。"),
   _pofC("pof.viscosity","🪨","Why do smooth-looking surfaces still cause friction?","Every surface is rough at microscopic level, so the air touching it is slowed down.","所以飛機要清潔、flush rivet。"),
   _pofC("pof.densalt","🔥","What is density altitude and why does it matter?","It is pressure altitude corrected for non-standard temperature; high density altitude reduces lift, thrust and propeller efficiency.","熱、高、濕 → 性能差。"),
-  _pofC("pof.densalt","🏔️","What happens to takeoff performance on a hot day at a high-elevation airfield?","Longer takeoff roll and reduced climb rate, because air density is lower and the engine produces less power.","要更長跑道。"),
+  _pofC("pof.densalt","🏔️","What happens to takeoff performance on a hot day at a high-elevation airfield?","Longer takeoff roll and reduced climb rate, because air density is lower and the engine produces less power.","要更長runway。"),
   _pofC("pof.speeds","🧭","What is the difference between IAS and TAS?","IAS reflects dynamic pressure at the pitot; TAS is IAS corrected for air density, so TAS is higher than IAS at altitude.","高空 TAS > IAS。"),
   _pofC("pof.speeds","🧮","Does stall IAS change with altitude?","No. The wing stalls at the same indicated airspeed in straight-and-level flight; the TAS at the stall is higher at altitude.","Stall IAS ≈ 不變。"),
   _pofC("pof.fourforces","⚖️","Name the four forces on an aircraft and their directions.","Lift (perpendicular to relative wind), weight (towards the earth's centre), thrust and drag (parallel to relative wind).","Lift 唔一定垂直。"),
-  _pofC("pof.fourforces","➡️","In steady straight-and-level flight, how are the forces related?","Lift equals weight and thrust equals drag.","勻速平飛 = 成對平衡。"),
-  _pofC("pof.aoa","📐","Define angle of attack.","The angle between the wing chord line and the relative airflow.","唔係機頭指向。"),
+  _pofC("pof.fourforces","➡️","In steady straight-and-level flight, how are the forces related?","Lift equals weight and thrust equals drag.","勻速level flight = 成對平衡。"),
+  _pofC("pof.aoa","📐","Define angle of attack.","The angle between the wing chord line and the relative airflow.","唔係nose指向。"),
   _pofC("pof.aoa","🔀","How do attitude, flightpath and angle of attack differ?","Attitude is the nose position relative to the horizon, flightpath is the direction of travel, and AoA is chord versus relative wind.","三者可以完全唔同。"),
   _pofC("pof.aoa","❓","Why is AoA more important than airspeed for stalling?","A wing always stalls at its critical AoA; airspeed at the stall varies with weight, load factor and configuration.","Stall = AoA 問題。"),
   _pofC("pof.liftformula","➗","State the lift formula and what each term means.","L = CL × ½ρV² × S: lift coefficient, air density, speed squared and wing area.","V 加倍 → lift ×4。"),
@@ -264,7 +264,7 @@ Cadet.add({
   _pofC("pof.dragcurve","🏋️","How does increased weight affect the drag curve?","Induced drag rises, so the minimum-drag speed increases while parasite drag changes little.","重 → 曲線右移。"),
   _pofC("pof.ld","🎿","What is L/D and what does L/DMAX represent?","The ratio of lift to drag; L/DMAX is the AoA and speed with the lowest total drag, giving best glide.","最佳效率點。"),
   _pofC("pof.ld","📐","An aircraft has L/D of 10. How far does it glide from 5000 ft in still air?","Glide distance = height × L/D = 5000 ft × 10 = 50,000 ft ≈ 8.2 NM.","50,000 ÷ 6076 ≈ 8.2 NM。"),
-  _pofC("pof.stall","🛑","What is a stall?","A rapid loss of lift and increase in drag when airflow separates from the wing because the critical angle of attack is exceeded.","同速度、attitude 無關。"),
+  _pofC("pof.stall","🛑","What is a stall?","A rapid loss of lift and increase in drag when airflow separates from the wing because the critical angle of attack is exceeded.","同speed、attitude 無關。"),
   _pofC("pof.stall","🧱","Does a stalled wing produce zero lift?","No. It still produces lift, but not enough to sustain level flight.","Lift 大減，唔係零。"),
   _pofC("pof.stall","🔽","Why does the nose drop in a stall?","The centre of pressure moves aft of the CG and tail download falls, giving a nose-down pitching moment that reduces AoA.","CP 後移。"),
   _pofC("pof.stallsym","🔔","What are the symptoms of an approaching stall?","Low and decreasing airspeed, high nose attitude, sloppy controls, quiet cabin, buffet and the stall warning horn.","Horn 約高過 stall 5–10 kt。"),
@@ -289,9 +289,9 @@ Cadet.add({
   _pofC("pof.advyaw","↩️","What is adverse yaw and why does it happen?","Yaw opposite to the roll direction, caused by more drag on the wing with the down-going aileron.","Down aileron drag 大。"),
   _pofC("pof.advyaw","🛠️","How do designers and pilots counter adverse yaw?","Differential or Frise ailerons by design, and coordinated rudder by the pilot.","設計 + 技術。"),
   _pofC("pof.ailerontypes","🔩","Explain differential and Frise ailerons.","Differential: the up aileron moves more than the down one; Frise: the up aileron's nose protrudes into the airstream to add drag.","兩種減 adverse yaw。"),
-  _pofC("pof.elevator","🛫","What are the effects of the elevator?","Primary effect is pitch about the lateral axis; the pitch change also changes AoA, airspeed and altitude.","Pitch 之後速度高度都變。"),
+  _pofC("pof.elevator","🛫","What are the effects of the elevator?","Primary effect is pitch about the lateral axis; the pitch change also changes AoA, airspeed and altitude.","Pitch 之後speedaltitude都變。"),
   _pofC("pof.rudder","🦶","What are the primary and secondary effects of rudder?","Primary: yaw about the normal axis; secondary: roll in the direction of yaw, because the outer wing moves faster.","Yaw → roll。"),
-  _pofC("pof.rudder","❌","Does the rudder turn the aircraft?","No. Banking provides the turning force; rudder only keeps the nose aligned with the relative wind (balance).","Banking 先轉彎。"),
+  _pofC("pof.rudder","❌","Does the rudder turn the aircraft?","No. Banking provides the turning force; rudder only keeps the nose aligned with the relative wind (balance).","Banking 先turn。"),
   _pofC("pof.ctrleff","🌬️","How do airspeed and slipstream affect control effectiveness?","Higher airspeed makes all controls more effective; propeller slipstream strengthens rudder and elevator but not the ailerons.","Aileron 唔受影響。"),
   _pofC("pof.ctrleff","🐢","Why are controls sloppy near the stall?","Low airspeed means low dynamic pressure over the surfaces, so larger movements are needed for the same effect.","慢 → 軟。"),
   _pofC("pof.tail","🅃","What is a stabilator?","A single-piece horizontal tail that pivots as a whole and acts as both stabiliser and elevator.","整塊活動。"),
@@ -344,19 +344,19 @@ Cadet.add({
   _pofC("pof.vxvy","📋","What are the DA40 Vx and Vy in the briefing?","Vx 67 KIAS and Vy 76 KIAS.","ENZO 數據。"),
   _pofC("pof.powercurve","📉","What is the back of the power curve?","Flying slower than minimum-power speed, where reducing speed requires more power; it is a speed-unstable region.","Region of reverse command。","check"),
   _pofC("pof.glide","🪂","At what speed do you get the best glide distance?","At the speed for L/DMAX (minimum drag); headwind reduces distance and flap or a windmilling prop reduces the ratio.","Best glide。"),
-  _pofC("pof.glide","⚖️","Does weight change the glide ratio?","No; a heavier aircraft glides at a higher airspeed with the same ratio in still air.","ratio 同，速度快。"),
+  _pofC("pof.glide","⚖️","Does weight change the glide ratio?","No; a heavier aircraft glides at a higher airspeed with the same ratio in still air.","ratio 同，speed快。"),
   _pofC("pof.perf","🏜️","How do weight and density altitude affect climb?","Greater weight and higher density altitude both reduce climb angle and rate because excess thrust/power falls.","差兩樣。"),
   _pofC("pof.ltt","⬅️","What are the four left-turning tendencies?","Torque reaction, corkscrew slipstream, gyroscopic precession and P-factor (asymmetric propeller loading).","適用順時針 prop。"),
   _pofC("pof.ltt","⏳","When are left-turning tendencies strongest?","At high power, low airspeed and high AoA, such as take-off and climb; counter with rudder.","Takeoff/climb。"),
   _pofC("pof.torque","🔃","What is torque reaction?","As the engine and propeller turn clockwise, the airframe reacts by rolling counter-clockwise (left); on the ground this loads the left wheel and yaws left.","Newton 3。"),
   _pofC("pof.pfactor","🍴","Explain P-factor.","At high AoA, the down-going blade has greater angle of attack and thrust, shifting the thrust centre right and yawing the nose left.","下行 blade 咬位大。"),
   _pofC("pof.gyro","🪀","Explain gyroscopic precession of the propeller.","A force applied to the spinning prop acts 90° ahead in the direction of rotation; raising the tail on take-off yaws the nose left.","90° 後生效。"),
-  _pofC("pof.corkscrew","🔩","What is the corkscrew effect?","The propeller's spiralling slipstream hits the fin from one side, yawing the aircraft left, strongest at high power and low speed.","螺旋 slipstream。"),
+  _pofC("pof.corkscrew","🔩","What is the corkscrew effect?","The propeller's spiralling slipstream hits the fin from one side, yawing the aircraft left, strongest at high power and low speed.","spin slipstream。"),
   _pofC("pof.weathercock","🌬️","What is weathercocking?","The tendency of the aircraft to yaw into wind because the fin acts like a weathervane.","向風。"),
   _pofC("pof.critengine","2️⃣","What is the critical engine on a twin?","The engine whose failure most adversely affects performance and handling; with clockwise props it is the left engine, due to P-factor.","順時針 prop → 左。"),
-  _pofC("pof.critengine","🧊","How does VMC vary with altitude?","For unsupercharged engines VMC decreases with altitude as engine power falls.","高度 ↑ VMC ↓。"),
+  _pofC("pof.critengine","🧊","How does VMC vary with altitude?","For unsupercharged engines VMC decreases with altitude as engine power falls.","altitude ↑ VMC ↓。"),
   _pofC("pof.groundeffect","🛬","What is ground effect?","Within about one wingspan of the ground, downwash and tip vortices are restricted, reducing induced drag and increasing lift.","Float。"),
-  _pofC("pof.groundeffect","🛫","What happens as you climb out of ground effect?","Induced drag rises and AoA must increase to hold lift, so thrust required increases.","起飛離地後。"),
+  _pofC("pof.groundeffect","🛫","What happens as you climb out of ground effect?","Induced drag rises and AoA must increase to hold lift, so thrust required increases.","take-off離地後。"),
   _pofC("pof.wake","🌪️","What conditions produce the strongest wake turbulence?","A heavy, clean (flaps up) aircraft flying slowly, such as on take-off and landing.","重、慢、clean。"),
   _pofC("pof.wake","🛬","How do you avoid wake turbulence on landing behind a heavy aircraft?","Fly above its flight path and land beyond its touchdown point.","高過佢、落地點之後。"),
   _pofC("pof.machnum","🔊","Define Mach number.","The ratio of true airspeed to the local speed of sound.","TAS ÷ a。"),
@@ -402,7 +402,7 @@ Cadet.add({
   _pofC("pof.u.lifting","🧮","Write the induced drag coefficient from lifting-line theory.","CDi = CL²/(π·e·AR), with e = 1 for an elliptical lift distribution.","e ≤ 1。"),
   _pofC("pof.u.lifting","🔁","Why is an elliptical lift distribution special?","It gives constant induced angle of attack and the minimum induced drag for a given lift and span.","最小 CDi。"),
   _pofC("pof.u.compress","🔥","When must compressibility be considered?","Above about Mach 0.3, where density changes exceed roughly 5%.","M>0.3。"),
-  _pofC("pof.u.compress","❄️","Write the speed of sound formula.","a = √(γ·R·T), where γ = 1.4 and R = 287 J/(kg·K) for air.","只靠溫度。"),
+  _pofC("pof.u.compress","❄️","Write the speed of sound formula.","a = √(γ·R·T), where γ = 1.4 and R = 287 J/(kg·K) for air.","只靠temperature。"),
   _pofC("pof.u.normal","💢","What happens to M, p and T across a normal shock?","Mach drops from above 1 to below 1, while static pressure, temperature and density rise; total pressure drops.","P0 損失。"),
   _pofC("pof.u.oblique","📐","How are oblique shocks related to normal shocks?","Only the velocity component normal to the shock changes; the tangential component is unchanged, so use Mn1 = M1 sinβ.","Mn = M sinβ。"),
   _pofC("pof.u.oblique","🌬️","What is an expansion fan?","A smooth, isentropic acceleration where supersonic flow turns away from itself, described by the Prandtl–Meyer function.","P ↓ M ↑。"),
@@ -417,7 +417,7 @@ Cadet.add({
   _pofC("pof.axes","🎯","Where do all three axes intersect?","At the centre of gravity; aircraft rotate about the CG.","CG。"),
   _pofC("pof.aileron","🔼","Which way does the aileron on the rising wing move?","It moves down on the wing going up (more lift and drag) and up on the wing going down.","相反方向。"),
   _pofC("pof.ailerontypes","🔀","What is a flaperon?","A control surface combining aileron and flap functions.","兩用。"),
-  _pofC("pof.elevator","🔝","What is the tertiary effect of a pitch change?","Altitude and airspeed change as the aircraft climbs or descends.","高度速度變。"),
+  _pofC("pof.elevator","🔝","What is the tertiary effect of a pitch change?","Altitude and airspeed change as the aircraft climbs or descends.","altitudespeed變。"),
   _pofC("pof.tail","🅃","Name tail configurations other than conventional.","T-tail, stabilator, canard and V-tail.","列舉。"),
   _pofC("pof.spoilers","🛬","Why are ground spoilers used after landing?","They dump lift so weight goes on the wheels, improving braking.","增加煞車效果。"),
   _pofC("pof.flaptypes","🪽","Which flap type adds wing area?","The Fowler flap, which slides rearward as well as down.","加面積。"),
@@ -465,7 +465,7 @@ Cadet.add({
   _pofC("pof.u.bio","🐠","What is lift-based thrust?","Using lateral flapping motion to tilt lift into thrust, much like a tilted wing.","Flapping。")
   ],
   anims:[
-  {title:"Lift → AoA → Stall",hint:"拉 AoA 滑桿：睇 lift 箭咀同氣流（>16° 分離）",build(box,H){
+  {title:"Lift → AoA → Stall",hint:"拉 AoA 滑桿：睇 lift 箭咀同airflow（>16° 分離）",build(box,H){
     const svg=H.svg(box,700,340),say=H.note(box);H.marker(svg,"ah1","#fbbf24");
     const T=(x,y,s,f,sz,a)=>{const t=H.el("text",{x:x,y:y,fill:f||"#cbd5e1","font-size":sz||12,"text-anchor":a||"start"},svg);t.textContent=s;return t};
     const CX=330,CY=125,P=[];
@@ -485,7 +485,7 @@ Cadet.add({
       const L=15+c*75;arrow.setAttribute("x1",CX);arrow.setAttribute("y1",CY);arrow.setAttribute("x2",CX);arrow.setAttribute("y2",CY-L);
       arrow.setAttribute("stroke",st?"#f87171":"#fbbf24");dot.setAttribute("cx",X0+a/25*W);dot.setAttribute("cy",Y0-c/1.6*Hh);dot.setAttribute("fill",st?"#f87171":"#fbbf24");
       lab.setAttribute("y",CY-L-6);
-      say(st?"STALL：上面氣流分離（亂），CL 跌，drag 升。減 AoA 先 recover。":a>13?"接近 critical AoA（~16°）：stall warning 響":"AoA ↑ → CL ↑ → lift ↑（線性）")});
+      say(st?"STALL：上面flow separation（亂），CL 跌，drag 升。減 AoA 先 recover。":a>13?"接近 critical AoA（~16°）：stall warning 響":"AoA ↑ → CL ↑ → lift ↑（線性）")});
     H.loop(()=>{P.forEach(p=>{let u=p.y0<CY;let d=(p.x-CX)/90,bump=Math.exp(-d*d);
       p.x+=2.1*(1+(u?0.7:0.15)*bump);if(p.x>700){p.x=0}
       let dy=u?-bump*(10+a*1.3):bump*(4+a*0.6);
@@ -493,7 +493,7 @@ Cadet.add({
       const st=a>16&&u&&p.x>CX-30;if(st)dy+=(Math.random()-0.5)*26*Math.min(1,(a-16)/5);
       p.c.setAttribute("cx",p.x);p.c.setAttribute("cy",p.y0+dy);p.c.setAttribute("fill",st?"#f87171":"#7dd3fc")})});
   }},
-  {title:"Four Forces & Climb",hint:"加 Thrust：T > D → 爬升角 γ",build(box,H){
+  {title:"Four Forces & Climb",hint:"加 Thrust：T > D → climb角 γ",build(box,H){
     const svg=H.svg(box,700,300),say=H.note(box);
     ["L","T","D","W"].forEach((n,i)=>H.marker(svg,"af"+n,["#4ade80","#38bdf8","#f87171","#fbbf24"][i]));
     const CX=330,CY=150,S=1.5,Dd=20,Wt=100;
@@ -511,9 +511,9 @@ Cadet.add({
       set(aT,tT,CX+ux*70,CY+uy*70,CX+ux*(70+v*S*1.4),CY+uy*(70+v*S*1.4),30,-6);
       set(aD,tD,CX-ux*70,CY-uy*70,CX-ux*(70+Dd*S*1.4),CY-uy*(70+Dd*S*1.4),-28,-6);
       set(aW,tW,CX,CY,CX,CY+Wt*S*0.9,0,16);
-      say(v>Dd?"T > D（excess thrust）→ 爬升 γ = "+(g*180/Math.PI).toFixed(1)+"°；Lift ≈ W·cosγ，weight 有後向分力":v<Dd?"T < D → 減速／下降 γ = "+(g*180/Math.PI).toFixed(1)+"°":"T = D, L = W：平飛")});
+      say(v>Dd?"T > D（excess thrust）→ climb γ = "+(g*180/Math.PI).toFixed(1)+"°；Lift ≈ W·cosγ，weight 有後向分力":v<Dd?"T < D → 減速／descent γ = "+(g*180/Math.PI).toFixed(1)+"°":"T = D, L = W：level flight")});
   }},
-  {title:"Drag Curve & Best L/D",hint:"拉速度同重量：induced vs parasite，最低 drag 速度",build(box,H){
+  {title:"Drag Curve & Best L/D",hint:"拉speed同weight：induced vs parasite，最低 drag speed",build(box,H){
     const svg=H.svg(box,700,300),say=H.note(box);
     const X0=60,X1=660,Y0=270,Y1=30,V0=30,V1=190,DM=200;
     const T=(x,y,s,f,sz,a)=>{const t=H.el("text",{x:x,y:y,fill:f||"#cbd5e1","font-size":sz||12,"text-anchor":a||"start"},svg);t.textContent=s;return t};
@@ -530,7 +530,7 @@ Cadet.add({
       lp.setAttribute("points",a);li.setAttribute("points",b);lt.setAttribute("points",c);
       const vmd=75*Math.sqrt(w);vl.setAttribute("x1",sx(vmd));vl.setAttribute("x2",sx(vmd));vl.setAttribute("y1",Y0);vl.setAttribute("y2",Y1);
       const tot=par(V)+ind(V,w);dot.setAttribute("cx",sx(V));dot.setAttribute("cy",sy(Math.min(DM,tot)));
-      say("V = "+V+" kt：total drag "+tot.toFixed(0)+"；L/D ≈ "+(700*w/tot).toFixed(1)+"；min-drag（best glide）速度 ≈ "+vmd.toFixed(0)+" kt（綠線）。"+(V<vmd-3?" 低過佢：induced 主導（back of curve）":V>vmd+3?" 高過佢：parasite 主導":" 呢度 = L/DMAX"))}
+      say("V = "+V+" kt：total drag "+tot.toFixed(0)+"；L/D ≈ "+(700*w/tot).toFixed(1)+"；min-drag（best glide）speed ≈ "+vmd.toFixed(0)+" kt（綠線）。"+(V<vmd-3?" 低過佢：induced 主導（back of curve）":V>vmd+3?" 高過佢：parasite 主導":" 呢度 = L/DMAX"))}
     H.slider(box,"Weight (×)",0.8,1.3,1,v=>{w=v;draw()},0.05);
     H.slider(box,"Airspeed kt",40,180,75,v=>{V=v;draw()},1);
   }},
@@ -547,7 +547,7 @@ Cadet.add({
     function setcg(v){m=(NP-v)/100;cgm.setAttribute("cx",BX+v/50*BW);cgt.setAttribute("x",BX+v/50*BW);
       say(m>0.03?"CG 喺 NP 前面：stable → 擾動後振盪縮細（positive static + dynamic）":m>=-0.03?"CG ≈ NP：neutral，唔會自己返正":"CG 喺 NP 後面：unstable → 越偏越遠（aft CG limit 就係防呢樣）")}
     H.slider(box,"CG 位置 (% chord)",10,50,20,setcg,1);
-    H.button(box,"Disturb（機頭 +15°）",()=>{th=15;w=0});
+    H.button(box,"Disturb（nose +15°）",()=>{th=15;w=0});
     H.loop(()=>{const dt=1/60;const acc=-m*140*th-1.0*w;w+=acc*dt;th+=w*dt*1;if(th>70){th=70;w=0}if(th<-70){th=-70;w=0}
       ac.setAttribute("transform",`translate(350,110) rotate(${-th})`)});
   }},
@@ -576,7 +576,7 @@ Cadet.add({
     H.slider(box,"Bank °",0,80,30,v=>{b=v;upd()},1);
     H.slider(box,"TAS kt",60,200,100,v=>{V=v;upd()},5);
   }},
-  {title:"P-Factor & Left Turning",hint:"提高機頭／power：下行 blade thrust 大 → 機頭向左",build(box,H){
+  {title:"P-Factor & Left Turning",hint:"提高nose／power：下行 blade thrust 大 → nose向左",build(box,H){
     const svg=H.svg(box,700,300),say=H.note(box);
     const T=(x,y,s,f,sz,a)=>{const t=H.el("text",{x:x,y:y,fill:f||"#cbd5e1","font-size":sz||12,"text-anchor":a||"start"},svg);t.textContent=s;return t};
     const DX=170,DY=140,R=95;
@@ -592,8 +592,8 @@ Cadet.add({
     function upd(){const k=a/25*(pw/100),tl=60*(1-0.5*a/25)*(0.5+pw/200),tr=60*(1+0.5*a/25)*(0.5+pw/200);
       bl.setAttribute("y",DY+R+30-tl);bl.setAttribute("height",tl);br.setAttribute("y",DY+R+30-tr);br.setAttribute("height",tr);
       tc.setAttribute("cx",DX+k*55);ac.setAttribute("transform",`translate(560,170) rotate(${-k*25})`);
-      yaw.textContent="機頭向左 "+(k*25).toFixed(0)+"°（需要 right rudder）";
-      say(a<3?"低 AoA／平飛：prop disc ⟂ airflow → 左右 thrust 一樣 → 冇 P-factor":"高 AoA：down-going（右）blade 見到較大 relative speed → thrust 大 → thrust centre 右移 → yaw 左")}
+      yaw.textContent="nose向左 "+(k*25).toFixed(0)+"°（需要 right rudder）";
+      say(a<3?"低 AoA／level flight：prop disc ⟂ airflow → 左右 thrust 一樣 → 冇 P-factor":"高 AoA：down-going（右）blade 見到較大 relative speed → thrust 大 → thrust centre 右移 → yaw 左")}
     H.slider(box,"Nose attitude / AoA °",0,25,10,v=>{a=v;upd()},1);
     H.slider(box,"Power %",20,100,60,v=>{pw=v;upd()},5);
     H.loop(()=>{ang+=pw/100*9;const r=ang*Math.PI/180;b1.setAttribute("x1",DX+R*Math.cos(r));b1.setAttribute("y1",DY+R*Math.sin(r));b1.setAttribute("x2",DX-R*Math.cos(r));b1.setAttribute("y2",DY-R*Math.sin(r));
@@ -619,7 +619,7 @@ Cadet.add({
       let y=0;if(t>=0&&t<400)t++;
       f1.setAttribute("opacity",t>5?1:0);t1.setAttribute("opacity",t>5?1:0);f2.setAttribute("opacity",t>70?1:0);t2.setAttribute("opacity",t>70?1:0);
       if(t>=0)y=Math.min(18,Math.max(0,(t-130)/6));
-      ac.setAttribute("transform",`translate(560,150) rotate(${-y})`);t3.textContent=y>1?"機頭 yaw 向左":""})
+      ac.setAttribute("transform",`translate(560,150) rotate(${-y})`);t3.textContent=y>1?"nose yaw 向左":""})
   }},
   {title:"Mach, Shock & Critical Mach",hint:"加 Mach：supersonic 區同 shock 後移；加 sweep 睇 Mcrit",build(box,H){
     const svg=H.svg(box,700,340),say=H.note(box);
@@ -667,7 +667,7 @@ Cadet.add({
       al.setAttribute("transform",`rotate(${a*0.8},350,122) translate(0,${a>0?a*0.6:0})`);ar.setAttribute("transform",`rotate(${a*0.8},350,122) translate(0,${a<0?-a*0.6:0})`);
       tp.setAttribute("transform",`rotate(${r*0.4},580,125)`);
       rd.setAttribute("x1",580);rd.setAttribute("y1",178);rd.setAttribute("x2",580-r*1.0);rd.setAttribute("y2",205);rd.setAttribute("transform",`rotate(${r*0.4},580,125)`);
-      say((e>2?"Elevator 後拉（TE up）→ tail 下壓 → 機頭 UP。 ":e<-2?"Elevator 前推 → 機頭 DOWN。 ":"")+(a>2?"Stick 右：右 aileron up、左 down → 右翼降 → roll RIGHT（secondary: adverse yaw 向左）。 ":a<-2?"Stick 左 → roll LEFT。 ":"")+(r>2?"右 rudder → TE 向右 → tail 左 → 機頭 yaw RIGHT（secondary: roll 右）。":r<-2?"左 rudder → 機頭 yaw LEFT。":"")||"撥動滑桿睇每個舵面嘅 primary effect")}
+      say((e>2?"Elevator 後拉（TE up）→ tail 下壓 → nose UP。 ":e<-2?"Elevator 前推 → nose DOWN。 ":"")+(a>2?"Stick 右：右 aileron up、左 down → 右翼降 → roll RIGHT（secondary: adverse yaw 向左）。 ":a<-2?"Stick 左 → roll LEFT。 ":"")+(r>2?"右 rudder → TE 向右 → tail 左 → nose yaw RIGHT（secondary: roll 右）。":r<-2?"左 rudder → nose yaw LEFT。":"")||"撥動滑桿睇每個舵面嘅 primary effect")}
     H.slider(box,"Elevator（+ = 拉桿）",-25,25,0,v=>{e=v;upd()},1);
     H.slider(box,"Aileron（+ = stick 右）",-25,25,0,v=>{a=v;upd()},1);
     H.slider(box,"Rudder（+ = 右腳）",-25,25,0,v=>{r=v;upd()},1);

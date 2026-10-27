@@ -25,61 +25,61 @@ T("gfcmodes",GG,"AFCS Modes","按掣揀 mode；預設 PIT／ROL。",["預設：P
 T("gfcdisc",GG,"AP Disconnect & CWS","手動 vs 自動斷開，annunciation 唔同。",["手動：琥珀 AP 閃 5 秒＋2 秒 tone","自動：紅白 AP 閃，tone 到確認","自動原因：system fail／invalid data／FD 算唔到","AP DISC 長撳：斷開＋servo／trim 斷電","CWS：撳住手飛，放手 AP 重新接"],["gfc700","gfcalert","failpass"],GP+" 7.5",false);
 T("gfcalert",GG,"AFCS Status Alerts","PTRM／ROLL／PTCH／AFCS／PFT／mistrim。",["PTRM：pitch trim fail 或 switch 黐","ROLL／PTCH：該軸失效，AP inoperative","AFCS：AP＋MET 無，FD 或仍有","PFT：preflight test 進行／失敗","AIL→／↓ELE：servo 持續出力＝mistrim"],["gfcdisc","gfc700","fma"],GP+" Table 7-6",false);
 T("g1000ela",GG,"DA40 Electrical Load Analysis","證明 alternator／battery 夠 IFR 同 emergency。",["Alternator 70 A × 0.8＝56 A","全機 IFR 負載 28.6 A＝51%","Battery 11 Ah × 0.7＝7.7 Ah","Essential bus 12.4 A → 約 0.62 h","Emergency pack 1.05 A，只供 AI＋flood"],["elecfail","battery","da40elec"],EL,true);
-T("g1000haz",GG,"TAWS, SVT & Traffic Limits","全部只係情境意識，唔係 primary。",["SVT 唔可單靠 depict 跑道","TAWS 唔可做主要避地","Traffic display 無 RA，要 see and avoid","唔可用 QFE altimeter","Database 要 current（Garmin／Jeppesen）"],["gpws","tcas","g1000pfd"],CR+" p5-6",false);
+T("g1000haz",GG,"TAWS, SVT & Traffic Limits","全部只係情境意識，唔係 primary。",["SVT 唔可單靠 depict runway","TAWS 唔可做主要避地","Traffic display 無 RA，要 see and avoid","唔可用 QFE altimeter","Database 要 current（Garmin／Jeppesen）"],["gpws","tcas","g1000pfd"],CR+" p5-6",false);
 
 // ===== Piston fuel/oil =====
 T("octane","Fuel & Induction","Octane & Fuel Grades","Octane＝抗 detonation，唔係能量。",["80 紅、100 綠、100LL 藍","Jet A 無色／草黃，唔可入 piston","MOGAS 揮發性高，除非有批准","舊燃料 octane 會跌","用低 octane → detonation"],["detonation","fuelcontam","fuelinj"],P2+" / "+RB+" / "+PH,false);
 T("fuelcontam","Fuel & Induction","Fuel Contamination","最常見係水；每次飛前 drain 檢查。",["Sump／strainer／tank 都要放","用透明容器睇水同雜質","夜凍 → condensation；tank 滿啲減少","檢出水：重複放到清，搖翼","冬天水凍堵管；暖天流入 carb"],["fuelsys","fuelicing","octane"],PH+" / "+RB+" / "+P2,false);
-T("fuelfeed","Fuel & Induction","Gravity vs Pump Feed","高翼靠重力；低翼要 pump。",["Gravity：tank 高過 carb","Pump：engine-driven＋electric boost","Boost 用於 start、TO、LDG、轉 tank","Primer 直接噴入 intake manifold","Gauge 只保證 empty 準；睇 tank"],["fuelsys","fuelselector","da40fuel"],PH+" / "+RB,false);
-T("fuelselector","Fuel & Induction","Fuel Selector & Tank Management","揀錯 tank＝fuel starvation 常見原因。",["LEFT／RIGHT／BOTH／OFF","唔好飛乾一個 tank → 吸氣 vapour lock","轉 tank 前開 boost pump","唔好喺低高度轉；睇 fuel pressure","注意 placard（如 level flight only）"],["fuelfeed","fuelsys","da40fuel"],PH+" / "+RB,false);
-T("fuelicing","Fuel & Induction","Fuel System Icing","燃料入面嘅水結冰堵 filter。",["Free water 沉底；entrained 懸浮","結冰堵 screen／strainer／filter","EGME 0.15% 抑制（FAA 資料）","Additive 唔取代 carb heat","凍住嘅 drain 要暖機庫解凍"],["fuelcontam","carbice"],PH,true);
-T("refuel","Fuel & Induction","Refuelling & Bonding","靜電火花會點燃油氣：先 bond／接地。",["先接地 aircraft，再開 cap","Nozzle bond 到機身並保持","Drum：drum→地→機→nozzle","Chamois 增靜電；唔用膠桶","發動機同 ignition 要關"],["fuelsys","octane"],PH+" / "+RB,false);
+T("fuelfeed","Fuel & Induction","Gravity vs Pump Feed","高翼靠weight；低翼要 pump。",["Gravity：tank 高過 carb","Pump：engine-driven＋electric boost","Boost 用於 start、TO、LDG、轉 tank","Primer 直接噴入 intake manifold","Gauge 只保證 empty 準；睇 tank"],["fuelsys","fuelselector","da40fuel"],PH+" / "+RB,false);
+T("fuelselector","Fuel & Induction","Fuel Selector & Tank Management","揀錯 tank＝fuel starvation 常見原因。",["LEFT／RIGHT／BOTH／OFF","唔好飛乾一個 tank → 吸氣 vapour lock","轉 tank 前開 boost pump","唔好喺低altitude轉；睇 fuel pressure","注意 placard（如 level flight only）"],["fuelfeed","fuelsys","da40fuel"],PH+" / "+RB,false);
+T("fuelicing","Fuel & Induction","Fuel System Icing","燃料入面嘅水icing堵 filter。",["Free water 沉底；entrained 懸浮","icing堵 screen／strainer／filter","EGME 0.15% 抑制（FAA 資料）","Additive 唔取代 carb heat","凍住嘅 drain 要暖機庫解凍"],["fuelcontam","carbice"],PH,true);
+T("refuel","Fuel & Induction","Refuelling & Bonding","靜電火花會點fuel氣：先 bond／接地。",["先接地 aircraft，再開 cap","Nozzle bond 到fuselage並保持","Drum：drum→地→機→nozzle","Chamois 增靜電；唔用膠桶","engine同 ignition 要關"],["fuelsys","octane"],PH+" / "+RB,false);
 T("mixcons","Fuel & Induction","Rich/Lean Consequences & ICO","微 rich 冷卻缸；太 lean 高 power → detonation。",["Over-rich：低 power、火咀積碳","Over-lean 高 power：CHT 升","Power >75% 用 full rich（Robson）","巡航高過 5000 ft 通常要 lean","ICO 關機：燒淨 manifold 內混合氣"],["mixture","detonation","egtcht"],RB,true);
 T("lubfun","Oil, Cooling, Exhaust","Functions & Properties of Oil","五大功能：Lube、Cool、Clean、Seal、Protect。",["Viscosity 係最重要特性","Multigrade 例如 15W50","高溫變稀、低溫變稠","Oil cooler 帶走熱","混油短期冇事；冇油先致命"],["lube","oilprob","oilind"],RB+" / "+P2,false);
-T("oilprob","Oil, Cooling, Exhaust","Oil Problems","按 pressure／temp 組合判斷。",["低壓：油少、漏、pump、PRV 卡開","高溫：油少或缸過熱","起動 30 秒內無壓 → 關機","壓低但溫度正常 → 可能係錶壞","漸漸漏油：溫度先升，之後壓力突降"],["oilind","lubfun","proploss"],RB,false);
-T("cowlflap","Oil, Cooling, Exhaust","Cowl Flaps & Overheat Actions","高 power 低速最難冷卻。",["Take-off／climb 最危險","開 cowl flaps","Rich mixture 冷卻","加速（降機頭）","減 power"],["cooling","egtcht","mixcons"],RB+" / "+P2,false);
+T("oilprob","Oil, Cooling, Exhaust","Oil Problems","按 pressure／temp 組合判斷。",["低壓：油少、漏、pump、PRV 卡開","高溫：油少或缸過熱","起動 30 秒內無壓 → 關機","壓低但temperature正常 → 可能係錶壞","漸漸漏油：temperature先升，之後pressure突降"],["oilind","lubfun","proploss"],RB,false);
+T("cowlflap","Oil, Cooling, Exhaust","Cowl Flaps & Overheat Actions","高 power 低速最難冷卻。",["Take-off／climb 最危險","開 cowl flaps","Rich mixture 冷卻","加速（降nose）","減 power"],["cooling","egtcht","mixcons"],RB+" / "+P2,false);
 T("starter","Electrical","Starter & Master Switch","Start 電流好大，唔經 ammeter。",["Master＝BAT＋ALT 兩半","BAT 關會連帶 ALT 關","起動大電流經 solenoid","Ancillary 設備起動後先開","DA40 START 燈：pinion 未退出"],["bus","ammeter","da40elec"],RB+" / "+AF,false);
 T("fadec","Fuel & Induction","FADEC","電腦控制 fuel／ignition／prop，單桿。",["取代 mag、carb heat、mixture","兩條相同 digital channel","需要後備電源","每缸獨立調 fuel 同點火","可用於 piston 同 turbine"],["ap","mixture","gpws"],PH+" ch7",false);
 
 // ===== Turbine ops =====
 T("turbinst","Gas Turbine","Turbine Engine Instruments","EPR、EGT/TIT、torque、N1、N2。",["EPR＝turbine discharge／compressor inlet","EGT 系：TIT、TOT、ITT、TGT","Turboprop 用 torquemeter","N1＝low pressure compressor %","N2＝high pressure compressor %"],["turbine","spools","hotstart"],PH,false);
 T("hotstart","Gas Turbine","Hot / Hung Start","EGT 超限＝hot start；唔加速＝hung start。",["Hot：太多油或 turbine rpm 太低","Hung：未加速到 idle","原因：電源不足、fuel control 故障","Hot start 要按 AFM 檢查","Start 要監察 EGT"],["turbinst","combustor"],PH+" / "+AT,false);
-T("compstall","Gas Turbine","Compressor Stall","葉片 AoA 超 critical → 氣流停滯。",["Transient：間歇 bang","Steady：大聲轟鳴＋震","RPM 波動、EGT 升","回復：減 power、降 AoA、加速","預防：VIGV、bleed valve、遵守限制"],["compressor","flameout","spools"],PH+" / "+AT,false);
-T("flameout","Gas Turbine","Flameout","火熄：rich 或 lean 都可以。",["Rich：加速太快","Lean：高空低壓油／拉低 throttle","燃料中斷（姿態、結冰、用晒）","徵狀似 engine failure","按 AFM airstart 程序"],["compstall","combustor"],PH,false);
+T("compstall","Gas Turbine","Compressor Stall","葉片 AoA 超 critical → airflow停滯。",["Transient：間歇 bang","Steady：大聲轟鳴＋震","RPM 波動、EGT 升","回復：減 power、降 AoA、加速","預防：VIGV、bleed valve、遵守限制"],["compressor","flameout","spools"],PH+" / "+AT,false);
+T("flameout","Gas Turbine","Flameout","火熄：rich 或 lean 都可以。",["Rich：加速太快","Lean：高空低壓油／拉低 throttle","燃料中斷（姿態、icing、用晒）","徵狀似 engine failure","按 AFM airstart 程序"],["compstall","combustor"],PH,false);
 T("fod","Gas Turbine","FOD","外物吸入損壞 compressor／turbine。",["小凹痕至完全摧毀","鳥擊、冰、碎石","Vortex dissipater","Preflight 睇 inlet","Axial compressor 較易受損"],["intake","compressor"],PH+" / AGK06",false);
-T("turbthrust","Gas Turbine","Thrust, Density & ESHP","Thrust 隨空氣密度變。",["高溫／高 density altitude → thrust 降","濕度影響細（piston 大）","Turboprop ESHP＝shaft HP＋jet thrust","Jet thrust 約佔 15–25%（ATP）","TIT 係主要限制"],["turbtypes","turbinst","boost"],AT+" ch4 / "+PH,false);
+T("turbthrust","Gas Turbine","Thrust, Density & ESHP","Thrust 隨空氣density變。",["高溫／高 density altitude → thrust 降","humidity影響細（piston 大）","Turboprop ESHP＝shaft HP＋jet thrust","Jet thrust 約佔 15–25%（ATP）","TIT 係主要限制"],["turbtypes","turbinst","boost"],AT+" ch4 / "+PH,false);
 
 // ===== Flight controls =====
 T("fcprimary",GF,"Primary Flight Controls","Aileron、elevator、rudder，再加 trim。",["Cable＋pulley 或 push-pull rod","Column、yoke、side-stick","Stabilator＝全動 tailplane","Control lock／restrain 防風","Preflight 最重要檢查之一"],["tabs","poweredfc","fcsecondary"],RB+" / "+AT,false);
-T("fcsecondary",GF,"Secondary Controls","Tabs、flaps、slats、spoilers。",["高升力：增 CLmax、降失速速度","Spoiler：加 drag、減 lift","Tabs：減力或 trim","Primary 同 secondary 分類常考","Ruddervator 屬 primary"],["fcprimary","flaptypes","spoilers"],AT,false);
+T("fcsecondary",GF,"Secondary Controls","Tabs、flaps、slats、spoilers。",["高lift：增 CLmax、降stall speed","Spoiler：加 drag、減 lift","Tabs：減力或 trim","Primary 同 secondary 分類常考","Ruddervator 屬 primary"],["fcprimary","flaptypes","spoilers"],AT,false);
 T("tabs",GF,"Tab Types","方向相對 surface 決定作用。",["Trim tab：反方向，改 hinge moment","Servo tab：反方向，帶動 surface","Anti-servo：同方向，增加力防過偏","Control tab：manual reversion 時用","方向諗法：tab 上 → surface 下（servo）"],["fcprimary","poweredfc"],AT+" ch3",false);
-T("flaptypes",GF,"Flap & Slat Types","Plain、split、slotted、Fowler；前緣 slat／Krueger。",["Fowler：後移加面積加 camber","Slotted：氣流過 slot 延遲分離","Slat：開 gap，延遲失速","Krueger：前緣向下增 camber","目的：CLmax↑、stall speed↓"],["fcsecondary","wings"],RB+" / "+AT,false);
+T("flaptypes",GF,"Flap & Slat Types","Plain、split、slotted、Fowler；前緣 slat／Krueger。",["Fowler：後移加面積加 camber","Slotted：airflow過 slot 延遲分離","Slat：開 gap，延遲stall","Krueger：前緣向下增 camber","目的：CLmax↑、stall speed↓"],["fcsecondary","wings"],RB+" / "+AT,false);
 T("spoilers",GF,"Spoilers","Flight spoiler 同 ground spoiler。",["單邊升：助 roll","同時升：減速／急降","地面：破壞 lift，加強刹車","Ground spoiler 靠 gear 感應","唔增加 lift"],["fcsecondary","brakes"],AT+" ch3",false);
 T("poweredfc",GF,"Powered Controls & Manual Reversion","高氣動力 → 用 hydraulic actuator。",["Hydraulic 全失 → manual reversion","Control tab 幫手移 surface","Upper rudder（B727）後備","力量感需要 artificial feel","與 fly-by-wire 唔同體系"],["hydsource","tabs","fcprimary"],AT+" ch3",true);
 T("ailerons2",GF,"Inboard/Outboard Aileron & VG","高速鎖住 outboard，防翼過度扭。",["Inboard 全程用","Outboard 只喺 flaps 放時用","Flaps 收 → outboard locked out","Vortex generator 延遲 shock separation","改善高速 aileron 效用"],["fcprimary","spoilers"],AT+" ch3",false);
-T("structforms",GF,"Airframe Forms & Rigger's Angle","Monocoque／externally braced，incidence 固定。",["Semi-monocoque：frame＋longeron＋skin","翼：spar、rib、stringer","External bracing：flying vs landing wires","Rigger's angle：翼同 tailplane 對機身角度","唔可自行改變 incidence"],["fuselage","wings","stress"],RB,false);
+T("structforms",GF,"Airframe Forms & Rigger's Angle","Monocoque／externally braced，incidence 固定。",["Semi-monocoque：frame＋longeron＋skin","翼：spar、rib、stringer","External bracing：flying vs landing wires","Rigger's angle：翼同 tailplane 對fuselage角度","唔可自行改變 incidence"],["fuselage","wings","stress"],RB,false);
 
 // ===== Ice =====
 T("deiceboots",GI,"Anti-ice vs De-ice & Boots","Anti-ice 防止；de-ice 去除。",["Boot 由 pneumatic 脹開打碎冰","Bridging 喺現代 boots 不存在（PHAK）","可一見冰就 cycle","睇 suction／pneumatic gauge","保護：前緣、pitot、vent、風擋、prop"],["thermalai","pneu","pitotstatic"],PH,false);
 T("thermalai",GI,"Thermal & TKS Anti-ice","Bleed air 或電熱；TKS 流出防凍液。",["Turbine：compressor bleed air 熱前緣","ThermaWing：電熱 graphite foil","TKS：細孔流出 antifreeze","入冰前先開","唔係長時間飛冰設計"],["deiceboots","pneuuse","propai"],PH,false);
 T("propai",GI,"Prop, Windscreen & Pitot Heat","Alcohol 或電加熱。",["Prop：alcohol 沿葉前緣；或電 boot","Boot 一葉唔熱 → 不平衡震動","Windscreen 電熱：只可飛行中用","可令 compass 偏差達 40°","Pitot heat：power-on 燈＋ammeter"],["deiceboots","pitotstatic","compass"],PH+" / "+AT,false);
-T("icebasic",GI,"Fuel & Induction Ice Links","結冰唔止翼：carb、fuel、pitot 都有。",["Carb ice：venturi 降溫","Fuel ice：水結冰堵 filter","Pitot ice：IAS 錯","Alternate air／static source 備用","入冰前檢查系統"],["carbice","fuelicing","blockage"],PH,false);
+T("icebasic",GI,"Fuel & Induction Ice Links","icing唔止翼：carb、fuel、pitot 都有。",["Carb ice：venturi 降溫","Fuel ice：水icing堵 filter","Pitot ice：IAS 錯","Alternate air／static source 備用","入冰前檢查系統"],["carbice","fuelicing","blockage"],PH,false);
 
 // ===== Oxygen / pressure =====
-T("o2req",GO,"Oxygen Requirements & Hypoxia","高度越高氧分壓越低。",["FAA 例子：12,500–14,000 ft 超 30 分鐘","14,000 ft 以上持續用","15,000 ft 以上所有乘員要有","日間 10,000 ft、夜間 5,000 ft 建議用（PHAK）","CASA／HK CAD 數字唔同，需核對"],["o2types","decomp","pressurisation"],PH+" ch7",true);
+T("o2req",GO,"Oxygen Requirements & Hypoxia","altitude越高氧分壓越低。",["FAA 例子：12,500–14,000 ft 超 30 分鐘","14,000 ft 以上持續用","15,000 ft 以上所有乘員要有","日間 10,000 ft、夜間 5,000 ft 建議用（PHAK）","CASA／HK CAD 數字唔同，需核對"],["o2types","decomp","pressurisation"],PH+" ch7",true);
 T("o2types",GO,"Oxygen System Types","Diluter-demand、pressure-demand、continuous flow、pulse。",["Diluter-demand：用戶吸氣先供氧","Pressure-demand：高過 40,000 ft 安全","Continuous flow＋reservoir bag：乘客","Pulse-demand 省氧 50–85%","Pulse oximeter 量血氧"],["o2req","decomp"],PH,false);
-T("o2safety",GO,"Oxygen Handling Safety","氧助燃，油脂接觸會燃燒。",["高壓瓶約 1,800–2,200 psi","溫度跌 → 壓力跌（唔一定漏）","禁止油脂、吸煙","飛前測試 mask 同 regulator","加氧唔同時加油"],["o2types","pneu"],PH,false);
-T("cabinalt",GO,"Cabin Altitude & Differential","Cabin 壓力同外面嘅差＝differential。",["最大巡航 cabin 約 8,000 ft","Isobaric range：維持設定 cabin alt","Differential range：維持 max psid","Outflow valve 控壓","Safety valve：pressure／vacuum relief＋dump"],["pressurisation","aircon","fatigue"],PH+" ch7",false);
-T("decomp",GO,"Decompression","Explosive <0.5 秒；rapid 較慢。",["主要危險：hypoxia","TUC 縮短到 1/3–1/4","戴氧氣罩，緊急下降","結構破損：吹出機外風險","Visual＋aural warning 必備"],["o2req","cabinalt","pressurisation"],PH+" / "+AT,false);
+T("o2safety",GO,"Oxygen Handling Safety","氧助燃，油脂接觸會燃燒。",["高壓瓶約 1,800–2,200 psi","temperature跌 → pressure跌（唔一定漏）","禁止油脂、吸煙","飛前測試 mask 同 regulator","加氧唔同時加油"],["o2types","pneu"],PH,false);
+T("cabinalt",GO,"Cabin Altitude & Differential","Cabin pressure同外面嘅差＝differential。",["最大巡航 cabin 約 8,000 ft","Isobaric range：維持設定 cabin alt","Differential range：維持 max psid","Outflow valve 控壓","Safety valve：pressure／vacuum relief＋dump"],["pressurisation","aircon","fatigue"],PH+" ch7",false);
+T("decomp",GO,"Decompression","Explosive <0.5 秒；rapid 較慢。",["主要危險：hypoxia","TUC 縮短到 1/3–1/4","戴氧氣罩，緊急descent","結構破損：吹出機外風險","Visual＋aural warning 必備"],["o2req","cabinalt","pressurisation"],PH+" / "+AT,false);
 
 // ===== Electrical monitoring / misc =====
 T("voltdiag","Electrical","Voltmeter Diagnostics","電壓睇 alternator 狀態。",["28 V 系統正常約 27.5 V","14 V 系統約 13.75 V","Alternator 失效 28 V → 約 25 V","跌到 24 V＝battery 近乾","over-voltage：關 ALT、減載、盡快落地"],["alternator","battery","elecfail"],RB,false);
 T("cbreset","Electrical","Circuit Breaker Reset Rule","等 90 秒；只 reset 一次。",["Bimetal 要時間冷卻","有燒焦味／煙：唔好 reset","可能就關咗設備先 reset","再跳＝真故障","Overload switch 可手動開"],["cb","bus","elecfail"],RB,false);
-T("cabinheat","Pneumatic & Pressurisation","Cabin Heating Types","Exhaust muff、燃油暖氣、bleed air。",["Muff：最簡單，有 CO 風險","Fuel-fired heater：要 vent 好","Combustion heater：氣壓令漏氣向外","Bleed air：turbine 機，有 check valve／sensor","懷疑 CO → 關暖氣、開風、落地"],["comon","exhaust","aircon"],PH+" / "+RB,false);
-T("altsetting","Instruments","Altimeter Settings & Errors","設定錯就讀數錯；溫度影響 true altitude。",["QNH／STD 29.92 inHg／1013 hPa","設定偏高 → 讀數偏高","約 1,000 ft 對 1 inHg（ATP）","冷於 standard → true 低過 indicated","地面誤差 >75 ft（FAA）需存疑"],["altvsi","pitotstatic","asi"],AT+" ch2",true);
-T("machmeter","Instruments","Machmeter & Air Data","Mach＝speed／聲速，用 pitot＋static。",["IAS 只喺海平面標準一致","TAS 高空通常高過 IAS","Machmeter 經 altimeter 機件修正","Jet 常有三套 pitot-static","Aux 系統供非飛行儀表"],["asi","pitotstatic","g1000adc"],AT+" ch2",false);
-T("stallwarn","Instruments","Stall Warning","飛機快失速時發聲。",["DA40：吸力 orifice 喺左翼前緣","高過失速約 5–10 kt 響","越近越大聲","Orifice 有紅圈標記","Preflight 要測試（按 AFM）"],["blockage","da40"],AF+" 7.13",false);
-T("tailwheel","Landing Gear & Brakes","Trike vs Tailwheel Handling","CG 位置決定方向穩定。",["Trike：CG 喺主輪前，抗 ground loop","Trike：視野好、可大力刹車","Tailwheel：CG 喺主輪後，易 ground loop","Tailwheel 適合 unimproved field","過高落地速度 → wheelbarrowing"],["gearcfg","nosegear","brakes"],PH+" / "+RB,false);
+T("cabinheat","Pneumatic & Pressurisation","Cabin Heating Types","Exhaust muff、fuel暖氣、bleed air。",["Muff：最簡單，有 CO 風險","Fuel-fired heater：要 vent 好","Combustion heater：pressure令漏氣向外","Bleed air：turbine 機，有 check valve／sensor","懷疑 CO → 關暖氣、開風、落地"],["comon","exhaust","aircon"],PH+" / "+RB,false);
+T("altsetting","Instruments","Altimeter Settings & Errors","設定錯就讀數錯；temperature影響 true altitude。",["QNH／STD 29.92 inHg／1013 hPa","設定偏高 → 讀數偏高","約 1,000 ft 對 1 inHg（ATP）","冷於 standard → true 低過 indicated","地面誤差 >75 ft（FAA）需存疑"],["altvsi","pitotstatic","asi"],AT+" ch2",true);
+T("machmeter","Instruments","Machmeter & Air Data","Mach＝speed／聲速，用 pitot＋static。",["IAS 只喺海平面標準一致","TAS 高空通常高過 IAS","Machmeter 經 altimeter 機件修正","Jet 常有三套 pitot-static","Aux 系統供非飛行instrument"],["asi","pitotstatic","g1000adc"],AT+" ch2",false);
+T("stallwarn","Instruments","Stall Warning","飛機快stall時發聲。",["DA40：吸力 orifice 喺左翼前緣","高過stall約 5–10 kt 響","越近越大聲","Orifice 有紅圈標記","Preflight 要測試（按 AFM）"],["blockage","da40"],AF+" 7.13",false);
+T("tailwheel","Landing Gear & Brakes","Trike vs Tailwheel Handling","CG 位置決定directional stability。",["Trike：CG 喺主輪前，抗 ground loop","Trike：視野好、可大力刹車","Tailwheel：CG 喺主輪後，易 ground loop","Tailwheel 適合 unimproved field","過高落groundspeed度 → wheelbarrowing"],["gearcfg","nosegear","brakes"],PH+" / "+RB,false);
 
 // ===== DA40 =====
 T("da40fuel","Aircraft Types","DA40 Fuel System","Mechanical＋electric pump，selector 有安全掣。",["Standard 20 US gal／tank，LR 25 gal","Selector：LEFT／RIGHT／OFF","電動 pump：起動、TO、LDG、轉 tank","每 tank 兩條 vent（capillary＋check valve）","Gascolator 喺最低位，可 drain"],["fuelfeed","fuelselector","da40"],AF+" 7.10",false);
@@ -141,11 +141,11 @@ K("octane","Identify AVGAS colours.","80 red, 100 green, 100LL blue; Jet A is co
 K("octane","What happens if you use lower-octane fuel than recommended?","Detonation can occur, causing power loss and engine damage.","低 octane。");
 K("fuelcontam","Where do you sample fuel on preflight?","From the strainer quick drain and each tank sump into a clear container.","Drain 位置。");
 K("fuelcontam","Why keep tanks full overnight?","Less air space means less condensation and water in the tanks.","減 condensation。");
-K("fuelfeed","Why do low-wing aircraft need fuel pumps?","Tanks are below the engine so gravity cannot feed it.","低翼無重力。");
+K("fuelfeed","Why do low-wing aircraft need fuel pumps?","Tanks are below the engine so gravity cannot feed it.","低翼無weight。");
 K("fuelfeed","When is the electric boost pump used?","Start, take-off, landing, tank changes and low fuel pressure.","Boost pump。");
 K("fuelselector","What is the risk of running a tank dry?","Air enters the fuel system and may cause vapour lock that is hard to clear.","Vapour lock。");
 K("fuelselector","What should you do before switching tanks?","Turn on the boost pump and monitor fuel pressure.","轉 tank。");
-K("fuelicing","Why does water in fuel matter at altitude?","It can freeze and block screens, strainers and filters.","水結冰。");
+K("fuelicing","Why does water in fuel matter at altitude?","It can freeze and block screens, strainers and filters.","水icing。");
 K("refuel","What is the bonding sequence from a drum?","Drum to ground, ground to aircraft, then nozzle or drum to aircraft before removing the cap.","接地順序。");
 K("mixcons","What are the risks of an over-lean mixture at high power?","High cylinder head temperature and detonation.","太 lean。");
 K("mixcons","Why use idle cut-off to shut down?","It burns off the fuel-air mixture so none remains in the manifold.","ICO。");
@@ -167,7 +167,7 @@ K("compstall","How do you recover from a compressor stall?","Reduce power, lower
 K("flameout","What causes a flameout?","Too rich or too lean a mixture or fuel interruption; common at high altitude and low power.","Flameout 原因。");
 K("fod","What is FOD?","Damage from ingested debris, bird strikes or ice.","外物損壞。");
 K("turbthrust","What does ESHP include?","Shaft horsepower to the propeller plus residual jet thrust.","ESHP。");
-K("turbthrust","Why does turbine thrust fall in hot weather?","Lower air density reduces mass flow.","密度低。");
+K("turbthrust","Why does turbine thrust fall in hot weather?","Lower air density reduces mass flow.","density低。");
 K("fcprimary","Which surfaces are primary controls?","Ailerons, elevator and rudder.","Primary。");
 K("fcprimary","What is a stabilator?","A single all-moving tailplane serving as the elevator.","全動 tail。");
 K("fcsecondary","Which devices are secondary controls?","Tabs, flaps, slats and spoilers.","Secondary。");
@@ -184,10 +184,10 @@ K("deiceboots","Anti-ice versus de-ice?","Anti-ice prevents ice forming; de-ice 
 K("deiceboots","Do modern boots suffer bridging?","PHAK says no; cycle as soon as ice appears.","Bridging。");
 K("thermalai","How does TKS work?","Antifreeze weeps through holes in the leading edge.","TKS。");
 K("propai","Why can windscreen heat affect the compass?","Its electrical current can cause deviation up to about 40 degrees.","Compass 偏差。");
-K("icebasic","Name icing types beyond airframe ice.","Carburettor, fuel and pitot icing.","其他結冰。");
+K("icebasic","Name icing types beyond airframe ice.","Carburettor, fuel and pitot icing.","其他icing。");
 K("o2req","When is crew oxygen required in the FAA example?","After 30 minutes between 12,500 and 14,000 ft and always above 14,000 ft.","FAA 規定。");
 K("o2types","What is a pulse-demand system?","It delivers oxygen only during inhalation, saving 50-85 percent.","Pulse demand。");
-K("o2safety","Why can an oxygen cylinder read lower on a cold day?","Pressure falls with temperature even without leakage.","溫度效應。");
+K("o2safety","Why can an oxygen cylinder read lower on a cold day?","Pressure falls with temperature even without leakage.","temperature效應。");
 K("cabinalt","What is differential pressure?","Cabin pressure minus ambient pressure.","Differential。");
 K("cabinalt","What is typical cabin altitude at max cruise?","About 8,000 ft.","約 8,000 ft。");
 K("decomp","How is explosive decompression defined?","Cabin pressure change faster than the lungs can decompress, under about 0.5 seconds.","Explosive。");
@@ -220,13 +220,13 @@ L("gfc700","gfcmodes","GFC 700 通過按掣揀 mode");
 L("g1000ela","da40elec","Load analysis 證明 DA40 電網夠用");
 L("g1000lean","mixcons","Lean assist 幫手搵 peak 避免過 lean");
 L("octane","detonation","Octane 太低 → detonation");
-L("fuelcontam","fuelicing","水污染 → 結冰堵 filter");
+L("fuelcontam","fuelicing","水污染 → icing堵 filter");
 L("fuelfeed","fuelselector","Pump 系統下要小心轉 tank");
-L("lubfun","oilprob","功能失效 → 壓力／溫度異常");
-L("cowlflap","cooling","Cowl flaps 控制冷卻氣流");
+L("lubfun","oilprob","功能失效 → pressure／temperature異常");
+L("cowlflap","cooling","Cowl flaps 控制冷卻airflow");
 L("starter","ammeter","起動電流不經 ammeter");
-L("compstall","flameout","Stall 後空氣流失可致 flameout");
-L("hotstart","turbinst","EGT 儀表偵測 hot start");
+L("compstall","flameout","Stall 後空airflow失可致 flameout");
+L("hotstart","turbinst","EGT instrument偵測 hot start");
 L("turbthrust","turbtypes","Turboprop 用 ESHP，jet 看 thrust");
 L("fcprimary","tabs","Tab 減輕 primary control 力");
 L("flaptypes","fcsecondary","Flap／slat 屬 secondary 控制");
@@ -239,9 +239,9 @@ L("cabinalt","pressurisation","Differential 限制決定最高 cabin pressure");
 L("voltdiag","elecfail","電壓下跌提示 alternator 失效");
 L("cbreset","cb","CB 重置規則");
 L("cabinheat","comon","Exhaust muff 加熱 → CO 風險");
-L("altsetting","altvsi","設定錯 → 高度錯");
+L("altsetting","altvsi","設定錯 → altitude錯");
 L("machmeter","asi","Mach 同 IAS 都用 pitot＋static");
-L("tailwheel","gearcfg","兩種 gear layout 方向穩定性不同");
+L("tailwheel","gearcfg","兩種 gear layout directional stability性不同");
 L("da40fuel","fuelselector","DA40 selector 有安全掣");
 L("da40annun","g1000cas40","燈板同 CAS 訊息對應");
 L("da40eng","csu","DA40 governor 控 RPM");
@@ -318,7 +318,7 @@ A.push({title:"DA40 Essential Bus Battery 時間",hint:"改 load 同 battery 容
 }});
 
 // 4. Compressor stall
-A.push({title:"Compressor Stall：Blade AoA",hint:"改 inlet 速度同 RPM",build(box,H){
+A.push({title:"Compressor Stall：Blade AoA",hint:"改 inlet speed同 RPM",build(box,H){
  const svg=H.svg(box,700,280), say=H.note(box);
  H.marker(svg,"ah1","#38bdf8");H.marker(svg,"ah2","#fbbf24");H.marker(svg,"ah3","#f87171");
  const blade=H.el("rect",{x:300,y:130,width:120,height:10,fill:"#cbd5e1"},svg);

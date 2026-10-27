@@ -6,17 +6,17 @@ const C=(topic,e,q,a,zh,chk)=>cards.push({e,q,a,zh,topic:"met."+topic,st:chk?"ch
 const topics=[
 // ---- Atmosphere
 T("composition","1 Atmosphere","Composition","空氣 78% N2、21% O2；水蒸氣最變化，影響 density。",["N2 78%, O2 21%, other 1%","Water vapour 0–5%","Moist air lighter than dry air","Humid day = worse performance"],["density","humidity"],"Robson ch1; MET01"),
-T("layers","1 Atmosphere","Layers of Atmosphere","按溫度分層：Troposphere→Stratosphere→Mesosphere→Thermosphere。",["Weather 喺 Troposphere","Strato：isothermal 然後升溫","Ozone 喺 Stratosphere","Tropopause 唔係一層"],["tropopause","isa"],"MET01; Robson ch1"),
+T("layers","1 Atmosphere","Layers of Atmosphere","按temperature分層：Troposphere→Stratosphere→Mesosphere→Thermosphere。",["Weather 喺 Troposphere","Strato：isothermal 然後升溫","Ozone 喺 Stratosphere","Tropopause 唔係一層"],["tropopause","isa"],"MET01; Robson ch1"),
 T("tropopause","1 Atmosphere","Tropopause","Troposphere 同 Stratosphere 嘅界線，係邊界唔係層。",["赤道 ~54–60k ft, -70~-80°C","兩極 ~20–27k ft, ~-45~-55°C","夏高冬低","最低溫＋最強風喺度"],["layers","jet"],"MET01 p2; Robson ch1"),
 T("isa","1 Atmosphere","ISA","標準大氣：MSL 1013.25 hPa、15°C；2°C/1000 ft 降到 36,000 ft。",["1.225 kg/m3 at MSL","Lapse 1.98°C/1000ft (用 2)","36,090 ft 以上 -56.5°C","ISA temp = 15 − 2×(ft/1000)"],["pressure-height","lapse"],"Robson ch1"),
-T("pressure-height","1 Atmosphere","Pressure vs Height","愈高氣壓愈低；低空約 1 hPa / 30 ft。",["5000 ft 約 845 hPa","20,000 ft density ≈ 一半","1 mb ≈ 30 ft (低空)","Altimeter 靠呢個原理"],["altimeter","density"],"Robson ch1; MET06"),
-T("density","1 Atmosphere","Density & Performance","Density 高 = 升力、引擎、呼吸都好。",["熱＋濕＋高 = density 低","Humidity 令 density 降","影響 TAS needed、power"],["composition","pressure-height"],"Robson ch1"),
+T("pressure-height","1 Atmosphere","Pressure vs Height","愈高pressure愈低；低空約 1 hPa / 30 ft。",["5000 ft 約 845 hPa","20,000 ft density ≈ 一半","1 mb ≈ 30 ft (低空)","Altimeter 靠呢個原理"],["altimeter","density"],"Robson ch1; MET06"),
+T("density","1 Atmosphere","Density & Performance","Density 高 = lift、engine、呼吸都好。",["熱＋濕＋高 = density 低","Humidity 令 density 降","影響 TAS needed、power"],["composition","pressure-height"],"Robson ch1"),
 T("heat","1 Atmosphere","Heat Transfer","太陽曬地面，地面再暖空氣；convection 最重要。",["Radiation/Conduction/Convection","Advection = 水平風","Latent heat：凝結放熱","Land 熱得快冷得快 (low specific heat)"],["diurnal","lapse","cloud-form"],"Robson ch1; MET01 latent heat"),
 T("diurnal","1 Atmosphere","Diurnal Variation","地面最高溫約下午 3 點，最低溫日出後約 1 小時。",["雲層：日間降溫、夜間保暖","沙漠變化最大","陸海溫差 → sea breeze"],["heat","seabreeze","inv-rad"],"Robson ch1"),
 T("inv-rad","1 Atmosphere","Radiation Inversion","晴朗無風夜，地面輻射冷卻，上暖下冷。",["要晴天、微風、陸地","只有幾百 ft 厚","攔住污染 → 低 vis","日出附近最明顯"],["fog-rad","inversion-effects"],"MET01 p; Robson ch1"),
-T("inv-sub","1 Atmosphere","Subsidence Inversion","高壓下沉空氣壓縮升溫，形成高空 inversion。",["常見 4–6k ft (中緯度)","High pressure 特徵","限制 cloud 垂直發展","Haze 被蓋住"],["highlow","inversion-effects"],"MET01; Robson ch1"),
+T("inv-sub","1 Atmosphere","Subsidence Inversion","高壓下沉空pressure縮升溫，形成高空 inversion。",["常見 4–6k ft (中緯度)","High pressure 特徵","限制 cloud 垂直發展","Haze 被蓋住"],["highlow","inversion-effects"],"MET01; Robson ch1"),
 T("inv-front","1 Atmosphere","Frontal Inversion","暖空氣爬上冷空氣 (warm front) 形成。",["Warm front 最常見","Sea-breeze front 亦有","界面有 wind shear"],["warmfront","windshear"],"MET01; Robson ch1"),
-T("inversion-effects","1 Atmosphere","Inversion Effects","穿過 inversion：風突變、乱流、performance 變。",["Wind speed 爬升時增加","爬升入 inversion 失 lift/thrust","下面 vis 差","Stable 限制雲發展"],["inv-rad","inv-sub","windshear"],"Robson ch1"),
+T("inversion-effects","1 Atmosphere","Inversion Effects","穿過 inversion：風突變、乱流、performance 變。",["Wind speed climb時增加","climb入 inversion 失 lift/thrust","下面 vis 差","Stable 限制雲發展"],["inv-rad","inv-sub","windshear"],"Robson ch1"),
 T("humidity","1 Atmosphere","Humidity & Dewpoint","暖空氣載水多；冷到 dewpoint 就飽和。",["RH 100% = saturated","T−Td spread 細 = 近飽和","Condensation nuclei 必要","Dewpoint 隨升高降 0.5°C/1000ft"],["cloudbase","fog-rad"],"MET01; Robson ch2"),
 // ---- Pressure & wind
 T("pressure-sys","2 Pressure & Wind","Isobars & Gradient","等壓線愈密 = gradient 愈大 = 風愈強。",["Isobar 間距 2 或 4 hPa","Gradient force 由高到低","Surface chart = MSL pressure"],["coriolis","geostrophic"],"MET01; Robson ch7"),
@@ -27,30 +27,30 @@ T("highlow","2 Pressure & Wind","High & Low Systems","NH：高壓順時針、發
 T("hadley","2 Pressure & Wind","General Circulation","每個半球 3 個 cell：Hadley、Ferrel、Polar。",["赤道上升、30° 下沉 (subtropical high)","Trade winds 東風","Mid-lat westerlies","60° polar front"],["coriolis","itcz","jet"],"Robson ch1; FAA ATP"),
 T("seabreeze","2 Pressure & Wind","Sea / Land Breeze","日間陸地熱 → 海風；夜間相反。",["Sea breeze 下午最強","Land breeze 較弱 <500ft 深","Sea breeze front 像 mini cold front"],["diurnal","inv-front"],"Robson ch6"),
 T("katabatic","2 Pressure & Wind","Katabatic / Anabatic / Föhn","夜間冷空氣沿斜坡流下；日間上坡；föhn 乾暖。",["Katabatic：夜、冷、下坡","Anabatic：日、上坡","Föhn：lee 面暖乾"],["orographic","lapse"],"Robson ch6; FAA ATP"),
-T("itcz","2 Pressure & Wind","ITCZ","兩半球 trade winds 輻合帶，Cb 雷暴多。",["Cloud 可至 tropopause","闊 200–300 nm","雷暴、squall、torrential rain","隨太陽南北移"],["hadley","tc-form","hk-monsoon"],"Robson ch8; MET05 p"),
+T("itcz","2 Pressure & Wind","ITCZ","兩半球 trade winds 輻合帶，Cb thunderstorm多。",["Cloud 可至 tropopause","闊 200–300 nm","thunderstorm、squall、torrential rain","隨太陽南北移"],["hadley","tc-form","hk-monsoon"],"Robson ch8; MET05 p"),
 // ---- Stability & cloud
 T("lapse","3 Stability & Cloud","Lapse Rates","DALR 3°C/1000ft；SALR 1.5；ELR 實際環境。",["Unsaturated 升：DALR 3","Saturated 升：SALR ~1.5 (潛熱)","ELR 平均 2、可 1–4","Dewpoint 降 0.5/1000ft"],["stability","cloudbase"],"Robson ch2; ATP"),
 T("stability","3 Stability & Cloud","Stability","Parcel 比環境暖就繼續升 = unstable。",["ELR>DALR：絕對 unstable","ELR<SALR：絕對 stable","介乎：conditionally unstable","Inversion 最 stable"],["lapse","cloud-types","ts-conditions"],"Robson ch2"),
 T("cloudbase","3 Stability & Cloud","Cloud Base Formula","T 同 Td 每升 1000 ft 收窄 2.5°C。",["Base(ft)=(T−Td)/2.5×1000","例：17/12 → 2000 ft AGL","Base 係 AGL (METAR 亦 AAL)"],["humidity","lapse"],"Robson ch2; ATP"),
 T("cloud-form","3 Stability & Cloud","How Clouds Form","潮濕空氣被抬升冷到 dewpoint 就成雲。",["Convection / Orographic","Turbulence mixing","Frontal widespread ascent (<30 ft/min)","Convergence (trough)"],["heat","orographic","stability"],"Robson ch2"),
-T("orographic","3 Stability & Cloud","Orographic Lifting","氣流過山抬升成雲；lee 側下沉蒸發。",["Windward 有雲","Lenticular = 山波","Lee 側空氣暖乾 (föhn)"],["mountain-wave","katabatic"],"Robson ch2"),
+T("orographic","3 Stability & Cloud","Orographic Lifting","airflow過山抬升成雲；lee 側下沉蒸發。",["Windward 有雲","Lenticular = 山波","Lee 側空氣暖乾 (föhn)"],["mountain-wave","katabatic"],"Robson ch2"),
 T("cloud-types","3 Stability & Cloud","Cloud Types","Cumuliform = unstable 堆狀；Stratiform = stable 層狀。",["High >20k ft：Ci Cs Cc","Mid 7.5–20k：As Ac Ns","Low <7.5k：St Sc Cu Cb","Cb/Cu 底低、頂高"],["stability","precip"],"Robson ch2"),
 T("cloud-amount","3 Stability & Cloud","Cloud Amount (Oktas)","天空分 8 份：FEW SCT BKN OVC。",["FEW 1–2, SCT 3–4","BKN 5–7, OVC 8","SKC 0 oktas","Ceiling = BKN/OVC 最低層"],["metar-cloud"],"MET06; Robson ch2"),
 // ---- Fronts
 T("airmass","4 Fronts & Air Masses","Air Masses","源地決定性質：c/m × T/P/A。",["cT 暖乾、cP 冷乾、cA 極冷乾","mT 暖濕、mP 冷濕、mA 極冷濕","移向冷面：穩定、RH 升","移向暖面：不穩定"],["stability","coldfront"],"MTE5 p9-10"),
-T("coldfront","4 Fronts & Air Masses","Cold Front","冷空氣楔入暖空氣下；陡、快、Cb、雷暴。",["Slope ~1:75","風突變、壓力谷後升","溫度跌、陣雨、可有 squall line","過後 vis 好、轉晴"],["warmfront","ts-conditions","hk-fronts"],"MTE5 p22; Robson ch7"),
+T("coldfront","4 Fronts & Air Masses","Cold Front","冷空氣楔入暖空氣下；陡、快、Cb、thunderstorm。",["Slope ~1:75","風突變、pressure谷後升","temperature跌、陣雨、可有 squall line","過後 vis 好、轉晴"],["warmfront","ts-conditions","hk-fronts"],"MTE5 p22; Robson ch7"),
 T("warmfront","4 Fronts & Air Masses","Warm Front","暖空氣爬上冷空氣；緩、廣闊層雲、持續雨。",["Slope ~1:200","Ci→Cs→As→Ns","雨前 ~150nm 開始","Frontal fog、freezing rain 風險"],["coldfront","fog-other","icing-cond"],"MTE5; Robson ch7"),
-T("occlusion","4 Fronts & Air Masses","Occluded Front","Cold front 追上 warm front。",["Warm occlusion：embedded CB","Cold occlusion：冷鋒底入","兩種天氣都惡劣"],["coldfront","warmfront","extratropical"],"MTE5 p23-25"),
+T("occlusion","4 Fronts & Air Masses","Occluded Front","Cold front 追上 warm front。",["Warm occlusion：embedded CB","Cold occlusion：cold front底入","兩種天氣都惡劣"],["coldfront","warmfront","extratropical"],"MTE5 p23-25"),
 T("stationary","4 Fronts & Air Masses","Stationary Front","兩氣團對峙不動，層雲、毛毛雨。",["風平行 front","天氣平靜","可生 frontal wave"],["extratropical"],"MTE5 p14"),
 T("extratropical","4 Fronts & Air Masses","Extratropical Cyclone","沿 polar front 出波；warm sector 夾住。",["Warm sector：St/Sc、drizzle","西→東移 (polar jet 帶動)","終必 occlude","Comma cloud 衛星圖"],["occlusion","jet","highlow"],"MTE5 p15-20"),
-T("hk-fronts","4 Fronts & Air Masses","HK: Fronts","HK 見到冷鋒 (約 12–1 月)，冇 warm front。",["Winter monsoon cold front","MTE5 Q&A：冇 warm front","冷鋒後風轉 N/NE、跌溫"],["coldfront","hk-monsoon"],"MTE5 p16; HK",true),
+T("hk-fronts","4 Fronts & Air Masses","HK: Fronts","HK 見到cold front (約 12–1 月)，冇 warm front。",["Winter monsoon cold front","MTE5 Q&A：冇 warm front","cold front後風轉 N/NE、跌溫"],["coldfront","hk-monsoon"],"MTE5 p16; HK",true),
 // ---- Thunderstorm
 T("ts-conditions","5 Thunderstorm","TS Conditions","三要素：unstable、moisture、lifting trigger。",["Deep instability (~20k ft)","Abundant moisture","Trigger：front、terrain、heating"],["stability","ts-life"],"MTE5 p2; Robson ch3"),
 T("ts-life","5 Thunderstorm","TS Life Cycle","Cumulus → Mature → Dissipating。",["Cu：updraught 10–20 min","Mature：雨開始、20–40 min","Dissipating：全是 downdraught","Anvil 指向高空風"],["ts-conditions","ts-hazards"],"Robson ch3; MTE5"),
-T("ts-types","5 Thunderstorm","TS Types","Single cell、multicell、supercell。",["Multicell：不同階段","Supercell：updraught 傾斜、持久","Line squall：非鋒面雷暴線","Gust front 觸發新 cell"],["ts-life","coldfront"],"MTE5 p2; Robson ch3"),
+T("ts-types","5 Thunderstorm","TS Types","Single cell、multicell、supercell。",["Multicell：不同階段","Supercell：updraught 傾斜、持久","Line squall：非frontthunderstorm線","Gust front 觸發新 cell"],["ts-life","coldfront"],"MTE5 p2; Robson ch3"),
 T("ts-hazards","5 Thunderstorm","TS Hazards","Windshear、乱流、icing、hail、lightning、低 vis。",["Hail 可被拋出 several nm","Lightning 影響 compass/ADF","St Elmo's fire / precip static","Severe clear icing"],["microburst","turb","icing-cond"],"Robson ch3; ATP"),
 T("microburst","5 Thunderstorm","Microburst","局部強下衝流，≤4 km；headwind 變 tailwind。",["Downdraught up to ~6000 fpm","Outflow ~45 kt","Virga/dust ring 徵兆","通常 <15 min"],["windshear","ts-hazards"],"Robson ch3; ATP"),
-T("ts-avoid","5 Thunderstorm","TS Avoidance","避開 ≥10 nm，嚴重 20 nm；絕不飛底。",["Weather radar 紅/黃 = 最強","風下方向更遠","唔好起降近雷暴","Turbulence penetration speed VB"],["ts-hazards","sigmet"],"Robson ch3; MTE5 p7"),
+T("ts-avoid","5 Thunderstorm","TS Avoidance","避開 ≥10 nm，嚴重 20 nm；絕不飛底。",["Weather radar 紅/黃 = 最強","風下方向更遠","唔好起降近thunderstorm","Turbulence penetration speed VB"],["ts-hazards","sigmet"],"Robson ch3; MTE5 p7"),
 // ---- Visibility, precip, icing
 T("vis","6 Vis, Precip & Icing","Visibility","可見最遠距離；slant vis 同 horizontal 唔同。",["Fog <1000 m, Mist 1–5 km","Haze <5 km (固體粒子)","RVR 用 transmissometer","Down-sun vis 好啲"],["fog-rad","mist-haze"],"MET03; Robson ch5"),
 T("fog-rad","6 Vis, Precip & Icing","Radiation Fog","晴夜、微風 2–8 kt、T−Td 細、陸地。",["晚秋至早春","風 >10 kt 吹散或變 stratus","日出加熱消散","Overcast 或下雨唔會散"],["inv-rad","humidity"],"MET03 p; Robson ch5"),
@@ -58,20 +58,20 @@ T("fog-adv","6 Vis, Precip & Icing","Advection Fog","暖濕空氣吹過冷表面
 T("fog-other","6 Vis, Precip & Icing","Other Fog Types","Orographic、steam、frontal、freezing、ice fog。",["Upslope：vis <200 m","Steam：冷空氣過暖水","Frontal：warm front 前","Freezing fog：過冷水滴"],["warmfront","icing-cond"],"MET03"),
 T("mist-haze","6 Vis, Precip & Icing","Mist & Haze","Mist 1–5 km (水)；Haze <5 km (塵、污染)。",["Stable、輕風","T−Td 約 3°C","Inversion 下常見"],["vis","inv-rad"],"MET03"),
 T("precip","6 Vis, Precip & Icing","Precipitation","Showers 來自 Cu/Cb；continuous 來自層雲。",["Drizzle 0.2–0.5 mm","Rain 0.5–5.5 mm","Hail 5–50 mm+","Virga 蒸發落唔到地"],["cloud-types","microburst"],"MET03; Robson ch2"),
-T("icing-cond","6 Vis, Precip & Icing","Icing Conditions","要 visible moisture＋機身 ≤0°C。",["Freezing level = 0°C 高度","最差：freezing level 附近","Cb 內任何高度都可有","Cirrus 高冰晶風險低"],["rime","clear-ice","freezing-rain"],"MET03; Robson ch4"),
+T("icing-cond","6 Vis, Precip & Icing","Icing Conditions","要 visible moisture＋fuselage ≤0°C。",["Freezing level = 0°C altitude","最差：freezing level 附近","Cb 內任何altitude都可有","Cirrus 高冰晶風險低"],["rime","clear-ice","freezing-rain"],"MET03; Robson ch4"),
 T("rime","6 Vis, Precip & Icing","Rime Ice","細過冷水滴即凍；白、脆、前緣。",["Light–moderate","-10~-20°C 常見","帶住空氣、輕"],["clear-ice","icing-cond"],"MET03 p; Robson ch4"),
 T("clear-ice","6 Vis, Precip & Icing","Clear Ice","大過冷水滴流後凍；透明、硬、快積。",["Moderate–severe","最危險","0°C 附近"],["rime","freezing-rain"],"MET03 p; Robson ch4"),
-T("freezing-rain","6 Vis, Precip & Icing","Freezing Rain","暖層落雨入冷層成過冷雨；Ice pellets 係警號。",["Warm front 下、inversion 下","立即離開","向暖空氣爬升或下降"],["clear-ice","warmfront"],"MET03 p; Robson ch4"),
-T("frost","6 Vis, Precip & Icing","Frost / Hoar Frost","水汽直接 deposition 成霜；起飛前必除。",["清朗冷夜地面","爬/降入暖濕空氣亦會","破壞氣流 → 失升力"],["icing-cond","icing-haz"],"MET03; Robson ch4"),
-T("icing-haz","6 Vis, Precip & Icing","Icing Hazards","加重、失升力、增阻、stall speed 升。",["CG 移位、control 卡住","Pitot/static 堵塞","天線、風擋受影響","耗油增加"],["icing-prot","frost"],"MET03 p"),
+T("freezing-rain","6 Vis, Precip & Icing","Freezing Rain","暖層落雨入冷層成過冷雨；Ice pellets 係警號。",["Warm front 下、inversion 下","立即離開","向暖空氣climb或descent"],["clear-ice","warmfront"],"MET03 p; Robson ch4"),
+T("frost","6 Vis, Precip & Icing","Frost / Hoar Frost","水汽直接 deposition 成霜；take-off前必除。",["清朗冷夜地面","爬/降入暖濕空氣亦會","破壞airflow → 失lift"],["icing-cond","icing-haz"],"MET03; Robson ch4"),
+T("icing-haz","6 Vis, Precip & Icing","Icing Hazards","加重、失lift、增阻、stall speed 升。",["CG 移位、control 卡住","Pitot/static 堵塞","天線、風擋受影響","耗油增加"],["icing-prot","frost"],"MET03 p"),
 T("icing-prot","6 Vis, Precip & Icing","Ice Protection","Anti-ice (預防) 同 de-ice (除冰)。",["Boots、bleed air、電熱","化學液","Pitot heat 早開"],["icing-haz"],"MET03"),
 // ---- Turbulence, shear, jet
-T("turb","7 Turb, Shear & Jet","Turbulence","擾亂 attitude 但未改變航跡；分 light/mod/severe。",["Mechanical、convective、frontal","Inversion 附近","Light/Moderate/Severe","VB 乱流速度"],["windshear","cat"],"MET05 p; Robson ch6"),
-T("windshear","7 Turb, Shear & Jet","Wind Shear","風向／風速突變，IAS 變 >15 kt 或 VSI ±500 fpm。",["TS、inversion、jet 都生","Virga/Cb 徵兆","HK：地形風切 (check)"],["microburst","inversion-effects","hk-windshear"],"MET05 p; FAA ATP"),
-T("hk-windshear","7 Turb, Shear & Jet","HK: Terrain Windshear","HKIA 旁邊有 Lantau 山，地形致風切。",["報告用 WS 通告","LIDAR / Doppler 偵測","Cb 亦造成"],["windshear","tc-hazard"],"MTE5 p7; HK",true),
+T("turb","7 Turb, Shear & Jet","Turbulence","擾亂 attitude 但未改變航跡；分 light/mod/severe。",["Mechanical、convective、frontal","Inversion 附近","Light/Moderate/Severe","VB 乱流speed"],["windshear","cat"],"MET05 p; Robson ch6"),
+T("windshear","7 Turb, Shear & Jet","Wind Shear","wind direction／wind speed突變，IAS 變 >15 kt 或 VSI ±500 fpm。",["TS、inversion、jet 都生","Virga/Cb 徵兆","HK：地形wind shear (check)"],["microburst","inversion-effects","hk-windshear"],"MET05 p; FAA ATP"),
+T("hk-windshear","7 Turb, Shear & Jet","HK: Terrain Windshear","HKIA 旁邊有 Lantau 山，地形致wind shear。",["報告用 WS 通告","LIDAR / Doppler 偵測","Cb 亦造成"],["windshear","tc-hazard"],"MTE5 p7; HK",true),
 T("mountain-wave","7 Turb, Shear & Jet","Mountain Waves","強風 ≥25 kt 垂直過山＋穩定層。",["Lenticular、rotor cloud","Lee 側下沉 altimeter overread","波長 3–25 nm"],["orographic","altimeter-terrain"],"MET05; Robson ch6"),
 T("cat","7 Turb, Shear & Jet","Clear Air Turbulence","高空乱流，無雲預警；與 jet 同山波有關。",["Shear >6 kt/1000ft 可 mod–sev","Jet 極側 shear 強","乘客繫安全帶"],["jet","turb"],"MET05 p; Robson ch6"),
-T("jet","7 Turb, Shear & Jet","Jet Stream","tropopause 附近窄而快的西風帶。",["教材：>60 kt (FAA 50)","大溫度梯度處","冬季最強","位置隨季節"],["tropopause","jet-types","cat"],"MET05 p; FAA ATP",true),
+T("jet","7 Turb, Shear & Jet","Jet Stream","tropopause 附近窄而快的西風帶。",["教材：>60 kt (FAA 50)","大temperature梯度處","冬季最強","位置隨季節"],["tropopause","jet-types","cat"],"MET05 p; FAA ATP",true),
 T("jet-types","7 Turb, Shear & Jet","Jet Types","Polar jet、Subtropical jet、Equatorial jet。",["STJ 西風 ~120 kt, ~40k ft","Polar jet 波動，帶動 cyclone","Equatorial 東風 ~60 kt, 夏 (ITCZ 上)"],["jet","hk-monsoon"],"MET05 p",true),
 // ---- HK / TC
 T("tc-form","8 HK & Tropical Cyclone","TC Formation","暖海＋原有 depression＋輻合＋Coriolis。",["教材：海深 ≥50 m","SST ~27–28°C (Robson)","離赤道 >5° 才有 Coriolis","能量來自水汽"],["itcz","coriolis","tc-struct"],"MET05 p; Robson ch8"),
@@ -80,21 +80,21 @@ T("tc-hazard","8 HK & Tropical Cyclone","TC Hazards","Cb/TS、洪水、severe tu
 T("tc-move","8 HK & Tropical Cyclone","TC Movement","SE Asia 多向 NW，再轉向 NE。",["Subtropical high 引導","Kuroshio 暖流","難預測"],["tc-form","jet"],"MET05 p"),
 T("tc-class","8 HK & Tropical Cyclone","HK TC Classification","TD→TS→STS→Typhoon→Severe→Super。",["Typhoon >64 kt","Severe ~80–100 kt","Super >100 kt"],["tc-form"],"MET05 p; HKO",true),
 T("hk-signals","8 HK & Tropical Cyclone","HK TC Signals","HKO：1, 3, 8, 9, 10 號信號。",["No.1 Standby","No.3 Strong Wind","No.8 Gale/Storm","No.9 Increasing, No.10 Hurricane"],["tc-class","tc-hazard"],"HKO (非教材)",true),
-T("hk-monsoon","8 HK & Tropical Cyclone","HK: Monsoons","冬 NE monsoon 乾冷；夏 SW/S monsoon 濕熱。",["冬：cold surge","夏：雷暴、豪雨","Trade winds 對比"],["itcz","hk-fronts"],"Robson ch8; HK",true),
+T("hk-monsoon","8 HK & Tropical Cyclone","HK: Monsoons","冬 NE monsoon 乾冷；夏 SW/S monsoon 濕熱。",["冬：cold surge","夏：thunderstorm、豪雨","Trade winds 對比"],["itcz","hk-fronts"],"Robson ch8; HK",true),
 T("hk-rain","8 HK & Tropical Cyclone","HK: Rainstorm Warnings","黃／紅／黑色暴雨警告。",["Amber/Red/Black","與 Cb、TC、monsoon 有關"],["ts-hazards","hk-monsoon"],"HKO (非教材)",true),
 // ---- Altimetry
-T("altimeter","9 Altimetry","Altimeter","Aneroid wafer 感測 static pressure。",["Static port 入氣壓","Setting 設定參考壓力","升 = wafer 膨脹","1000/100/10000 ft 指針"],["pressure-height","qcodes"],"MET06 p"),
+T("altimeter","9 Altimetry","Altimeter","Aneroid wafer 感測 static pressure。",["Static port 入pressure","Setting 設定參考pressure","升 = wafer 膨脹","1000/100/10000 ft 指針"],["pressure-height","qcodes"],"MET06 p"),
 T("qcodes","9 Altimetry","QNH / QFE / QNE","QNH→altitude；QFE→height；1013.25→FL。",["QNH：地面讀 elevation","QFE：地面讀 0","QNE/Standard：FL","Transition altitude 轉 setting"],["altimeter","pressure-err"],"MET01 Q-code; MET06"),
 T("pressure-err","9 Altimetry","Pressure Error","High→Low watch out below：實際較低。",["1 mb ≈ 30 ft","Setting 高 → indicated 高","Flying to lower pressure: over-read"],["qcodes","temp-err"],"MET06 p"),
-T("temp-err","9 Altimetry","Temperature Error","冷空氣 column 縮短 → 真高度低於 indicated。",["High→Low temp：over-read","Cold weather 加高度餘裕","~4 ft/1000ft/°C (rule)"],["pressure-err"],"MET06 p",true),
+T("temp-err","9 Altimetry","Temperature Error","冷空氣 column 縮短 → 真altitude低於 indicated。",["High→Low temp：over-read","Cold weather 加altitude餘裕","~4 ft/1000ft/°C (rule)"],["pressure-err"],"MET06 p",true),
 T("altimeter-terrain","9 Altimetry","Terrain Altimeter Error","山 lee 側 pressure 低 → over-read。",["Windward under-read","Lee over-read 小心"],["mountain-wave","pressure-err"],"MET06 p"),
 // ---- Met coding
 T("metar","10 Met Coding","METAR","每半小時／小時報告，UTC (Z)。",["ICAO→Date/Time→Wind→Vis→Wx→Cloud→T/Td→QNH","SPECI 在變化時發","Wind 為 True","Cloud AAL"],["metar-wind","metar-vis","metar-cloud","taf"],"MET06 p"),
-T("metar-wind","10 Met Coding","METAR Wind","dddss(Ggg)KT；VRB、00000、dddVddd。",["28010KT = 280°/10kt","G = gust","VRB 風向不定","True north (ATIS 則磁)"],["metar"],"MET06 p"),
+T("metar-wind","10 Met Coding","METAR Wind","dddss(Ggg)KT；VRB、00000、dddVddd。",["28010KT = 280°/10kt","G = gust","VRB wind direction不定","True north (ATIS 則磁)"],["metar"],"MET06 p"),
 T("metar-vis","10 Met Coding","METAR Visibility & Wx","4 位數 m；9999 ≥10 km。",["+ heavy, - light","TS SH FZ BL MI BC VC","RA DZ SN GR FG BR HZ","R07R/P2000U = RVR"],["metar","vis"],"MET06 p"),
 T("metar-cloud","10 Met Coding","METAR Cloud & Temp/QNH","FEW008 SCT025；CB 加後面；25/24 Q0990。",["VV = vertical visibility","T/Td，M = minus","Q = hPa, A = inHg","NSC/NSW/SKC"],["metar","cloud-amount"],"MET06 p; RJAA ATIS"),
 T("cavok","10 Met Coding","CAVOK","Vis ≥10km、無雲<5000ft、無 CB/TCU、無 sigwx。",["Ceiling and Visibility OK","無降水"],["metar"],"MET06 p; Robson ch9"),
-T("taf","10 Met Coding","TAF","9–30 小時預報，5nm 半徑；TX/TN 氣溫。",["0112/0218 = 01日12Z→02日18Z","TX27/0206Z","BECMG FM TEMPO PROB"],["trend","metar"],"MET06 p"),
+T("taf","10 Met Coding","TAF","9–30 小時預報，5nm 半徑；TX/TN temperature。",["0112/0218 = 01日12Z→02日18Z","TX27/0206Z","BECMG FM TEMPO PROB"],["trend","metar"],"MET06 p"),
 T("trend","10 Met Coding","TAF Trend Groups","TEMPO、BECMG、FM、PROB、INTER、NOSIG。",["TEMPO <60 min","INTER <30 min (澳洲用語)","BECMG 漸變，FM 即轉","PROB30/40"],["taf"],"MET06 p; Robson ch9",true),
 T("sigmet","10 Met Coding","SIGMET / AIRMET","危險天氣通告：TS、TC、severe turb/icing、volcanic ash。",["SIGMET：所有 aircraft","AIRMET (CASA) ：FL120 以下較輕","HK FIR 由 HKO 發 (check)"],["ts-hazards","tc-hazard","sigwx"],"Robson ch9; HK",true),
 T("sigwx","10 Met Coding","SIGWX & Wind Charts","WAFC FL100–450：TS、TC、front、jet、tropopause、volcano。",["Wind/temp chart FL300 = 300 hPa","FL240 = 400 hPa","Wind chart 單位 knots, °C"],["sigmet","jet"],"MET06 p")
@@ -102,12 +102,12 @@ T("sigwx","10 Met Coding","SIGWX & Wind Charts","WAFC FL100–450：TS、TC、fr
 // ---- links
 const links=[
 ["coriolis","hadley","Coriolis 令一個 cell 分成三個"],["hadley","itcz","兩 trade winds 輻合 = ITCZ"],["itcz","tc-form","ITCZ 低壓帶孕育 TC"],["tropopause","jet","Jet 喺 tropopause 附近、斷口處"],["jet","cat","Jet 邊緣 shear → CAT"],["jet","extratropical","Polar jet 帶動 cyclone 西→東"],
-["lapse","stability","ELR 對比 DALR/SALR 決定 stable/unstable"],["stability","cloud-types","Unstable→Cu/Cb；Stable→St"],["stability","ts-conditions","Unstable 係雷暴必要條件"],["lapse","cloudbase","T−Td 每 1000ft 縮 2.5°C"],["humidity","fog-rad","T−Td 細→易起霧"],["inv-rad","fog-rad","晴夜 inversion 配合冷卻"],["inv-sub","highlow","高壓下沉形成 subsidence inversion"],["inv-sub","mist-haze","Inversion 蓋住污染成 haze"],
-["coldfront","ts-conditions","Cold front 提供 lifting trigger"],["warmfront","freezing-rain","暖層落雨入冷層"],["warmfront","inv-front","暖空氣爬上冷空氣"],["occlusion","extratropical","Cyclone 終必 occlude"],["hk-fronts","hk-monsoon","冷鋒隨冬季 monsoon"],
+["lapse","stability","ELR 對比 DALR/SALR 決定 stable/unstable"],["stability","cloud-types","Unstable→Cu/Cb；Stable→St"],["stability","ts-conditions","Unstable 係thunderstorm必要條件"],["lapse","cloudbase","T−Td 每 1000ft 縮 2.5°C"],["humidity","fog-rad","T−Td 細→易起霧"],["inv-rad","fog-rad","晴夜 inversion 配合冷卻"],["inv-sub","highlow","高壓下沉形成 subsidence inversion"],["inv-sub","mist-haze","Inversion 蓋住污染成 haze"],
+["coldfront","ts-conditions","Cold front 提供 lifting trigger"],["warmfront","freezing-rain","暖層落雨入冷層"],["warmfront","inv-front","暖空氣爬上冷空氣"],["occlusion","extratropical","Cyclone 終必 occlude"],["hk-fronts","hk-monsoon","cold front隨冬季 monsoon"],
 ["ts-life","ts-hazards","Mature stage 危險最大"],["microburst","windshear","Microburst 造成嚴重 shear"],["ts-hazards","icing-cond","Cb 過冷水大"],["precip","microburst","Virga 蒸發冷卻 → 下衝"],
-["rime","clear-ice","水滴大小決定冰型"],["icing-haz","frost","霜破壞氣流→升力減"],["orographic","mountain-wave","過山氣流→波"],["mountain-wave","altimeter-terrain","Lee 側 pressure 低"],["tc-form","tc-struct","形成後 eye＋eyewall"],["tc-struct","tc-hazard","Eyewall＋spiral Cb"],["tc-class","hk-signals","強度對應信號"],["tc-hazard","hk-windshear","TC 增加 HKIA 風切"],
-["pressure-height","altimeter","氣壓隨高度 → altimeter 原理"],["pressure-err","temp-err","兩個誤差同方向：High→Low 低飛"],["qcodes","pressure-err","設錯 QNH 即 pressure error"],
-["metar","taf","METAR 觀測、TAF 預測"],["metar-vis","vis","Vis 與 RVR"],["sigmet","tc-hazard","TC 需 SIGMET"],["pressure-sys","geostrophic","Gradient 與 Coriolis 平衡"],["geostrophic","friction","近地面摩擦改變風向"],["heat","lapse","Heat transfer 解釋 lapse"],["seabreeze","inv-front","Sea-breeze front"],["katabatic","lapse","下坡空氣按 DALR 暖"]
+["rime","clear-ice","水滴大小決定冰型"],["icing-haz","frost","霜破壞airflow→lift減"],["orographic","mountain-wave","過山airflow→波"],["mountain-wave","altimeter-terrain","Lee 側 pressure 低"],["tc-form","tc-struct","形成後 eye＋eyewall"],["tc-struct","tc-hazard","Eyewall＋spiral Cb"],["tc-class","hk-signals","強度對應信號"],["tc-hazard","hk-windshear","TC 增加 HKIA wind shear"],
+["pressure-height","altimeter","pressure隨altitude → altimeter 原理"],["pressure-err","temp-err","兩個誤差同方向：High→Low 低飛"],["qcodes","pressure-err","設錯 QNH 即 pressure error"],
+["metar","taf","METAR 觀測、TAF 預測"],["metar-vis","vis","Vis 與 RVR"],["sigmet","tc-hazard","TC 需 SIGMET"],["pressure-sys","geostrophic","Gradient 與 Coriolis 平衡"],["geostrophic","friction","近地面摩擦改變wind direction"],["heat","lapse","Heat transfer 解釋 lapse"],["seabreeze","inv-front","Sea-breeze front"],["katabatic","lapse","下坡空氣按 DALR 暖"]
 ];
 // ---- cards
 C("composition","🌬️","What are the main gases in the atmosphere?","Nitrogen 78%, oxygen 21%, and about 1% others, plus a variable amount of water vapour.","78/21/1，加水汽。");
@@ -128,8 +128,8 @@ C("diurnal","🕒","When are daily maximum and minimum temperatures?","Maximum a
 C("inv-rad","🌙","Conditions for a radiation inversion?","Clear sky, calm or light wind, and land surface at night.","晴夜、微風、陸地。");
 C("inv-sub","⬇️","What causes a subsidence inversion?","Sinking air in a high-pressure system warms by compression, forming warm air above cooler air.","高壓下沉升溫。");
 C("inv-front","🌫️","Where do frontal inversions occur?","Typically where warm air rides over cold air, most commonly at a warm front.","warm front。");
-C("inversion-effects","⚠️","What are effects of flying through an inversion?","Wind shear, turbulence, density change affecting performance, and poor visibility below.","風切、乱流、performance 變。");
-C("humidity","💦","Define dewpoint.","The temperature to which air must be cooled at constant pressure to become saturated.","冷到飽和嘅溫度。");
+C("inversion-effects","⚠️","What are effects of flying through an inversion?","Wind shear, turbulence, density change affecting performance, and poor visibility below.","wind shear、乱流、performance 變。");
+C("humidity","💦","Define dewpoint.","The temperature to which air must be cooled at constant pressure to become saturated.","冷到飽和嘅temperature。");
 C("humidity","📈","What happens to RH as air cools?","Relative humidity increases, reaching 100% at the dewpoint.","降溫 RH 升。");
 C("pressure-sys","🗺️","What do close isobars indicate?","A steep pressure gradient and therefore stronger wind.","風強。");
 C("coriolis","🔄","What does Coriolis force do in the Northern Hemisphere?","It deflects moving air to the right; it is zero at the equator and increases with speed and latitude.","向右偏轉。");
@@ -159,23 +159,23 @@ C("cloud-types","🌩️","Difference between cumuliform and stratiform?","Cumul
 C("cloud-amount","🧮","Convert oktas to METAR terms.","FEW 1–2, SCT 3–4, BKN 5–7, OVC 8 oktas.","oktas 對應。");
 C("airmass","🌎","What does mT mean?","Maritime tropical: warm and moist air mass.","暖濕。");
 C("airmass","🌡️","What happens to an air mass moving to cooler surface?","It cools from below, becomes more stable and RH rises.","更穩定。");
-C("coldfront","❄️","Weather at a cold front?","Cumulonimbus, showers or thunderstorms, wind shift, pressure rising and temperature drop.","雷暴、轉風、降溫。");
+C("coldfront","❄️","Weather at a cold front?","Cumulonimbus, showers or thunderstorms, wind shift, pressure rising and temperature drop.","thunderstorm、轉風、降溫。");
 C("coldfront","📐","Compare slopes of cold and warm fronts.","Cold front about 1:75, warm front about 1:200.","冷陡暖緩。");
 C("warmfront","🌥️","Cloud sequence ahead of warm front?","Cirrus, cirrostratus, altostratus then nimbostratus with continuous rain.","Ci→Cs→As→Ns。");
 C("warmfront","🧊","Hazard below a warm front in sub-zero air?","Freezing rain causing severe clear ice.","freezing rain。");
-C("occlusion","🔀","What is an occluded front?","A cold front overtaking a warm front, lifting the warm sector aloft.","冷鋒追上暖鋒。");
+C("occlusion","🔀","What is an occluded front?","A cold front overtaking a warm front, lifting the warm sector aloft.","cold front追上warm front。");
 C("occlusion","⚠️","Difference warm vs cold occlusion?","Warm: air ahead is colder, cold front rises over it; cold: air ahead is warmer, cold front undercuts.","兩種 occlusion。");
 C("stationary","⏸️","Stationary front weather?","Overcast stratus, light rain or drizzle and calm surface winds.","天氣平靜。");
 C("extratropical","🌀","Weather in warm sector?","Overcast or broken St/Sc, drizzle, steady pressure and moderate to poor visibility.","St/Sc、毛毛雨。");
-C("hk-fronts","🇭🇰","Does Hong Kong experience cold fronts and warm fronts?","Cold fronts yes (winter, around December–January); warm fronts, no (per course notes).","冷鋒有、暖鋒冇。",true);
+C("hk-fronts","🇭🇰","Does Hong Kong experience cold fronts and warm fronts?","Cold fronts yes (winter, around December–January); warm fronts, no (per course notes).","cold front有、warm front冇。",true);
 C("ts-conditions","⚡","Three conditions for thunderstorm?","Unstable atmosphere, high moisture and a lifting trigger.","三要素。");
 C("ts-life","⏱️","Describe the three stages of a thunderstorm.","Cumulus: updraughts only; Mature: updraught and downdraught with rain; Dissipating: downdraughts only.","三階段。");
 C("ts-life","🌧️","What indicates mature stage?","Rain starting to fall from the cloud base and first lightning.","開始落雨。");
 C("ts-types","🌪️","Types of thunderstorm?","Single cell, multicell and supercell.","三類。");
-C("ts-types","📏","What is a line squall?","A non-frontal band of active thunderstorms, often ahead of a cold front.","雷暴線。");
-C("ts-hazards","⚠️","List thunderstorm hazards.","Wind shear, severe turbulence, severe icing, hail, lightning, low visibility and precipitation static.","雷暴危險。");
+C("ts-types","📏","What is a line squall?","A non-frontal band of active thunderstorms, often ahead of a cold front.","thunderstorm線。");
+C("ts-hazards","⚠️","List thunderstorm hazards.","Wind shear, severe turbulence, severe icing, hail, lightning, low visibility and precipitation static.","thunderstorm危險。");
 C("ts-avoid","📡","How far to avoid a thunderstorm?","At least 10 nm, and 20 nm or more for severe storms.","10–20 nm。");
-C("microburst","⬇️","What is a microburst?","A localized strong downdraft not exceeding 4 km that spreads outward at ground, causing sudden headwind-to-tailwind shear.","局部下衝氣流。");
+C("microburst","⬇️","What is a microburst?","A localized strong downdraft not exceeding 4 km that spreads outward at ground, causing sudden headwind-to-tailwind shear.","局部下衝airflow。");
 C("microburst","✈️","What happens to an aircraft penetrating a microburst?","IAS rises first from headwind, then drops with downdraught and tailwind, risking descent and stall.","先升後急降。");
 C("vis","👁️","Define fog, mist and haze.","Fog: vis <1000 m water droplets; mist: 1000–5000 m; haze: solid particles reducing vis below 5000 m.","霧、薄霧、霾。");
 C("fog-rad","🌫️","Conditions for radiation fog?","Clear night, light wind 2–8 kt, small T−Td spread, over land.","晴夜微風。");
@@ -191,12 +191,12 @@ C("icing-cond","🌡️","Estimate freezing level: +8°C at 5000 ft.","8°C ÷ 2
 C("rime","⬜","Describe rime ice.","White, brittle ice from small supercooled droplets freezing instantly; usually on leading edges.","白色脆。");
 C("clear-ice","🔷","Describe clear ice.","Transparent, hard ice from larger supercooled droplets; severe and quick-forming.","透明堅硬。");
 C("freezing-rain","🌧️","What do ice pellets indicate?","Rain falling through a below-freezing layer, meaning warmer air with freezing rain above.","上面有暖層。");
-C("frost","🧊","Why remove frost before takeoff?","Frost disrupts airflow, causing early separation and loss of lift.","霜令升力降。");
+C("frost","🧊","Why remove frost before takeoff?","Frost disrupts airflow, causing early separation and loss of lift.","霜令lift降。");
 C("icing-haz","⚠️","Effects of icing?","More weight, less lift, more drag, higher stall speed, blocked pitot/static and CG shift.","icing 影響。");
 C("icing-prot","🛡️","Anti-ice vs de-ice?","Anti-ice prevents formation; de-ice removes ice already formed.","預防 vs 除冰。");
 C("turb","🌪️","Define turbulence.","Variations in wind that disturb attitude but do not significantly change flight path.","乱流定義。");
 C("windshear","📉","Define severe wind shear.","Sudden wind change causing IAS change >15 kt or vertical speed change >500 fpm.","15 kt/500 fpm。");
-C("hk-windshear","🇭🇰","Why is windshear a concern at VHHH?","Terrain around Lantau and convective storms cause shear; reports include WS advisories (check).","地形風切。",true);
+C("hk-windshear","🇭🇰","Why is windshear a concern at VHHH?","Terrain around Lantau and convective storms cause shear; reports include WS advisories (check).","地形wind shear。",true);
 C("mountain-wave","⛰️","Conditions for mountain waves?","Wind ≥25 kt across a range with stable layer above; lenticular and rotor clouds appear.","強風＋穩定層。");
 C("cat","🌌","What is CAT?","High-altitude turbulence without cloud, associated with jet streams; shear >6 kt per 1000 ft.","晴空乱流。");
 C("jet","🌀","Define a jet stream.","A narrow band of strong wind near the tropopause, over 60 kt (FAA says 50 kt).","tropopause 強風。",true);
@@ -220,13 +220,13 @@ C("pressure-err","🧮","1020→1008 mb at 5000 ft; true alt?","12 mb × 30 = 36
 C("pressure-err","🧮","1004→1008 mb at 2000 ft: indicated vs true?","Indicated is lower than true (under-reads) by about 120 ft.","4×30。");
 C("pressure-err","🧮","A elev 0 at 1013; B elev 1200 at 993; indicated 7000: clearance?","20 mb = 600 ft; true 6,400; clearance 5,200 ft.","6400−1200。");
 C("pressure-err","⚠️","'High to Low' rule?","Flying high to low pressure (or hot to cold), altimeter over-reads: you are lower than indicated.","High→Low 低飛。");
-C("temp-err","🧊","Effect of cold temperature on altimeter?","Cold air is denser column shorter so true altitude is lower than indicated.","冷天真高度低。",true);
+C("temp-err","🧊","Effect of cold temperature on altimeter?","Cold air is denser column shorter so true altitude is lower than indicated.","冷天真altitude低。",true);
 C("altimeter-terrain","⛰️","Altimeter error on lee side of mountains?","Lower pressure on lee side causes over-reading, so true altitude is lower.","lee 側 over-read。");
 C("metar","📡","What does METAR provide?","Observed aerodrome weather, issued half-hourly or hourly in UTC (Z).","機場實測。");
 C("metar-wind","🌬️","Decode 31015G30KT 280V350.","Wind from 310° at 15 kt gusting 30, varying between 280° and 350°.","gust 同 variation。");
 C("metar-wind","🧭","Is METAR wind true or magnetic?","True; ATIS winds are magnetic.","METAR 真北。");
 C("metar-vis","👁️","What does 9999 mean in METAR?","Visibility 10 km or more.","≥10 km。");
-C("metar-vis","🌧️","Decode +SHRA TSRA.","Heavy rain showers and thunderstorm with rain.","大陣雨及雷暴。");
+C("metar-vis","🌧️","Decode +SHRA TSRA.","Heavy rain showers and thunderstorm with rain.","大陣雨及thunderstorm。");
 C("metar-cloud","☁️","Decode FEW008 SCT025 BKN040.","1–2 oktas at 800 ft, 3–4 oktas at 2,500 ft, 5–7 oktas at 4,000 ft.","FEW/SCT/BKN。");
 C("metar-cloud","🌡️","Decode 25/24 Q0990.","Temp 25°C, dewpoint 24°C, QNH 990 hPa.","Q0990 = 990 hPa。");
 C("cavok","✅","Define CAVOK.","Vis ≥10 km, no cloud below 5000 ft or MSA, no CB/TCU, no significant weather.","CAVOK 條件。");
@@ -281,13 +281,13 @@ const anims=[
    clouds([[fx+10,120,40,38,"#94a3b8"],[fx+30,170,50,40,"#64748b"],[fx+70,215,40,25]]);
    for(let i=0;i<7;i++)E(H,rain,"line",{x1:fx+20+i*10,y1:200,x2:fx+14+i*10,y2:245,stroke:"#38bdf8"});
    dirT.textContent="COLD FRONT →  (cold air undercuts, slope ~1:75)";
-   say(pos<45?"Front 前 (warm sector)：壓力跌、風增強、Cu 發展":pos<65?"Front 通過：Cb、陣雨／雷暴、風突轉、壓力最低後急升":"Front 後：溫度跌、壓力升、vis 好、雲散")
+   say(pos<45?"Front 前 (warm sector)：pressure跌、風增強、Cu 發展":pos<65?"Front 通過：Cb、陣雨／thunderstorm、風突轉、pressure最低後急升":"Front 後：temperature跌、pressure升、vis 好、雲散")
   }else{
    air.setAttribute("points","0,250 690,250 380,235 250,210 90,170 0,160");
    clouds([[120,60,90,12,"#e2e8f0"],[200,100,80,16,"#cbd5e1"],[280,140,80,18,"#94a3b8"],[340,190,70,26,"#64748b"]]);
    for(let i=0;i<10;i++)E(H,rain,"line",{x1:260+i*12,y1:200,x2:254+i*12,y2:245,stroke:"#38bdf8"});
    dirT.textContent="WARM FRONT →  (warm air rides over cold, slope ~1:200)";
-   say(pos<30?"遠前：Ci→Cs，壓力開始跌":pos<60?"As→Ns：持續雨、低雲、vis 差 (frontal fog／freezing rain 風險)":"Front 通過後：暖區 St／Sc、毛毛雨、壓力穩定")}
+   say(pos<30?"遠前：Ci→Cs，pressure開始跌":pos<60?"As→Ns：持續雨、低雲、vis 差 (frontal fog／freezing rain 風險)":"Front 通過後：暖區 St／Sc、毛毛雨、pressure穩定")}
  }
  function mv(){ob.setAttribute("transform",`translate(${40+pos*6.2},248)`);draw()}
  H.button(box,"Cold front",()=>{type="cold";mv()});H.button(box,"Warm front",()=>{type="warm";mv()});
@@ -313,7 +313,7 @@ const anims=[
   say(s<40?"潛熱令 cloud 暖過環境，一路向上；仲未有雨":s<75?"雨拖落冷空氣 → downdraught；shear 最大、hail、microburst、gust front":"Downdraught 壓死 updraught，cloud 坍塌成層雲")}
  H.slider(box,"階段",0,100,10,v=>{s=v;upd()});
 }},
-{title:"Icing 類型：rime / clear / mixed",hint:"調溫度同水滴大小",build(box,H){
+{title:"Icing 類型：rime / clear / mixed",hint:"調temperature同水滴大小",build(box,H){
  const svg=H.svg(box,700,260),say=H.note(box);
  H.el("path",{d:"M120,130 C220,95 480,100 600,128 C480,150 220,160 120,130Z",fill:"#e2e8f0"},svg);
  TX(H,svg,100,230,"← airflow     leading edge ·",null,12);
@@ -325,10 +325,10 @@ const anims=[
   if(T>0){type="No ice (>0°C)";thick=0}else if(D<=3){type=T<-10?"RIME — 白、脆、前緣":"Mixed";thick=8+D*3}else if(D>=7&&T>-12){type="CLEAR — 透明、硬、快積";thick=20+D*3}else{type="MIXED — rime + clear";thick=14+D*3}
   const f=T<-12?"#ffffff":"#bae6fd";ice.setAttribute("fill",type.startsWith("CLEAR")?"#bae6fd":"#ffffff");
   ice.setAttribute("d",thick?`M120,130 C110,${130-thick} 135,${100-thick} 200,${108-thick/2} L200,112 C150,115 135,125 120,130Z M120,130 C110,${130+thick} 135,${150+thick*0.4} 200,${142+thick/3} L200,138 C150,135 135,128 120,130Z`:"");
-  lab.textContent=type;say("溫度 "+T+"°C · 水滴大小 "+D+"/10；細滴→rime，大滴／近 0°C→clear；freezing rain 最差")}
+  lab.textContent=type;say("temperature "+T+"°C · 水滴大小 "+D+"/10；細滴→rime，大滴／近 0°C→clear；freezing rain 最差")}
  H.slider(box,"Temp °C",-30,2,-12,v=>{T=v;upd()});H.slider(box,"Droplet size",1,10,3,v=>{D=v;upd()});
 }},
-{title:"Altimeter setting 錯誤 → 實際高度",hint:"改目的地氣壓、氣溫偏差",build(box,H){
+{title:"Altimeter setting 錯誤 → 實際altitude",hint:"改目的地pressure、temperature偏差",build(box,H){
  const svg=H.svg(box,700,300),say=H.note(box);
  const gr=E(H,svg,"polygon",{fill:"#475569"});const ac=E(H,svg,"path",{d:"M-24,0 L24,0 L14,-10 L-14,-10Z",fill:"#fbbf24"});
  const il=E(H,svg,"line",{x1:0,x2:700,stroke:"#38bdf8","stroke-dasharray":"6 4"});const it=TX(H,svg,10,0,"","#38bdf8",13);
@@ -341,12 +341,12 @@ const anims=[
   il.setAttribute("y1",yi);il.setAttribute("y2",yi);it.setAttribute("y",yi-6);it.textContent="Indicated 5000 ft (set 1013)";
   ac.setAttribute("transform",`translate(560,${yt})`);tl.setAttribute("x",330);tl.setAttribute("y",yt+22);tl.textContent="TRUE ≈ "+Math.round(tt)+" ft";
   arr.setAttribute("x1",610);arr.setAttribute("x2",610);arr.setAttribute("y1",yi);arr.setAttribute("y2",yt);
-  say((p<1013?"Flying High→Low：實際低過 indicated (over-read)，watch out below. ":p>1013?"Low→High：實際高過 indicated (under-read). ":"")+(d<0?"凍空氣：額外降低。":d>0?"暖空氣：真高度偏高。":""))}
+  say((p<1013?"Flying High→Low：實際低過 indicated (over-read)，watch out below. ":p>1013?"Low→High：實際高過 indicated (under-read). ":"")+(d<0?"凍空氣：額外降低。":d>0?"暖空氣：真altitude偏高。":""))}
  H.slider(box,"Pressure at destination hPa",980,1040,1013,v=>{p=v;upd()});
  H.slider(box,"ISA deviation °C (rule 0.4%/°C)",-30,30,0,v=>{d=v;upd()});
 }},
 {title:"METAR 逐段解碼 (VHHH 風暴例)",hint:"點每段睇意思",build(box,H){
- const toks=[["VHHH","機場 ICAO：Hong Kong Intl"],["011347Z","日期 01 日 13:47 UTC"],["36039G62KT","風 360° (真北) 39 kt，陣風 62 kt"],["1800","Visibility 1800 m"],["R07R/P2000U","RVR 07R：多於 2000 m，趨勢上升"],["+SHRA","Heavy rain showers"],["FEW008","1–2 oktas at 800 ft"],["SCT025","3–4 oktas at 2500 ft"],["25/24","Temp 25°C / Dewpoint 24°C (幾乎飽和)"],["Q0990","QNH 990 hPa (好低 → TC!)"],["TEMPO","暫時變化 (<60 min)"],["36055G75KT","TEMPO：風 55G75 kt"],["TSRA","TEMPO：雷暴＋雨"],["FEW008CB","CB at 800 ft = 雷暴雲"]];
+ const toks=[["VHHH","機場 ICAO：Hong Kong Intl"],["011347Z","日期 01 日 13:47 UTC"],["36039G62KT","風 360° (真北) 39 kt，陣風 62 kt"],["1800","Visibility 1800 m"],["R07R/P2000U","RVR 07R：多於 2000 m，趨勢上升"],["+SHRA","Heavy rain showers"],["FEW008","1–2 oktas at 800 ft"],["SCT025","3–4 oktas at 2500 ft"],["25/24","Temp 25°C / Dewpoint 24°C (幾乎飽和)"],["Q0990","QNH 990 hPa (好低 → TC!)"],["TEMPO","暫時變化 (<60 min)"],["36055G75KT","TEMPO：風 55G75 kt"],["TSRA","TEMPO：thunderstorm＋雨"],["FEW008CB","CB at 800 ft = thunderstorm雲"]];
  const wrap=document.createElement("div");wrap.style.cssText="display:flex;flex-wrap:wrap;gap:6px;margin:8px 0";box.appendChild(wrap);
  const say=H.note(box);const out=document.createElement("div");out.style.cssText="padding:10px;border-radius:8px;background:#1e293b;color:#fbbf24;font-size:15px;min-height:24px";box.appendChild(out);
  toks.forEach((t,i)=>{const b=document.createElement("button");b.className="b g";b.textContent=t[0];b.onclick=()=>{[...wrap.children].forEach(c=>c.style.outline="");b.style.outline="3px solid #fbbf24";out.textContent=t[0]+" → "+t[1];say("第 "+(i+1)+"/"+toks.length+" 段")};wrap.appendChild(b)});
@@ -365,7 +365,7 @@ const anims=[
  let ang=0,kt=70;
  function cls(k){return k<34?"Tropical Depression":k<48?"Tropical Storm":k<64?"Severe Tropical Storm":k<81?"Typhoon":k<100?"Severe Typhoon":"Super Typhoon"}
  H.loop(()=>{ang+=0.03+kt/4000;bands.forEach((b,i)=>{let d="";for(let a=0;a<4.5;a+=0.2){const r=40+a*(14+i*3)+i*8,t=a*1.3+ang+i*2.1;d+=(a?"L":"M")+(cx+r*Math.cos(t)).toFixed(1)+","+(cy-r*Math.sin(t)).toFixed(1)}b.setAttribute("d",d)})});
- H.slider(box,"Max wind kt",20,130,70,v=>{kt=v;wall.setAttribute("r",34-Math.min(v,120)/8);info.textContent=cls(v)+" · "+v+" kt";info2.textContent="NH 逆時針；風向 eyewall 最強，eye 最低壓、無雲";say("Typhoon 由 64 kt 起；ST ~80–100；Super >100 (教材／HKO，部分待驗證)")});
+ H.slider(box,"Max wind kt",20,130,70,v=>{kt=v;wall.setAttribute("r",34-Math.min(v,120)/8);info.textContent=cls(v)+" · "+v+" kt";info2.textContent="NH 逆時針；wind direction eyewall 最強，eye 最低壓、無雲";say("Typhoon 由 64 kt 起；ST ~80–100；Super >100 (教材／HKO，部分待驗證)")});
  [["No.1 Standby","TC 距 HK ~800 km 內，會影響 HK (HKO，待驗證)"],["No.3 Strong Wind","持續風 41–62 km/h 或預料 (HKO，待驗證)"],["No.8 Gale/Storm","風力 34–63 kt (NE/NW/SE/SW)；機場大量影響"],["No.9 Increasing","風力預料顯著增強"],["No.10 Hurricane","風力 ≥64 kt"]].forEach(s=>H.button(box,s[0],()=>say(s[0]+"：" + s[1])));
 }},
 {title:"Global circulation (Hadley / Ferrel / Polar)",hint:"揀 cell；睇空氣循環",build(box,H){

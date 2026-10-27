@@ -47,7 +47,7 @@ function renderNotes(){
   box.innerHTML=tabs+`<div class="nav2"><button class="b g" data-nback="1">← ${NK[r.k]||r.k} 列表</button> <span class="small">${i+1} / ${L.length}</span></div>
   <article class="note notion" style="--c:${SUBJ(r.k)?SUBJ(r.k).color:"#ff6a2b"}">
    <div class="small">${SUBJ(r.k)?SUBJ(r.k).emoji+" "+esc(SUBJ(r.k).name):""}</div><h1>${esc(r.t)}</h1>${(r.src&&r.src.length)?`<div class="srcs">${r.src.map(x=>`<span class="sc">📂 ${esc(x)}</span>`).join("")}</div>`:""}
-   <div class="acts">${r.yt&&r.yt.startsWith("http")?`<a class="b g alink" href="${esc(r.yt)}" target="_blank" rel="noopener">▶ 課堂片</a>`:""}${noteTab==="mine"?`<a class="b g alink" href="${nurl(r.id)}" target="_blank" rel="noopener">🔗 Notion 原頁</a>`:""}<button class="b ${rd?"g":""}" data-nread="${r.id}">${rd?"✓ 已睇":"📖 標記已睇"}</button></div>
+   <div class="acts">${r.yt&&r.yt.startsWith("http")?`<a class="b g alink" href="${esc(r.yt)}" target="_blank" rel="noopener">▶ 課堂片</a>`:""}${noteTab==="mine"?`<a class="b g alink" href="${nurl(r.id)}" target="_blank" rel="noopener">🔗 Notion 原頁</a>`:""}<button class="b ${rd?"g":""}" data-nread="${r.id}">${rd?"✓ 已睇":"📖 標記已睇"}</button><button class="b g" data-nedit="${r.id}">✏️ 編輯筆記</button>${r._ed?'<span class="edtag">已編輯</span>':""}</div>
    ${r.rec.length?`<section class="ns recall"><h2>🧠 Recall ${r.lesson?`<button class="b" data-qlesson="${r.lesson}">⚡ 快速溫習（課堂）</button>`:""}</h2><ol>${r.rec.map((x,j)=>{const l=r.rl&&r.rl[j];return `<li>${inl(x)} ${l?`<button class="rlink" data-qlesson="${l}">⚡ 溫習</button>`:(r.rl?'<span class="small">（課堂未有）</span>':"")}</li>`}).join("")}</ol></section>`:""}
    <section class="ns"><h2>📝 Notes</h2>${md2html(r.notes)}</section>
    ${r.sum?`<section class="ns sumry"><h2>🔑 Summary</h2>${md2html(r.sum)}</section>`:""}
@@ -66,3 +66,16 @@ document.addEventListener("click",e=>{
   const rd=e.target.closest("[data-nread]");if(rd){const k="n:"+rd.dataset.nread;if(V2.noted[k])delete V2.noted[k];else V2.noted[k]=Date.now();v2save();renderNotes();return}
   const ql=e.target.closest("[data-qlesson]");if(ql){show("learn");setTimeout(()=>startLesson(ql.dataset.qlesson),80);return}
   const m=e.target.closest("[data-mcqstart]");if(m){mcqRun(m.dataset.mcqstart)}});
+
+function editNote(id){const r=ND().find(x=>x.id===id);if(!r)return;
+  modal(`<h3>✏️ 編輯筆記</h3><label>標題<input id="enT" value="${esc(r.t)}"></label>
+  <label>Recall（每行一條）<textarea id="enR" rows="6">${esc((r.rec||[]).join("\n"))}</textarea></label>
+  <label>Notes（Markdown：## 標題、- 重點、| 表格 |、![圖說](img/…)）<textarea id="enN" rows="16" style="font-family:var(--mono);font-size:13px">${esc(r.notes||"")}</textarea></label>
+  <label>Summary（Markdown）<textarea id="enS" rows="5">${esc(r.sum||"")}</textarea></label>
+  <div class="small">提示：技術名詞請用英文（stall、AoA、lift…）。</div>
+  <div class="acts"><button class="b" id="enSave">儲存</button><button class="b g" id="enReset">還原原稿</button><button class="b g" id="enCancel">取消</button></div>`);
+  $("#enCancel").onclick=closeModal;
+  $("#enSave").onclick=()=>{V2.edits.notes[id]={t:$("#enT").value.trim()||r._o.t,rec:$("#enR").value.split("\n").map(x=>x.trim()).filter(Boolean),notes:$("#enN").value,sum:$("#enS").value,tm:Date.now()};v2save();applyEdits();closeModal();renderNotes()};
+  $("#enReset").onclick=()=>{V2.edits.notes[id]={x:1,tm:Date.now()};v2save();applyEdits();closeModal();renderNotes()}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-nedit]");if(b)editNote(b.dataset.nedit)});
+applyEdits();

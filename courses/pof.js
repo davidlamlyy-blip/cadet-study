@@ -1,11 +1,11 @@
 // Duolingo 式課程：Principles of Flight（示範 Unit 1）。內容來源：data/pof.js 嘅 topic（PHAK ch5／RPL ch6／ENZO 06／Lecture 13a）
 Cadet.course({key:"pof",name:"Principles of Flight",emoji:"🛩️",color:"#7dd3fc",units:[
-{id:"pof-u1",title:"Unit 1 · 機翼點樣托起架機",desc:"四力 → lift 邊度嚟 → AoA → stall",lessons:[
+{id:"pof-u1",title:"Unit 1 · wing點樣托起架機",desc:"四力 → lift 邊度嚟 → AoA → stall",lessons:[
  {id:"pof-1-1",title:"四力",icon:"⚖️",topic:"pof.fourforces",topics:["pof.fourforces"],steps:[
-  {t:"teach",title:"飛機受四個力",say:"一架飛機喺空中永遠受 <b>4 個力</b>。兩個係「機自己搞出嚟」，兩個係「自然施加」。",terms:[["Lift","升力"],["Weight","重力"],["Thrust","推力"],["Drag","阻力"]],tip:"先記住：Lift 同 Weight 一對，Thrust 同 Drag 一對。"},
-  {t:"teach",title:"邊個向邊？",say:"<b>Weight</b> 一直指向地心。<b>Lift</b> 垂直於 relative wind（氣流）。<b>Thrust</b> 向前推，<b>Drag</b> 向後拖，兩者平行於 relative wind。",viz:{k:"pof",t:"Four Forces"}},
+  {t:"teach",title:"飛機受四個力",say:"一架飛機喺空中永遠受 <b>4 個力</b>。兩個係「機自己搞出嚟」，兩個係「自然施加」。",terms:[["Lift","lift"],["Weight","weight"],["Thrust","thrust"],["Drag","drag"]],tip:"先記住：Lift 同 Weight 一對，Thrust 同 Drag 一對。"},
+  {t:"teach",title:"邊個向邊？",say:"<b>Weight</b> 一直指向地心。<b>Lift</b> 垂直於 relative wind（airflow）。<b>Thrust</b> 向前推，<b>Drag</b> 向後拖，兩者平行於 relative wind。",viz:{k:"pof",t:"Four Forces"}},
   {t:"mcq",q:"Which two forces are a pair?",opts:["Lift and Weight","Lift and Thrust","Weight and Drag"],a:0,why:"Lift balances Weight (up/down). Thrust balances Drag (forward/back)."},
-  {t:"teach",title:"平衡 = 勻速平飛",say:"Straight and level、速度唔變嗰陣：<b>Lift = Weight</b>，同時 <b>Thrust = Drag</b>。有一對唔平衡，飛機就會加速、減速、爬升或下降。",tip:"唔係「冇力」，係「力平衡」。"},
+  {t:"teach",title:"平衡 = 勻速level flight",say:"Straight and level、speed唔變嗰陣：<b>Lift = Weight</b>，同時 <b>Thrust = Drag</b>。有一對唔平衡，飛機就會加速、減速、climb或descent。",tip:"唔係「冇力」，係「力平衡」。"},
   {t:"fill",text:"In steady level flight, Lift ___ Weight and Thrust ___ Drag.",bank:["=","=","＞","＜"],a:["=","="],why:"Each pair is balanced, so speed and height stay constant."},
   {t:"tf",q:"If Thrust is greater than Drag (everything else unchanged), the aircraft accelerates.",a:true,why:"There is a net force forward. It accelerates until Drag rises to equal Thrust."},
   {t:"mcq",q:"To start climbing, which force must be bigger?",opts:["Lift bigger than Weight","Weight bigger than Lift","Drag bigger than Thrust"],a:0,why:"A net upward force is needed. In practice you raise AoA and add thrust."},
@@ -13,20 +13,20 @@ Cadet.course({key:"pof",name:"Principles of Flight",emoji:"🛩️",color:"#7dd3
   {t:"match",q:"Match each force with its direction",pairs:[["Weight","Towards the Earth"],["Drag","Backwards"],["Thrust","Forwards"],["Lift","Perpendicular to the relative wind"]]}
  ]},
  {id:"pof-1-2",title:"Lift 邊度嚟",icon:"🌬️",topic:"pof.bernoulli",topics:["pof.bernoulli","pof.newton","pof.liftmyth"],steps:[
-  {t:"teach",title:"兩個講法，講同一件事",say:"解釋 lift 常見有兩個講法：<b>Bernoulli</b>（壓力）同 <b>Newton</b>（動量）。兩個都啱，只係講唔同角度。",terms:[["Bernoulli","流速快 → 壓力低"],["Newton's 3rd law","作用同反作用"]]},
-  {t:"teach",title:"Bernoulli：壓力差",say:"機翼上面流速較高 → 靜壓較低；下面壓力相對高。<b>壓力差 × 面積 = lift</b>。大約三分之二嘅 lift 係上翼面「抽」出嚟。"},
-  {t:"teach",title:"Newton：向下偏轉",say:"機翼將空氣向下推（<b>downwash</b>）。空氣獲得向下動量，機翼受到向上嘅反作用力，就係 lift。",viz:{k:"pof",t:"Four Forces"},tip:"兩個講法其實係同一個現象：壓力差同氣流偏轉係同時發生。"},
+  {t:"teach",title:"兩個講法，講同一件事",say:"解釋 lift 常見有兩個講法：<b>Bernoulli</b>（pressure）同 <b>Newton</b>（動量）。兩個都啱，只係講唔同角度。",terms:[["Bernoulli","流速快 → pressure低"],["Newton's 3rd law","作用同反作用"]]},
+  {t:"teach",title:"Bernoulli：pressure差",say:"wing上面流速較高 → static pressure較低；下面pressure相對高。<b>pressure差 × 面積 = lift</b>。大約三分之二嘅 lift 係上翼面「抽」出嚟。"},
+  {t:"teach",title:"Newton：向下偏轉",say:"wing將空氣向下推（<b>downwash</b>）。空氣獲得向下動量，wing受到向上嘅反作用力，就係 lift。",viz:{k:"pof",t:"Four Forces"},tip:"兩個講法其實係同一個現象：pressure差同airflow偏轉係同時發生。"},
   {t:"mcq",q:"Bernoulli says: where the airspeed is higher, the pressure is...",opts:["Lower","Higher","The same"],a:0,why:"Faster flow means lower static pressure."},
   {t:"mcq",q:"From Newton's point of view, lift is...",opts:["The reaction to the wing pushing air downward","A form of gravity","A type of friction"],a:0,why:"The wing deflects air down (downwash), so the air pushes the wing up."},
-  {t:"teach",title:"常見誤解",say:"「<b>Equal transit time</b>」講法話：上面氣流要行多啲路，所以要行得快，同時到達後緣。<b>呢個係錯嘅</b>：氣流唔會同時到後緣，上面氣流實際到得更早。",terms:[["Equal transit time","✗ 錯"]]},
+  {t:"teach",title:"常見誤解",say:"「<b>Equal transit time</b>」講法話：上面airflow要行多啲路，所以要行得快，同時到達後緣。<b>呢個係錯嘅</b>：airflow唔會同時到後緣，上面airflow實際到得更早。",terms:[["Equal transit time","✗ 錯"]]},
   {t:"tf",q:"The air above and below the wing must reach the trailing edge at the same time (equal transit time).",a:false,why:"This is a common myth. The air over the top actually arrives earlier."},
   {t:"fill",text:"Lift comes from a pressure difference and from air being ___ downward. The pressure above the wing is ___.",bank:["deflected","lower","higher","stopped"],a:["deflected","lower"],why:"Pressure and momentum are two views of the same effect."},
   {t:"match",q:"Match the idea with its meaning",pairs:[["Bernoulli","Faster flow, lower pressure"],["Newton","Downwash gives an upward reaction"],["Equal transit time","A common myth"]]}
  ]},
- {id:"pof-1-3",title:"攻角 AoA",icon:"📐",topic:"pof.aoa",topics:["pof.aoa","pof.clcurve"],steps:[
-  {t:"teach",title:"AoA 係邊個角？",say:"<b>Angle of Attack (AoA)</b> ＝ 機翼嘅 <b>chord line</b>（前緣到後緣條線）同 <b>relative wind</b>（相對氣流）之間嘅夾角。",terms:[["Chord line","弦線"],["Relative wind","相對氣流"]],tip:"AoA 唔係機頭指向地平線嘅角（嗰個叫 pitch attitude）。"},
+ {id:"pof-1-3",title:"AoA",icon:"📐",topic:"pof.aoa",topics:["pof.aoa","pof.clcurve"],steps:[
+  {t:"teach",title:"AoA 係邊個角？",say:"<b>Angle of Attack (AoA)</b> ＝ wing嘅 <b>chord line</b>（前緣到後緣條線）同 <b>relative wind</b>（relative wind）之間嘅夾角。",terms:[["Chord line","chord line"],["Relative wind","relative wind"]],tip:"AoA 唔係nose指向地平線嘅角（嗰個叫 pitch attitude）。"},
   {t:"mcq",q:"Angle of attack is the angle between which two lines?",opts:["The chord line and the relative wind","The fuselage and the horizon","The nose and the runway"],a:0,why:"It depends on the wing and the airflow, not on where the nose points."},
-  {t:"teach",title:"AoA 越大，lift 越大（到某個點）",say:"AoA 增加，機翼令氣流偏轉得更多，lift 上升。<b>但係</b>過咗 <b>critical AoA</b>（大約 16–20°，細飛機常見約 16°），氣流離開機翼表面，lift 反而跌。",viz:{k:"pof",t:"Lift → AoA"}},
+  {t:"teach",title:"AoA 越大，lift 越大（到某個點）",say:"AoA 增加，wing令airflow偏轉得更多，lift 上升。<b>但係</b>過咗 <b>critical AoA</b>（大約 16–20°，細飛機常見約 16°），airflow離開wing表面，lift 反而跌。",viz:{k:"pof",t:"Lift → AoA"}},
   {t:"mcq",q:"As angle of attack increases (below the critical angle), lift...",opts:["Increases","Decreases","Stays the same"],a:0,why:"The wing turns more air downward, so lift grows until the stall."},
   {t:"tf",q:"Angle of attack is the same as the pitch attitude of the aircraft.",a:false,why:"Pitch attitude is nose versus horizon. AoA is wing versus airflow."},
   {t:"teach",title:"點解要識 AoA？",say:"因為 <b>stall 只同 AoA 有關</b>。細飛機多數冇 AoA indicator，所以你要靠 attitude、speed、感覺同 stall warning 嚟估 AoA。"},
@@ -34,20 +34,20 @@ Cadet.course({key:"pof",name:"Principles of Flight",emoji:"🛩️",color:"#7dd3
   {t:"fill",text:"Lift ___ as AoA increases, until the ___ angle of attack is passed. Then the wing will ___.",bank:["increases","critical","stall","decreases","accelerate"],a:["increases","critical","stall"],why:"This rise-then-fall shape is the lift curve (CL against alpha)."}
  ]},
  {id:"pof-1-4",title:"Stall",icon:"🛑",topic:"pof.stall",topics:["pof.stall","pof.stallsym","pof.accstall"],steps:[
-  {t:"teach",title:"Stall 係咩？",say:"Stall ＝ <b>AoA 超過 critical angle</b>，氣流喺上翼面分離（<b>flow separation</b>），lift 驟跌、drag 上升。",terms:[["Stall","失速"],["Critical AoA","臨界攻角"]],viz:{k:"pof",t:"Lift → AoA"}},
-  {t:"teach",title:"重點：同速度無直接關係",say:"Stall <b>可以喺任何 attitude、任何速度</b>發生。「低速」只係令你要用更大 AoA 去維持 lift，所以更易去到 critical AoA。",tip:"機頭向下、高速，一樣可以 stall（例如急拉）。"},
+  {t:"teach",title:"Stall 係咩？",say:"Stall ＝ <b>AoA 超過 critical angle</b>，airflow喺上翼面分離（<b>flow separation</b>），lift 驟跌、drag 上升。",terms:[["Stall","stall"],["Critical AoA","critical AoA"]],viz:{k:"pof",t:"Lift → AoA"}},
+  {t:"teach",title:"重點：同speed無直接關係",say:"Stall <b>可以喺任何 attitude、任何speed</b>發生。「低速」只係令你要用更大 AoA 去維持 lift，所以更易去到 critical AoA。",tip:"nose向下、高速，一樣可以 stall（例如急拉）。"},
   {t:"tf",q:"A stall can only happen at low airspeed.",a:false,why:"A wing stalls whenever the critical AoA is exceeded, at any speed (for example, a sharp pull-up)."},
   {t:"mcq",q:"What is the direct cause of a stall?",opts:["The angle of attack is too high and the airflow separates","The engine has failed","The airspeed is too high"],a:0,why:"Stall = exceeding the critical angle of attack."},
-  {t:"teach",title:"Stall 嘅徵兆",say:"通常見到：<b>stall warning</b> 響、操縱感變軟、buffet（抖動）、機頭下沉（nose drops）。Nose drops 因為 CP 喺 CG 後面。",terms:[["Buffet","抖動"],["Stall warning","警告"]]},
+  {t:"teach",title:"Stall 嘅徵兆",say:"通常見到：<b>stall warning</b> 響、操縱感變軟、buffet（抖動）、nose下沉（nose drops）。Nose drops 因為 CP 喺 CG 後面。",terms:[["Buffet","抖動"],["Stall warning","警告"]]},
   {t:"match",q:"Match the stall sign with its meaning",pairs:[["Stall warning","An audible or visual alert"],["Buffet","The airframe shakes"],["Nose drop","The nose pitches down"],["Flow separation","Air leaves the wing surface"]]},
   {t:"fill",text:"A stall is caused by too high an ___ of attack, past the ___ angle, not by low ___.",bank:["angle","critical","airspeed","altitude"],a:["angle","critical","airspeed"],why:"Low speed only means you need a higher AoA to keep lift."},
   {t:"mcq",q:"You pull up sharply at high speed. Can the wing stall?",opts:["Yes, if the critical AoA is exceeded","No, the speed is too high","Only with flaps extended"],a:0,why:"This is an accelerated stall. The stall speed rises with load factor."}
  ]},
- {id:"pof-1-5",title:"Stall 改出同影響因素",icon:"🔧",topic:"pof.stallrec",topics:["pof.stallrec","pof.stallfactors"],steps:[
-  {t:"teach",title:"改出：先減 AoA",say:"Stall recovery 順序：① <b>降機頭／向前推 control column（減 AoA）</b> ② <b>加 full power</b> ③ 用 rudder 止 yaw、wing drop ④ 機翼 unstall 之後先用 aileron 水平 ⑤ 小心拉返出嚟。",terms:[["Unstall","解除失速"]]},
+ {id:"pof-1-5",title:"Stall recovery同影響因素",icon:"🔧",topic:"pof.stallrec",topics:["pof.stallrec","pof.stallfactors"],steps:[
+  {t:"teach",title:"recovery：先減 AoA",say:"Stall recovery 順序：① <b>降nose／向前推 control column（減 AoA）</b> ② <b>加 full power</b> ③ 用 rudder 止 yaw、wing drop ④ wing unstall 之後先用 aileron 水平 ⑤ 小心拉返出嚟。",terms:[["Unstall","解除stall"]]},
   {t:"order",q:"Put the stall recovery actions in order:",items:["Lower the nose (reduce AoA)","Apply full power","Use rudder to stay balanced","Level the wings with aileron after the wing has unstalled","Ease back into a climb"],why:"First reduce the angle of attack."},
   {t:"mcq",q:"What is the first step in a stall recovery?",opts:["Reduce the angle of attack (lower the nose)","Apply full power and pull back","Use aileron to lift the wing"],a:0,why:"The problem is too much AoA, so reduce it first."},
-  {t:"teach",title:"邊啲因素令 stall speed 變？",say:"<b>Stall AoA 唔變</b>，但 <b>stall speed</b> 會變：重量 ↑ → Vs ↑；<b>Flap</b> 放出 → Vs ↓；<b>Power on</b> → Vs ↓；<b>Load factor n</b> ↑ → Vs ×√n；<b>冰／霜／污垢</b> → Vs ↑。",viz:{k:"pof",t:"Turn: Bank"}},
+  {t:"teach",title:"邊啲因素令 stall speed 變？",say:"<b>Stall AoA 唔變</b>，但 <b>stall speed</b> 會變：weight ↑ → Vs ↑；<b>Flap</b> 放出 → Vs ↓；<b>Power on</b> → Vs ↓；<b>Load factor n</b> ↑ → Vs ×√n；<b>冰／霜／污垢</b> → Vs ↑。",viz:{k:"pof",t:"Turn: Bank"}},
   {t:"match",q:"Match each factor with its effect on stall speed",pairs:[["More weight","Stall speed goes up"],["Flaps down","Stall speed goes down"],["Steep turn (higher load factor)","Stall speed goes up"],["Ice on the wing","Stall speed goes up"]]},
   {t:"tf",q:"A steep turn increases the stall speed.",a:true,why:"Load factor goes up, so stall speed rises by the square root of the load factor."},
   {t:"mcq",q:"What happens to the critical angle of attack in practice?",opts:["It is basically fixed for a given wing","It changes with weight","It changes with airspeed"],a:0,why:"Wing shape sets it (ice can lower it). Weight and speed change the stall speed instead."},

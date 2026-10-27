@@ -125,7 +125,7 @@ Cadet.why={
 "tags": [
 "missing"
 ],
-"note": "「最不利重量」冇寫死；投影片列嘅 adverse 條件混合咗 Vmcg／Vmca"
+"note": "「最不利weight」冇寫死；投影片列嘅 adverse 條件混合咗 Vmcg／Vmca"
 },
 "agk.compressor": {
 "tags": [
@@ -137,13 +137,13 @@ Cadet.why={
 "tags": [
 "missing"
 ],
-"note": "渦輪入口溫度（約 1500°C）係投影片例子，唔確定係咪通用數值"
+"note": "渦輪入口temperature（約 1500°C）係投影片例子，唔確定係咪通用數值"
 },
 "agk.hydroplane": {
 "tags": [
 "missing"
 ],
-"note": "Hydroplaning 速度公式（9×√psi）教材冇詳細解釋，要核對"
+"note": "Hydroplaning speed公式（9×√psi）教材冇詳細解釋，要核對"
 },
 "agk.compass": {
 "tags": [
@@ -211,7 +211,7 @@ Cadet.why={
 "tags": [
 "system"
 ],
-"note": "CASA 考試用 0.72 kg/L；其他體系／實際燃油密度略有不同"
+"note": "CASA 考試用 0.72 kg/L；其他體系／實際fueldensity略有不同"
 },
 "perf.mtowmlw": {
 "tags": [
@@ -250,7 +250,7 @@ Cadet.why={
 "tags": [
 "system"
 ],
-"note": "密度對起飛距離嘅影響用 ENZO／CASA 簡化數值，唔同機型唔同"
+"note": "density對take-off距離嘅影響用 ENZO／CASA 簡化數值，唔同機型唔同"
 },
 "perf.climblimit": {
 "tags": [
@@ -270,7 +270,7 @@ Cadet.why={
 "tags": [
 "system"
 ],
-"note": "爬升速度來自不同機型 POH／教材，要睇返自己機型"
+"note": "climbspeed來自不同機型 POH／教材，要睇返自己機型"
 },
 "perf.endurance": {
 "tags": [
@@ -306,13 +306,13 @@ Cadet.why={
 "tags": [
 "conflict"
 ],
-"note": "BAK 同 CASA 圖對重量影響嘅講法唔同（landing 對 take-off）"
+"note": "BAK 同 CASA 圖對weight影響嘅講法唔同（landing 對 take-off）"
 },
 "perf.energy": {
 "tags": [
 "conflict"
 ],
-"note": "教材寫「速度 +10% → 能量 +40%」，物理上係 +21%，教材有錯"
+"note": "教材寫「speed +10% → 能量 +40%」，物理上係 +21%，教材有錯"
 },
 "perf.brakes": {
 "tags": [
@@ -349,7 +349,7 @@ Cadet.why={
 "tags": [
 "missing"
 ],
-"note": "Jet 同 prop 最佳速度比較教材只簡單帶過，部分係一般知識"
+"note": "Jet 同 prop 最佳speed比較教材只簡單帶過，部分係一般知識"
 },
 "perf.stabtrim": {
 "tags": [
@@ -467,7 +467,7 @@ Cadet.why={
 "tags": [
 "missing"
 ],
-"note": "教材只簡單提到 HKIA 地形風切，詳情係憑一般知識"
+"note": "教材只簡單提到 HKIA 地形wind shear，詳情係憑一般知識"
 },
 "met.jet": {
 "tags": [
@@ -486,7 +486,7 @@ Cadet.why={
 "tags": [
 "missing"
 ],
-"note": "HK 熱帶氣旋分級風速數值教材冇，agent 憑記憶寫，要對 HKO 官方"
+"note": "HK 熱帶氣旋分級wind speed數值教材冇，agent 憑記憶寫，要對 HKO 官方"
 },
 "met.hk-signals": {
 "tags": [
@@ -510,7 +510,7 @@ Cadet.why={
 "tags": [
 "missing"
 ],
-"note": "高度表溫度修正（約 0.4%／°C）係經驗法則，唔係教材原文"
+"note": "altimetertemperature修正（約 0.4%／°C）係經驗法則，唔係教材原文"
 },
 "met.trend": {
 "tags": [
@@ -528,7 +528,7 @@ Cadet.why={
 "tags": [
 "conflict"
 ],
-"note": "MTE5 microburst 風速 150 kt／macroburst 120 kt 同 PHAK（headwind 損失 30–90 kt）、ATP（外流 ~45 kt）唔一致，（burst-size）"
+"note": "MTE5 microburst wind speed 150 kt／macroburst 120 kt 同 PHAK（headwind 損失 30–90 kt）、ATP（外流 ~45 kt）唔一致，（burst-size）"
 },
 "met.awr": {
 "tags": [
@@ -540,7 +540,7 @@ Cadet.why={
 "tags": [
 "conflict"
 ],
-"note": "MTE5 話過冷鋒壓力「突然升」，PHAK／Robson 話先跌後升，兩邊唔一致"
+"note": "MTE5 話過cold frontpressure「突然升」，PHAK／Robson 話先跌後升，兩邊唔一致"
 },
 "met.tc-names": {
 "tags": [
@@ -564,13 +564,13 @@ Cadet.why={
 "tags": [
 "missing"
 ],
-"note": "| HK 信號（T1/3/8/9/10）、HKO 風速分界 | 憑記憶，全部| hk-t13, hk-t810 |"
+"note": "| HK 信號（T1/3/8/9/10）、HKO wind speed分界 | 憑記憶，全部| hk-t13, hk-t810 |"
 },
 "met.hk-t810": {
 "tags": [
 "missing"
 ],
-"note": "| HK 信號（T1/3/8/9/10）、HKO 風速分界 | 憑記憶，全部| hk-t13, hk-t810 |"
+"note": "| HK 信號（T1/3/8/9/10）、HKO wind speed分界 | 憑記憶，全部| hk-t13, hk-t810 |"
 },
 "met.const-chart": {
 "tags": [
@@ -684,7 +684,7 @@ Cadet.why={
 "tags": [
 "missing"
 ],
-"note": "HK 空域／規例：教材冇，topic law.hk、law.hkair 只係佔位"
+"note": "HK airspace／規例：教材冇，topic law.hk、law.hkair 只係佔位"
 },
 "law.classes": {
 "tags": [
@@ -696,7 +696,7 @@ Cadet.why={
 "tags": [
 "missing"
 ],
-"note": "HK 空域／規例：教材冇，topic law.hk、law.hkair 只係佔位"
+"note": "HK airspace／規例：教材冇，topic law.hk、law.hkair 只係佔位"
 },
 "law.qnh": {
 "tags": [
@@ -764,7 +764,7 @@ Cadet.why={
 "tags": [
 "system"
 ],
-"note": "頻率同「一分鐘內起飛」只來自 ENZO 文件，要核對最新 ERSA"
+"note": "頻率同「一分鐘內take-off」只來自 ENZO 文件，要核對最新 ERSA"
 },
 "rt.security": {
 "tags": [
@@ -782,7 +782,7 @@ Cadet.why={
 "tags": [
 "unclear"
 ],
-"note": "燈號表 OCR 殘缺，穩綠起飛同閃白嘅意思要核對"
+"note": "燈號表 OCR 殘缺，穩綠take-off同閃白嘅意思要核對"
 },
 "rt.elt": {
 "tags": [
@@ -819,7 +819,7 @@ Cadet.why={
 "tags": [
 "unclear"
 ],
-"note": "TUC 表（BAK Table 8-1）OCR 排版壞咗，高度對應時間對唔到；tuc topic 同動畫用咗業界常見大概值（）"
+"note": "TUC 表（BAK Table 8-1）OCR 排版壞咗，altitude對應時間對唔到；tuc topic 同動畫用咗業界常見大概值（）"
 },
 "hf.alcohol": {
 "tags": [
