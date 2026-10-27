@@ -36,7 +36,7 @@ function grade(c,g){ // g: 0 Again／1 Good／2 Easy
   const o=srs[c._k]||{b:-1,n:0,l:0};
   if(g===0){o.b=0;o.l++;o.due=Date.now()}
   else{o.b=o.b<0?(g===2?3:1):Math.min(6,o.b+g);o.due=Date.now()+SRS_DAYS[o.b]*864e5}
-  o.n++;srs[c._k]=o;store[c._k]=o.b>=3?"k":"a";save()}
+  o.n++;o.t=Date.now();srs[c._k]=o;store[c._k]=o.b>=3?"k":"a";save()}
 const isDue=c=>{const o=srs[c._k];return !o||o.due<=Date.now()};
 const isNew=c=>!srs[c._k];
 function save(){try{localStorage.setItem("cadetSRS",JSON.stringify(srs))}catch(e){}try{localStorage.setItem("cadetCards",JSON.stringify(store));localStorage.setItem("cadetDaily",JSON.stringify(daily))}catch(e){}}
