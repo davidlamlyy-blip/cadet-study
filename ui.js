@@ -317,6 +317,6 @@ function init(){
   Cadet.order.forEach((k,i)=>{Cadet.subjects[k].color=RETRO[i%RETRO.length]});if(typeof LV!=="undefined")LV.courses.forEach(c=>{if(Cadet.subjects[c.key])c.color=Cadet.subjects[c.key].color});
   $("#loading").style.display="none";
   const v=(location.hash||"").slice(1);
-  show(["learn","dash","map","anim","cards","set"].includes(v)?v:"map");info()}
+  show(["notes","learn","dash","map","anim","cards","set"].includes(v)?v:"map");info()}
 window.addEventListener("error",e=>{const l=$("#loading");if(l&&l.style.display!=="none")l.textContent="載入出錯："+e.message});
 if(document.readyState==="complete")init();else window.addEventListener("load",init);

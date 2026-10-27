@@ -41,6 +41,20 @@ const isDue=c=>{const o=srs[c._k];return !o||o.due<=Date.now()};
 const isNew=c=>!srs[c._k];
 function save(){try{localStorage.setItem("cadetSRS",JSON.stringify(srs))}catch(e){}try{localStorage.setItem("cadetCards",JSON.stringify(store));localStorage.setItem("cadetDaily",JSON.stringify(daily))}catch(e){}}
 
+/* ---------- V2：已讀 note、自訂編輯（topic／card 改、刪、新增）— 會同步 ---------- */
+let V2={noted:{},edits:{topics:{},cards:{},del:{},add:[]}};
+try{const x=JSON.parse(localStorage.getItem("cadetV2")||"null");if(x){V2.noted=x.noted||{};V2.edits=Object.assign(V2.edits,x.edits||{})}}catch(e){}
+function v2save(){try{localStorage.setItem("cadetV2",JSON.stringify(V2))}catch(e){}save()}
+const uid=()=>"u"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+function applyEdits(){ // 將編輯覆蓋到 data（保留原本喺 _o，可還原）
+  const E=V2.edits;
+  Cadet.order.forEach(k=>{const S=Cadet.subjects[k];
+    (S.topics||[]).forEach(t=>{const e=E.topics[t.id];if(!t._o)t._o={t:t.t,d:t.d,pts:t.pts};if(e&&!e.x){t.t=e.t!=null?e.t:t._o.t;t.d=e.d!=null?e.d:t._o.d;t.pts=e.pts||t._o.pts;t._ed=1}else{t.t=t._o.t;t.d=t._o.d;t.pts=t._o.pts;t._ed=0}});
+    S.cards=(S.cards||[]).filter(c=>!c._u);
+    (S.cards||[]).forEach((c,i)=>{const key=k+"|"+(c.id||i);if(!c._o)c._o={q:c.q,a:c.a,zh:c.zh,e:c.e};const e=E.cards[key],d=E.del[key];
+      if(e&&!e.x){c.q=e.q;c.a=e.a;c.zh=e.zh;c.e=e.e||c._o.e;c._ed=1}else{c.q=c._o.q;c.a=c._o.a;c.zh=c._o.zh;c.e=c._o.e;c._ed=0}c._del=!!(d&&d.v)});
+    (E.add||[]).filter(a=>a.s===k).forEach(a=>{S.cards.push({id:a.id,e:a.e||"📝",q:a.q,a:a.a,zh:a.zh||"",topic:a.topic||undefined,st:"ok",_u:1,_del:!!a.x,_ed:1})})});
+  Cadet._v++;_M=null}
 /* ---------- 索引（data 變咗先重建） ---------- */
 let _M=null;
 function model(){
@@ -48,7 +62,7 @@ function model(){
   const M={key,cards:[],byKey:new Map,byTopic:new Map,links:[],nb:new Map,gOf:new Map,checks:[]};
   Cadet.order.forEach(k=>{const S=Cadet.subjects[k];
     (S.topics||[]).forEach(t=>{M.gOf.set(t.id,t.g||"Topics");if(t.check)M.checks.push(t.id)});
-    (S.cards||[]).forEach((c,i)=>{c._s=k;c._k=k+"|"+(c.id||i);M.cards.push(c);M.byKey.set(c._k,c);if(c.topic){let a=M.byTopic.get(c.topic);if(!a)M.byTopic.set(c.topic,a=[]);a.push(c)}})});
+    (S.cards||[]).forEach((c,i)=>{c._s=k;c._k=k+"|"+(c.id||i);if(c._del)return;M.cards.push(c);M.byKey.set(c._k,c);if(c.topic){let a=M.byTopic.get(c.topic);if(!a)M.byTopic.set(c.topic,a=[]);a.push(c)}})});
   const seen=new Set();
   Cadet.allLinks().forEach(l=>{const[a,b]=l;if(!Cadet.topic(a)||!Cadet.topic(b)||a===b)return;const kk=a<b?a+"\u0001"+b:b+"\u0001"+a;if(seen.has(kk))return;seen.add(kk);M.links.push(l);
     (M.nb.get(a)||M.nb.set(a,[]).get(a)).push({o:b,why:l[2]});(M.nb.get(b)||M.nb.set(b,[]).get(b)).push({o:a,why:l[2]})});

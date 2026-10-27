@@ -6,7 +6,7 @@ function lsave(){try{localStorage.setItem("cadetLearn",JSON.stringify(LV.st))}ca
 const lq=s=>document.querySelector(s);
 function lesc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function shuf(a){return a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1])}
-function learnedTopics(){const S=new Set();LV.courses.forEach(c=>c.units.forEach(u=>u.lessons.forEach(l=>{if(LV.st.done[l.id]&&!l.quiz&&!l.scenario)(l.topics||(l.topic?[l.topic]:[])).forEach(t=>S.add(t))})));return S}
+function learnedTopics(){const S=new Set();LV.courses.forEach(c=>c.units.forEach(u=>u.lessons.forEach(l=>{if(LV.st.done[l.id]&&!l.quiz&&!l.scenario)(l.topics||(l.topic?[l.topic]:[])).forEach(t=>S.add(t))})));Object.keys(V2.noted||{}).forEach(t=>S.add(t));return S}
 function allLessons(){const o=[];LV.courses.forEach(c=>c.units.forEach(u=>u.lessons.forEach(l=>o.push({c,u,l}))));return o}
 /* ---------- 路徑頁 ---------- */
 function renderLearn(){

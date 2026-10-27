@@ -9,12 +9,14 @@
 <link rel="stylesheet" href="ui.css">
 <link rel="stylesheet" href="learn.css">
 <link rel="stylesheet" href="retro.css">
+<link rel="stylesheet" href="v2.css">
 </head>
 <body>
 <div class="app">
  <nav class="rail">
   <div class="pillbar" id="rail">
    <div class="logo">✈️</div>
+   <button data-v="notes" title="筆記">📝<span>Notes</span></button>
    <button data-v="learn" title="學習路徑">📚<span>學習</span></button>
    <button data-v="dash" title="進度">📊<span>進度</span></button>
    <button data-v="map" class="on" title="地圖">🗺️<span>地圖</span></button>
@@ -35,6 +37,7 @@
   </div>
   <div id="loading"><i></i>載入緊…</div>
   <div class="tabsx" id="ctxTabs" style="display:none"></div>
+  <section id="v-notes" class="view"></section>
   <section id="v-learn" class="view"></section>
   <section id="v-dash" class="view"></section>
   <section id="v-map" class="view on">
@@ -82,5 +85,6 @@
 <script src="courses/pof.js"></script>
 <script src="ui.js"></script>
 <script src="sync.js"></script>
+<script src="v2.js"></script>
 </body>
 </html>
