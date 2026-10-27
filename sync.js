@@ -4,7 +4,7 @@ const SYNC={busy:false,timer:null,last:"",msg:""};
 const _save=save,_lsave=typeof lsave==="function"?lsave:null;
 const ghCfg=()=>{try{const t=localStorage.getItem("cadetGhToken");return t?{t,repo:localStorage.getItem("cadetGhRepo")||"davidlamlyy-blip/cadet-progress"}:null}catch(e){return null}};
 function stable(o){return JSON.stringify(o,(k,v)=>v&&typeof v==="object"&&!Array.isArray(v)?Object.keys(v).sort().reduce((a,x)=>(a[x]=v[x],a),{}):v)}
-function syncState(){return {v:1,srs,learn:{xp:LV.st.xp,done:LV.st.done,streak:LV.st.streak},v2:{noted:V2.noted,edits:V2.edits}}}
+function syncState(){return {v:1,srs,learn:{xp:LV.st.xp,done:LV.st.done,streak:LV.st.streak},v2:{noted:V2.noted,edits:V2.edits,mcq:V2.mcq||{}}}}
 function mergeRemote(rm){
   rm=rm||{};const rs=rm.srs||{};
   for(const k in rs){const r=rs[k],l=srs[k];if(!l||(r.t||0)>(l.t||0)||((r.t||0)===(l.t||0)&&(r.n||0)>(l.n||0)))srs[k]=r}
@@ -13,6 +13,7 @@ function mergeRemote(rm){
   for(const id in (rl.done||{}))LV.st.done[id]=Math.max(LV.st.done[id]||0,rl.done[id]);
   if(rl.streak&&rl.streak.d>(LV.st.streak.d||""))LV.st.streak=rl.streak;
   const r2=rm.v2||{},E=V2.edits,re=r2.edits||{};
+  V2.mcq=V2.mcq||{};for(const id in (r2.mcq||{}))if(!V2.mcq[id]||(r2.mcq[id].t||0)>(V2.mcq[id].t||0))V2.mcq[id]=r2.mcq[id];
   for(const id in (r2.noted||{}))V2.noted[id]=Math.max(V2.noted[id]||0,r2.noted[id]);
   const mg=(L,R)=>{for(const k in (R||{})){if(!L[k]||(R[k].tm||0)>(L[k].tm||0))L[k]=R[k]}};
   mg(E.topics,re.topics);mg(E.cards,re.cards);mg(E.del,re.del);

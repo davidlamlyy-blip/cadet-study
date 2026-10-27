@@ -43,7 +43,7 @@ function save(){try{localStorage.setItem("cadetSRS",JSON.stringify(srs))}catch(e
 
 /* ---------- V2：已讀 note、自訂編輯（topic／card 改、刪、新增）— 會同步 ---------- */
 let V2={noted:{},edits:{topics:{},cards:{},del:{},add:[]}};
-try{const x=JSON.parse(localStorage.getItem("cadetV2")||"null");if(x){V2.noted=x.noted||{};V2.edits=Object.assign(V2.edits,x.edits||{})}}catch(e){}
+try{const x=JSON.parse(localStorage.getItem("cadetV2")||"null");if(x){V2.mcq=x.mcq||{};V2.noted=x.noted||{};V2.edits=Object.assign(V2.edits,x.edits||{})}}catch(e){}
 function v2save(){try{localStorage.setItem("cadetV2",JSON.stringify(V2))}catch(e){}save()}
 const uid=()=>"u"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 function applyEdits(){ // 將編輯覆蓋到 data（保留原本喺 _o，可還原）

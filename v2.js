@@ -126,3 +126,5 @@ const _renderSet2=renderSet;
 renderSet=function(){_renderSet2();const nd=Object.values(V2.edits.del).filter(x=>x.v).length+V2.edits.add.filter(x=>x.x).length,ne=Object.keys(V2.edits.topics).length+Object.keys(V2.edits.cards).length;
   const d=document.createElement("div");d.className="card-box";d.innerHTML=`<b>✏️ 編輯紀錄</b><div class="small" style="margin:6px 0">已改 ${ne} 項 · 已刪 card ${nd} 張（會跟 GitHub 同步）</div><button class="b g" id="restoreDel" ${nd?"":"disabled"}>還原所有已刪 card</button>`;
   $("#v-set").appendChild(d);$("#restoreDel").onclick=()=>{Object.keys(V2.edits.del).forEach(k=>V2.edits.del[k]={v:0,tm:Date.now()});V2.edits.add.forEach(a=>{if(a.x){a.x=0;a.tm=Date.now()}});v2save();applyEdits();refresh2();renderSet()}};
+
+window.__rnSrc=renderNotes;

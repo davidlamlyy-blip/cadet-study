@@ -43,3 +43,18 @@ body{font-size:16px;line-height:1.7;font-size-adjust:.5}
 .mbox h3{margin:0 0 10px}.mbox label{display:block;font-size:13px;color:var(--mute);margin:10px 0 0}
 .mbox input,.mbox textarea,.mbox select{display:block;width:100%;margin-top:4px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:16px;color:var(--ink)}
 @media(max-width:700px){.concept{padding:16px}.concept h1{font-size:25px}.lead{font-size:17px}}
+/* Notion 筆記頁 */
+.subtabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}.subtabs .tab small{opacity:.6}
+.llist{max-width:820px;margin:0 auto}.lrow2{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 8px;cursor:pointer}
+.lrow2 .no{font-family:var(--mono);font-size:12px;color:var(--mute)}.lrow2 .lt2{flex:1;font-size:16px;font-weight:600}.lrow2 .mm{font-family:var(--mono);font-size:11px;background:#ffe3d4;border-radius:6px;padding:2px 8px}
+.notion h1{font-size:28px}.ns{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin:14px 0}.ns h2{margin:0 0 10px;font-size:19px}
+.ns.recall{border-left:6px solid var(--orange)}.ns.sumry{background:#fff4ea;border-color:#f6c9a8}.recall ol{margin:0;padding-left:22px}.recall li{margin:4px 0;font-size:16px}
+.ns p{margin:8px 0;font-size:16.5px;line-height:1.75}.nh{margin:18px 0 6px;font-size:18px}h3.nh{font-size:17px}
+.li{display:flex;gap:10px;margin:5px 0;font-size:16.5px;line-height:1.7}.li .bl{color:var(--orange);font-weight:700;min-width:16px}
+.qt{border-left:4px solid var(--line);padding:2px 12px;margin:8px 0;color:#4a463d}.tgl{margin:6px 0;font-weight:700}
+.tblw{overflow-x:auto;margin:10px 0}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}th{background:#ece8dc}
+.mth{font-family:var(--font);background:#ece8dc;border-radius:4px;padding:0 4px;white-space:nowrap}.imgph{color:var(--mute);font-size:13px}
+.alink{display:inline-flex;align-items:center;text-decoration:none}
+.mq{font-size:18px;font-weight:700;margin:6px 0 10px}.fbok{color:var(--ok);font-weight:700;margin:8px 0}.fbno{color:var(--bad);font-weight:700;margin:8px 0}
+.note.notion .pn{margin-top:18px}
+a.alink{color:var(--ink);text-decoration:none;padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);min-height:40px;font-weight:700;box-shadow:0 2px 0 var(--line)}
