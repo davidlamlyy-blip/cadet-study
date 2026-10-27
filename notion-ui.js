@@ -18,7 +18,8 @@ function md2html(md){const L=md.replace(/\r/g,"").split("\n"),o=[];let i=0;
     if(/^\s*\|/.test(ln)){const rows=[];while(i<L.length&&/^\s*\|/.test(L[i])){rows.push(L[i].trim().replace(/^\||\|$/g,"").split("|").map(c=>c.trim()));i++}
       o.push(`<div class="tblw"><table>${rows.map((r,j)=>`<tr>${r.map(c=>j===0?`<th>${inl(c)}</th>`:`<td>${inl(c)}</td>`).join("")}</tr>`).join("")}</table></div>`);continue}
     let m;
-    if(m=ln.match(/^(#{1,3}) (.*)$/)){const lv=m[1].length+1;o.push(`<h${lv} class="nh">${inl(m[2])}</h${lv}>`)}
+    if(m=ln.match(/^!\[(.*)\]\((img\/[^)]+)\)\s*$/)){o.push(`<figure class="fig"><img src="${m[2]}" loading="lazy" alt=""><figcaption>${inl(m[1])}</figcaption></figure>`)}
+    else if(m=ln.match(/^(#{1,3}) (.*)$/)){const lv=m[1].length+1;o.push(`<h${lv} class="nh">${inl(m[2])}</h${lv}>`)}
     else if(m=ln.match(/^(\s*)- (?:\[ \] )?(.*)$/)){const d=Math.floor(m[1].length/2);o.push(`<div class="li" style="margin-left:${d*20}px"><span class="bl">${d?"–":"•"}</span><span>${inl(m[2])}</span></div>`)}
     else if(m=ln.match(/^(\s*)(\d+)\. (.*)$/)){const d=Math.floor(m[1].length/2);o.push(`<div class="li" style="margin-left:${d*20}px"><span class="bl">${m[2]}.</span><span>${inl(m[3])}</span></div>`)}
     else if(m=ln.match(/^\s*▸ (.*)$/)){o.push(`<div class="tgl">▸ ${inl(m[1])}</div>`)}
@@ -47,7 +48,7 @@ function renderNotes(){
   <article class="note notion" style="--c:${SUBJ(r.k)?SUBJ(r.k).color:"#ff6a2b"}">
    <div class="small">${SUBJ(r.k)?SUBJ(r.k).emoji+" "+esc(SUBJ(r.k).name):""}</div><h1>${esc(r.t)}</h1>${(r.src&&r.src.length)?`<div class="srcs">${r.src.map(x=>`<span class="sc">📂 ${esc(x)}</span>`).join("")}</div>`:""}
    <div class="acts">${r.yt&&r.yt.startsWith("http")?`<a class="b g alink" href="${esc(r.yt)}" target="_blank" rel="noopener">▶ 課堂片</a>`:""}${noteTab==="mine"?`<a class="b g alink" href="${nurl(r.id)}" target="_blank" rel="noopener">🔗 Notion 原頁</a>`:""}<button class="b ${rd?"g":""}" data-nread="${r.id}">${rd?"✓ 已睇":"📖 標記已睇"}</button></div>
-   ${r.rec.length?`<section class="ns recall"><h2>🧠 Recall</h2><ol>${r.rec.map(x=>`<li>${inl(x)}</li>`).join("")}</ol></section>`:""}
+   ${r.rec.length?`<section class="ns recall"><h2>🧠 Recall ${r.lesson?`<button class="b" data-qlesson="${r.lesson}">⚡ 快速溫習（課堂）</button>`:""}</h2><ol>${r.rec.map((x,j)=>{const l=r.rl&&r.rl[j];return `<li>${inl(x)} ${l?`<button class="rlink" data-qlesson="${l}">⚡ 溫習</button>`:(r.rl?'<span class="small">（課堂未有）</span>':"")}</li>`}).join("")}</ol></section>`:""}
    <section class="ns"><h2>📝 Notes</h2>${md2html(r.notes)}</section>
    ${r.sum?`<section class="ns sumry"><h2>🔑 Summary</h2>${md2html(r.sum)}</section>`:""}
    ${r.mcq.length?`<section class="ns"><h2>✅ MCQ 練習 (${r.mcq.length})</h2><div id="mcqbox"><button class="b" data-mcqstart="${r.id}">開始練習</button>${V2.mcq[r.id]?`<span class="small"> 上次：${V2.mcq[r.id].s}/${V2.mcq[r.id].n}</span>`:""}</div></section>`:(r.act&&r.act.length>20?`<section class="ns"><h2>📌 Actions</h2>${md2html(r.act)}</section>`:"")}
@@ -55,7 +56,7 @@ function renderNotes(){
 function mcqRun(id){const r=ND().find(x=>x.id===id);let qi=0,score=0;const box=$("#mcqbox");
   const show1=()=>{const q=r.mcq[qi];box.innerHTML=`<div class="small">${qi+1} / ${r.mcq.length}</div><div class="mq">${inl(q.q)}</div>`+Object.entries(q.o).map(([k,v],j)=>`<button class="opt" data-n="${j+1}" data-ok="${k===q.a?1:0}" data-k="${k}">${k}. ${inl(v)}</button>`).join("")+`<div id="mfb"></div>`;
     box.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{box.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});const ok=b.dataset.ok==="1";if(ok)score++;else b.classList.add("wrong");
-      $("#mfb").innerHTML=`<div class="${ok?"fbok":"fbno"}">${ok?"✅ Correct":"❌ Correct answer: "+q.a}${q.why?`<div class="small" style="margin-top:4px">${inl(q.why)}</div>`:""}</div><button class="b" id="mnext">${qi<r.mcq.length-1?"Next":"Finish"}</button>`;$("#mnext").onclick=()=>{qi++;qi<r.mcq.length?show1():fin()}})};
+      $("#mfb").innerHTML=`<div class="${ok?"fbok":"fbno"}">${ok?"✅ Correct":"❌ Correct answer: "+q.a}${q.why?`<div class="small why1">${inl(q.why)}</div>`:""}${q.zh?`<div class="small why1">💡 ${inl(q.zh)}</div>`:""}</div><button class="b" id="mnext">${qi<r.mcq.length-1?"Next":"Finish"}</button>`;$("#mnext").onclick=()=>{qi++;qi<r.mcq.length?show1():fin()}})};
   const fin=()=>{V2.mcq[r.id]={s:score,n:r.mcq.length,t:Date.now()};v2save();box.innerHTML=`<div class="done-screen"><h2>${score} / ${r.mcq.length}</h2><div class="say">${score/r.mcq.length>=.8?"Great!":"Review the notes and try again."}</div><button class="b" data-mcqstart="${r.id}">再做一次</button></div>`};show1()}
 document.addEventListener("click",e=>{
   const t=e.target.closest("[data-ntab]");if(t){noteTab=t.dataset.ntab;noteSel=null;renderNotes();return}
@@ -63,4 +64,5 @@ document.addEventListener("click",e=>{
   const l=e.target.closest("[data-nles]");if(l){nLesson=l.dataset.nles;if(view!=="notes")show("notes");else renderNotes();return}
   if(e.target.closest("[data-nback]")){nLesson=null;renderNotes();return}
   const rd=e.target.closest("[data-nread]");if(rd){const k="n:"+rd.dataset.nread;if(V2.noted[k])delete V2.noted[k];else V2.noted[k]=Date.now();v2save();renderNotes();return}
+  const ql=e.target.closest("[data-qlesson]");if(ql){show("learn");setTimeout(()=>startLesson(ql.dataset.qlesson),80);return}
   const m=e.target.closest("[data-mcqstart]");if(m){mcqRun(m.dataset.mcqstart)}});

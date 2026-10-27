@@ -58,3 +58,6 @@ body{font-size:16px;line-height:1.7;font-size-adjust:.5}
 .mq{font-size:18px;font-weight:700;margin:6px 0 10px}.fbok{color:var(--ok);font-weight:700;margin:8px 0}.fbno{color:var(--bad);font-weight:700;margin:8px 0}
 .note.notion .pn{margin-top:18px}
 a.alink{color:var(--ink);text-decoration:none;padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);min-height:40px;font-weight:700;box-shadow:0 2px 0 var(--line)}
+.fig{margin:14px 0;text-align:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}.fig img{max-width:100%;height:auto;border-radius:6px}.fig figcaption{font-size:13px;color:var(--mute);margin-top:6px;line-height:1.5;text-transform:none}
+.rlink{font-size:12px;padding:2px 8px;border-radius:8px;border:1px solid var(--orange);background:#fff;color:#b53a0c;cursor:pointer;margin-left:6px;font-weight:700}
+.recall h2 .b{margin-left:10px;font-size:13px;min-height:32px;padding:4px 12px}.why1{margin-top:4px;text-transform:none!important;font-family:var(--font)!important}
