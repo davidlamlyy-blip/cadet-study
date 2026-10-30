@@ -234,8 +234,14 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-act2]");if
 /* ---------- 設定 ---------- */
 function renderSet(){$("#v-set").innerHTML=`<div class="card-box"><b>地圖預設顯示</b><div class="row" style="justify-content:flex-start"><button class="tab ${mapMode==="map"?"on":""}" data-mm2="map">🗺️ 地圖</button><button class="tab ${mapMode==="list"?"on":""}" data-mm2="list">📋 清單</button></div></div>
   <div class="card-box"><b>Flash card 鍵盤</b><div class="small">空白鍵／Enter 翻面 · ← 未識 · → 識 · / 搜尋 · Esc 關閉</div></div>
+  <div class="card-box"><b>備份／還原進度</b><div class="small">進度只存喺呢部機呢個網址嘅瀏覽器（唔同網址、file:// 同 localhost 係各自獨立）。更新網站唔會清走；每日自動留一份備份。建議定期匯出。</div><div class="btnrow"><button class="b" id="bkExp">匯出進度檔</button><button class="b g" id="bkImp">匯入進度檔</button><button class="b g" id="bkRes">還原上一個自動備份</button></div><input type="file" id="bkFile" accept=".json" style="display:none"></div>
   <div class="card-box"><b>重置進度</b><div class="small">清走所有「識／未識」紀錄（只喺呢部機）。</div><div class="btnrow"><button class="b g" id="reset">重置進度</button></div></div>`;
-  $("#reset").onclick=()=>{if(confirm("確定重置所有 card 進度？")){store={};srs={};daily={d:today(),n:0,ok:0};save();renderSide();renderSet()}}}
+  $("#reset").onclick=()=>{if(confirm("確定重置所有 card 進度？")){store={};srs={};daily={d:today(),n:0,ok:0};save();renderSide();renderSet()}};
+  const BKS=["cadetSRS","cadetCards","cadetDaily","cadetV2","cadetLearn"],put=o=>{BKS.forEach(k=>{if(o[k]!=null)localStorage.setItem(k,o[k])});location.reload()};
+  $("#bkExp").onclick=()=>{const o={t:Date.now()};BKS.forEach(k=>o[k]=localStorage.getItem(k));const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(o)],{type:"application/json"}));a.download="cadet-progress-"+new Date().toISOString().slice(0,10)+".json";a.click()};
+  $("#bkImp").onclick=()=>$("#bkFile").click();
+  $("#bkFile").onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{const o=JSON.parse(t);if(confirm("匯入會覆蓋而家呢部機嘅進度，確定？"))put(o)}catch(x){alert("檔案唔啱格式")}})};
+  $("#bkRes").onclick=()=>{try{const o=JSON.parse(localStorage.getItem("cadetBackup")||"null");if(!o)return alert("暫時未有自動備份");if(confirm("還原到 "+new Date(o.t).toLocaleString()+" 嘅備份？"))put(o)}catch(x){alert("備份讀唔到")}}}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-mm2]");if(b){mapMode=b.dataset.mm2;try{localStorage.setItem("cadetMapMode",mapMode)}catch(x){}renderSet()}});
 /* ---------- 動畫 ---------- */
 const boxes={};

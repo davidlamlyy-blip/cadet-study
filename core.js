@@ -46,13 +46,24 @@ let V2={noted:{},edits:{topics:{},cards:{},del:{},add:[],notes:{}}};
 try{const x=JSON.parse(localStorage.getItem("cadetV2")||"null");if(x){V2.mcq=x.mcq||{};V2.noted=x.noted||{};V2.edits=Object.assign(V2.edits,x.edits||{})}}catch(e){}
 function v2save(){try{localStorage.setItem("cadetV2",JSON.stringify(V2))}catch(e){}save()}
 const uid=()=>"u"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+/* ---------- 穩定 card key：用題目 hash（唔再用位置 index），加減 card 唔會令進度錯位 ---------- */
+function _h(t){let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return (h>>>0).toString(36)}
+function assignKeys(k,cards){const seen={};(cards||[]).forEach((c,i)=>{if(c._u){return}
+  c._ok=k+"|"+(c.id||i);if(c.id){c._kk=c._ok;return}
+  const b=_h(((c._o?c._o.q:c.q)||"").trim()),n=seen[b]=(seen[b]||0)+1;c._kk=k+"|h"+b+(n>1?"_"+n:"")})}
+function migrateKeys(){let done=null;try{done=localStorage.getItem("cadetKeyV")}catch(e){}if(done==="2")return;
+  const mv=(o)=>o;let moved=0;
+  Cadet.order.forEach(k=>{(Cadet.subjects[k].cards||[]).forEach(c=>{if(c._u||!c._ok||c._ok===c._kk)return;
+    [srs,store,V2.edits.cards,V2.edits.del].forEach(m=>{if(m&&m[c._ok]!==undefined&&m[c._kk]===undefined){m[c._kk]=m[c._ok];delete m[c._ok];moved++}})})});
+  try{localStorage.setItem("cadetKeyV","2")}catch(e){}if(moved){try{v2save()}catch(e){}}}
 function applyEdits(){ // 將編輯覆蓋到 data（保留原本喺 _o，可還原）
   const E=V2.edits;E.notes=E.notes||{};
   [Cadet.lnotes,Cadet.notion].forEach(arr=>(arr||[]).forEach(n=>{if(!n._o)n._o={t:n.t,rec:n.rec,notes:n.notes,sum:n.sum};const e=E.notes[n.id];if(e&&!e.x){n.t=e.t||n._o.t;n.rec=e.rec||n._o.rec;n.notes=e.notes!=null?e.notes:n._o.notes;n.sum=e.sum!=null?e.sum:n._o.sum;n._ed=1}else{n.t=n._o.t;n.rec=n._o.rec;n.notes=n._o.notes;n.sum=n._o.sum;n._ed=0}}));
   Cadet.order.forEach(k=>{const S=Cadet.subjects[k];
     (S.topics||[]).forEach(t=>{const e=E.topics[t.id];if(!t._o)t._o={t:t.t,d:t.d,pts:t.pts};if(e&&!e.x){t.t=e.t!=null?e.t:t._o.t;t.d=e.d!=null?e.d:t._o.d;t.pts=e.pts||t._o.pts;t._ed=1}else{t.t=t._o.t;t.d=t._o.d;t.pts=t._o.pts;t._ed=0}});
     S.cards=(S.cards||[]).filter(c=>!c._u);
-    (S.cards||[]).forEach((c,i)=>{const key=k+"|"+(c.id||i);if(!c._o)c._o={q:c.q,a:c.a,zh:c.zh,e:c.e};const e=E.cards[key],d=E.del[key];
+    assignKeys(k,S.cards);
+    (S.cards||[]).forEach((c,i)=>{const key=c._kk;if(!c._o)c._o={q:c.q,a:c.a,zh:c.zh,e:c.e};const e=E.cards[key],d=E.del[key];
       if(e&&!e.x){c.q=e.q;c.a=e.a;c.zh=e.zh;c.e=e.e||c._o.e;c._ed=1}else{c.q=c._o.q;c.a=c._o.a;c.zh=c._o.zh;c.e=c._o.e;c._ed=0}c._del=!!(d&&d.v)});
     (E.add||[]).filter(a=>a.s===k).forEach(a=>{S.cards.push({id:a.id,e:a.e||"📝",q:a.q,a:a.a,zh:a.zh||"",topic:a.topic||undefined,st:"ok",_u:1,_del:!!a.x,_ed:1})})});
   Cadet._v++;_M=null}
@@ -63,7 +74,7 @@ function model(){
   const M={key,cards:[],byKey:new Map,byTopic:new Map,links:[],nb:new Map,gOf:new Map,checks:[]};
   Cadet.order.forEach(k=>{const S=Cadet.subjects[k];
     (S.topics||[]).forEach(t=>{M.gOf.set(t.id,t.g||"Topics");if(t.check)M.checks.push(t.id)});
-    (S.cards||[]).forEach((c,i)=>{c._s=k;c._k=k+"|"+(c.id||i);if(c._del)return;M.cards.push(c);M.byKey.set(c._k,c);if(c.topic){let a=M.byTopic.get(c.topic);if(!a)M.byTopic.set(c.topic,a=[]);a.push(c)}})});
+    (S.cards||[]).forEach((c,i)=>{c._s=k;c._k=c._kk||k+"|"+(c.id||i);if(c._del)return;M.cards.push(c);M.byKey.set(c._k,c);if(c.topic){let a=M.byTopic.get(c.topic);if(!a)M.byTopic.set(c.topic,a=[]);a.push(c)}})});
   const seen=new Set();
   Cadet.allLinks().forEach(l=>{const[a,b]=l;if(!Cadet.topic(a)||!Cadet.topic(b)||a===b)return;const kk=a<b?a+"\u0001"+b:b+"\u0001"+a;if(seen.has(kk))return;seen.add(kk);M.links.push(l);
     (M.nb.get(a)||M.nb.set(a,[]).get(a)).push({o:b,why:l[2]});(M.nb.get(b)||M.nb.set(b,[]).get(b)).push({o:a,why:l[2]})});

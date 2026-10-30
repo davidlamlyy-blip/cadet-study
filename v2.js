@@ -1,5 +1,9 @@
 /* V2：單欄概念頁、章節筆記（Notes）、掌握度＋建議、卡牌模式、編輯／新增／刪除。載入喺 ui.js、sync.js 之後。 */
-applyEdits();
+const BK=["cadetSRS","cadetCards","cadetDaily","cadetV2","cadetLearn"];
+function snapshot(){try{const o={t:Date.now()};BK.forEach(k=>o[k]=localStorage.getItem(k));const prev=JSON.parse(localStorage.getItem("cadetBackup")||"null");
+  const hasData=BK.some(k=>o[k]&&o[k]!=="{}"&&o[k]!=="null");if(hasData&&(!prev||Date.now()-prev.t>864e5))localStorage.setItem("cadetBackup",JSON.stringify(o))}catch(e){}}
+snapshot();
+Cadet.order.forEach(k=>assignKeys(k,Cadet.subjects[k].cards));migrateKeys();applyEdits();
 TITLES.notes=["筆記","每章整理好嘅重點，睇完先做課堂，再練 card"];
 /* ---------- 掌握度（AI 式估算：熟悉度 box × 逾期折減 × 失誤折減） ---------- */
 function cardScore(c){const o=srs[c._k];if(!o)return 0;let s=(o.b<0?0:o.b)/6;const od=Math.max(0,(Date.now()-o.due)/864e5);s*=Math.max(.4,1-od*.05);s*=1-Math.min(.3,(o.l||0)*.05);return Math.max(0,s)}
