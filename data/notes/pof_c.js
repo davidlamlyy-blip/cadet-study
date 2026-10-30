@@ -102,7 +102,7 @@ notes:`## 1. Forces in a turn
 ## 4. Rate & radius of turn
 - **r ＝ V² / (g · tan φ)**；rate ＝ g·tan φ / V。
 - 同 bank：**TAS ↑ → radius ↑、rate ↓**；同 TAS：**bank ↑ → radius ↓、rate ↑**。
-- **機型大細唔影響**：747 同 DA40 如果 TAS、bank 一樣，radius 一樣；747 嘅 radius 大只因為佢飛得快。
+- **機型大細唔影響**：大型客機同 C172 如果 TAS、bank 一樣，radius 一樣；客機嘅 radius 大只因為佢飛得快。
 - **Rate 1 ＝ 3°/s ＝ 360° 用 2 分鐘**。Rule of thumb：Rate 1 嘅 bank ≈ TAS/10 + 7（近似，非精確）。
 - 例：TAS 120 kt、rate 1 → radius 約 1.2 km（V ≈ 61.7 m/s，ω ≈ 0.0524 rad/s，r ＝ V/ω）。
 
@@ -134,7 +134,7 @@ mcq:[
 {q:"A level turn at constant altitude requires an increase in angle of attack because:",o:{A:"The vertical component of lift must still equal weight",B:"The drag decreases in a turn",C:"The CG moves aft",D:"The airspeed rises automatically"},a:"A",why:"Lift is tilted, so total lift must rise so that L cos φ = W.",zh:"垂直分力要仍然等於 weight。"},
 {q:"The ball is displaced to the outside of the turn. This is a:",o:{A:"Slip",B:"Balanced turn",C:"Skid",D:"Stall"},a:"C",why:"A skid means the rate of turn is too high for the bank, usually from excess rudder.",zh:"Ball 偏外＝skid。"},
 {q:"Which change DECREASES the radius of turn?",o:{A:"Reduce bank angle",B:"Increase TAS",C:"Increase weight",D:"Increase bank angle at the same TAS"},a:"D",why:"r = V²/(g tan φ); a larger bank gives a smaller radius.",zh:"Bank ↑，radius ↓。"},
-{q:"A Boeing 747 and a DA40 fly at the same TAS and bank angle. Their turn radius is:",o:{A:"Larger for the 747",B:"Larger for the DA40",C:"The same",D:"Dependent on the engine power"},a:"C",why:"Radius depends only on TAS and bank angle.",zh:"只由 TAS 同 bank 決定。"},
+{q:"A large airliner and a C172 fly at the same TAS and bank angle. Their turn radius is:",o:{A:"Larger for the airliner",B:"Larger for the C172",C:"The same",D:"Dependent on the engine power"},a:"C",why:"Radius depends only on TAS and bank angle.",zh:"只由 TAS 同 bank 決定。"},
 {q:"A standard rate (rate 1) turn is:",o:{A:"1°/s",B:"3°/s",C:"6°/s",D:"10°/s"},a:"B",why:"3 degrees per second gives 360° in 2 minutes.",zh:"Rate 1 = 3°/s。"},
 {q:"The stall speed in level flight is 50 kt. In a level 60° bank the stall speed is about:",o:{A:"71 kt",B:"50 kt",C:"100 kt",D:"35 kt"},a:"A",why:"50 × √2 ≈ 71 kt.",zh:"× 1.41。"},
 {q:"The design manoeuvring speed VA is the speed below which:",o:{A:"Full single-control deflection will stall the wing before exceeding the limit load factor",B:"Any control input is structurally safe",C:"Flaps may be extended",D:"The aircraft cannot stall"},a:"A",why:"VA protects against a single full control input, not combined or repeated inputs.",zh:"只保護單一輸入。"}

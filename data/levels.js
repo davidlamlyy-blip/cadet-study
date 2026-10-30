@@ -6,6 +6,7 @@ Cadet.LEVEL_MAP={pof:{
   "High-Speed Flight":3}};
 Cadet.groupsOf=function(k){const S=Cadet.subjects[k];return [...new Set(((S&&S.topics)||[]).map(t=>t.g||"Topics"))]};
 Cadet.levelOf=function(k,g){
+  if(Cadet.subjects[k]&&Cadet.subjects[k].optional)return 0;
   const m=(Cadet.LEVEL_MAP[k]||{})[g];if(m)return m;
   if(/^Advanced/.test(g))return 3;
   const G=Cadet.groupsOf(k),i=G.indexOf(g);return Math.min(3,1+Math.floor(Math.max(0,i)*3/Math.max(1,G.length)))};

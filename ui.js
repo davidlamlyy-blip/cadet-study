@@ -39,7 +39,7 @@ $("#menuBtn").onclick=()=>{$("#side").classList.add("open");$("#bdrop").classLis
 const openL=new Set([1]);
 function renderSide(){
   const sd=$("#side"),sc=sd.scrollTop,P=progress(),M=model(),unk=P.all.n-P.all.k;
-  if(curSubject){const gl=curGroup?[Cadet.levelOf(curSubject,curGroup)]:[1,2,3];gl.forEach(n=>{openL.add(n);openS.add(curSubject+"@"+n)});if(curGroup)openG.add(curSubject+"|"+curGroup)}
+  if(curSubject){const gl=curGroup?[Cadet.levelOf(curSubject,curGroup)]:[0,1,2,3];gl.forEach(n=>{openL.add(n);openS.add(curSubject+"@"+n)});if(curGroup)openG.add(curSubject+"|"+curGroup)}
   const rem=o=>o?o.n-o.k:0;
   let h=`<div class="sidecard"><div class="small">Cadet 進度</div><div class="big">${P.all.k}<span class="small"> / ${P.all.n} 已識</span></div><div class="mini"><i style="width:${pct(P.all)}%"></i></div></div>
   <div class="sec">Status</div>
@@ -48,19 +48,30 @@ function renderSide(){
   <button class="srow" data-act="check"><span class="ic">🟠</span><span class="nm">待驗證內容</span><span class="badge ${M.checks.length?"warn":""}">${M.checks.length}</span></button>
   <div class="sec">由基礎開始 · 逐層展開</div><div class="tree">`;
   const notesRead=n=>{const ks=Cadet.order.flatMap(k=>Cadet.groupsOf(k).filter(g=>Cadet.levelOf(k,g)===n).map(g=>(Cadet.lnotes||[]).find(x=>x.k===k&&x.g===g)).filter(Boolean));return ks.length?ks.every(x=>V2.noted["n:"+x.id]):true};
+  let shown=0;
   (Cadet.LEVELS||[]).forEach(L=>{
-    const subs=Cadet.order.map(k=>({k,gs:Cadet.groupsOf(k).filter(g=>Cadet.levelOf(k,g)===L.n)})).filter(x=>x.gs.length);if(!subs.length)return;
+    const subs=Cadet.order.filter(k=>!SUBJ(k).optional).map(k=>({k,gs:Cadet.groupsOf(k).filter(g=>Cadet.levelOf(k,g)===L.n&&(SUBJ(k).topics||[]).some(t=>gname(t)===g&&unlocked(t.id)))})).filter(x=>x.gs.length);if(!subs.length)return;shown++;
     const lo=openL.has(L.n),lr=subs.reduce((a,x)=>a+x.gs.reduce((b,g)=>b+rem(P.g.get(x.k+"|"+g)),0),0),prevDone=L.n===1||notesRead(L.n-1);
     h+=`<button class="srow lvh ${lo?"open":""}" data-lv="${L.n}"><span class="car">▶</span><span class="nm"><b>${L.name}</b> · ${L.zh}</span>${prevDone?"":'<span class="small" title="建議先睇完上一個 Level 嘅筆記">🔒</span>'}<span class="badge">${lr}</span></button>`;
     if(lo){h+=`<div class="lv1">`;
       subs.forEach(({k,gs})=>{const S=SUBJ(k),T=S.topics||[],key=k+"@"+L.n,o=openS.has(key),sr=gs.reduce((a,g)=>a+rem(P.g.get(k+"|"+g)),0);
         h+=`<button class="srow ${o?"open":""} ${curSubject===k&&!curGroup&&view==="map"?"on":""}" data-s="${k}" data-sk="${key}"><span class="car">▶</span><span class="dot" style="background:${S.color}"></span><span class="nm">${S.emoji} ${esc(S.name)}</span><span class="badge">${sr}</span></button>`;
         if(o){h+=`<div class="lv1">`;
-          gs.forEach(g=>{const kids=T.filter(t=>gname(t)===g),go=openG.has(k+"|"+g);
+          gs.forEach(g=>{const kids=T.filter(t=>gname(t)===g&&unlocked(t.id)),go=openG.has(k+"|"+g);
             h+=`<button class="srow ${go?"open":""} ${curSubject===k&&curGroup===g?"on":""}" data-g="${k}|${esc(g)}"><span class="car">▶</span><span class="nm">${esc(g)}</span><span class="badge">${rem(P.g.get(k+"|"+g))}</span></button>`;
             if(go){h+=`<div class="lv2">`+kids.map(t=>{const p=P.t.get(t.id);return `<button class="srow ${sel===t.id?"on":""}" data-t="${esc(t.id)}"><span class="nm">${esc(t.t)}</span>${t.check?'<span class="badge warn">!</span>':""}<span class="badge">${p?p.n-p.k:0}</span></button>`}).join("")+`</div>`}});
           h+=`</div>`}});
       h+=`</div>`}});
+  if(!shown)h+=`<div class="small" style="padding:8px 10px">🔒 仲未解鎖任何內容。去「學習」睇第一章 Note，睇完呢度先會出現。</div>`;
+  const opt=Cadet.order.filter(k=>SUBJ(k).optional);
+  if(opt.length){h+=`</div><div class="sec">✈️ 機種 Episodes（選修）</div><div class="tree">`;
+    opt.forEach(k=>{const S=SUBJ(k),T=S.topics||[],key=k+"@0",o=openS.has(key),sr=rem(P.s.get(k));
+      h+=`<button class="srow ${o?"open":""} ${curSubject===k&&!curGroup&&view==="map"?"on":""}" data-s="${k}" data-sk="${key}"><span class="car">▶</span><span class="dot" style="background:${S.color}"></span><span class="nm">${S.emoji} ${esc(S.name)}</span><span class="badge">${sr}</span></button>`;
+      if(o){h+=`<div class="lv1">`;if(!T.length)h+=`<div class="small" style="padding:6px 10px">未有內容（之後逐款加）</div>`;
+        [...new Set(T.map(gname))].forEach(g=>{const kids=T.filter(t=>gname(t)===g),go=openG.has(k+"|"+g);
+          h+=`<button class="srow ${go?"open":""} ${curSubject===k&&curGroup===g?"on":""}" data-g="${k}|${esc(g)}"><span class="car">▶</span><span class="nm">${esc(g)}</span><span class="badge">${rem(P.g.get(k+"|"+g))}</span></button>`;
+          if(go)h+=`<div class="lv2">`+kids.map(t=>{const p=P.t.get(t.id);return `<button class="srow ${sel===t.id?"on":""}" data-t="${esc(t.id)}"><span class="nm">${esc(t.t)}</span><span class="badge">${p?p.n-p.k:0}</span></button>`}).join("")+`</div>`});
+        h+=`</div>`}})}
   sd.innerHTML=h+`</div><div class="small" style="margin:14px 6px">右邊數字 = 未識（未做）card 數；冇 card 嘅 topic 顯示 0</div>`;sd.scrollTop=sc}
 $("#side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
   const car=!!e.target.closest(".car"),tg=(set,key)=>set.has(key)?set.delete(key):set.add(key);
@@ -74,11 +85,11 @@ $("#side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b
 /* ---------- 地圖 ---------- */
 const PZ={vb:[0,0,700,700],S:700,moved:false};
 let curLevel=null,nodeEls=new Map(),edgeEls=[];
-const topicsOf=()=>SUBJ(curSubject).topics||[];
+const topicsOf=()=>(SUBJ(curSubject).topics||[]).filter(t=>unlocked(t.id));
 function buildLevel(){
   const P=progress(),M=model();
   if(!curSubject){
-    const items=Cadet.order.map(k=>{const S=SUBJ(k),n=(S.topics||[]).length;return{key:k,label:[S.emoji,...wrapN(S.name,13,3)],color:S.color,ratio:P.s.get(k),sub:`${n} topics · ${(S.cards||[]).length} cards · ${(S.anims||[]).length} 動畫`,title:S.name,dim:n===0}});
+    const items=Cadet.order.filter(k=>SUBJ(k).optional||(SUBJ(k).topics||[]).some(t=>unlocked(t.id))).map(k=>{const S=SUBJ(k),n=(S.topics||[]).filter(t=>unlocked(t.id)).length;return{key:k,label:[S.emoji,...wrapN(S.name,13,3)],color:S.color,ratio:P.s.get(k),sub:`${n} topics · ${(S.cards||[]).length} cards · ${(S.anims||[]).length} 動畫`,title:S.name,dim:n===0}});
     const cnt=new Map();M.links.forEach(([a,b])=>{const A=Cadet.topic(a).s.key,B=Cadet.topic(b).s.key;if(A===B)return;const kk=A<B?A+"|"+B:B+"|"+A;cnt.set(kk,(cnt.get(kk)||0)+1)});
     return{items,r:62,edges:[...cnt].map(([k,w])=>{const[a,b]=k.split("|");return{a,b,w}}),center:{label:["Cadet"],color:"#fff"},lvl:0}}
   const S=SUBJ(curSubject),T=topicsOf();
@@ -105,21 +116,21 @@ function drawMap(){
   mapMode="list";crumb();$("#mapmode").innerHTML="";$("#map").style.display="none";$("#zoomctl").style.display="none";$("#legend").textContent="";nodeEls=new Map();edgeEls=[];
   const L=$("#lst"),P=progress();
   if(!curSubject){ // 科目
-    L.innerHTML=`<div class="tiles">`+Cadet.order.map(k=>{const S=SUBJ(k),T=S.topics||[],p=P.s.get(k),chs=new Set(T.map(gname)).size;
-      return `<button class="tile9" style="--c:${S.color}" data-sub="${k}"><span class="tn">${S.emoji}</span><b>${esc(S.name)}</b><span class="small">${chs} chapters · ${T.length} topics · ${(S.cards||[]).length} cards</span><span class="seg" style="--p:${pct(p)}%"></span></button>`}).join("")+`</div>`;return}
-  const S=SUBJ(curSubject),T=S.topics||[];
+    L.innerHTML=(Cadet.order.some(k=>!SUBJ(k).optional&&(SUBJ(k).topics||[]).some(t=>unlocked(t.id)))?"":`<div class="empty" style="margin:12px 0">🔒 仲未解鎖任何內容。去「📚 學習」睇第一章 Note，睇完呢度先會出現。</div>`)+`<div class="tiles">`+Cadet.order.filter(k=>SUBJ(k).optional||(SUBJ(k).topics||[]).some(t=>unlocked(t.id))).map(k=>{const S=SUBJ(k),T=(S.topics||[]).filter(t=>unlocked(t.id)),p=P.s.get(k),chs=new Set(T.map(gname)).size;
+      return `<button class="tile9" style="--c:${S.color}" data-sub="${k}"><span class="tn">${S.emoji}</span><b>${esc(S.name)}</b><span class="small">${chs} chapters · ${T.length} topics · ${(S.cards||[]).filter(c=>!c.topic||unlocked(c.topic)).length} cards</span><span class="seg" style="--p:${pct(p)}%"></span></button>`}).join("")+`</div>`;return}
+  const S=SUBJ(curSubject),T=(S.topics||[]).filter(t=>unlocked(t.id));
   if(!T.length){L.innerHTML=`<div class="empty">呢科暫時未有內容 🛠️</div>`;return}
   if(sel&&Cadet.topic(sel))return renderConcept(sel);
   const gs=[...new Set(T.map(gname))];
   L.innerHTML=`<div class="chap-hint small">撳一個 topic 睇佢同其他概念嘅關係。數字＝建議學習次序。</div><div class="chaps">`+gs.map(g=>{const kids=T.filter(t=>gname(t)===g),p=P.g.get(curSubject+"|"+g);
     return `<section class="chap ${curGroup===g?"on":""}" style="--c:${S.color}"><header><b>${esc(g)}</b><span class="small">${kids.length}</span></header><span class="seg" style="--p:${pct(p)}%"></span><ol>`+kids.map((t,i)=>{const tp=P.t.get(t.id);return `<li><button class="trow ${t.check?"chk":""}" data-topic-go="${esc(t.id)}"><span class="no">${String(i+1).padStart(2,"0")}</span><span class="tt">${esc(t.t)}</span>${t.check?'<span class="warn">!</span>':""}${tp&&tp.n?`<span class="mm ${tp.k===tp.n?"full":""}">${tp.k}/${tp.n}</span>`:""}</button></li>`}).join("")+`</ol></section>`}).join("")+`</div>`;
   if(curGroup){const el=[...L.querySelectorAll(".chap")].find(x=>x.classList.contains("on"));if(el)el.scrollIntoView({block:"start"})}}
-function nbOf(id){const from=[],to=[],rel=[],seen=new Set([id]);
+function nbOf(id){const from=[],to=[],rel=[],seen=new Set([id]);Cadet.topic(id)&&0;
   Cadet.allLinks().forEach(([a,b,w])=>{if(a===id&&Cadet.topic(b)&&!seen.has(b)){to.push({o:b,why:w});seen.add(b)}else if(b===id&&Cadet.topic(a)&&!seen.has(a)){from.push({o:a,why:w});seen.add(a)}});
   ((Cadet.topic(id).t.rel)||[]).forEach(r=>{if(Cadet.topic(r)&&!seen.has(r)){rel.push({o:r,why:""});seen.add(r)}});
-  return from.concat(to,rel)}
+  return from.concat(to,rel).filter(n=>unlocked(n.o))}
 function renderConcept(id){
-  const f=Cadet.topic(id),t=f.t,S=f.s,T=S.topics||[],g=gname(t),kids=T.filter(x=>gname(x)===g),i=kids.findIndex(x=>x.id===id),P=progress(),tp=P.t.get(id);
+  const f=Cadet.topic(id),t=f.t,S=f.s,T=(S.topics||[]).filter(x=>unlocked(x.id)),g=gname(t),kids=T.filter(x=>gname(x)===g),i=kids.findIndex(x=>x.id===id),P=progress(),tp=P.t.get(id);
   const nb=nbOf(id),same=nb.filter(n=>gname(Cadet.topic(n.o).t)===g&&Cadet.topic(n.o).s.key===S.key),
     sameS=nb.filter(n=>Cadet.topic(n.o).s.key===S.key&&gname(Cadet.topic(n.o).t)!==g),cross=nb.filter(n=>Cadet.topic(n.o).s.key!==S.key);
   const card=n=>{const x=Cadet.topic(n.o),p=P.t.get(n.o);return `<button class="ncard" style="--c:${x.s.color}" data-topic-go="${esc(n.o)}"><span class="nt">${x.s.key!==S.key?x.s.emoji+" ":""}${esc(x.t.t)}</span>${n.why&&n.why!=="—"?`<span class="nw">${esc(n.why)}</span>`:""}<span class="nm2">${x.s.key!==S.key?esc(x.s.name)+" · ":""}${esc(gname(x.t))}${p&&p.n?` · ${p.k}/${p.n}`:""}</span></button>`};
@@ -208,8 +219,8 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-go],[data-
   else if(b.dataset.deck)goDeck(b.dataset.deck,b.dataset.topic)});
 /* ---------- 搜尋 ---------- */
 let SI=null;
-function sindex(){const M=model();if(SI&&SI.key===M.key)return SI;const tp=[];Cadet.order.forEach(k=>(SUBJ(k).topics||[]).forEach(t=>tp.push({id:t.id,low:(t.t+" "+(t.g||"")).toLowerCase()})));
-  return SI={key:M.key,tp,cards:M.cards.map(c=>({c,low:(c.q||"").toLowerCase()}))}}
+function sindex(){const M=model();if(SI&&SI.key===M.key+":"+learnedTopics().size)return SI;const tp=[];Cadet.order.forEach(k=>(SUBJ(k).topics||[]).filter(t=>unlocked(t.id)).forEach(t=>tp.push({id:t.id,low:(t.t+" "+(t.g||"")).toLowerCase()})));
+  return SI={key:M.key+":"+learnedTopics().size,tp,cards:M.cards.filter(c=>!c.topic||unlocked(c.topic)).map(c=>({c,low:(c.q||"").toLowerCase()}))}}
 function topicItem(id){const f=Cadet.topic(id);return{go:id,a:f.s.emoji+" "+f.t.t,b:f.s.name+" · "+gname(f.t)}}
 function showRes(head,secs){const r=$("#sres");r.innerHTML=(head?`<div class="sh">${esc(head)}</div>`:"")+secs.map(s=>`<div class="sh">${esc(s.h)}</div>`+(s.items.length?s.items.map(i=>`<button class="it" ${i.go?`data-go="${esc(i.go)}"`:`data-card="${esc(i.card)}"`}>${esc(i.a)}<small>${esc(i.b)}</small></button>`).join(""):'<div class="small" style="padding:8px 12px">冇結果</div>')).join("");r.classList.add("on")}
 function hideRes(){$("#sres").classList.remove("on")}
@@ -234,9 +245,11 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-act2]");if
 /* ---------- 設定 ---------- */
 function renderSet(){$("#v-set").innerHTML=`<div class="card-box"><b>地圖預設顯示</b><div class="row" style="justify-content:flex-start"><button class="tab ${mapMode==="map"?"on":""}" data-mm2="map">🗺️ 地圖</button><button class="tab ${mapMode==="list"?"on":""}" data-mm2="list">📋 清單</button></div></div>
   <div class="card-box"><b>Flash card 鍵盤</b><div class="small">空白鍵／Enter 翻面 · ← 未識 · → 識 · / 搜尋 · Esc 關閉</div></div>
+  <div class="card-box"><b>跟學習進度解鎖</b><div class="small">開（預設）：地圖、側欄、搜尋、關連只顯示你喺學習路徑睇咗 Note／做咗課堂嘅內容。關：全部顯示（純溫習）。</div><div class="btnrow"><button class="b ${GATE()?"":"g"}" id="gateTg">${GATE()?"而家：跟進度解鎖（撳此關閉）":"而家：全部顯示（撳此開返）"}</button></div></div>
   <div class="card-box"><b>備份／還原進度</b><div class="small">進度只存喺呢部機呢個網址嘅瀏覽器（唔同網址、file:// 同 localhost 係各自獨立）。更新網站唔會清走；每日自動留一份備份。建議定期匯出。</div><div class="btnrow"><button class="b" id="bkExp">匯出進度檔</button><button class="b g" id="bkImp">匯入進度檔</button><button class="b g" id="bkRes">還原上一個自動備份</button></div><input type="file" id="bkFile" accept=".json" style="display:none"></div>
   <div class="card-box"><b>重置進度</b><div class="small">清走所有「識／未識」紀錄（只喺呢部機）。</div><div class="btnrow"><button class="b g" id="reset">重置進度</button></div></div>`;
   $("#reset").onclick=()=>{if(confirm("確定重置所有 card 進度？")){store={};srs={};daily={d:today(),n:0,ok:0};save();renderSide();renderSet()}};
+  $("#gateTg").onclick=()=>{try{localStorage.setItem("cadetGateOff",GATE()?"1":"0")}catch(e){}location.reload()};
   const BKS=["cadetSRS","cadetCards","cadetDaily","cadetV2","cadetLearn"],put=o=>{BKS.forEach(k=>{if(o[k]!=null)localStorage.setItem(k,o[k])});location.reload()};
   $("#bkExp").onclick=()=>{const o={t:Date.now()};BKS.forEach(k=>o[k]=localStorage.getItem(k));const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(o)],{type:"application/json"}));a.download="cadet-progress-"+new Date().toISOString().slice(0,10)+".json";a.click()};
   $("#bkImp").onclick=()=>$("#bkFile").click();
@@ -329,11 +342,12 @@ document.addEventListener("keydown",e=>{
     if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}else if(e.key==="ArrowLeft")answer(0);else if(e.key==="ArrowRight")answer(1);else if(e.key==="ArrowUp"){e.preventDefault();answer(2)}}});
 /* ---------- rail / init ---------- */
 document.querySelectorAll("#rail button[data-v],.gear button").forEach(b=>b.onclick=()=>show(b.dataset.v));
-const RETRO=["#ff6a2b","#8fae8b","#e9b949","#d8795a","#9fb4c2","#b9b88a","#d9c7a5","#f0a47a","#6fa883"];
+const RETRO=["#f0481c","#1b3fa6","#f2c230","#6b4631","#4d8fd1","#d49a58","#c93a1b","#2e5fc2","#8a7a68"]; // Bauhaus 客廳配色
+const inkOn=c=>{const n=parseInt(c.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;return (r*299+g*587+b*114)/1000<140?"#fff":"#241b15"};
 function init(){
   Cadet.order.forEach((k,i)=>{Cadet.subjects[k].color=RETRO[i%RETRO.length]});if(typeof LV!=="undefined")LV.courses.forEach(c=>{if(Cadet.subjects[c.key])c.color=Cadet.subjects[c.key].color});
   $("#loading").style.display="none";
   const v=(location.hash||"").slice(1);
-  show(["notes","learn","dash","map","anim","cards","set"].includes(v)?v:"map");info()}
+  show(["notes","learn","dash","cal","map","anim","cards","set"].includes(v)?v:"dash");info()}
 window.addEventListener("error",e=>{const l=$("#loading");if(l&&l.style.display!=="none")l.textContent="載入出錯："+e.message});
 if(document.readyState==="complete")init();else window.addEventListener("load",init);

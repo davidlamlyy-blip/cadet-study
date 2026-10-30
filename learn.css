@@ -56,3 +56,6 @@
 .opt[data-n]::before{content:attr(data-n);display:inline-block;min-width:22px;height:22px;line-height:22px;text-align:center;border:2px solid #cbd5e1;border-radius:7px;font-size:12px;font-weight:700;margin-right:10px;color:#64748b}
 .tile[data-n]::before{content:attr(data-n);font-size:10px;font-weight:800;color:#94a3b8;margin-right:6px}
 .kbdhint{font-size:12px;color:#94a3b8;text-align:center;margin-top:6px}
+
+.unit.lvl{background:#2f2f2b;color:#fff}.unit.lvl h3{color:#fff;font-size:20px}.unit.lvl .small{color:#ffffffb0}
+.unit.opt{background:#e8e4d9;color:#2a2a26}

@@ -49,8 +49,8 @@ const uid=()=>"u"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 /* ---------- 穩定 card key：用題目 hash（唔再用位置 index），加減 card 唔會令進度錯位 ---------- */
 function _h(t){let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return (h>>>0).toString(36)}
 function assignKeys(k,cards){const seen={};(cards||[]).forEach((c,i)=>{if(c._u){return}
-  c._ok=k+"|"+(c.id||i);if(c.id){c._kk=c._ok;return}
-  const b=_h(((c._o?c._o.q:c.q)||"").trim()),n=seen[b]=(seen[b]||0)+1;c._kk=k+"|h"+b+(n>1?"_"+n:"")})}
+  const kk=c._os||k;c._ok=c._os?null:kk+"|"+(c.id||i);if(c.id){c._kk=kk+"|"+c.id;return}
+  const b=_h(((c._o?c._o.q:c.q)||"").trim()),n=seen[b]=(seen[b]||0)+1;c._kk=kk+"|h"+b+(n>1?"_"+n:"")})}
 function migrateKeys(){let done=null;try{done=localStorage.getItem("cadetKeyV")}catch(e){}if(done==="2")return;
   const mv=(o)=>o;let moved=0;
   Cadet.order.forEach(k=>{(Cadet.subjects[k].cards||[]).forEach(c=>{if(c._u||!c._ok||c._ok===c._kk)return;
@@ -83,6 +83,6 @@ function model(){
 function progress(){
   const M=model(),P={t:new Map,g:new Map,s:new Map,all:{n:0,k:0}};
   const add=(m,key,k)=>{let o=m.get(key);if(!o)m.set(key,o={n:0,k:0});o.n++;if(k)o.k++};
-  M.cards.forEach(c=>{if(c.st==="todo")return;const k=store[c._k]==="k";add(P.s,c._s,k);P.all.n++;if(k)P.all.k++;
+  M.cards.forEach(c=>{if(c.st==="todo")return;const k=store[c._k]==="k";add(P.s,c._s,k);if(!(Cadet.subjects[c._s]||{}).optional){P.all.n++;if(k)P.all.k++}
     if(c.topic){add(P.t,c.topic,k);const f=Cadet.topic(c.topic);if(f)add(P.g,f.s.key+"|"+(f.t.g||"Topics"),k)}});
   return P}

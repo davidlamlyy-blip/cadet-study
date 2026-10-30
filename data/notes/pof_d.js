@@ -21,7 +21,7 @@ notes:`## 1. Climb 嘅 forces
 | 目標 | 最大 climb **angle**（過障礙） | 最大 climb **rate**（最快到 altitude） |
 | 來源 | **Excess thrust** (T − D) 最大 | **Excess power** 最大 |
 | Speed | 較低 | 較高（Vx < Vy） |
-- ENZO 教材數值：DA40 Vx 67 / Vy 76 KIAS；C172SP Vx 62 / Vy 74 KIAS（機型數值以 POH 為準）。
+- 教材數值：C172SP Vx 62 / Vy 74 KIAS（機型數值以 POH 為準）。
 - Altitude 升：**Vx (IAS) 升、Vy (IAS) 降**，兩者喺 **absolute ceiling** 重合，之後 climb rate = 0。
 - Service ceiling：FAA 定義為 climb rate 跌到 100 ft/min 嘅 altitude（FAA 體系定義；CASA／ICAO 是否一樣待驗證）。
 ![CL、CD 同 L/D 隨 AoA 變化（FAA PHAK Fig 5-5）：best L/D 喺某個 AoA。](img/phak/lift-drag-curve.png)
@@ -45,7 +45,7 @@ notes:`## 1. Climb 嘅 forces
 - Glide（T = 0）：**sinθ = D / W**；**最細 drag ＝ 最平 glide angle**＝ best L/D speed。
 - Weight 唔改 glide **angle／distance**，只係令 best glide speed 提高（rate 變快）。
 - Headwind 縮短 glide distance；放 flaps 同 sideslip 都加 drag，令 glide 更陡。
-- **Max range**：飛 L/Dmax speed（DA40 教材大約 4° AoA）；揀有 tailwind 嘅 altitude。**Max endurance**：飛最低 power 嘅 speed，piston 機低飛通常 endurance 好啲（待驗證，視機型）。`,
+- **Max range**：飛 L/Dmax speed（教材話大約 4° AoA，待驗證）；揀有 tailwind 嘅 altitude。**Max endurance**：飛最低 power 嘅 speed，piston 機低飛通常 endurance 好啲（待驗證，視機型）。`,
 sum:`- Climb：**T > D**，因為 **Weight 有後向分力**；**sinγ = (T − D) / W**。
 - Pitch 定 speed／AoA，power 定 rate；每個 IAS 只有一個 level pitch。
 - **Vx** ＝ 最大 angle（excess thrust），**Vy** ＝ 最大 rate（excess power）；高 altitude 兩者靠近，absolute ceiling 重合。

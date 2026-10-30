@@ -27,7 +27,7 @@ notes:`## 1. 三條 axis 同 control
 - 處理：
   - Pilot：**coordinated rudder**（向 turn 方向踩 rudder），睇 ball 同 slip indicator。
   - 設計：**Differential ailerons**（向上偏轉多過向下）、**Frise ailerons**（向上 aileron 前緣突出，增加 drag 去平衡）、coupled aileron-rudder。
-- DA40 教材提到佢用 differential + Frise（以機型 POH 為準）。
+- 部分機型用 differential 或 Frise aileron，以機型 POH 為準。
 
 ## 4. Elevator、Rudder 同 tail 設計
 - Elevator：back stick → nose up。Level flight 時 tail 通常出 **downforce** 平衡 wing 嘅 pitching moment。
@@ -81,7 +81,7 @@ notes:`## 1. Flaps 做咩
 | 位置 | 特性 | 用途 |
 | Take-off flap（細角度） | lift 增加多、drag 增加少 | 縮短 ground roll，保持 climb performance |
 | Landing flap（大角度） | drag 增加多 | 令 approach 更斜、更低速 |
-- 教材 DA40 例子：T/O flap 10° 限 108 kt，LDG flap 25° 限 91 kt（**VFE**，以 POH 為準；其他機型唔同）。
+- 每個 flap setting 都有自己嘅 **VFE**（最大 flap 延伸速度），數值以機型 POH 為準，唔好記死。
 - 操作：先查 speed 喺 **VFE** 以下 → 選 → 確認 flaps 位置。逐格放，唔好一次放曬。
 
 ## 3. Flap 類型
@@ -102,7 +102,7 @@ notes:`## 1. Flaps 做咩
 - 放 flaps 時 lift 突然增加 → fuselage **balloon**（上飄），同時 pitching moment 改變（nose 上或下視乎機型，「待驗證」，睇 POH）。
 - 處理：預期並推桿／配合 power，**之後 re-trim**；唔好靠 trim 去即時壓低 nose。
 - 收 flaps：要確認 **positive rate of climb** 同 speed 夠，否則 lift 降低會 sink。
-- Power、IAS、flap 改變都會令 trim 變；DA40 教材話 power 加 → nose up 同向左 yaw（只係該機型）。
+- Power、IAS、flap 改變都會令 trim 變；Piston 單發機 power 加通常 nose up 同向左 yaw（視機型）。
 
 ## 6. Trim tabs 同其他 tabs
 - **Trim tab**：細舵面裝喺大舵面後緣，**動向同大舵面相反**，令 airflow 力矩幫手將大舵面保持喺要嘅位置 → 消除 control force，唔使一直用力。
@@ -113,7 +113,7 @@ notes:`## 1. Flaps 做咩
 - **Control tab**：manual reversion 時 pilot 用嚟動舵面。
 - **Ground-adjustable tab**：地面調較，空中唔郁。
 - **Select–Hold–Trim**：先揀 attitude + power → hold 到 speed 穩定 → trim 消除力。**唔好用 trim 改 attitude**；改 power／IAS／config 就再 trim。
-- DA40 只有 elevator trim（教材）。`,
+- 好多輕型機只有 elevator trim（以機型 POH 為準）。`,
 sum:`- **Flaps**：camber（或 area）增加 → **CLmax 升、stall speed 降**，但 **drag 升、stall AoA 通常降**。
 - T/O flap lift 多 drag 少；LDG flap drag 多。放之前查 **VFE**，逐格放。
 - 類型：**Plain < Split < Slotted < Fowler**；**Slats／Krueger** 延遲前緣 separation。

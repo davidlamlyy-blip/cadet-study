@@ -25,7 +25,7 @@ const srcChips=t=>(t.src||"").split(/[;；]/).map(x=>x.trim()).filter(Boolean).m
 document.querySelector("#info")&&(document.querySelector("#info").style.display="none");
 function stBadge(id){const s=topicStatus(id),m=topicMastery(id);return `<span class="stb" style="--c:${ST[s][2]}">${ST[s][0]} ${ST[s][1]}${m!==null?` · ${m}%`:""}</span>`}
 function renderConcept(id){
-  const f=Cadet.topic(id),t=f.t,S=f.s,g=gname(t),kids=(S.topics||[]).filter(x=>gname(x)===g),i=kids.findIndex(x=>x.id===id),P=progress();
+  const f=Cadet.topic(id),t=f.t,S=f.s,g=gname(t),kids=(S.topics||[]).filter(x=>gname(x)===g&&unlocked(x.id)),i=kids.findIndex(x=>x.id===id),P=progress();
   const nb=nbOf(id),inGrp=n=>Cadet.topic(n.o).s.key===S.key&&gname(Cadet.topic(n.o).t)===g,
     same=nb.filter(inGrp),sameS=nb.filter(n=>Cadet.topic(n.o).s.key===S.key&&!inGrp(n)),cross=nb.filter(n=>Cadet.topic(n.o).s.key!==S.key);
   const card=n=>{const x=Cadet.topic(n.o);return `<button class="ncard" style="--c:${x.s.color}" data-topic-go="${esc(n.o)}"><span class="nt">${x.s.key!==S.key?x.s.emoji+" ":""}${esc(x.t.t)}</span>${n.why&&n.why!=="—"?`<span class="nw">${esc(n.why)}</span>`:""}<span class="nm2">${x.s.key!==S.key?esc(x.s.name)+" · ":""}${esc(gname(x.t))}</span></button>`};
@@ -52,7 +52,7 @@ function lessonFor(id){if(typeof LV==="undefined")return null;for(const c of LV.
 /* ---------- chapter 卡（加狀態點＋筆記入口） ---------- */
 const _drawMap=drawMap;
 drawMap=function(){
-  if(curSubject&&!sel){const S=SUBJ(curSubject),T=S.topics||[];if(T.length){mapMode="list";crumb();$("#mapmode").innerHTML="";$("#map").style.display="none";$("#zoomctl").style.display="none";$("#legend").textContent="";
+  if(curSubject&&!sel){const S=SUBJ(curSubject),T=(S.topics||[]).filter(t=>unlocked(t.id));if(T.length){mapMode="list";crumb();$("#mapmode").innerHTML="";$("#map").style.display="none";$("#zoomctl").style.display="none";$("#legend").textContent="";
     const gs=[...new Set(T.map(gname))];
     $("#lst").innerHTML=`<div class="small chap-hint">每章流程：📝 Note → 🎯 課堂 → 🗺️ 地圖 → 🃏 Card。圓點＝進度（○未開始 ◐已睇 ◕練習中 ●已掌握）</div><div class="chaps">`+gs.map(g=>{const kids=T.filter(t=>gname(t)===g),done=kids.filter(t=>topicStatus(t.id)>=1).length;
       return `<section class="chap ${curGroup===g?"on":""}" style="--c:${S.color}"><header><b>${esc(g)}</b><span class="small">${done}/${kids.length}</span></header><span class="seg" style="--p:${Math.round(done/kids.length*100)}%"></span><button class="b g notebtn" data-note-open="${esc(S.key+"|"+g)}">📝 Chapter note</button><ol>`+kids.map((t,i)=>`<li><button class="trow" data-topic-go="${esc(t.id)}"><span class="st" style="color:${ST[topicStatus(t.id)][2]}">${ST[topicStatus(t.id)][0]}</span><span class="tt">${esc(t.t)}</span>${t.check?'<span class="warn">!</span>':""}</button></li>`).join("")+`</ol></section>`}).join("")+`</div>`;return}}
@@ -61,7 +61,7 @@ drawMap=function(){
 let noteSel=null;
 function renderNotes(){
   const box=$("#v-notes");
-  if(!noteSel){box.innerHTML=`<div class="small chap-hint">揀一個 chapter 睇整理好嘅筆記（跨來源）。睇完撳「標記已睇」會解鎖對應 flash card。</div>`+Cadet.order.map(k=>{const S=SUBJ(k),T=S.topics||[];if(!T.length)return "";const gs=[...new Set(T.map(gname))];
+  if(!noteSel){box.innerHTML=`<div class="small chap-hint">揀一個 chapter 睇整理好嘅筆記（跨來源）。睇完撳「標記已睇」會解鎖對應 flash card。</div>`+Cadet.order.map(k=>{const S=SUBJ(k),T=(S.topics||[]).filter(t=>unlocked(t.id));if(!T.length)return "";const gs=[...new Set(T.map(gname))];
     return `<section class="nsub" style="--c:${S.color}"><h3>${S.emoji} ${esc(S.name)}</h3><div class="nchips">${gs.map(g=>{const kids=T.filter(t=>gname(t)===g),d=kids.filter(t=>topicStatus(t.id)>=1).length;return `<button class="nch" data-note-open="${esc(k+"|"+g)}"><b>${esc(g)}</b><span class="small">${d}/${kids.length}</span></button>`}).join("")}</div></section>`}).join("");return}
   const [k,g]=noteSel.split("|"),S=SUBJ(k),kids=(S.topics||[]).filter(t=>gname(t)===g);
   const srcMap=new Map();kids.forEach(t=>(t.src||"").split(/[;；]/).map(x=>x.trim()).filter(Boolean).forEach(x=>{(srcMap.get(x)||srcMap.set(x,[]).get(x)).push(t.t)}));

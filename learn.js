@@ -6,7 +6,9 @@ function lsave(){try{localStorage.setItem("cadetLearn",JSON.stringify(LV.st))}ca
 const lq=s=>document.querySelector(s);
 function lesc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function shuf(a){return a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1])}
-function learnedTopics(){const S=new Set();LV.courses.forEach(c=>c.units.forEach(u=>u.lessons.forEach(l=>{if(LV.st.done[l.id]&&!l.quiz&&!l.scenario)(l.topics||(l.topic?[l.topic]:[])).forEach(t=>S.add(t))})));Object.keys(V2.noted||{}).forEach(t=>S.add(t));return S}
+const GATE=()=>{try{return localStorage.getItem("cadetGateOff")!=="1"}catch(e){return true}};
+function chapterTopics(k,g){return ((Cadet.subjects[k]||{}).topics||[]).filter(t=>(t.g||"Topics")===g).map(t=>t.id)}
+function learnedTopics(){const S=new Set();(Cadet.lnotes||[]).forEach(n=>{if(V2.noted["n:"+n.id])chapterTopics(n.k,n.g).forEach(t=>S.add(t))});LV.courses.forEach(c=>c.units.forEach(u=>u.lessons.forEach(l=>{if(LV.st.done[l.id]&&!l.quiz&&!l.scenario)(l.topics||(l.topic?[l.topic]:[])).forEach(t=>S.add(t))})));Object.keys(V2.noted||{}).forEach(t=>S.add(t));return S}
 function allLessons(){const o=[];LV.courses.forEach(c=>c.units.forEach(u=>u.lessons.forEach(l=>o.push({c,u,l}))));return o}
 /* ---------- 路徑頁 ---------- */
 function chapOfLesson(l){const t=l.topic||(l.topics||[])[0],f=t&&Cadet.topic(t);return f?{k:f.s.key,g:f.t.g||"Topics"}:null}
@@ -31,14 +33,16 @@ function renderLearn(){
   if(!real.length)h+='<div class="empty">未有課程</div>';
   let gi=0,ci=0;
   N.forEach(n=>{
-    if(n.h==="lv"){h+=`<div class="unit" style="background:#3a3a36"><h3>${lesc(n.lv.name)} · ${lesc(n.lv.zh)}</h3></div>`;return}
+    if(n.h==="lv"){h+=`<div class="unit lvl"><h3>${lesc(n.lv.name)} · ${lesc(n.lv.zh)}</h3></div>`;return}
     if(n.h==="sub"){const S=Cadet.subjects[n.k];h+=`<div class="small" style="margin-top:12px">${S.emoji} ${lesc(S.name)}</div>`;return}
-    if(n.h==="ch"){ci=0;const S=Cadet.subjects[n.k];h+=`${gi?"</div>":""}<div class="unit" style="background:${S.color}"><h3>${lesc(n.g)}</h3><div class="small">${n.hasNote?"📖 Note → ":""}${n.n} 課${n.n?"":"（課堂未有，先睇 Note）"}</div></div><div class="path">`;gi=gi||1;return}
+    if(n.h==="ch"){ci=0;const S=Cadet.subjects[n.k];h+=`${gi?"</div>":""}<div class="unit" style="background:${S.color};color:${inkOn(S.color)}"><h3>${lesc(n.g)}</h3><div class="small" style="color:inherit;opacity:.8">${n.hasNote?"📖 Note → ":""}${n.n} 課${n.n?"":"（課堂未有，先睇 Note）"}</div></div><div class="path">`;gi=gi||1;return}
     const idx=real.indexOf(n),done=isDone(n),cur=idx===curIdx,lock=!done&&!cur&&idx>curIdx,S=Cadet.subjects[n.k],i=ci++,off=Math.round(Math.sin(i*1.1)*58);
     const icon=n.note?"📖":(n.x.l.icon||"⭐"),title=n.note?"Note · "+n.note.t:n.x.l.title,att=n.note?`data-note="${n.note.id}"`:`data-lesson="${n.x.l.id}"`;
     const stars=!n.note&&done?`<span class="st">${"⭐".repeat(LV.st.done[n.x.l.id])}</span>`:"";
     h+=`<div style="transform:translateX(${off}px);text-align:center"><button class="lnode ${done?"done":""} ${cur?"cur":""} ${lock?"lock":""}" ${lock?"disabled":""} style="${done||cur?`background:${S.color}`:""}" ${att}>${lock?"🔒":done?(n.note?"✅":icon):icon}${stars}</button><div class="lname">${lesc(title)}</div></div>`});
-  box.innerHTML=h+(gi?"</div>":"")}
+  const opt=Cadet.order.filter(k=>Cadet.subjects[k].optional);
+  if(opt.length)h+=(gi?"</div>":"")+`<div class="unit opt"><h3>✈️ 機種 Episodes（選修）</h3><div class="small">主線只跟 C172。想深入先入嚟；每款機各自一個 episode。</div></div>`+opt.map(k=>{const S=Cadet.subjects[k],n=(S.topics||[]).length;return `<button class="srow epi" data-open="${k}" style="margin:6px 0;background:#fff"><span class="nm">${S.emoji} ${lesc(S.name)}</span><span class="badge">${n?n+" topics · "+(S.cards||[]).length+" cards":"未有內容"}</span></button><div class="small" style="margin:0 6px 8px">${lesc(S.desc||"")}</div>`}).join("");
+  box.innerHTML=h+(!opt.length&&gi?"</div>":"")}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-note]");if(b&&!b.disabled){fromPath=true;nLesson=b.dataset.note;show("notes")}});
 let fromPath=false;
 document.addEventListener("click",e=>{const b=e.target.closest("[data-lesson]");if(b&&!b.disabled)startLesson(b.dataset.lesson)});
@@ -156,3 +160,6 @@ document.addEventListener("keydown",e=>{
     else t=b.querySelector(`.bank .tile[data-n="${N}"]:not(.used)`);
     if(t){e.preventDefault();e.stopPropagation();t.click()}}
 },true);
+
+/* 進度解鎖：地圖／側欄／搜尋／關連只顯示已學 topic（選修機種 episode 唔受限；設定可關閉） */
+function unlocked(id){if(!GATE())return true;const f=Cadet.topic(id);if(!f)return false;if(f.s.optional)return true;return learnedTopics().has(id)}

@@ -6,20 +6,23 @@
 <meta name="theme-color" content="#d5d8de">
 <meta name="robots" content="noindex,nofollow">
 <title>Cadet 學習站</title>
-<link rel="stylesheet" href="ui.css">
-<link rel="stylesheet" href="learn.css">
-<link rel="stylesheet" href="retro.css">
-<link rel="stylesheet" href="v2.css">
+<link rel="stylesheet" href="ui.css?v=1793373952">
+<link rel="stylesheet" href="learn.css?v=1793373952">
+<link rel="stylesheet" href="retro.css?v=1793373952">
+<link rel="stylesheet" href="v2.css?v=1793373952">
+<link rel="stylesheet" href="bauhaus.css?v=1793373952">
+<link rel="stylesheet" href="dash.css?v=1793373952">
 </head>
 <body>
 <div class="app">
  <nav class="rail">
   <div class="pillbar" id="rail">
    <div class="logo">✈️</div>
+   <button data-v="dash" title="Dashboard">🏠<span>Home</span></button>
+   <button data-v="learn" class="on" title="學習路徑">📚<span>學習</span></button>
+   <button data-v="cal" title="日曆／測驗">📅<span>日曆</span></button>
    <button data-v="notes" title="筆記">📝<span>Notes</span></button>
-   <button data-v="learn" title="學習路徑">📚<span>學習</span></button>
-   <button data-v="dash" title="進度">📊<span>進度</span></button>
-   <button data-v="map" class="on" title="地圖">🗺️<span>地圖</span></button>
+   <button data-v="map" title="地圖">🗺️<span>地圖</span></button>
    <button data-v="anim" title="動畫">🎬<span>動畫</span></button>
    <button data-v="cards" title="Flash card">🃏<span>Card</span></button>
    <button data-v="find" title="搜尋 ( / )">🔍<span>搜尋</span></button>
@@ -40,6 +43,7 @@
   <section id="v-notes" class="view"></section>
   <section id="v-learn" class="view"></section>
   <section id="v-dash" class="view"></section>
+  <section id="v-cal" class="view"></section>
   <section id="v-map" class="view on">
    <div class="mapbar"><div class="crumb" id="crumb"></div><div id="mapmode"></div></div>
    <div class="mapwrap">
@@ -64,36 +68,38 @@
  </div>
 </div>
 <div id="ovl"><div class="panel"><div class="ohead"><div><b id="ot" style="font-size:19px"></b><div class="small" id="oh"></div></div><button class="b g" id="oc">✕ 關閉</button></div><div class="abox" id="obox"></div></div></div>
-<script src="core.js"></script>
-<script src="data/pof.js"></script>
-<script src="data/pof_extra.js"></script>
-<script src="data/agk.js"></script>
-<script src="data/agk_extra.js"></script>
-<script src="data/perf.js"></script>
-<script src="data/perf_extra.js"></script>
-<script src="data/nav.js"></script>
-<script src="data/nav_extra.js"></script>
-<script src="data/met.js"></script>
-<script src="data/met_extra.js"></script>
-<script src="data/fp.js"></script>
-<script src="data/law.js"></script>
-<script src="data/rt.js"></script>
-<script src="data/hf.js"></script>
-<script src="data/_cross.js"></script>
-<script src="data/_why.js"></script>
-<script src="data/levels.js"></script>
-<script src="learn.js"></script>
-<script src="courses/pof.js"></script>
-<script src="ui.js"></script>
-<script src="sync.js"></script>
-<script src="v2.js"></script>
-<script src="data/notes/pof.js"></script>
-<script src="data/notes/pof_a.js"></script>
-<script src="data/notes/pof_b.js"></script>
-<script src="data/notes/pof_c.js"></script>
-<script src="data/notes/pof_d.js"></script>
-<script src="data/notes/pof_e.js"></script>
-<script src="notion-ui.js"></script>
-<script src="notion-remote.js"></script>
+<script src="core.js?v=1793373952"></script>
+<script src="data/pof.js?v=1793373952"></script>
+<script src="data/pof_extra.js?v=1793373952"></script>
+<script src="data/agk.js?v=1793373952"></script>
+<script src="data/agk_extra.js?v=1793373952"></script>
+<script src="data/perf.js?v=1793373952"></script>
+<script src="data/perf_extra.js?v=1793373952"></script>
+<script src="data/nav.js?v=1793373952"></script>
+<script src="data/nav_extra.js?v=1793373952"></script>
+<script src="data/met.js?v=1793373952"></script>
+<script src="data/met_extra.js?v=1793373952"></script>
+<script src="data/fp.js?v=1793373952"></script>
+<script src="data/law.js?v=1793373952"></script>
+<script src="data/rt.js?v=1793373952"></script>
+<script src="data/hf.js?v=1793373952"></script>
+<script src="data/_cross.js?v=1793373952"></script>
+<script src="data/_why.js?v=1793373952"></script>
+<script src="data/levels.js?v=1793373952"></script>
+<script src="data/aircraft.js?v=1793373952"></script>
+<script src="learn.js?v=1793373952"></script>
+<script src="courses/pof.js?v=1793373952"></script>
+<script src="ui.js?v=1793373952"></script>
+<script src="sync.js?v=1793373952"></script>
+<script src="v2.js?v=1793373952"></script>
+<script src="data/notes/pof.js?v=1793373952"></script>
+<script src="data/notes/pof_a.js?v=1793373952"></script>
+<script src="data/notes/pof_b.js?v=1793373952"></script>
+<script src="data/notes/pof_c.js?v=1793373952"></script>
+<script src="data/notes/pof_d.js?v=1793373952"></script>
+<script src="data/notes/pof_e.js?v=1793373952"></script>
+<script src="notion-ui.js?v=1793373952"></script>
+<script src="notion-remote.js?v=1793373952"></script>
+<script src="dash.js?v=1793373952"></script>
 </body>
 </html>

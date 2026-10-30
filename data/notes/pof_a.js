@@ -100,7 +100,7 @@ notes:`## 1. Airfoil 術語 (Terminology)
 
 ## 6. Washout 同 stall strip
 - **Washout**：wingtip 嘅 incidence 細過 root → tip 嘅 AoA 細啲 → **root 先 stall**。
-- **Stall strip**：喺 root LE 加細楔，令呢度早啲 stall（例如 DA40）。
+- **Stall strip**：喺 root LE 加細楔，令呢度早啲 stall（例如 C172 類輕型機）。
 - 好處：stall 時 tip 仍然未 stall，**aileron 仍有效**，nose 下垂易 recover。
 - Swept wing 因為 tip stall 風險，常配 washout 或其他裝置。
 ![Lift／drag 對 AoA（FAA PHAK 圖）：CL max 之後 airflow separation → stall](img/phak/lift-drag-curve.png)`,

@@ -1,0 +1,34 @@
+/* Bauhaus 客廳配色（來自 yno 參考相）：暖白牆、cobalt 藍櫃、橙紅 lamp／字、咖啡色 sofa、木地板、紙燈籠奶黃、書架黃 */
+:root{--bg:#efe9dd;--panel:#f7f3ea;--panel2:#fffcf5;--ink:#241b15;--mute:#8a7a68;--line:#d9cfbd;--c1:#241b15;
+ --ok:#2f7a57;--bad:#d9381e;--hot:#f0481c;--orange:#f0481c;--blue:#1b3fa6;--sky:#4d8fd1;--brown:#6b4631;--wood:#d49a58;--lantern:#efd9a6;--yellow:#f2c230;
+ --r:16px;--sh:0 1px 0 #fff inset,0 -1px 0 rgba(60,40,20,.05) inset,0 6px 16px rgba(80,55,30,.10)}
+body{background:var(--bg)!important;color:var(--ink)}
+h1,h2,h3,#vt,.big,.stat .n,.mh h1{font-family:Futura,"Avenir Next","Helvetica Neue",Helvetica,"PingFang HK",sans-serif!important;font-weight:800;letter-spacing:-.015em}
+a,.alink{color:var(--blue)}
+/* 掣 */
+button.b{background:var(--blue)!important;color:#fff!important;box-shadow:0 3px 0 #10286f!important;border-radius:12px}
+button.b:active{box-shadow:0 0 0 #10286f!important}
+button.b.g{background:var(--panel2)!important;color:var(--ink)!important;border:1px solid var(--line);box-shadow:0 2px 0 var(--line)!important}
+button#know,button.b.go,#know,.lfoot button.go{background:var(--orange)!important;color:#fff!important;box-shadow:0 3px 0 #a92d0f!important}
+.tab.on,.mode.on{background:var(--blue)!important;border-color:var(--blue)!important;color:#fff!important}
+/* 左邊 rail、側欄 */
+#rail{background:var(--brown)!important}
+#rail button{color:#f3e7d6}#rail button.on{background:var(--orange)!important;color:#fff!important}
+.srow.on{background:var(--panel2);box-shadow:0 0 0 2px var(--blue) inset}
+.srow .badge,.badge{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
+.badge.warn{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.sidecard{background:var(--blue)!important;color:#fff;border:0!important}.sidecard .small{color:#cdd8f6}.sidecard .mini{background:#ffffff33}.sidecard .mini i{background:var(--yellow)}
+.srow.lvh{background:#e6dcc8;font-weight:700}
+/* 學習路徑 */
+.unit{color:var(--ink)}
+.unit.lvl{background:var(--blue)!important;color:#fff}.unit.lvl h3{color:#fff}.unit.lvl .small{color:#cdd8f6}
+.unit.opt{background:var(--lantern)!important}
+.chip2{background:var(--panel2);border:1px solid var(--line);color:var(--ink)}
+.lnode{border:3px solid var(--ink)}
+.lnode.cur{box-shadow:0 0 0 6px #f0481c33}
+.lnode.done{border-color:var(--ink)}
+/* 進度條／重點 */
+.mini i,.seg,.bar i{background:var(--orange)}
+.edtag,.stb{border-color:var(--blue);color:var(--blue)}
+.dot.s1{border-color:var(--yellow);background:#fbefc2}.dot.s2{border-color:var(--orange);background:#ffd9cb}.dot.s3{background:var(--ok);border-color:var(--ok)}
+.concept{border-left-color:var(--c,var(--orange))}
