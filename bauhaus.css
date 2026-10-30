@@ -1,34 +1,46 @@
-/* Bauhaus 客廳配色（來自 yno 參考相）：暖白牆、cobalt 藍櫃、橙紅 lamp／字、咖啡色 sofa、木地板、紙燈籠奶黃、書架黃 */
-:root{--bg:#efe9dd;--panel:#f7f3ea;--panel2:#fffcf5;--ink:#241b15;--mute:#8a7a68;--line:#d9cfbd;--c1:#241b15;
- --ok:#2f7a57;--bad:#d9381e;--hot:#f0481c;--orange:#f0481c;--blue:#1b3fa6;--sky:#4d8fd1;--brown:#6b4631;--wood:#d49a58;--lantern:#efd9a6;--yellow:#f2c230;
- --r:16px;--sh:0 1px 0 #fff inset,0 -1px 0 rgba(60,40,20,.05) inset,0 6px 16px rgba(80,55,30,.10)}
+/* Future Archive 配色（yno 參考圖）：石灰色底占大部分（~70%）、電光 cobalt 藍（~20%：標題、正文重點、藍色塊）、紅橙（~8%：強調塊、CTA、今日／逾期）、深藍黑細字（~2%）。扁平、方正、serif 標題。 */
+:root{--bg:#d9d5c7;--panel:#e2dfd2;--panel2:#ebe8dd;--ink:#14172e;--mute:#62667f;--line:#bcb7a6;--c1:#14172e;
+ --ok:#2d6a57;--bad:#e63f25;--hot:#e63f25;--orange:#e63f25;--blue:#1b3ed3;--sky:#8fa3e0;--brown:#14172e;--wood:#6f7aa8;--lantern:#cbc6b3;--yellow:#e63f25;--stone2:#c9c4b2;
+ --r:6px;--sh:none;--serif:"Didot","Bodoni 72","Playfair Display","Noto Serif TC","Songti TC","Times New Roman",Georgia,serif}
 body{background:var(--bg)!important;color:var(--ink)}
-h1,h2,h3,#vt,.big,.stat .n,.mh h1{font-family:Futura,"Avenir Next","Helvetica Neue",Helvetica,"PingFang HK",sans-serif!important;font-weight:800;letter-spacing:-.015em}
-a,.alink{color:var(--blue)}
-/* 掣 */
-button.b{background:var(--blue)!important;color:#fff!important;box-shadow:0 3px 0 #10286f!important;border-radius:12px}
-button.b:active{box-shadow:0 0 0 #10286f!important}
-button.b.g{background:var(--panel2)!important;color:var(--ink)!important;border:1px solid var(--line);box-shadow:0 2px 0 var(--line)!important}
-button#know,button.b.go,#know,.lfoot button.go{background:var(--orange)!important;color:#fff!important;box-shadow:0 3px 0 #a92d0f!important}
-.tab.on,.mode.on{background:var(--blue)!important;border-color:var(--blue)!important;color:#fff!important}
-/* 左邊 rail、側欄 */
-#rail{background:var(--brown)!important}
-#rail button{color:#f3e7d6}#rail button.on{background:var(--orange)!important;color:#fff!important}
-.srow.on{background:var(--panel2);box-shadow:0 0 0 2px var(--blue) inset}
-.srow .badge,.badge{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
-.badge.warn{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
-.sidecard{background:var(--blue)!important;color:#fff;border:0!important}.sidecard .small{color:#cdd8f6}.sidecard .mini{background:#ffffff33}.sidecard .mini i{background:var(--yellow)}
-.srow.lvh{background:#e6dcc8;font-weight:700}
-/* 學習路徑 */
-.unit{color:var(--ink)}
-.unit.lvl{background:var(--blue)!important;color:#fff}.unit.lvl h3{color:#fff}.unit.lvl .small{color:#cdd8f6}
-.unit.opt{background:var(--lantern)!important}
-.chip2{background:var(--panel2);border:1px solid var(--line);color:var(--ink)}
-.lnode{border:3px solid var(--ink)}
-.lnode.cur{box-shadow:0 0 0 6px #f0481c33}
-.lnode.done{border-color:var(--ink)}
-/* 進度條／重點 */
-.mini i,.seg,.bar i{background:var(--orange)}
+h1,h2,h3,#vt,.mh h1,.dh h1,.calh h2{font-family:var(--serif)!important;font-weight:400!important;letter-spacing:-.01em;color:var(--blue)}
+.big,.stat .n,.kpi .kv,.pn2,.tbig{font-family:var(--serif)!important;font-weight:400!important;color:var(--blue)}
+a,.alink,.lk{color:var(--blue)}
+.small,.sec,.sub,#vs,label.sw{color:var(--mute)}
+/* 底面積：卡片幾乎同底色，用幼線分區 */
+.card-box,#info,.chap,.tile9,.ncard,.center,.stat,.whybox,.panel,.kpi,.pst,.cc.in{background:var(--panel)!important;border:1px solid var(--line)!important;box-shadow:none!important}
+/* 掣：藍色扁平；主要 CTA 紅橙 */
+button.b{background:var(--blue)!important;color:#fff!important;box-shadow:none!important;border-radius:var(--r)}
+button.b:active{transform:none;opacity:.85}
+button.b.g{background:transparent!important;color:var(--blue)!important;border:1px solid var(--blue);box-shadow:none!important}
+button#know,button.b.go,#know,.lfoot button.go{background:var(--orange)!important;color:#fff!important;box-shadow:none!important}
+.tab,.mode{border-radius:var(--r)}.tab.on,.mode.on{background:var(--blue)!important;border-color:var(--blue)!important;color:#fff!important}
+/* rail／側欄 */
+#rail{background:var(--ink)!important}#rail button{color:#cfd2e6}#rail button.on{background:var(--orange)!important;color:#fff!important}
+.srow:hover{background:#00000008}.srow.on{background:var(--panel2);box-shadow:inset 3px 0 0 var(--blue)}
+.badge,.srow .badge{background:transparent;color:var(--blue);border:1px solid var(--line)}.badge.warn{background:var(--orange);color:#fff;border-color:var(--orange)}
+.sidecard{background:var(--blue)!important;color:#fff!important;border:0!important}.sidecard .small{color:#c5cdf5}.sidecard .big{color:#fff}.sidecard .mini{background:#ffffff33}.sidecard .mini i{background:#fff}
+.srow.lvh{background:var(--stone2);font-weight:700;color:var(--blue)}
+/* 藍色塊／紅橙塊（對應參考圖 OVERVIEW 藍塊、THRESHOLD 紅塊） */
+.unit{color:var(--ink);border-radius:var(--r)}
+.unit h3{font-family:var(--serif);font-weight:400;font-size:22px;color:inherit}
+.unit.lvl{background:var(--blue)!important;color:#fff}.unit.lvl h3{color:#fff}.unit.lvl .small{color:#c5cdf5}
+.unit.opt{background:var(--stone2)!important}
+.kpi.y{background:var(--orange)!important;border-color:var(--orange)!important}.kpi.y .kl,.kpi.y .ks,.kpi.y .kv{color:var(--ink)}
+.alert{background:var(--orange);color:#fff;border:0;border-radius:var(--r)}.alert .b{background:var(--ink)!important}
+.warnbox{background:var(--stone2)}
+.chip2{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.lnode{border:2px solid var(--ink)}.lnode.cur{box-shadow:0 0 0 5px #e63f2533}
+.mini i,.seg,.bar i,.tbar i{background:var(--orange)}.lbar2 i{background:var(--blue)}
 .edtag,.stb{border-color:var(--blue);color:var(--blue)}
-.dot.s1{border-color:var(--yellow);background:#fbefc2}.dot.s2{border-color:var(--orange);background:#ffd9cb}.dot.s3{background:var(--ok);border-color:var(--ok)}
-.concept{border-left-color:var(--c,var(--orange))}
+.dot.s1{border-color:var(--sky);background:#dfe5fa}.dot.s2{border-color:var(--blue);background:#c9d2f6}.dot.s3{background:var(--blue);border-color:var(--blue)}
+.concept{border-left-color:var(--c,var(--blue))}
+.cc.today{box-shadow:inset 0 0 0 2px var(--orange)!important}
+.ev.weekly{background:var(--sky);color:var(--ink)}.ev.level{background:var(--blue)}.ev.mock{background:var(--ink)}.ev.st{background:var(--stone2);color:var(--ink)}.ev.pass{background:var(--ok)}
+.chip.pass{background:#cfe3da;color:#1d4a3c}.chip.soon{background:var(--stone2)}
+.hatch i{background:var(--blue)}
+/* 重要程度 */
+.impd{width:9px;height:9px;border-radius:50%;flex:none;display:inline-block;margin-right:6px}
+.impd.i1{background:var(--orange)}.impd.i2{background:var(--blue)}.impd.i3{background:transparent;border:1.5px solid var(--mute)}
+.impb{display:inline-block;vertical-align:middle;margin-left:8px;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;background:var(--panel);border:1px solid var(--line)}
+.impb.i1{background:#f6d3cb;border-color:var(--orange)}.impb.i2{background:#d3dbf8;border-color:var(--blue)}.impb.i3{color:var(--mute)}

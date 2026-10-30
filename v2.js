@@ -23,7 +23,7 @@ function suggest(n){ // 揀最值得而家練嘅 topic：到期多、掌握度�
 const srcChips=t=>(t.src||"").split(/[;；]/).map(x=>x.trim()).filter(Boolean).map(x=>`<span class="sc">📂 ${esc(x)}</span>`).join("");
 /* ---------- 概念頁（單欄：導航 → 標題 → 主內容 → 動作 → 關連 → 來源） ---------- */
 document.querySelector("#info")&&(document.querySelector("#info").style.display="none");
-function stBadge(id){const s=topicStatus(id),m=topicMastery(id);return `<span class="stb" style="--c:${ST[s][2]}">${ST[s][0]} ${ST[s][1]}${m!==null?` · ${m}%`:""}</span>`}
+function stBadge(id){const s=topicStatus(id),m=topicMastery(id);return `<span class="impb i${impOf(id)}">${IMPN[impOf(id)][1]} ${IMPN[impOf(id)][0]}</span><span class="stb" style="--c:${ST[s][2]}">${ST[s][0]} ${ST[s][1]}${m!==null?` · ${m}%`:""}</span>`}
 function renderConcept(id){
   const f=Cadet.topic(id),t=f.t,S=f.s,g=gname(t),kids=(S.topics||[]).filter(x=>gname(x)===g&&unlocked(x.id)),i=kids.findIndex(x=>x.id===id),P=progress();
   const nb=nbOf(id),inGrp=n=>Cadet.topic(n.o).s.key===S.key&&gname(Cadet.topic(n.o).t)===g,
@@ -55,7 +55,7 @@ drawMap=function(){
   if(curSubject&&!sel){const S=SUBJ(curSubject),T=(S.topics||[]).filter(t=>unlocked(t.id));if(T.length){mapMode="list";crumb();$("#mapmode").innerHTML="";$("#map").style.display="none";$("#zoomctl").style.display="none";$("#legend").textContent="";
     const gs=[...new Set(T.map(gname))];
     $("#lst").innerHTML=`<div class="small chap-hint">每章流程：📝 Note → 🎯 課堂 → 🗺️ 地圖 → 🃏 Card。圓點＝進度（○未開始 ◐已睇 ◕練習中 ●已掌握）</div><div class="chaps">`+gs.map(g=>{const kids=T.filter(t=>gname(t)===g),done=kids.filter(t=>topicStatus(t.id)>=1).length;
-      return `<section class="chap ${curGroup===g?"on":""}" style="--c:${S.color}"><header><b>${esc(g)}</b><span class="small">${done}/${kids.length}</span></header><span class="seg" style="--p:${Math.round(done/kids.length*100)}%"></span><button class="b g notebtn" data-note-open="${esc(S.key+"|"+g)}">📝 Chapter note</button><ol>`+kids.map((t,i)=>`<li><button class="trow" data-topic-go="${esc(t.id)}"><span class="st" style="color:${ST[topicStatus(t.id)][2]}">${ST[topicStatus(t.id)][0]}</span><span class="tt">${esc(t.t)}</span>${t.check?'<span class="warn">!</span>':""}</button></li>`).join("")+`</ol></section>`}).join("")+`</div>`;return}}
+      return `<section class="chap ${curGroup===g?"on":""}" style="--c:${S.color}"><header><b>${esc(g)}</b><span class="small">${done}/${kids.length}</span></header><span class="seg" style="--p:${Math.round(done/kids.length*100)}%"></span><button class="b g notebtn" data-note-open="${esc(S.key+"|"+g)}">📝 Chapter note</button><ol>`+kids.map((t,i)=>`<li><button class="trow" data-topic-go="${esc(t.id)}"><span class="impd i${impOf(t.id)}" title="${IMPN[impOf(t.id)][0]}"></span><span class="st" style="color:${ST[topicStatus(t.id)][2]}">${ST[topicStatus(t.id)][0]}</span><span class="tt">${esc(t.t)}</span>${t.check?'<span class="warn">!</span>':""}</button></li>`).join("")+`</ol></section>`}).join("")+`</div>`;return}}
   _drawMap()};
 /* ---------- Notes 頁 ---------- */
 let noteSel=null;

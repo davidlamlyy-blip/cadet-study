@@ -26,7 +26,7 @@ function dailyTarget(pl){const t=todayS(),N=nodes();let lv=[1,2,3].find(l=>N.som
   const left=N.filter(x=>x.lv===lv&&!x.done).length,days=Math.max(1,diff(t,pl.L[lv])+1);return{lv,n:Math.ceil(left/days),left,due:pl.L[lv]}}
 /* ---------- 測驗 ---------- */
 function scopeOK(lv){const L=learnedTopics();return t=>L.has(t.id)&&(!lv||Cadet.levelOf(Cadet.topic(t.id).s.key,gname(t))===lv)}
-function buildPool(test){const lv=test.type==="level"?test.lv:0,L=learnedTopics(),ok=id=>{if(!L.has(id))return false;const f=Cadet.topic(id);return f&&!f.s.optional&&(!lv||Cadet.levelOf(f.s.key,gname(f.t))===lv)};
+function buildPool(test){const lv=test.type==="level"?test.lv:0,L=learnedTopics(),ok=id=>{if(!L.has(id))return false;const f=Cadet.topic(id);return f&&!f.s.optional&&impOf(id)<=2&&(!lv||Cadet.levelOf(f.s.key,gname(f.t))===lv)};
   const q=[];(Cadet.lnotes||[]).forEach(n=>{if(!V2.noted["n:"+n.id])return;if(lv&&Cadet.levelOf(n.k,n.g)!==lv)return;(n.mcq||[]).forEach(m=>q.push({t:"mcq",m,src:n.t}))});
   model().cards.forEach(c=>{if(c.st!=="todo"&&c.topic&&ok(c.topic)&&!(Cadet.subjects[c._s]||{}).optional)q.push({t:"card",c})});
   const mc=shuf(q.filter(x=>x.t==="mcq")),cd=shuf(q.filter(x=>x.t==="card")),out=mc.slice(0,Math.ceil(test.n/2)).concat(cd).slice(0,test.n);return shuf(out)}
@@ -53,6 +53,7 @@ window.renderDash=function(){
   const sug=suggest(4),due=model().cards.filter(c=>c.st!=="todo"&&c.topic&&learnedTopics().has(c.topic)&&!isNew(c)&&isDue(c)).length;
   const lessonsDone=Object.keys(LV.st.done).length,lessonsAll=allLessons().length,notesAll=(Cadet.lnotes||[]).length,notesRead=(Cadet.lnotes||[]).filter(n=>V2.noted["n:"+n.id]).length;
   const U=[...learnedTopics()].filter(id=>Cadet.topic(id)&&!Cadet.topic(id).s.optional),st=U.map(topicStatus),practising=st.filter(x=>x===2).length,mastered=st.filter(x=>x===3).length;
+  const mustIds=allTopics().filter(x=>!x.s.optional&&impOf(x.t.id)===1).map(x=>x.t.id),mustAll=mustIds.length,mustM=mustIds.filter(id=>topicStatus(id)===3).length;
   const tests=pl.tests,passed=tests.filter(t=>V2.tests[t.id]&&V2.tests[t.id].pass).length,overdue=tests.filter(t=>stateOf(t,today).k==="over"),todayT=tests.filter(t=>t.date===today&&!(V2.tests[t.id]&&V2.tests[t.id].pass));
   const nxt=tests.filter(t=>!(V2.tests[t.id]&&V2.tests[t.id].pass)&&t.date>=today).slice(0,5).concat(overdue).slice(0,6);
   const empty=Cadet.order.filter(k=>!SUBJ(k).optional&&!(Cadet.lnotes||[]).some(n=>n.k===k)).map(k=>SUBJ(k).name);
@@ -61,7 +62,7 @@ window.renderDash=function(){
   const lvRow=[1,2,3].map(l=>{const a=N.filter(x=>x.lv===l),d=a.filter(x=>x.done).length,late=pl.L[l]<today&&d<a.length;return `<div class="lvr"><b>Level ${l}</b><span class="small">截止 ${pl.L[l].slice(5)}</span><div class="lbar2"><i style="width:${a.length?d/a.length*100:0}%"></i></div><span class="small">${d}/${a.length} 關${late?' · <span class="late">落後</span>':""}</span></div>`}).join("");
   box.innerHTML=`<div class="dh"><div><h1>${greet}，yno</h1><div class="small">Cadet Programme 申請倒數 · 學習計劃由 ${pl.S} 開始</div></div><label class="small tgt">申請日期 <input type="date" id="tgtd" value="${pl.T}"></label></div>
   ${overdue.length||todayT.length?`<div class="alert">⚠️ ${overdue.length?`有 ${overdue.length} 個測驗逾期未考：${overdue.map(t=>esc(t.title)+" ("+t.date.slice(5)+")").join("、")}。`:""}${todayT.length?` 今日要考：${todayT.map(t=>esc(t.title)).join("、")}。`:""} <button class="b" data-tstart="${(overdue[0]||todayT[0]).id}">而家考</button></div>`:""}
-  <div class="kpis">${tile("距離申請",left>0?left+" 日":"已到期","時間用咗 "+elapsed+"%","y")}${tile("今日目標",dt.lv?dt.n+" 關":"全部完成",dt.lv?`Level ${dt.lv} 尚餘 ${dt.left} 關`:"")}${tile("今日要溫習",due+" 張","到期 card")}${tile("連續學習",LV.st.streak.n+" 日","⭐ "+LV.st.xp+" XP")}${tile("測驗合格",passed+" / "+tests.length,"≥70% 合格")}${tile("已掌握",mastered,"topics")}</div>
+  <div class="kpis">${tile("距離申請",left>0?left+" 日":"已到期","時間用咗 "+elapsed+"%","y")}${tile("今日目標",dt.lv?dt.n+" 關":"全部完成",dt.lv?`Level ${dt.lv} 尚餘 ${dt.left} 關`:"")}${tile("今日要溫習",due+" 張","到期 card")}${tile("連續學習",LV.st.streak.n+" 日","⭐ "+LV.st.xp+" XP")}${tile("測驗合格",passed+" / "+tests.length,"≥70% 合格")}${tile("Must know 掌握",mustM+" / "+mustAll,"全部 🔴 topics")}</div>
   <div class="panel"><div class="ph"><h3>學習 pipeline</h3><span class="small">只計已解鎖內容</span></div><div class="pipe">
     ${[["📖 Note 已睇",notesRead,notesAll,"chapters"],["🎯 課堂完成",lessonsDone,lessonsAll,"課"],["🔁 練習中",practising,U.length,"topics"],["🏁 已掌握",mastered,U.length,"topics"]].map(([l,a,b,u])=>`<div class="pst"><div class="pl">${l}</div><div class="hatch"><i style="height:${b?Math.max(6,a/b*100):6}%"></i></div><div class="pn2">${a}<small> / ${b} ${u}</small></div></div>`).join("")}</div><div class="lvs">${lvRow}</div></div>
   <div class="cols3">

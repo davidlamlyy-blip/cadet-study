@@ -162,4 +162,7 @@ document.addEventListener("keydown",e=>{
 },true);
 
 /* 進度解鎖：地圖／側欄／搜尋／關連只顯示已學 topic（選修機種 episode 唔受限；設定可關閉） */
-function unlocked(id){if(!GATE())return true;const f=Cadet.topic(id);if(!f)return false;if(f.s.optional)return true;return learnedTopics().has(id)}
+const IMPN={1:["Must know","🔴"],2:["Good to know","🟡"],3:["Not necessary","⚪"]};
+const impOf=id=>(Cadet.imp&&Cadet.imp[id])||2;
+const IMPLV=()=>{try{return +(localStorage.getItem("cadetImp")||"2")}catch(e){return 2}};
+function unlocked(id){const f=Cadet.topic(id);if(!f)return false;if(f.s.optional)return true;if(impOf(id)>IMPLV())return false;if(!GATE())return true;return learnedTopics().has(id)}

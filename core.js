@@ -42,8 +42,8 @@ const isNew=c=>!srs[c._k];
 function save(){try{localStorage.setItem("cadetSRS",JSON.stringify(srs))}catch(e){}try{localStorage.setItem("cadetCards",JSON.stringify(store));localStorage.setItem("cadetDaily",JSON.stringify(daily))}catch(e){}}
 
 /* ---------- V2：已讀 note、自訂編輯（topic／card 改、刪、新增）— 會同步 ---------- */
-let V2={noted:{},edits:{topics:{},cards:{},del:{},add:[],notes:{}}};
-try{const x=JSON.parse(localStorage.getItem("cadetV2")||"null");if(x){V2.mcq=x.mcq||{};V2.noted=x.noted||{};V2.edits=Object.assign(V2.edits,x.edits||{})}}catch(e){}
+let V2={skip:{},noted:{},edits:{topics:{},cards:{},del:{},add:[],notes:{}}};
+try{const x=JSON.parse(localStorage.getItem("cadetV2")||"null");if(x){V2.mcq=x.mcq||{};V2.noted=x.noted||{};V2.skip=x.skip||{};V2.edits=Object.assign(V2.edits,x.edits||{})}}catch(e){}
 function v2save(){try{localStorage.setItem("cadetV2",JSON.stringify(V2))}catch(e){}save()}
 const uid=()=>"u"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 /* ---------- 穩定 card key：用題目 hash（唔再用位置 index），加減 card 唔會令進度錯位 ---------- */
@@ -74,7 +74,7 @@ function model(){
   const M={key,cards:[],byKey:new Map,byTopic:new Map,links:[],nb:new Map,gOf:new Map,checks:[]};
   Cadet.order.forEach(k=>{const S=Cadet.subjects[k];
     (S.topics||[]).forEach(t=>{M.gOf.set(t.id,t.g||"Topics");if(t.check)M.checks.push(t.id)});
-    (S.cards||[]).forEach((c,i)=>{c._s=k;c._k=c._kk||k+"|"+(c.id||i);if(c._del)return;M.cards.push(c);M.byKey.set(c._k,c);if(c.topic){let a=M.byTopic.get(c.topic);if(!a)M.byTopic.set(c.topic,a=[]);a.push(c)}})});
+    (S.cards||[]).forEach((c,i)=>{c._s=k;c._k=c._kk||k+"|"+(c.id||i);if(c._del||(V2.skip&&V2.skip[c._k])||(c.topic&&Cadet.imp&&Cadet.imp[c.topic]===3&&!Cadet.subjects[k].optional))return;M.cards.push(c);M.byKey.set(c._k,c);if(c.topic){let a=M.byTopic.get(c.topic);if(!a)M.byTopic.set(c.topic,a=[]);a.push(c)}})});
   const seen=new Set();
   Cadet.allLinks().forEach(l=>{const[a,b]=l;if(!Cadet.topic(a)||!Cadet.topic(b)||a===b)return;const kk=a<b?a+"\u0001"+b:b+"\u0001"+a;if(seen.has(kk))return;seen.add(kk);M.links.push(l);
     (M.nb.get(a)||M.nb.set(a,[]).get(a)).push({o:b,why:l[2]});(M.nb.get(b)||M.nb.set(b,[]).get(b)).push({o:a,why:l[2]})});

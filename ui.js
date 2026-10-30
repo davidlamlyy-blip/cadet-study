@@ -59,7 +59,7 @@ function renderSide(){
         if(o){h+=`<div class="lv1">`;
           gs.forEach(g=>{const kids=T.filter(t=>gname(t)===g&&unlocked(t.id)),go=openG.has(k+"|"+g);
             h+=`<button class="srow ${go?"open":""} ${curSubject===k&&curGroup===g?"on":""}" data-g="${k}|${esc(g)}"><span class="car">▶</span><span class="nm">${esc(g)}</span><span class="badge">${rem(P.g.get(k+"|"+g))}</span></button>`;
-            if(go){h+=`<div class="lv2">`+kids.map(t=>{const p=P.t.get(t.id);return `<button class="srow ${sel===t.id?"on":""}" data-t="${esc(t.id)}"><span class="nm">${esc(t.t)}</span>${t.check?'<span class="badge warn">!</span>':""}<span class="badge">${p?p.n-p.k:0}</span></button>`}).join("")+`</div>`}});
+            if(go){h+=`<div class="lv2">`+kids.map(t=>{const p=P.t.get(t.id);return `<button class="srow ${sel===t.id?"on":""}" data-t="${esc(t.id)}"><span class="impd i${impOf(t.id)}" title="${IMPN[impOf(t.id)][0]}"></span><span class="nm">${esc(t.t)}</span>${t.check?'<span class="badge warn">!</span>':""}<span class="badge">${p?p.n-p.k:0}</span></button>`}).join("")+`</div>`}});
           h+=`</div>`}});
       h+=`</div>`}});
   if(!shown)h+=`<div class="small" style="padding:8px 10px">🔒 仲未解鎖任何內容。去「學習」睇第一章 Note，睇完呢度先會出現。</div>`;
@@ -245,10 +245,14 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-act2]");if
 /* ---------- 設定 ---------- */
 function renderSet(){$("#v-set").innerHTML=`<div class="card-box"><b>地圖預設顯示</b><div class="row" style="justify-content:flex-start"><button class="tab ${mapMode==="map"?"on":""}" data-mm2="map">🗺️ 地圖</button><button class="tab ${mapMode==="list"?"on":""}" data-mm2="list">📋 清單</button></div></div>
   <div class="card-box"><b>Flash card 鍵盤</b><div class="small">空白鍵／Enter 翻面 · ← 未識 · → 識 · / 搜尋 · Esc 關閉</div></div>
+  <div class="card-box"><b>已跳過嘅 card</b><div class="small">喺 flash card 撳「Skip（唔需要）」嘅 card 唔會再出現，亦唔計入進度。已跳過：${Object.keys(V2.skip||{}).length} 張。⚪ Not necessary 嘅 card 一律唔出。</div><div class="btnrow"><button class="b g" id="skipRes">還原全部已跳過</button></div></div>
+  <div class="card-box"><b>內容重要程度</b><div class="small">🔴 Must know＝面試／筆試核心；🟡 Good to know＝加深理解；⚪ Not necessary＝太細（AI 判斷，非官方 syllabus）。選擇顯示到邊一層：</div><div class="btnrow"><select id="impSel" style="padding:8px;border-radius:10px;border:1px solid var(--line);background:var(--panel2)"><option value="1" ${IMPLV()===1?"selected":""}>只顯示 Must know</option><option value="2" ${IMPLV()===2?"selected":""}>Must + Good to know（預設）</option><option value="3" ${IMPLV()===3?"selected":""}>全部（包括 Not necessary）</option></select></div></div>
   <div class="card-box"><b>跟學習進度解鎖</b><div class="small">開（預設）：地圖、側欄、搜尋、關連只顯示你喺學習路徑睇咗 Note／做咗課堂嘅內容。關：全部顯示（純溫習）。</div><div class="btnrow"><button class="b ${GATE()?"":"g"}" id="gateTg">${GATE()?"而家：跟進度解鎖（撳此關閉）":"而家：全部顯示（撳此開返）"}</button></div></div>
   <div class="card-box"><b>備份／還原進度</b><div class="small">進度只存喺呢部機呢個網址嘅瀏覽器（唔同網址、file:// 同 localhost 係各自獨立）。更新網站唔會清走；每日自動留一份備份。建議定期匯出。</div><div class="btnrow"><button class="b" id="bkExp">匯出進度檔</button><button class="b g" id="bkImp">匯入進度檔</button><button class="b g" id="bkRes">還原上一個自動備份</button></div><input type="file" id="bkFile" accept=".json" style="display:none"></div>
   <div class="card-box"><b>重置進度</b><div class="small">清走所有「識／未識」紀錄（只喺呢部機）。</div><div class="btnrow"><button class="b g" id="reset">重置進度</button></div></div>`;
   $("#reset").onclick=()=>{if(confirm("確定重置所有 card 進度？")){store={};srs={};daily={d:today(),n:0,ok:0};save();renderSide();renderSet()}};
+  $("#skipRes").onclick=()=>{if(confirm("還原所有已跳過嘅 card？")){V2.skip={};v2save();Cadet._v++;_M=null;renderSide();renderSet()}};
+  $("#impSel").onchange=e=>{try{localStorage.setItem("cadetImp",e.target.value)}catch(x){}location.reload()};
   $("#gateTg").onclick=()=>{try{localStorage.setItem("cadetGateOff",GATE()?"1":"0")}catch(e){}location.reload()};
   const BKS=["cadetSRS","cadetCards","cadetDaily","cadetV2","cadetLearn"],put=o=>{BKS.forEach(k=>{if(o[k]!=null)localStorage.setItem(k,o[k])});location.reload()};
   $("#bkExp").onclick=()=>{const o={t:Date.now()};BKS.forEach(k=>o[k]=localStorage.getItem(k));const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(o)],{type:"application/json"}));a.download="cadet-progress-"+new Date().toISOString().slice(0,10)+".json";a.click()};
@@ -285,7 +289,7 @@ let deck="all",topicF=null,queue=[],cur=null,forced=null,flipped=false;
 const only=()=>$("#onlyUnk").checked;
 const learnedOnly=()=>$("#onlyLearned").checked;
 const learnedSet=()=>typeof learnedTopics==="function"?learnedTopics():new Set();
-function pool(){const L=learnedOnly()?learnedSet():null;return model().cards.filter(c=>(deck==="all"||c._s===deck)&&(!topicF||c.topic===topicF)&&c.st!=="todo"&&(!L||(c.topic&&L.has(c.topic))))}
+function pool(){const L=learnedOnly()?learnedSet():null;return model().cards.filter(c=>(deck==="all"||c._s===deck)&&(!topicF||c.topic===topicF)&&c.st!=="todo"&&(!L||(c.topic&&L.has(c.topic)))&&(!c.topic||impOf(c.topic)<=IMPLV()||(Cadet.subjects[c._s]||{}).optional))}
 function goDeck(k,t){deck=k||"all";topicF=t||null;show("cards")}
 function goCard(key){const c=model().byKey.get(key);if(!c)return;deck="all";topicF=null;forced=c;show("cards")}
 function next(rebuild){
@@ -325,7 +329,9 @@ function answer(g){if(typeof g==="boolean")g=g?1:0;if(!cur||view!=="cards")retur
   if(g===0){const at=Math.min(3,queue.length);queue.splice(at,0,c)} // Again：幾張之後再出
   const ok=g>0,sw=$("#sw");sw.classList.remove("drag");sw.style.transform=`translateX(${ok?130:-130}%) rotate(${ok?12:-12}deg)`;sw.style.opacity=0;cur=null;
   setTimeout(()=>{next(!queue.length);renderSide()},260)}
-$("#know").onclick=()=>answer(1);$("#easy").onclick=()=>answer(2);$("#again").onclick=()=>answer(0);
+function skipCard(){if(!cur||view!=="cards")return;const c=cur;V2.skip=V2.skip||{};V2.skip[c._k]=Date.now();v2save();Cadet._v++;_M=null;queue=queue.filter(x=>x!==c);
+  const sw=$("#sw");sw.classList.remove("drag");sw.style.transform="translateY(-120%)";sw.style.opacity=0;cur=null;setTimeout(()=>{next(!queue.length);renderSide()},220)}
+$("#skipc").onclick=skipCard;$("#know").onclick=()=>answer(1);$("#easy").onclick=()=>answer(2);$("#again").onclick=()=>answer(0);
 (function(){const area=$("#cardArea");let sx=null,dx=0,sw=null;
   area.addEventListener("pointerdown",e=>{if(!cur||e.target.closest("button"))return;sw=$("#sw");sx=e.clientX;dx=0;sw.classList.add("drag")});
   window.addEventListener("pointermove",e=>{if(sx===null||!sw)return;dx=e.clientX-sx;sw.style.transform=`translateX(${dx}px) rotate(${dx/25}deg)`;sw.classList.toggle("ok",dx>60);sw.classList.toggle("no",dx<-60)});
@@ -339,10 +345,10 @@ document.addEventListener("keydown",e=>{
   if(typing)return;
   if(e.key==="/"){e.preventDefault();$("#q").focus();return}
   if(view==="cards"&&!$("#ovl").classList.contains("on")){
-    if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}else if(e.key==="ArrowLeft")answer(0);else if(e.key==="ArrowRight")answer(1);else if(e.key==="ArrowUp"){e.preventDefault();answer(2)}}});
+    if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}else if(e.key==="ArrowLeft")answer(0);else if(e.key==="ArrowRight")answer(1);else if(e.key==="ArrowUp"){e.preventDefault();answer(2)}else if(e.key==="s"||e.key==="S"){skipCard()}}});
 /* ---------- rail / init ---------- */
 document.querySelectorAll("#rail button[data-v],.gear button").forEach(b=>b.onclick=()=>show(b.dataset.v));
-const RETRO=["#f0481c","#1b3fa6","#f2c230","#6b4631","#4d8fd1","#d49a58","#c93a1b","#2e5fc2","#8a7a68"]; // Bauhaus 客廳配色
+const RETRO=["#1b3ed3","#e63f25","#14172e","#8fa3e0","#b5412f","#0f2a8f","#6f7aa8","#c9c4b2","#3b5bd9"]; // Future Archive：藍／紅橙／深藍黑為主
 const inkOn=c=>{const n=parseInt(c.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;return (r*299+g*587+b*114)/1000<140?"#fff":"#241b15"};
 function init(){
   Cadet.order.forEach((k,i)=>{Cadet.subjects[k].color=RETRO[i%RETRO.length]});if(typeof LV!=="undefined")LV.courses.forEach(c=>{if(Cadet.subjects[c.key])c.color=Cadet.subjects[c.key].color});
