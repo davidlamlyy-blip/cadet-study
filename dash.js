@@ -103,7 +103,16 @@ document.addEventListener("click",e=>{
   const d=e.target.closest("[data-cd]");if(d){cd=d.dataset.cd;renderCal();return}
   const t=e.target.closest("[data-tstart]");if(t){startTest(t.dataset.tstart);return}
   const g=e.target.closest("[data-v2go]");if(g){show(g.dataset.v2go)}});
-const _show=show;show=function(v){_show(v);if(v==="cal")renderCal()};
+function renderSkipped(){const box=$("#v-skipped"),sk=V2.skip||{},M=[];
+  Cadet.order.forEach(k=>(Cadet.subjects[k].cards||[]).forEach(c=>{if(c._k&&sk[c._k])M.push({c,k})}));M.sort((a,b)=>sk[b.c._k]-sk[a.c._k]);
+  const by=new Map();M.forEach(x=>(by.get(x.k)||by.set(x.k,[]).get(x.k)).push(x));
+  box.innerHTML=`<div class="calh"><button class="b g" data-v2go="cards">← 返 Flash card</button><h2>已跳過嘅 card（${M.length}）</h2>${M.length?'<button class="b g" id="skAll">還原全部</button>':""}</div>
+  <div class="small" style="margin-bottom:10px">呢度係你撳過「Skip（唔需要）」嘅 card。撳「還原」就會返去 flash card 同進度；唔會出現喺測驗。</div>`+
+  (M.length?[...by].map(([k,a])=>`<div class="panel"><div class="ph"><h3>${SUBJ(k).emoji} ${esc(SUBJ(k).name)}</h3><span class="small">${a.length}</span></div>`+a.map(({c})=>{const t=c.topic&&Cadet.topic(c.topic),imp=c.topic?impOf(c.topic):2;return `<div class="row skrow"><div style="flex:1;min-width:200px"><b>${esc(c.q)}</b><div class="small">${esc(c.a)}</div><div class="small">${t?esc(t.t.t)+" · ":""}${IMPN[imp][1]} ${IMPN[imp][0]} · 跳過於 ${new Date(sk[c._k]).toLocaleDateString()}</div></div><button class="b g" data-unskip="${esc(c._k)}">↩ 還原</button></div>`}).join("")+`</div>`).join(""):'<div class="empty">仲未跳過任何 card。</div>');
+  const all=$("#skAll");if(all)all.onclick=()=>{if(confirm("還原所有已跳過嘅 card？")){V2.skip={};v2save();Cadet._v++;_M=null;renderSide();renderSkipped()}}}
+document.addEventListener("click",e=>{const u=e.target.closest("[data-unskip]");if(u){delete V2.skip[u.dataset.unskip];v2save();Cadet._v++;_M=null;renderSide();renderSkipped()}});
+const _show=show;show=function(v){_show(v);if(v==="cal")renderCal();if(v==="skipped")renderSkipped()};
+TITLES.skipped=["已跳過嘅 card","隨時可以還原"];
 TITLES.cal=["日曆","測驗同考試日程：到期未考會喺 Dashboard 紅色提示"];TITLES.dash=["Dashboard","申請倒數、今日目標、測驗、pipeline"];
 window.startTest=startTest;
 })();

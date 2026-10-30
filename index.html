@@ -6,12 +6,12 @@
 <meta name="theme-color" content="#d5d8de">
 <meta name="robots" content="noindex,nofollow">
 <title>Cadet 學習站</title>
-<link rel="stylesheet" href="ui.css?v=1793375010">
-<link rel="stylesheet" href="learn.css?v=1793375010">
-<link rel="stylesheet" href="retro.css?v=1793375010">
-<link rel="stylesheet" href="v2.css?v=1793375010">
-<link rel="stylesheet" href="bauhaus.css?v=1793375010">
-<link rel="stylesheet" href="dash.css?v=1793375010">
+<link rel="stylesheet" href="ui.css?v=1793375218">
+<link rel="stylesheet" href="learn.css?v=1793375218">
+<link rel="stylesheet" href="retro.css?v=1793375218">
+<link rel="stylesheet" href="v2.css?v=1793375218">
+<link rel="stylesheet" href="bauhaus.css?v=1793375218">
+<link rel="stylesheet" href="dash.css?v=1793375218">
 </head>
 <body>
 <div class="app">
@@ -44,6 +44,7 @@
   <section id="v-learn" class="view"></section>
   <section id="v-dash" class="view"></section>
   <section id="v-cal" class="view"></section>
+  <section id="v-skipped" class="view"></section>
   <section id="v-map" class="view on">
    <div class="mapbar"><div class="crumb" id="crumb"></div><div id="mapmode"></div></div>
    <div class="mapwrap">
@@ -60,55 +61,56 @@
    <div class="dopt"><select id="topicSel" aria-label="Topic 篩選"></select><label class="sw"><input type="checkbox" id="onlyUnk" checked> Smart review (due first)</label><label class="sw"><input type="checkbox" id="onlyLearned" checked> Learned topics only</label></div>
    <div class="stats"><div class="bar"><i id="prog"></i></div><div class="small" id="count"></div><div class="small" id="daily"></div></div>
    <div id="cardArea"></div>
-   <div class="row" id="cardBtns"><button class="b g" id="again">😵 Don't know (←)</button><button class="b" id="know">✅ Know (→)</button><button class="b" id="easy" style="background:#58cc02;color:#fff">⚡ Easy (↑)</button><button class="b g" id="skipc" title="呢張唔需要識，以後唔再出">⏭ Skip（唔需要）(S)</button></div>
-   <div class="kbd">Space flip · ← Don't know · → Know · ↑ Easy · S Skip（唔需要，唔再出）· Mobile: swipe left/right</div>
+   <div class="row" id="cardBtns"><button class="b g" id="again">😵 Don't know (←)</button><button class="b" id="know">✅ Know (→)</button><button class="b" id="easy" style="background:#58cc02;color:#fff">⚡ Easy (↑)</button><button class="b g" id="undoc" disabled title="撤回上一張（Cmd/Ctrl+Z）">↶ Undo (⌘Z)</button><button class="b g" id="skipc" title="呢張唔需要識，以後唔再出">⏭ Skip（唔需要）(S)</button></div>
+   <div class="row" style="margin-top:8px"><button class="b g" data-v2go="skipped" id="skipLink">🗂 已跳過嘅 card</button></div>
+   <div class="kbd">Space flip · ← Don't know · → Know · ↑ Easy · S Skip（唔需要，唔再出）· ⌘/Ctrl+Z 撤回上一張 · Mobile: swipe left/right</div>
   </section>
   <section id="v-set" class="view"></section>
   <div class="disc">Unofficial personal study notes — may contain errors. Always verify with official manuals / regulations. Not for flight operations.</div>
  </div>
 </div>
 <div id="ovl"><div class="panel"><div class="ohead"><div><b id="ot" style="font-size:19px"></b><div class="small" id="oh"></div></div><button class="b g" id="oc">✕ 關閉</button></div><div class="abox" id="obox"></div></div></div>
-<script src="core.js?v=1793375010"></script>
-<script src="data/pof.js?v=1793375010"></script>
-<script src="data/pof_extra.js?v=1793375010"></script>
-<script src="data/agk.js?v=1793375010"></script>
-<script src="data/agk_extra.js?v=1793375010"></script>
-<script src="data/perf.js?v=1793375010"></script>
-<script src="data/perf_extra.js?v=1793375010"></script>
-<script src="data/nav.js?v=1793375010"></script>
-<script src="data/nav_extra.js?v=1793375010"></script>
-<script src="data/met.js?v=1793375010"></script>
-<script src="data/met_extra.js?v=1793375010"></script>
-<script src="data/fp.js?v=1793375010"></script>
-<script src="data/law.js?v=1793375010"></script>
-<script src="data/rt.js?v=1793375010"></script>
-<script src="data/hf.js?v=1793375010"></script>
-<script src="data/_cross.js?v=1793375010"></script>
-<script src="data/_why.js?v=1793375010"></script>
-<script src="data/levels.js?v=1793375010"></script>
-<script src="data/imp/pof.js?v=1793375010"></script>
-<script src="data/imp/agk.js?v=1793375010"></script>
-<script src="data/imp/perf.js?v=1793375010"></script>
-<script src="data/imp/nav.js?v=1793375010"></script>
-<script src="data/imp/met.js?v=1793375010"></script>
-<script src="data/imp/fp.js?v=1793375010"></script>
-<script src="data/imp/law.js?v=1793375010"></script>
-<script src="data/imp/rt.js?v=1793375010"></script>
-<script src="data/imp/hf.js?v=1793375010"></script>
-<script src="data/aircraft.js?v=1793375010"></script>
-<script src="learn.js?v=1793375010"></script>
-<script src="courses/pof.js?v=1793375010"></script>
-<script src="ui.js?v=1793375010"></script>
-<script src="sync.js?v=1793375010"></script>
-<script src="v2.js?v=1793375010"></script>
-<script src="data/notes/pof.js?v=1793375010"></script>
-<script src="data/notes/pof_a.js?v=1793375010"></script>
-<script src="data/notes/pof_b.js?v=1793375010"></script>
-<script src="data/notes/pof_c.js?v=1793375010"></script>
-<script src="data/notes/pof_d.js?v=1793375010"></script>
-<script src="data/notes/pof_e.js?v=1793375010"></script>
-<script src="notion-ui.js?v=1793375010"></script>
-<script src="notion-remote.js?v=1793375010"></script>
-<script src="dash.js?v=1793375010"></script>
+<script src="core.js?v=1793375218"></script>
+<script src="data/pof.js?v=1793375218"></script>
+<script src="data/pof_extra.js?v=1793375218"></script>
+<script src="data/agk.js?v=1793375218"></script>
+<script src="data/agk_extra.js?v=1793375218"></script>
+<script src="data/perf.js?v=1793375218"></script>
+<script src="data/perf_extra.js?v=1793375218"></script>
+<script src="data/nav.js?v=1793375218"></script>
+<script src="data/nav_extra.js?v=1793375218"></script>
+<script src="data/met.js?v=1793375218"></script>
+<script src="data/met_extra.js?v=1793375218"></script>
+<script src="data/fp.js?v=1793375218"></script>
+<script src="data/law.js?v=1793375218"></script>
+<script src="data/rt.js?v=1793375218"></script>
+<script src="data/hf.js?v=1793375218"></script>
+<script src="data/_cross.js?v=1793375218"></script>
+<script src="data/_why.js?v=1793375218"></script>
+<script src="data/levels.js?v=1793375218"></script>
+<script src="data/imp/pof.js?v=1793375218"></script>
+<script src="data/imp/agk.js?v=1793375218"></script>
+<script src="data/imp/perf.js?v=1793375218"></script>
+<script src="data/imp/nav.js?v=1793375218"></script>
+<script src="data/imp/met.js?v=1793375218"></script>
+<script src="data/imp/fp.js?v=1793375218"></script>
+<script src="data/imp/law.js?v=1793375218"></script>
+<script src="data/imp/rt.js?v=1793375218"></script>
+<script src="data/imp/hf.js?v=1793375218"></script>
+<script src="data/aircraft.js?v=1793375218"></script>
+<script src="learn.js?v=1793375218"></script>
+<script src="courses/pof.js?v=1793375218"></script>
+<script src="ui.js?v=1793375218"></script>
+<script src="sync.js?v=1793375218"></script>
+<script src="v2.js?v=1793375218"></script>
+<script src="data/notes/pof.js?v=1793375218"></script>
+<script src="data/notes/pof_a.js?v=1793375218"></script>
+<script src="data/notes/pof_b.js?v=1793375218"></script>
+<script src="data/notes/pof_c.js?v=1793375218"></script>
+<script src="data/notes/pof_d.js?v=1793375218"></script>
+<script src="data/notes/pof_e.js?v=1793375218"></script>
+<script src="notion-ui.js?v=1793375218"></script>
+<script src="notion-remote.js?v=1793375218"></script>
+<script src="dash.js?v=1793375218"></script>
 </body>
 </html>

@@ -44,3 +44,7 @@ button#know,button.b.go,#know,.lfoot button.go{background:var(--orange)!importan
 .impd.i1{background:var(--orange)}.impd.i2{background:var(--blue)}.impd.i3{background:transparent;border:1.5px solid var(--mute)}
 .impb{display:inline-block;vertical-align:middle;margin-left:8px;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;background:var(--panel);border:1px solid var(--line)}
 .impb.i1{background:#f6d3cb;border-color:var(--orange)}.impb.i2{background:#d3dbf8;border-color:var(--blue)}.impb.i3{color:var(--mute)}
+/* 卡片：觸控只准「輕點」翻面；長按／拖動唔翻，亦唔彈出選字／預覽 */
+#cardArea,#cardArea *{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+#cardArea .swipe{touch-action:pan-y}
+#cardBtns .b:disabled{opacity:.35}

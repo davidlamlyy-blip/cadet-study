@@ -245,7 +245,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-act2]");if
 /* ---------- 設定 ---------- */
 function renderSet(){$("#v-set").innerHTML=`<div class="card-box"><b>地圖預設顯示</b><div class="row" style="justify-content:flex-start"><button class="tab ${mapMode==="map"?"on":""}" data-mm2="map">🗺️ 地圖</button><button class="tab ${mapMode==="list"?"on":""}" data-mm2="list">📋 清單</button></div></div>
   <div class="card-box"><b>Flash card 鍵盤</b><div class="small">空白鍵／Enter 翻面 · ← 未識 · → 識 · / 搜尋 · Esc 關閉</div></div>
-  <div class="card-box"><b>已跳過嘅 card</b><div class="small">喺 flash card 撳「Skip（唔需要）」嘅 card 唔會再出現，亦唔計入進度。已跳過：${Object.keys(V2.skip||{}).length} 張。⚪ Not necessary 嘅 card 一律唔出。</div><div class="btnrow"><button class="b g" id="skipRes">還原全部已跳過</button></div></div>
+  <div class="card-box"><b>已跳過嘅 card</b><div class="small">喺 flash card 撳「Skip（唔需要）」嘅 card 唔會再出現，亦唔計入進度。已跳過：${Object.keys(V2.skip||{}).length} 張。⚪ Not necessary 嘅 card 一律唔出。</div><div class="btnrow"><button class="b g" data-v2go="skipped">睇／逐張還原</button><button class="b g" id="skipRes">還原全部已跳過</button></div></div>
   <div class="card-box"><b>內容重要程度</b><div class="small">🔴 Must know＝面試／筆試核心；🟡 Good to know＝加深理解；⚪ Not necessary＝太細（AI 判斷，非官方 syllabus）。選擇顯示到邊一層：</div><div class="btnrow"><select id="impSel" style="padding:8px;border-radius:10px;border:1px solid var(--line);background:var(--panel2)"><option value="1" ${IMPLV()===1?"selected":""}>只顯示 Must know</option><option value="2" ${IMPLV()===2?"selected":""}>Must + Good to know（預設）</option><option value="3" ${IMPLV()===3?"selected":""}>全部（包括 Not necessary）</option></select></div></div>
   <div class="card-box"><b>跟學習進度解鎖</b><div class="small">開（預設）：地圖、側欄、搜尋、關連只顯示你喺學習路徑睇咗 Note／做咗課堂嘅內容。關：全部顯示（純溫習）。</div><div class="btnrow"><button class="b ${GATE()?"":"g"}" id="gateTg">${GATE()?"而家：跟進度解鎖（撳此關閉）":"而家：全部顯示（撳此開返）"}</button></div></div>
   <div class="card-box"><b>備份／還原進度</b><div class="small">進度只存喺呢部機呢個網址嘅瀏覽器（唔同網址、file:// 同 localhost 係各自獨立）。更新網站唔會清走；每日自動留一份備份。建議定期匯出。</div><div class="btnrow"><button class="b" id="bkExp">匯出進度檔</button><button class="b g" id="bkImp">匯入進度檔</button><button class="b g" id="bkRes">還原上一個自動備份</button></div><input type="file" id="bkFile" accept=".json" style="display:none"></div>
@@ -325,18 +325,26 @@ function draw(anim){
    <div class="face back"><span class="tag">Answer${cur.st==="check"?" (to verify)":""}</span><div class="a">${esc(cur.a)}</div>${cur.zh?`<div class="zh">💡 ${esc(cur.zh)}</div>`:""}${cur.st==="check"?whyHTML(cur.topic,true):""}</div></div></div></div>`;
   if(anim){$("#sw").animate([{opacity:0,transform:"translateX(40px)"},{opacity:1,transform:"none"}],{duration:200})}}
 function flip(){const f=$("#fl");if(f){flipped=!flipped;f.classList.toggle("f",flipped)}}
-function answer(g){if(typeof g==="boolean")g=g?1:0;if(!cur||view!=="cards")return;const c=cur;grade(c,g);daily.n++;if(g>0)daily.ok++;save();
+const undoStack=[];let busyUntil=0;
+const cl=o=>o?JSON.parse(JSON.stringify(o)):undefined;
+function pushUndo(e){undoStack.push(e);if(undoStack.length>40)undoStack.shift();const b=$("#undoc");if(b)b.disabled=false}
+function undoCard(){if(Date.now()<busyUntil){setTimeout(undoCard,busyUntil-Date.now()+20);return}const e=undoStack.pop();const b=$("#undoc");if(b)b.disabled=!undoStack.length;if(!e||view!=="cards")return;
+  if(e.t==="ans"){if(e.s)srs[e.c._k]=e.s;else delete srs[e.c._k];if(e.st)store[e.c._k]=e.st;else delete store[e.c._k];daily.n=e.dn;daily.ok=e.dok;save();
+    if(e.again){const i=queue.indexOf(e.c);if(i>=0)queue.splice(i,1)}}
+  else if(e.t==="skip"){if(V2.skip)delete V2.skip[e.c._k];v2save();Cadet._v++;_M=null}
+  if(cur)queue.unshift(cur);queue.unshift(e.c);cur=null;next(false);renderSide()}
+function answer(g){if(typeof g==="boolean")g=g?1:0;if(!cur||view!=="cards")return;const c=cur;pushUndo({t:"ans",c,s:cl(srs[c._k]),st:store[c._k],dn:daily.n,dok:daily.ok,again:g===0});grade(c,g);daily.n++;if(g>0)daily.ok++;save();
   if(g===0){const at=Math.min(3,queue.length);queue.splice(at,0,c)} // Again：幾張之後再出
-  const ok=g>0,sw=$("#sw");sw.classList.remove("drag");sw.style.transform=`translateX(${ok?130:-130}%) rotate(${ok?12:-12}deg)`;sw.style.opacity=0;cur=null;
+  const ok=g>0,sw=$("#sw");sw.classList.remove("drag");sw.style.transform=`translateX(${ok?130:-130}%) rotate(${ok?12:-12}deg)`;sw.style.opacity=0;cur=null;busyUntil=Date.now()+300;
   setTimeout(()=>{next(!queue.length);renderSide()},260)}
-function skipCard(){if(!cur||view!=="cards")return;const c=cur;V2.skip=V2.skip||{};V2.skip[c._k]=Date.now();v2save();Cadet._v++;_M=null;queue=queue.filter(x=>x!==c);
-  const sw=$("#sw");sw.classList.remove("drag");sw.style.transform="translateY(-120%)";sw.style.opacity=0;cur=null;setTimeout(()=>{next(!queue.length);renderSide()},220)}
-$("#skipc").onclick=skipCard;$("#know").onclick=()=>answer(1);$("#easy").onclick=()=>answer(2);$("#again").onclick=()=>answer(0);
-(function(){const area=$("#cardArea");let sx=null,dx=0,sw=null;
-  area.addEventListener("pointerdown",e=>{if(!cur||e.target.closest("button"))return;sw=$("#sw");sx=e.clientX;dx=0;sw.classList.add("drag")});
-  window.addEventListener("pointermove",e=>{if(sx===null||!sw)return;dx=e.clientX-sx;sw.style.transform=`translateX(${dx}px) rotate(${dx/25}deg)`;sw.classList.toggle("ok",dx>60);sw.classList.toggle("no",dx<-60)});
+function skipCard(){if(!cur||view!=="cards")return;const c=cur;pushUndo({t:"skip",c});V2.skip=V2.skip||{};V2.skip[c._k]=Date.now();v2save();Cadet._v++;_M=null;queue=queue.filter(x=>x!==c);
+  const sw=$("#sw");sw.classList.remove("drag");sw.style.transform="translateY(-120%)";sw.style.opacity=0;cur=null;busyUntil=Date.now()+260;setTimeout(()=>{next(!queue.length);renderSide()},220)}
+$("#skipc").onclick=skipCard;$("#undoc").onclick=undoCard;$("#know").onclick=()=>answer(1);$("#easy").onclick=()=>answer(2);$("#again").onclick=()=>answer(0);
+(function(){const area=$("#cardArea");let sx=null,dx=0,sw=null,t0=0,sy=0,dy=0;
+  area.addEventListener("pointerdown",e=>{if(!cur||e.target.closest("button"))return;sw=$("#sw");sx=e.clientX;sy=e.clientY;dx=0;dy=0;t0=Date.now();sw.classList.add("drag")});
+  window.addEventListener("pointermove",e=>{if(sx===null||!sw)return;dx=e.clientX-sx;dy=e.clientY-sy;sw.style.transform=`translateX(${dx}px) rotate(${dx/25}deg)`;sw.classList.toggle("ok",dx>60);sw.classList.toggle("no",dx<-60)});
   const end=()=>{if(sx===null)return;const s=sw;sx=null;if(!s)return;s.classList.remove("drag","ok","no");s.style.transform="";
-    if(Math.abs(dx)>90)answer(dx>0?1:0);else if(Math.abs(dx)<8)flip();dx=0};
+    const dt=Date.now()-t0;if(Math.abs(dx)>90)answer(dx>0?1:0);else if(Math.abs(dx)<10&&Math.abs(dy)<10&&dt<350)flip();dx=0};
   window.addEventListener("pointerup",end);window.addEventListener("pointercancel",end)})();
 document.addEventListener("keydown",e=>{
   if(document.querySelector("#lesson.on"))return;
@@ -345,7 +353,7 @@ document.addEventListener("keydown",e=>{
   if(typing)return;
   if(e.key==="/"){e.preventDefault();$("#q").focus();return}
   if(view==="cards"&&!$("#ovl").classList.contains("on")){
-    if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}else if(e.key==="ArrowLeft")answer(0);else if(e.key==="ArrowRight")answer(1);else if(e.key==="ArrowUp"){e.preventDefault();answer(2)}else if(e.key==="s"||e.key==="S"){skipCard()}}});
+    if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}else if(e.key==="ArrowLeft")answer(0);else if(e.key==="ArrowRight")answer(1);else if(e.key==="ArrowUp"){e.preventDefault();answer(2)}else if(e.key==="s"||e.key==="S"){skipCard()}else if((e.metaKey||e.ctrlKey)&&(e.key==="z"||e.key==="Z")){e.preventDefault();undoCard()}}});
 /* ---------- rail / init ---------- */
 document.querySelectorAll("#rail button[data-v],.gear button").forEach(b=>b.onclick=()=>show(b.dataset.v));
 const RETRO=["#1b3ed3","#e63f25","#14172e","#8fa3e0","#b5412f","#0f2a8f","#6f7aa8","#c9c4b2","#3b5bd9"]; // Future Archive：藍／紅橙／深藍黑為主
