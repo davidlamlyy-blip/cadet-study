@@ -36,26 +36,37 @@ document.addEventListener("click",e=>{const t=e.target.closest("[data-tab]");if(
 /* ---------- 側欄 ---------- */
 function closeSide(){$("#side").classList.remove("open");$("#bdrop").classList.remove("on")}
 $("#menuBtn").onclick=()=>{$("#side").classList.add("open");$("#bdrop").classList.add("on")};$("#bdrop").onclick=closeSide;
+const openL=new Set([1]);
 function renderSide(){
   const sd=$("#side"),sc=sd.scrollTop,P=progress(),M=model(),unk=P.all.n-P.all.k;
-  if(curSubject){openS.add(curSubject);if(curGroup)openG.add(curSubject+"|"+curGroup)}
+  if(curSubject){const gl=curGroup?[Cadet.levelOf(curSubject,curGroup)]:[1,2,3];gl.forEach(n=>{openL.add(n);openS.add(curSubject+"@"+n)});if(curGroup)openG.add(curSubject+"|"+curGroup)}
+  const rem=o=>o?o.n-o.k:0;
   let h=`<div class="sidecard"><div class="small">Cadet 進度</div><div class="big">${P.all.k}<span class="small"> / ${P.all.n} 已識</span></div><div class="mini"><i style="width:${pct(P.all)}%"></i></div></div>
   <div class="sec">Status</div>
   <button class="srow" data-act="today"><span class="ic">🔥</span><span class="nm">今日練習</span><span class="badge">${daily.n}</span></button>
   <button class="srow" data-act="unk"><span class="ic">😵</span><span class="nm">未識 card</span><span class="badge">${unk}</span></button>
   <button class="srow" data-act="check"><span class="ic">🟠</span><span class="nm">待驗證內容</span><span class="badge ${M.checks.length?"warn":""}">${M.checks.length}</span></button>
-  <div class="sec">科目</div><div class="tree">`;
-  Cadet.order.forEach(k=>{const S=SUBJ(k),T=S.topics||[],o=openS.has(k);
-    h+=`<button class="srow ${o?"open":""} ${curSubject===k&&!curGroup&&view==="map"?"on":""}" data-s="${k}"><span class="car">▶</span><span class="dot" style="background:${S.color}"></span><span class="nm">${S.emoji} ${esc(S.name)}</span><span class="badge">${T.length}</span></button>`;
-    if(o){h+=`<div class="lv1">`;if(!T.length)h+=`<div class="small" style="padding:6px 10px">未有內容（整緊）</div>`;
-      [...new Set(T.map(gname))].forEach(g=>{const kids=T.filter(t=>gname(t)===g),go=openG.has(k+"|"+g);
-        h+=`<button class="srow ${go?"open":""} ${curSubject===k&&curGroup===g?"on":""}" data-g="${k}|${esc(g)}"><span class="car">▶</span><span class="nm">${esc(g)}</span><span class="badge">${kids.length}</span></button>`;
-        if(go){h+=`<div class="lv2">`+kids.map(t=>{const p=P.t.get(t.id);return `<button class="srow ${sel===t.id?"on":""}" data-t="${esc(t.id)}"><span class="nm">${esc(t.t)}</span>${t.check?'<span class="badge warn">!</span>':""}<span class="badge">${p?p.n-p.k:0}</span></button>`}).join("")+`</div>`}});
+  <div class="sec">由基礎開始 · 逐層展開</div><div class="tree">`;
+  const notesRead=n=>{const ks=Cadet.order.flatMap(k=>Cadet.groupsOf(k).filter(g=>Cadet.levelOf(k,g)===n).map(g=>(Cadet.lnotes||[]).find(x=>x.k===k&&x.g===g)).filter(Boolean));return ks.length?ks.every(x=>V2.noted["n:"+x.id]):true};
+  (Cadet.LEVELS||[]).forEach(L=>{
+    const subs=Cadet.order.map(k=>({k,gs:Cadet.groupsOf(k).filter(g=>Cadet.levelOf(k,g)===L.n)})).filter(x=>x.gs.length);if(!subs.length)return;
+    const lo=openL.has(L.n),lr=subs.reduce((a,x)=>a+x.gs.reduce((b,g)=>b+rem(P.g.get(x.k+"|"+g)),0),0),prevDone=L.n===1||notesRead(L.n-1);
+    h+=`<button class="srow lvh ${lo?"open":""}" data-lv="${L.n}"><span class="car">▶</span><span class="nm"><b>${L.name}</b> · ${L.zh}</span>${prevDone?"":'<span class="small" title="建議先睇完上一個 Level 嘅筆記">🔒</span>'}<span class="badge">${lr}</span></button>`;
+    if(lo){h+=`<div class="lv1">`;
+      subs.forEach(({k,gs})=>{const S=SUBJ(k),T=S.topics||[],key=k+"@"+L.n,o=openS.has(key),sr=gs.reduce((a,g)=>a+rem(P.g.get(k+"|"+g)),0);
+        h+=`<button class="srow ${o?"open":""} ${curSubject===k&&!curGroup&&view==="map"?"on":""}" data-s="${k}" data-sk="${key}"><span class="car">▶</span><span class="dot" style="background:${S.color}"></span><span class="nm">${S.emoji} ${esc(S.name)}</span><span class="badge">${sr}</span></button>`;
+        if(o){h+=`<div class="lv1">`;
+          gs.forEach(g=>{const kids=T.filter(t=>gname(t)===g),go=openG.has(k+"|"+g);
+            h+=`<button class="srow ${go?"open":""} ${curSubject===k&&curGroup===g?"on":""}" data-g="${k}|${esc(g)}"><span class="car">▶</span><span class="nm">${esc(g)}</span><span class="badge">${rem(P.g.get(k+"|"+g))}</span></button>`;
+            if(go){h+=`<div class="lv2">`+kids.map(t=>{const p=P.t.get(t.id);return `<button class="srow ${sel===t.id?"on":""}" data-t="${esc(t.id)}"><span class="nm">${esc(t.t)}</span>${t.check?'<span class="badge warn">!</span>':""}<span class="badge">${p?p.n-p.k:0}</span></button>`}).join("")+`</div>`}});
+          h+=`</div>`}});
       h+=`</div>`}});
-  sd.innerHTML=h+`</div><div class="small" style="margin:14px 6px">topic 右邊數字 = 未識 card 數</div>`;sd.scrollTop=sc}
+  sd.innerHTML=h+`</div><div class="small" style="margin:14px 6px">右邊數字 = 未識（未做）card 數；冇 card 嘅 topic 顯示 0</div>`;sd.scrollTop=sc}
 $("#side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
-  if(b.dataset.s){const k=b.dataset.s;if(openS.has(k)&&curSubject===k&&!curGroup)openS.delete(k);else openS.add(k);openSubject(k)}
-  else if(b.dataset.g){const[k,g]=b.dataset.g.split("|");const key=k+"|"+g;if(openG.has(key)&&curGroup===g&&curSubject===k)openG.delete(key);else openG.add(key);curSubject=k;curGroup=g;sel=null;show("map")}
+  const car=!!e.target.closest(".car"),tg=(set,key)=>set.has(key)?set.delete(key):set.add(key);
+  if(b.dataset.lv){tg(openL,+b.dataset.lv);renderSide()}
+  else if(b.dataset.s){const k=b.dataset.s,key=b.dataset.sk;if(car){tg(openS,key);renderSide()}else{openS.add(key);openSubject(k)}}
+  else if(b.dataset.g){const[k,g]=b.dataset.g.split("|");const key=k+"|"+g;if(car){tg(openG,key);renderSide()}else{openG.add(key);curSubject=k;curGroup=g;sel=null;show("map")}}
   else if(b.dataset.t)goTopic(b.dataset.t);
   else if(b.dataset.act==="today")show("cards");
   else if(b.dataset.act==="unk"){$("#onlyUnk").checked=true;goDeck("all")}

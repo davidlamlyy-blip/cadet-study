@@ -31,16 +31,16 @@ function md2html(md){const L=md.replace(/\r/g,"").split("\n"),o=[];let i=0;
   return o.join("")}
 const _renderNotesOld=window.__rnSrc;
 const ND=()=>noteTab==='guide'?(Cadet.lnotes||[]):(Cadet.notion||[]);
-const lessonsOf=k=>ND().filter(r=>r.k===k);
+const lessonsOf=k=>ND().filter(r=>r.k===k&&(noteTab!=="guide"||V2.noted["n:"+r.id]||r.id===nLesson));
 function renderNotes(){
   const box=$("#v-notes");
   const tabs=`<div class="modes"><button class="mode ${noteTab==="guide"?"on":""}" data-ntab="guide">📘 學習筆記</button><button class="mode ${noteTab==="src"?"on":""}" data-ntab="src">📚 來源整理（AI）</button></div>`;
   if(noteTab==="src"){_renderNotesOld();box.insertAdjacentHTML("afterbegin",tabs);return}
   const N=ND();
   if(!nLesson){
-    const ks=[...new Set(N.map(r=>r.k))];if(!nSubj||!ks.includes(nSubj))nSubj=ks[0];
+    const ks=[...new Set(N.filter(r=>noteTab!=="guide"||V2.noted["n:"+r.id]).map(r=>r.k))];if(!ks.length){box.innerHTML=tabs+`<div class="empty">仲未睇過任何筆記。去 <button class="b" data-tolearn="1">學習路徑</button>，每個 chapter 第一關就係 Note，睇完會自動收埋喺呢度。</div>`;return}if(!nSubj||!ks.includes(nSubj))nSubj=ks[0];
     const L=lessonsOf(nSubj);
-    box.innerHTML=tabs+`<div class="small chap-hint">每章一份筆記，由多個來源整理：Recall → Notes → Summary → MCQ。睇完先做課堂，再練 card。共 ${N.length} 章。</div>
+    box.innerHTML=tabs+`<div class="small chap-hint">呢度收集你睇過嘅筆記（Recall → Notes → Summary → MCQ）。未睇嘅 chapter 喺學習路徑每章第一關。已收集 ${N.filter(r=>V2.noted["n:"+r.id]).length} / ${N.length} 章。</div>
     <div class="subtabs">${ks.map(k=>`<button class="tab ${k===nSubj?"on":""}" data-nsubj="${k}">${SUBJ(k)?SUBJ(k).emoji:""} ${NK[k]||k} <small>${lessonsOf(k).length}</small></button>`).join("")}</div>
     <div class="llist">${L.map((r,i)=>{const rd=V2.noted["n:"+r.id],sc=V2.mcq[r.id];return `<button class="lrow2" data-nles="${r.id}"><span class="no">${String(i+1).padStart(2,"0")}</span><span class="lt2">${esc(r.t.replace(/^(POF|AGK|MET|AS|FP|PERF|GNAV|RNAV|NAV)[ /-]*(LESSON\s*)?[-\s]*/i,"")||r.t)}</span>${r.mcq.length?`<span class="mm">${sc?`${sc.s}/${sc.n}`:`MCQ ${r.mcq.length}`}</span>`:""}<span class="st" style="color:${rd?"#2f7d4f":"#a8a395"}">${rd?"●":"○"}</span></button>`}).join("")}</div>`;return}
   const r=N.find(x=>x.id===nLesson),L=lessonsOf(r.k),i=L.indexOf(r),rd=!!V2.noted["n:"+r.id];
@@ -52,7 +52,7 @@ function renderNotes(){
    <section class="ns"><h2>📝 Notes</h2>${md2html(r.notes)}</section>
    ${r.sum?`<section class="ns sumry"><h2>🔑 Summary</h2>${md2html(r.sum)}</section>`:""}
    ${r.mcq.length?`<section class="ns"><h2>✅ MCQ 練習 (${r.mcq.length})</h2><div id="mcqbox"><button class="b" data-mcqstart="${r.id}">開始練習</button>${V2.mcq[r.id]?`<span class="small"> 上次：${V2.mcq[r.id].s}/${V2.mcq[r.id].n}</span>`:""}</div></section>`:(r.act&&r.act.length>20?`<section class="ns"><h2>📌 Actions</h2>${md2html(r.act)}</section>`:"")}
-   <div class="pn">${i>0?`<button class="b g" data-nles="${L[i-1].id}">← ${esc(L[i-1].t.slice(0,28))}</button>`:"<span></span>"}${i<L.length-1?`<button class="b" data-nles="${L[i+1].id}">${esc(L[i+1].t.slice(0,28))} →</button>`:""}</div></article>`;window.scrollTo({top:0})}
+   ${fromPath?`<div class="acts" style="margin-top:18px"><button class="b" data-readback="${r.id}">✓ 睇完，返學習路徑</button></div>`:""}<div class="pn">${i>0?`<button class="b g" data-nles="${L[i-1].id}">← ${esc(L[i-1].t.slice(0,28))}</button>`:"<span></span>"}${i<L.length-1?`<button class="b" data-nles="${L[i+1].id}">${esc(L[i+1].t.slice(0,28))} →</button>`:""}</div></article>`;window.scrollTo({top:0})}
 function mcqRun(id){const r=ND().find(x=>x.id===id);let qi=0,score=0;const box=$("#mcqbox");
   const show1=()=>{const q=r.mcq[qi];box.innerHTML=`<div class="small">${qi+1} / ${r.mcq.length}</div><div class="mq">${inl(q.q)}</div>`+Object.entries(q.o).map(([k,v],j)=>`<button class="opt" data-n="${j+1}" data-ok="${k===q.a?1:0}" data-k="${k}">${k}. ${inl(v)}</button>`).join("")+`<div id="mfb"></div>`;
     box.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{box.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});const ok=b.dataset.ok==="1";if(ok)score++;else b.classList.add("wrong");
@@ -62,7 +62,9 @@ document.addEventListener("click",e=>{
   const t=e.target.closest("[data-ntab]");if(t){noteTab=t.dataset.ntab;noteSel=null;renderNotes();return}
   const s=e.target.closest("[data-nsubj]");if(s){nSubj=s.dataset.nsubj;renderNotes();return}
   const l=e.target.closest("[data-nles]");if(l){nLesson=l.dataset.nles;if(view!=="notes")show("notes");else renderNotes();return}
-  if(e.target.closest("[data-nback]")){nLesson=null;renderNotes();return}
+  if(e.target.closest("[data-nback]")){nLesson=null;fromPath=false;renderNotes();return}
+  const rb=e.target.closest("[data-readback]");if(rb){V2.noted["n:"+rb.dataset.readback]=V2.noted["n:"+rb.dataset.readback]||Date.now();v2save();fromPath=false;nLesson=null;show("learn");return}
+  const gl=e.target.closest("[data-tolearn]");if(gl){show("learn");return}
   const rd=e.target.closest("[data-nread]");if(rd){const k="n:"+rd.dataset.nread;if(V2.noted[k])delete V2.noted[k];else V2.noted[k]=Date.now();v2save();renderNotes();return}
   const ql=e.target.closest("[data-qlesson]");if(ql){show("learn");setTimeout(()=>startLesson(ql.dataset.qlesson),80);return}
   const m=e.target.closest("[data-mcqstart]");if(m){mcqRun(m.dataset.mcqstart)}});
