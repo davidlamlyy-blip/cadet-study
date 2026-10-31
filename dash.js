@@ -26,25 +26,71 @@ function dailyTarget(pl){const t=todayS(),N=nodes();let lv=[1,2,3].find(l=>N.som
   const left=N.filter(x=>x.lv===lv&&!x.done).length,days=Math.max(1,diff(t,pl.L[lv])+1);return{lv,n:Math.ceil(left/days),left,due:pl.L[lv]}}
 /* ---------- 測驗 ---------- */
 function scopeOK(lv){const L=learnedTopics();return t=>L.has(t.id)&&(!lv||Cadet.levelOf(Cadet.topic(t.id).s.key,gname(t))===lv)}
-function buildPool(test){const lv=test.type==="level"?test.lv:0,L=learnedTopics(),ok=id=>{if(!L.has(id))return false;const f=Cadet.topic(id);return f&&!f.s.optional&&impOf(id)<=2&&(!lv||Cadet.levelOf(f.s.key,gname(f.t))===lv)};
-  const q=[];(Cadet.lnotes||[]).forEach(n=>{if(!V2.noted["n:"+n.id])return;if(lv&&Cadet.levelOf(n.k,n.g)!==lv)return;(n.mcq||[]).forEach(m=>q.push({t:"mcq",m,src:n.t}))});
+const itemKey=it=>it.t==="mcq"?"m:"+it.m.q:"c:"+it.c._k;
+const itemTopics=it=>it.t==="mcq"?it.topics:(it.c.topic?[it.c.topic]:[]);
+function buildPool(test,opt){opt=opt||{};const lv=test.type==="level"?test.lv:0,L=learnedTopics(),
+    ok=id=>{if(!L.has(id))return false;const f=Cadet.topic(id);return f&&!f.s.optional&&impOf(id)<=2&&(!lv||Cadet.levelOf(f.s.key,gname(f.t))===lv)&&(!opt.topics||opt.topics.has(id))};
+  const q=[];(Cadet.lnotes||[]).forEach(n=>{if(!V2.noted["n:"+n.id])return;if(lv&&Cadet.levelOf(n.k,n.g)!==lv)return;const tp=chapterTopics(n.k,n.g);if(opt.topics&&!tp.some(t=>opt.topics.has(t)))return;(n.mcq||[]).forEach(m=>q.push({t:"mcq",m,src:n.t,nid:n.id,topics:tp}))});
   model().cards.forEach(c=>{if(c.st!=="todo"&&c.topic&&ok(c.topic)&&!(Cadet.subjects[c._s]||{}).optional)q.push({t:"card",c})});
-  const mc=shuf(q.filter(x=>x.t==="mcq")),cd=shuf(q.filter(x=>x.t==="card")),out=mc.slice(0,Math.ceil(test.n/2)).concat(cd).slice(0,test.n);return shuf(out)}
-function startTest(id){const pl=plan(),test=pl.tests.find(t=>t.id===id);if(!test)return;const pool=buildPool(test);
+  const ex=opt.exclude||new Set(),keyOf=x=>x.t==="mcq"?"m:"+x.m.q:"c:"+x.c._k,fr=list=>{const l=shuf(list.slice());return l.filter(x=>!ex.has(keyOf(x))).concat(l.filter(x=>ex.has(keyOf(x))))}; // 新題優先，唔夠先補返舊題
+  const mcA=fr(q.filter(x=>x.t==="mcq")),cdA=fr(q.filter(x=>x.t==="card")),mc=mcA.slice(0,Math.ceil(test.n/2)),cd=cdA.map(x=>mkCardItem(x.c)).filter(Boolean);
+  return shuf(mc.concat(cd).slice(0,test.n))}
+/* 測驗唔係 flash card：card 轉做選擇題（干擾項取自同 topic／同科其他 card 嘅答案）或短答題（自動核對關鍵字） */
+const STOP=new Set("the a an and or of to in on at is are was be by for with as it its this that these those from into than then so if not no can may must should will which who what when where how why do does did has have had their there about also only more most less any each per".split(" "));
+const nrm=t=>String(t||"").toLowerCase().replace(/[^a-z0-9.°%/+\-\s]/g," ").replace(/\s+/g," ").trim();
+function keyToks(a){const seen=new Set(),out=[];nrm(a).split(" ").forEach(w=>{w=w.replace(/^[.\-/+]+|[.\-/+]+$/g,"");if(!w||STOP.has(w)||seen.has(w))return;if(w.length<3&&!/\d/.test(w))return;seen.add(w);out.push(w)});
+  return out.sort((x,y)=>(/\d/.test(y)?1:0)-(/\d/.test(x)?1:0)||y.length-x.length).slice(0,6)}
+function mkCardItem(c){const ans=String(c.a||"").trim();if(!ans)return null;const toks=keyToks(ans),short=ans.length<=70&&toks.length>=1;
+  const M=model(),f=c.topic&&Cadet.topic(c.topic),g=f?gname(f.t):null,nc=nrm(ans).slice(0,40);
+  const sameT=(M.byTopic.get(c.topic)||[]),sameG=g?M.cards.filter(x=>x.topic&&x.topic!==c.topic&&Cadet.topic(x.topic)&&Cadet.topic(x.topic).s.key===f.s.key&&gname(Cadet.topic(x.topic).t)===g):[];
+  const qw=new Set(keyToks(c.q+" "+ans)),sim=x=>{const t=keyToks(x.q+" "+x.a);return t.filter(w=>qw.has(w)).length};
+  const ok=x=>x!==c&&x.a&&nrm(x.a).slice(0,40)!==nc&&x.a.length<=Math.max(70,ans.length*2.5)&&x.a.length>=ans.length*.3&&Math.abs(Math.log((x.a.length+10)/(ans.length+10)))<1.1;
+  const seen=new Set([nc]),d=[],take=pool=>pool.forEach(x=>{if(d.length>=3||!ok(x))return;const k=nrm(x.a).slice(0,40);if(seen.has(k))return;seen.add(k);d.push(x.a)});
+  take(shuf(sameT.slice()));take(shuf(sameG.slice()).sort((x,y)=>sim(y)-sim(x)));
+  if(d.length<3)take(shuf(M.cards.filter(x=>x._s===c._s&&x.topic!==c.topic)).sort((x,y)=>sim(y)-sim(x)));
+  if(d.length>=3&&!(short&&Math.random()<.5)){const opts=shuf([ans,...d]);return{t:"cmc",c,opts,a:opts.indexOf(ans)}}
+  if(toks.length)return{t:"sa",c,toks};return null}
+const saCheck=(user,toks)=>{const u=" "+nrm(user)+" ";if(u.trim().length<2)return false;const hit=toks.filter(t=>u.indexOf(t)>=0).length;return hit>=Math.max(1,Math.ceil(toks.length*.6))};
+function startTest(id,opt){const pl=plan(),test=pl.tests.find(t=>t.id===id);if(!test)return;const pool=buildPool(test,opt);
   if(pool.length<8){modal(`<h3>未夠內容</h3><div class="small">呢個測驗要最少 8 題；你而家只解鎖咗 ${pool.length} 題。去「📚 學習」睇多啲 Note、做多啲課堂，內容解鎖咗先考到。</div><div class="acts"><button class="b" id="tgo">去學習</button><button class="b g" id="tcl">關閉</button></div>`);$("#tgo").onclick=()=>{closeModal();show("learn")};$("#tcl").onclick=closeModal;return}
-  let i=0,ok=0;const ov=document.createElement("div");ov.id="tst";document.body.appendChild(ov);document.body.style.overflow="hidden";
+  const ans=pool.map(()=>null),topics=new Set();pool.forEach(it=>itemTopics(it).forEach(t=>topics.add(t)));
+  let i=0;const ov=document.createElement("div");ov.id="tst";document.body.appendChild(ov);document.body.style.overflow="hidden";
   const end=()=>{ov.remove();document.body.style.overflow="";show(view)};
-  function step(){if(i>=pool.length){const pct=Math.round(ok/pool.length*100),pass=pct>=70;V2.tests[id]={s:ok,n:pool.length,pct,pass,t:Date.now()};v2save();
-      ov.innerHTML=`<div class="tbox"><h2>${esc(test.title)}</h2><div class="tbig ${pass?"p":"f"}">${pct}%</div><div class="small">${ok} / ${pool.length} 啱 · ${pass?"合格 ✅（≥70%）":"未合格 ❌，溫習後再考（≥70%）"}</div><div class="acts"><button class="b" id="tdone">返 Dashboard</button>${pass?"":'<button class="b g" id="tretry">再考一次</button>'}</div></div>`;
-      $("#tdone").onclick=()=>{end();show("dash")};const r=$("#tretry");if(r)r.onclick=()=>{ov.remove();document.body.style.overflow="";startTest(id)};return}
+  const lab=k=>"ABCD"[k];
+  /* ---- 作答階段：唔即時顯示對錯，最後先一次過核對 ---- */
+  function step(){if(i>=pool.length)return finish();
     const it=pool[i],hd=`<div class="thead"><button class="x" id="tx" aria-label="離開">✕</button><div class="tbar"><i style="width:${i/pool.length*100}%"></i></div><span class="small">${i+1} / ${pool.length}</span></div>`;
-    if(it.t==="mcq"){const m=it.m;ov.innerHTML=`<div class="tbox">${hd}<div class="tq">${inl(m.q)}</div>${Object.entries(m.o).map(([k,v])=>`<button class="opt" data-k="${k}">${k}. ${inl(v)}</button>`).join("")}<div id="tfb"></div></div>`;
-      ov.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{const good=b.dataset.k===m.a;ov.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.k===m.a)x.classList.add("right")});if(good)ok++;else b.classList.add("wrong");
-        $("#tfb").innerHTML=`<div class="${good?"fbok":"fbno"}">${good?"✅ Correct":"❌ Answer: "+m.a}${m.why?`<div class="small">${inl(m.why)}</div>`:""}</div><button class="b" id="tn">Next</button>`;$("#tn").onclick=()=>{i++;step()}})}
-    else{const c=it.c;ov.innerHTML=`<div class="tbox">${hd}<div class="tq">${esc(c.q)}</div><div id="tfb"><button class="b" id="tshow">顯示答案</button></div></div>`;
-      $("#tshow").onclick=()=>{$("#tfb").innerHTML=`<div class="tans">${esc(c.a)}${c.zh?`<div class="small">${esc(c.zh)}</div>`:""}</div><div class="acts"><button class="b g" id="tno">✗ 唔識</button><button class="b" id="tyes">✓ 識</button></div>`;
-        $("#tyes").onclick=()=>{ok++;grade(c,1);i++;step()};$("#tno").onclick=()=>{grade(c,0);i++;step()}}}
+    const nav=`<div class="acts tnav">${i>0?'<button class="b g" id="tprev">← 上一題</button>':""}<button class="b" id="tnext">${i===pool.length-1?"完成":"下一題"}</button></div>`;
+    let body="";
+    if(it.t==="mcq"){const m=it.m;body=`<div class="tq">${inl(m.q)}</div>`+Object.entries(m.o).map(([k,v])=>`<button class="opt ${ans[i]===k?"sel":""}" data-k="${k}">${k}. ${inl(v)}</button>`).join("")}
+    else if(it.t==="cmc"){body=`<div class="tq">${esc(it.c.q)}</div>`+it.opts.map((o,k)=>`<button class="opt ${ans[i]===k?"sel":""}" data-i="${k}">${lab(k)}. ${esc(o)}</button>`).join("")}
+    else{body=`<div class="tq">${esc(it.c.q)}</div><div class="small" style="margin-bottom:6px">短答題：用英文寫出重點（最後會按關鍵字核對）</div><textarea id="tin" class="tin" rows="3" placeholder="Type your answer…">${esc(ans[i]||"")}</textarea>`}
+    ov.innerHTML=`<div class="tbox">${hd}${body}${nav}</div>`;
+    ov.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{ans[i]=it.t==="mcq"?b.dataset.k:+b.dataset.i;ov.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));b.classList.add("sel")});
+    const tin=$("#tin");if(tin){tin.oninput=()=>{ans[i]=tin.value};tin.focus()}
+    $("#tnext").onclick=()=>{i++;step()};const pv=$("#tprev");if(pv)pv.onclick=()=>{i--;step()};
     $("#tx").onclick=()=>{if(confirm("離開測驗？今次唔會計分。"))end()}}
+  /* ---- 核對 ---- */
+  function judge(it,a){if(a===null||a===""||a===undefined)return false;if(it.t==="mcq")return a===it.m.a;if(it.t==="cmc")return a===it.a;return saCheck(a,it.toks)}
+  function finish(){const un=ans.filter(a=>a===null||a==="").length;if(un&&!confirm(`仲有 ${un} 題冇答（會當錯）。確定交卷？`)){i=ans.findIndex(a=>a===null||a==="");step();return}
+    const res=pool.map((it,k)=>judge(it,ans[k]));pool.forEach((it,k)=>{if(it.t!=="mcq")grade(it.c,res[k]?1:0)});report(res,false)}
+  function save(res,first){const ok=res.filter(Boolean).length,pct=Math.round(ok/pool.length*100),pass=pct>=70,old=V2.tests[id]||{},seen=new Set(old.seen||[]);if(first)pool.forEach(it=>seen.add(itemKey(it)));
+    V2.tests[id]={s:ok,n:pool.length,pct,pass:pass||!!old.pass,last:pct,t:Date.now(),seen:[...seen].slice(-400)};v2save();return{ok,pct,pass}}
+  function report(res,again){const r=save(res,!again),wrong=pool.map((it,k)=>k).filter(k=>!res[k]);
+    const ansText=(it,a)=>a===null||a===""||a===undefined?"（冇答）":it.t==="mcq"?a+". "+inl(it.m.o[a]):it.t==="cmc"?lab(a)+". "+esc(it.opts[a]):esc(a);
+    const corr=it=>it.t==="mcq"?it.m.a+". "+inl(it.m.o[it.m.a]):it.t==="cmc"?lab(it.a)+". "+esc(it.opts[it.a]):esc(it.c.a);
+    const qtxt=it=>it.t==="mcq"?inl(it.m.q):esc(it.c.q),why=it=>it.t==="mcq"?(it.m.why?inl(it.m.why):"")+(it.m.zh?" 💡 "+inl(it.m.zh):""):(it.c.zh?"💡 "+esc(it.c.zh):"");
+    const revs=[...wrong,...pool.map((x,k)=>k).filter(k=>res[k])].map(k=>{const it=pool[k];return `<div class="rv ${res[k]?"ok":"no"}"><div><b>${res[k]?"✅":"❌"} ${k+1}. ${qtxt(it)}</b></div><div class="small">你答：${ansText(it,ans[k])}</div>${res[k]?"":`<div class="small">正確：${corr(it)}</div>`}${why(it)?`<div class="small">${why(it)}</div>`:""}${!res[k]&&it.t==="sa"&&ans[k]?`<button class="b g" data-ov="${k}">我其實答啱（覆核）</button>`:""}</div>`}).join("");
+    /* 唔合格：按錯咗嘅題目整理 study note */
+    let note="";if(!r.pass){const by=new Map();wrong.forEach(k=>{const it=pool[k];itemTopics(it).forEach(t=>{(by.get(t)||by.set(t,[]).get(t)).push(it)})});
+      note=`<div class="panel snote"><h3>📖 Study note（只列你答錯嘅 topics）</h3>`+[...by].slice(0,12).map(([t,its])=>{const f=Cadet.topic(t);if(!f)return "";const ln=(Cadet.lnotes||[]).find(n=>n.k===f.s.key&&n.g===gname(f.t));
+        return `<div class="sn"><b>${esc(f.t.t)}</b> <span class="impb i${impOf(t)}">${IMPN[impOf(t)][1]} ${IMPN[impOf(t)][0]}</span><div>${esc(f.t.d||"")}</div>${(f.t.pts||[]).length?`<ul>${f.t.pts.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}${its.filter(x=>x.t!=="mcq").slice(0,3).map(x=>`<div class="small">Q: ${esc(x.c.q)}<br>A: ${esc(x.c.a)}</div>`).join("")}${ln?`<button class="lk" data-gonote="${ln.id}">📖 睇 chapter note →</button>`:""}</div>`}).join("")+`<div class="small" style="margin-top:8px">溫習完先重考：會出同一批 topics、但盡量唔同嘅題目。</div></div>`}
+    ov.innerHTML=`<div class="tbox"><h2>${esc(test.title)}</h2><div class="tbig ${r.pass?"p":"f"}">${r.pct}%</div><div class="small">${r.ok} / ${pool.length} 啱 · ${r.pass?"合格 ✅（≥70%）":"未合格 ❌（要 ≥70%）"}${again?" · 覆核後":""}</div>
+      <div class="acts" style="margin:14px 0"><button class="b" id="tdone">返 Dashboard</button><button class="b ${r.pass?"g":""}" id="tretry">${r.pass?"再考一次（新題）":"溫習完重考（同 topics、新題）"}</button></div>${note}<div class="panel"><h3>逐題核對</h3>${revs}</div></div>`;
+    $("#tdone").onclick=()=>{end();show("dash")};
+    $("#tretry").onclick=()=>{ov.remove();document.body.style.overflow="";startTest(id,{topics,exclude:new Set((V2.tests[id]||{}).seen||[])})};
+    ov.querySelectorAll("[data-gonote]").forEach(b=>b.onclick=()=>{end();nLesson=b.dataset.gonote;fromPath=false;show("notes")});
+    ov.querySelectorAll("[data-ov]").forEach(b=>b.onclick=()=>{const k=+b.dataset.ov;res[k]=true;grade(pool[k].c,1);report(res,true)})}
   step()}
 const stateOf=(t,today)=>{const r=V2.tests[t.id];if(r&&r.pass)return{k:"pass",l:`✅ ${r.pct}%`};if(t.date<today)return{k:"over",l:r?`❌ ${r.pct}% · 逾期`:"逾期未考"};if(t.date===today)return{k:"today",l:r?`❌ ${r.pct}% · 再考`:"今日要考"};return{k:"soon",l:`${diff(today,t.date)} 日後`}};
 /* ---------- Dashboard ---------- */
