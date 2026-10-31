@@ -60,3 +60,11 @@ button.b.g{background:transparent!important;color:var(--ink)!important;border:1p
 /* 手機 */
 @media(max-width:860px){.app{background:transparent;margin:0;padding:8px 8px 84px;border-radius:0;min-height:100vh}
  .rail .pillbar,#rail{background:var(--frame)!important;border-radius:24px!important;padding:6px!important}.mainp{padding:14px;border-radius:22px}.side{border-radius:20px}}
+/* 進度圖示：統一 18px 圓圈（conic 填色），同重要程度標籤分開 */
+.sti{display:inline-block;width:18px;height:18px;border-radius:50%;border:2px solid var(--ink);flex:none;vertical-align:-3px;background:conic-gradient(var(--ink) var(--deg,0deg),transparent 0)}
+.sti.s0{--deg:0deg}.sti.s1{--deg:180deg}.sti.s2{--deg:270deg}.sti.s3{--deg:360deg;background:var(--ok);border-color:var(--ok)}
+.chap-hint .sti{width:13px;height:13px;border-width:1.5px;vertical-align:-2px;margin:0 2px 0 6px}
+.trow{gap:12px!important}.trow .tt{font-size:15px}
+.tier{flex:none;font-size:12px;font-weight:600;border-radius:999px;padding:1px 10px;border:1px solid var(--ink)}
+.tier.i1{background:var(--orange);color:#fff;border-color:var(--orange)}.tier.i2{background:transparent;color:var(--ink)}.tier.i3{border-color:var(--line);color:var(--mute)}
+.stb .sti{width:14px;height:14px;border-width:1.5px;vertical-align:-2px}
