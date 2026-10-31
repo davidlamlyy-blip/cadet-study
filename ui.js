@@ -36,10 +36,11 @@ document.addEventListener("click",e=>{const t=e.target.closest("[data-tab]");if(
 /* ---------- 側欄 ---------- */
 function closeSide(){$("#side").classList.remove("open");$("#bdrop").classList.remove("on")}
 $("#menuBtn").onclick=()=>{$("#side").classList.add("open");$("#bdrop").classList.add("on")};$("#bdrop").onclick=closeSide;
-const openL=new Set([1]);
+const openL=new Set([1]);let _autoKey="";
 function renderSide(){
   const sd=$("#side"),sc=sd.scrollTop,P=progress(),M=model(),unk=P.all.n-P.all.k;
-  if(curSubject){const gl=curGroup?[Cadet.levelOf(curSubject,curGroup)]:[0,1,2,3];gl.forEach(n=>{openL.add(n);openS.add(curSubject+"@"+n)});if(curGroup)openG.add(curSubject+"|"+curGroup)}
+  const ak=curSubject+"|"+curGroup+"|"+sel; // 只喺「導航到新位置」嗰次自動展開；之後用家撳 ▶ 收埋就唔再彈返開
+  if(curSubject&&ak!==_autoKey){_autoKey=ak;const gl=curGroup?[Cadet.levelOf(curSubject,curGroup)]:[0,1,2,3];gl.forEach(n=>{openL.add(n);openS.add(curSubject+"@"+n)});if(curGroup)openG.add(curSubject+"|"+curGroup)}
   const rem=o=>o?o.n-o.k:0;
   let h=`<div class="sidecard"><div class="small">Cadet 進度</div><div class="big">${P.all.k}<span class="small"> / ${P.all.n} 已識</span></div><div class="mini"><i style="width:${pct(P.all)}%"></i></div></div>
   <div class="sec">Status</div>
