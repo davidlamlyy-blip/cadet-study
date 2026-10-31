@@ -356,7 +356,7 @@ document.addEventListener("keydown",e=>{
     if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}else if(e.key==="ArrowLeft")answer(0);else if(e.key==="ArrowRight")answer(1);else if(e.key==="ArrowUp"){e.preventDefault();answer(2)}else if(e.key==="s"||e.key==="S"){skipCard()}else if((e.metaKey||e.ctrlKey)&&(e.key==="z"||e.key==="Z")){e.preventDefault();undoCard()}}});
 /* ---------- rail / init ---------- */
 document.querySelectorAll("#rail button[data-v],.gear button").forEach(b=>b.onclick=()=>show(b.dataset.v));
-const RETRO=["#1b3ed3","#e63f25","#14172e","#8fa3e0","#b5412f","#0f2a8f","#6f7aa8","#c9c4b2","#3b5bd9"]; // Future Archive：藍／紅橙／深藍黑為主
+const RETRO=["#ffd96a","#d9bcff","#bfe5fb","#c9efc7","#ffc9b0","#f7b8d4","#ffe9a8","#b8e0d2","#e0d0f8"]; // Learnify 粉彩
 const inkOn=c=>{const n=parseInt(c.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;return (r*299+g*587+b*114)/1000<140?"#fff":"#241b15"};
 function init(){
   Cadet.order.forEach((k,i)=>{Cadet.subjects[k].color=RETRO[i%RETRO.length]});if(typeof LV!=="undefined")LV.courses.forEach(c=>{if(Cadet.subjects[c.key])c.color=Cadet.subjects[c.key].color});

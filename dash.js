@@ -9,7 +9,7 @@ const ls=(k,d)=>{try{return localStorage.getItem(k)||d}catch(e){return d}};
 const lset=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
 const target=()=>ls("cadetTarget","2027-01-15");
 const start=()=>{let s=ls("cadetPlanStart","");if(!s){s=todayS();lset("cadetPlanStart",s)}return s};
-V2.tests=V2.tests||{};try{const x=JSON.parse(localStorage.getItem("cadetV2")||"null");if(x&&x.tests)V2.tests=x.tests}catch(e){}
+let dashLv=0;V2.tests=V2.tests||{};try{const x=JSON.parse(localStorage.getItem("cadetV2")||"null");if(x&&x.tests)V2.tests=x.tests}catch(e){}
 /* ---------- 計劃：Level 截止日、每週測驗、模擬考 ---------- */
 function plan(){
   const S=start(),T=target(),D=Math.max(14,diff(S,T)),tests=[],
@@ -62,6 +62,13 @@ window.renderDash=function(){
   const lvRow=[1,2,3].map(l=>{const a=N.filter(x=>x.lv===l),d=a.filter(x=>x.done).length,late=pl.L[l]<today&&d<a.length;return `<div class="lvr"><b>Level ${l}</b><span class="small">截止 ${pl.L[l].slice(5)}</span><div class="lbar2"><i style="width:${a.length?d/a.length*100:0}%"></i></div><span class="small">${d}/${a.length} 關${late?' · <span class="late">落後</span>':""}</span></div>`}).join("");
   box.innerHTML=`<div class="dh"><div><h1>${greet}，yno</h1><div class="small">Cadet Programme 申請倒數 · 學習計劃由 ${pl.S} 開始</div></div><label class="small tgt">申請日期 <input type="date" id="tgtd" value="${pl.T}"></label></div>
   ${overdue.length||todayT.length?`<div class="alert">⚠️ ${overdue.length?`有 ${overdue.length} 個測驗逾期未考：${overdue.map(t=>esc(t.title)+" ("+t.date.slice(5)+")").join("、")}。`:""}${todayT.length?` 今日要考：${todayT.map(t=>esc(t.title)).join("、")}。`:""} <button class="b" data-tstart="${(overdue[0]||todayT[0]).id}">而家考</button></div>`:""}
+  <div class="ph2"><h2>My courses</h2><div class="pills">${[0,1,2,3].map(l=>`<button class="tab ${dashLv===l?"on":""}" data-dlv="${l}">${l?"Level "+l:"All courses"}</button>`).join("")}</div></div>
+  <div class="cgrid3">${Cadet.order.filter(k=>!SUBJ(k).optional&&(!dashLv||Cadet.groupsOf(k).some(g=>Cadet.levelOf(k,g)===dashLv))).map(k=>{const S=SUBJ(k),a=N.filter(x=>x.n.k===k&&(!dashLv||x.lv===dashLv)),d=a.filter(x=>x.done).length,lvs=[...new Set(Cadet.groupsOf(k).map(g=>Cadet.levelOf(k,g)))].sort(),next=a.find(x=>!x.done);
+    return `<div class="ccard" style="--cc:${S.color}"><div class="ctop"><span class="ctag">${S.emoji} ${lvs.length>1?"Level "+lvs[0]+"–"+lvs[lvs.length-1]:"Level "+lvs[0]}</span></div><h3>${esc(S.name)}</h3><div class="cprog"><span>Progress</span><span>${a.length?d+"/"+a.length+" steps":"coming soon"}</span></div><div class="cbar"><i style="width:${a.length?d/a.length*100:0}%"></i></div><div class="cfoot"><span class="small">${(S.topics||[]).filter(t=>impOf(t.id)===1).length} must-know topics</span>${a.length?`<button class="b" data-v2go="learn">${d?"Continue":"Start"}</button>`:`<button class="b g" disabled>未有內容</button>`}</div></div>`}).join("")}</div>
+  <div class="row2"><div class="panel nl"><div class="ph"><h3>My next lessons</h3><button class="lk" data-v2go="learn">View all lessons</button></div>
+    <div class="nlh"><span>Lesson</span><span>Chapter</span><span>Level</span></div>
+    ${N.filter(x=>!x.done).slice(0,6).map(x=>`<div class="nlr" ${x.n.note?`data-note="${x.n.note.id}"`:`data-lesson="${x.n.x.l.id}"`}><div><b>${x.n.note?"📖 Note · "+esc(x.n.note.t):esc(x.n.x.l.title)}</b><div class="small">${esc(SUBJ(x.n.k).name)}</div></div><span>${esc(x.n.g)}</span><span>Level ${x.lv}</span></div>`).join("")||'<div class="small" style="padding:10px 0">全部完成 🎉</div>'}</div>
+   <div class="darkc"><div class="small">下一個測驗</div>${nxt[0]?`<span class="ytag">${nxt[0].type==="weekly"?"每週測驗":nxt[0].type==="level"?"Level 考試":"模擬考"}</span><h3>${esc(nxt[0].title)}</h3><div class="small">${nxt[0].date} · ${stateOf(nxt[0],today).l} · ${nxt[0].n} 題</div><button class="b" data-tstart="${nxt[0].id}">開始測驗</button>`:`<h3>冇測驗</h3>`}<div class="small" style="margin-top:14px">距離申請 <b style="color:#fff">${left>0?left+" 日":"已到期"}</b> · Must know ${mustM}/${mustAll}</div></div></div>
   <div class="kpis">${tile("距離申請",left>0?left+" 日":"已到期","時間用咗 "+elapsed+"%","y")}${tile("今日目標",dt.lv?dt.n+" 關":"全部完成",dt.lv?`Level ${dt.lv} 尚餘 ${dt.left} 關`:"")}${tile("今日要溫習",due+" 張","到期 card")}${tile("連續學習",LV.st.streak.n+" 日","⭐ "+LV.st.xp+" XP")}${tile("測驗合格",passed+" / "+tests.length,"≥70% 合格")}${tile("Must know 掌握",mustM+" / "+mustAll,"全部 🔴 topics")}</div>
   <div class="panel"><div class="ph"><h3>學習 pipeline</h3><span class="small">只計已解鎖內容</span></div><div class="pipe">
     ${[["📖 Note 已睇",notesRead,notesAll,"chapters"],["🎯 課堂完成",lessonsDone,lessonsAll,"課"],["🔁 練習中",practising,U.length,"topics"],["🏁 已掌握",mastered,U.length,"topics"]].map(([l,a,b,u])=>`<div class="pst"><div class="pl">${l}</div><div class="hatch"><i style="height:${b?Math.max(6,a/b*100):6}%"></i></div><div class="pn2">${a}<small> / ${b} ${u}</small></div></div>`).join("")}</div><div class="lvs">${lvRow}</div></div>
@@ -99,6 +106,7 @@ function renderCal(){const box=$("#v-cal"),pl=plan(),today=todayS();if(!cm){cm=t
     pl.tests.forEach(t=>add(t.date,"Cadet: "+t.title,t.id));add(pl.T,"Cadet 申請","target");L.push("END:VCALENDAR");
     const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([L.join("\r\n")],{type:"text/calendar"}));a.download="cadet-schedule.ics";a.click()}}
 document.addEventListener("click",e=>{
+  const dl=e.target.closest("[data-dlv]");if(dl){dashLv=+dl.dataset.dlv;renderDash();return}
   const c=e.target.closest("[data-cm]");if(c){const v=+c.dataset.cm;if(!v){cm=null;cd=null}else{const[y,m]=cm.split("-").map(Number),d=new Date(y,m-1+v,1);cm=d.getFullYear()+"-"+PAD(d.getMonth()+1)}renderCal();return}
   const d=e.target.closest("[data-cd]");if(d){cd=d.dataset.cd;renderCal();return}
   const t=e.target.closest("[data-tstart]");if(t){startTest(t.dataset.tstart);return}
