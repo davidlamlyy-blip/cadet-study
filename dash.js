@@ -119,15 +119,17 @@ window.renderDash=function(){
   <div class="panel"><div class="ph"><h3>學習 pipeline</h3><span class="small">只計已解鎖內容</span></div><div class="pipe">
     ${[["📖 Note 已睇",notesRead,notesAll,"chapters"],["🎯 課堂完成",lessonsDone,lessonsAll,"課"],["🔁 練習中",practising,U.length,"topics"],["🏁 已掌握",mastered,U.length,"topics"]].map(([l,a,b,u])=>`<div class="pst"><div class="pl">${l}</div><div class="hatch"><i style="height:${b?Math.max(6,a/b*100):6}%"></i></div><div class="pn2">${a}<small> / ${b} ${u}</small></div></div>`).join("")}</div><div class="lvs">${lvRow}</div></div>
   <div class="cols3">
-   <div class="panel"><div class="ph"><h3>今日</h3><button class="lk" data-v2go="learn">去學習 →</button></div>
-     <div class="row"><b>📚 學習</b><span>${dt.lv?`完成路徑下 ${dt.n} 關（Level ${dt.lv}，${dt.due.slice(5)} 前要完成 ${dt.left} 關）`:"路徑已全部完成 🎉"}</span></div>
-     <div class="row"><b>🃏 溫習</b><span>${due} 張 card 到期</span><button class="lk" data-v2go="cards">練 →</button></div>
-     ${todayT.map(t=>`<div class="row"><b>📝 ${esc(t.title)}</b><span>今日要考（${t.n} 題）</span><button class="lk" data-tstart="${t.id}">考 →</button></div>`).join("")}</div>
-   <div class="panel"><div class="ph"><h3>測驗／考試</h3><button class="lk" data-v2go="cal">日曆 →</button></div>
-     ${nxt.map(t=>{const s=stateOf(t,today);return `<div class="row"><b>${t.type==="weekly"?"📝":t.type==="level"?"🎓":"🏁"} ${esc(t.title)}</b><span class="small">${t.date.slice(5)}</span><span class="chip ${s.k}">${s.l}</span>${s.k==="pass"?"":`<button class="lk" data-tstart="${t.id}">考</button>`}</div>`}).join("")||'<div class="small">冇測驗</div>'}</div>
+   <div class="panel"><div class="ph"><h3>今日</h3></div>
+     ${dt.lv?`<button class="cta" data-v2go="learn"><span>繼續學習</span><small>Level ${dt.lv} · 下一關：${esc(((N.find(x=>!x.done)||{}).n&&(N.find(x=>!x.done).n.note?"Note · "+N.find(x=>!x.done).n.note.t:N.find(x=>!x.done).n.x.l.title))||"")}</small></button>`:`<div class="small">學習路徑已全部完成 🎉</div>`}
+     <div class="li2"><div><b>📚 今日目標</b><small>${dt.lv?`完成 ${dt.n} 關（${dt.due.slice(5)} 前共 ${dt.left} 關）`:"—"}</small></div></div>
+     <div class="li2"><div><b>🃏 溫習 card</b><small>${due} 張到期</small></div>${due?'<button class="b g sm" data-v2go="cards">練習</button>':""}</div>
+     ${todayT.map(t=>`<div class="li2"><div><b>📝 ${esc(t.title)}</b><small>今日要考 · ${t.n} 題</small></div><button class="b sm" data-tstart="${t.id}">開始</button></div>`).join("")}</div>
+   <div class="panel"><div class="ph"><h3>測驗 / 考試</h3><button class="lk" data-v2go="cal">全部 →</button></div>
+     ${nxt.slice(0,3).map(t=>{const s=stateOf(t,today);return `<div class="li2"><div><b>${t.type==="weekly"?"📝":t.type==="level"?"🎓":"🏁"} ${esc(t.title)}</b><small>${t.date.slice(5)} · ${t.n} 題</small></div><div class="r2"><span class="chip ${s.k}">${s.l}</span>${s.k==="pass"||s.k==="soon"?"":`<button class="b sm" data-tstart="${t.id}">考</button>`}</div></div>`}).join("")||'<div class="small">冇測驗</div>'}
+     ${nxt.length>3?`<div class="small" style="padding-top:8px">之後仲有 ${nxt.length-3} 個，睇日曆。</div>`:""}</div>
    <div class="panel"><div class="ph"><h3>要加強</h3></div>
-     ${sug.length?sug.map(x=>`<div class="row"><b>${esc(x.t.t)}</b><span class="small">${esc(x.why)}</span><button class="lk" data-topic-go="${esc(x.id)}">睇</button></div>`).join(""):'<div class="small">未有數據：先做課堂同練 card。</div>'}
-     ${empty.length?`<div class="warnbox">⚠️ ${empty.length} 科仲未有學習筆記／課堂（${empty.map(esc).join("、")}）。計劃會跟內容增加而更新；呢幾科要先寫內容先考到。</div>`:""}</div>
+     ${sug.length?sug.slice(0,4).map(x=>`<div class="li2"><div><b>${esc(x.t.t)}</b><small>${esc(x.why)}</small></div><button class="b g sm" data-topic-go="${esc(x.id)}">睇</button></div>`).join(""):'<div class="small">未有數據：先做課堂同練 card。</div>'}
+     ${empty.length?`<div class="small nocontent" title="${empty.map(esc).join("、")}">⚠️ 另外 ${empty.length} 科仲未有內容，計劃會跟內容增加而更新。</div>`:""}</div>
   </div>`;
   $("#tgtd").onchange=e=>{if(e.target.value){lset("cadetTarget",e.target.value);renderDash()}}}
 /* ---------- Calendar ---------- */

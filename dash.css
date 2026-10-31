@@ -62,3 +62,13 @@
 #tst .opt.sel{border-color:var(--ink);background:var(--yellow)}
 .tnav{margin-top:18px}.rv{padding:12px 0;border-top:1px solid var(--line)}.rv.no b{color:var(--bad)}.rv .b{margin-top:8px;min-height:32px;padding:4px 12px}
 .snote{background:#fff8dc!important}.sn{padding:10px 0;border-top:1px solid var(--line)}.sn ul{margin:6px 0 6px 18px;padding:0}.sn li{font-size:14px}
+/* 今日／測驗／要加強：緊湊列表，左文右掣 */
+.cols3{align-items:start}.cols3 .panel{padding:16px 18px}
+.cta{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;text-align:left;background:var(--orange);color:#fff;border:0;border-radius:16px;padding:14px 16px;cursor:pointer;margin-bottom:8px;font:inherit}
+.cta span{font-size:18px;font-weight:700}.cta small{font-size:13px;opacity:.9;line-height:1.35}
+.li2{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.li2 b{display:block;font-size:15px;line-height:1.35}.li2 small{display:block;font-size:13px;color:var(--mute);margin-top:2px}
+.li2 .r2{display:flex;gap:8px;align-items:center}
+button.b.sm{min-height:34px;padding:4px 14px;font-size:14px}
+.nocontent{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.cols3{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))!important}
