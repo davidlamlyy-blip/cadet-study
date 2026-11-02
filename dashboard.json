@@ -1,0 +1,14 @@
+{
+  "id": "cadet",
+  "name": "Cadet 學習站",
+  "emoji": "✈️",
+  "group": "Cadet",
+  "desc": "Flash card、Learn、地圖、動畫、測驗。Edit ver＝本機即改即見；Publish ver＝GitHub Pages（deploy 後先更新）；🤖 AI study partner 要用本機版（node server）",
+  "port": 8766,
+  "live": "https://davidlamlyy-blip.github.io/cadet-study/",
+  "start": [
+    "node",
+    "server.js",
+    "8766"
+  ]
+}

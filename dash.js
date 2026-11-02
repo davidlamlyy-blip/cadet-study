@@ -44,7 +44,8 @@ function mkCardItem(c){const ans=String(c.a||"").trim();if(!ans)return null;cons
   const M=model(),f=c.topic&&Cadet.topic(c.topic),g=f?gname(f.t):null,nc=nrm(ans).slice(0,40);
   const sameT=(M.byTopic.get(c.topic)||[]),sameG=g?M.cards.filter(x=>x.topic&&x.topic!==c.topic&&Cadet.topic(x.topic)&&Cadet.topic(x.topic).s.key===f.s.key&&gname(Cadet.topic(x.topic).t)===g):[];
   const qw=new Set(keyToks(c.q+" "+ans)),sim=x=>{const t=keyToks(x.q+" "+x.a);return t.filter(w=>qw.has(w)).length};
-  const ok=x=>x!==c&&x.a&&nrm(x.a).slice(0,40)!==nc&&x.a.length<=Math.max(70,ans.length*2.5)&&x.a.length>=ans.length*.3&&Math.abs(Math.log((x.a.length+10)/(ans.length+10)))<1.1;
+  const qs=new Set(keyToks(c.q)),qsim=x=>{const t=keyToks(x.q);return t.length&&qs.size?t.filter(w=>qs.has(w)).length/Math.min(t.length,qs.size):0}; // 干擾項必須嚟自「問題相近」嘅 card，否則選項同題目無關
+  const ok=x=>x!==c&&x.a&&qsim(x)>=.5&&nrm(x.a).slice(0,40)!==nc&&x.a.length<=Math.max(70,ans.length*2.5)&&x.a.length>=ans.length*.3&&Math.abs(Math.log((x.a.length+10)/(ans.length+10)))<1.1;
   const seen=new Set([nc]),d=[],take=pool=>pool.forEach(x=>{if(d.length>=3||!ok(x))return;const k=nrm(x.a).slice(0,40);if(seen.has(k))return;seen.add(k);d.push(x.a)});
   take(shuf(sameT.slice()));take(shuf(sameG.slice()).sort((x,y)=>sim(y)-sim(x)));
   if(d.length<3)take(shuf(M.cards.filter(x=>x._s===c._s&&x.topic!==c.topic)).sort((x,y)=>sim(y)-sim(x)));
