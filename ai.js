@@ -2,12 +2,12 @@
 (function(){
   const API=/^(127\.0\.0\.1|localhost)$/.test(location.hostname)?"":"http://127.0.0.1:8766"; // Pages 版會試本機 server
   const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-  const btn=document.createElement("button");btn.id="aib";btn.textContent="🤖";btn.title="AI study partner";
+  const btn=document.createElement("button");btn.id="aib";btn.innerHTML='<img src="img/jack.gif" alt="AI" width="100%" height="100%">';btn.title="AI study partner";
   const pan=document.createElement("div");pan.id="aip";
-  pan.innerHTML='<div class="aih"><b>🤖 AI Study Partner</b><span><button id="aiclr" title="清除對話">🗑</button><button id="aix">✕</button></span></div><div id="aictx" class="aictx"></div><div id="aim" class="aim"></div><div class="aiq"><button data-q="解釋呢題點解係呢個答案，同埋其他選項點解錯">解釋呢題</button><button data-q="呢題嘅選項同題目似乎無關／有問題嗎？">題目有問題？</button><button data-q="用最簡單方法同一個例子解釋">簡單啲</button><button data-q="Quiz 我一條 interview 問題">考我</button></div><div class="aif"><textarea id="aiin" rows="2" placeholder="問任何嘢（Enter 送出，Shift+Enter 換行）"></textarea><button id="aigo">送出</button></div>';
+  pan.innerHTML='<div class="aih"><b><img src="img/jack.gif" width="22" height="22" style="vertical-align:-5px;border-radius:50%;image-rendering:pixelated"> AI Study Partner</b><span><button id="aiclr" title="清除對話">🗑</button><button id="aix">✕</button></span></div><div id="aictx" class="aictx"></div><div id="aim" class="aim"></div><div class="aiq"><button data-q="解釋呢題點解係呢個答案，同埋其他選項點解錯">解釋呢題</button><button data-q="呢題嘅選項同題目似乎無關／有問題嗎？">題目有問題？</button><button data-q="用最簡單方法同一個例子解釋">簡單啲</button><button data-q="Quiz 我一條 interview 問題">考我</button></div><div class="aif"><textarea id="aiin" rows="2" placeholder="問任何嘢（Enter 送出，Shift+Enter 換行）"></textarea><button id="aigo">送出</button></div>';
   document.body.append(btn,pan);
-  const st=document.createElement("style");st.textContent=`#aib{position:fixed;right:18px;bottom:18px;z-index:9998;width:54px;height:54px;border-radius:50%;border:2px solid #111;background:#f7d977;font-size:26px;cursor:pointer;box-shadow:0 4px 14px #0003}
-body:has(#tst) #aib,body:has(#lesson.on) #aib{bottom:96px;right:12px;width:46px;height:46px;font-size:22px}
+  const st=document.createElement("style");st.textContent=`#aib{position:fixed;right:18px;bottom:18px;z-index:9998;width:54px;height:54px;border-radius:50%;border:2px solid #111;background:#6b7380;padding:0;overflow:hidden;cursor:pointer;box-shadow:0 4px 14px #0003}#aib img{display:block;image-rendering:pixelated;border-radius:50%}
+body:has(#tst) #aib,body:has(#lesson.on) #aib{bottom:96px;right:12px;width:46px;height:46px}
 body:has(#tst) #aip,body:has(#lesson.on) #aip{bottom:150px}
 #aip{position:fixed;right:18px;bottom:84px;z-index:9999;width:min(420px,calc(100vw - 24px));height:min(600px,calc(100vh - 110px));background:#fffdf8;border:2px solid #111;border-radius:16px;display:none;flex-direction:column;box-shadow:0 8px 30px #0004;font-size:14px}
 #aip.on{display:flex}#aip button{font:inherit;cursor:pointer}
