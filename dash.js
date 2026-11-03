@@ -132,7 +132,7 @@ window.renderDash=function(){
      ${sug.length?sug.slice(0,4).map(x=>`<div class="li2"><div><b>${esc(x.t.t)}</b><small>${esc(x.why)}</small></div><button class="b g sm" data-topic-go="${esc(x.id)}">睇</button></div>`).join(""):'<div class="small">未有數據：先做課堂同練 card。</div>'}
      ${empty.length?`<div class="small nocontent" title="${empty.map(esc).join("、")}">⚠️ 另外 ${empty.length} 科仲未有內容，計劃會跟內容增加而更新。</div>`:""}</div>
   </div>`;
-  $("#tgtd").onchange=e=>{if(e.target.value){lset("cadetTarget",e.target.value);renderDash()}}}
+  $("#tgtd").onchange=e=>{if(e.target.value){lset("cadetTarget",e.target.value);lset("cadetTargetT",String(Date.now()));renderDash()}}}
 /* ---------- Calendar ---------- */
 let cm=null,cd=null;
 function renderCal(){const box=$("#v-cal"),pl=plan(),today=todayS();if(!cm){cm=today.slice(0,7)}if(!cd)cd=today;

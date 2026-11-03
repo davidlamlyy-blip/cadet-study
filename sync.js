@@ -4,7 +4,8 @@ const SYNC={busy:false,timer:null,last:"",msg:""};
 const _save=save,_lsave=typeof lsave==="function"?lsave:null;
 const ghCfg=()=>{try{const t=localStorage.getItem("cadetGhToken");return t?{t,repo:localStorage.getItem("cadetGhRepo")||"davidlamlyy-blip/cadet-progress"}:null}catch(e){return null}};
 function stable(o){return JSON.stringify(o,(k,v)=>v&&typeof v==="object"&&!Array.isArray(v)?Object.keys(v).sort().reduce((a,x)=>(a[x]=v[x],a),{}):v)}
-function syncState(){return {v:1,srs,learn:{xp:LV.st.xp,done:LV.st.done,streak:LV.st.streak},v2:{noted:V2.noted,edits:V2.edits,mcq:V2.mcq||{}}}}
+function syncState(){return {v:1,srs,learn:{xp:LV.st.xp,done:LV.st.done,streak:LV.st.streak},v2:{noted:V2.noted,edits:V2.edits,mcq:V2.mcq||{}},plan:planLocal()}}
+function planLocal(){try{const p={},g=k=>localStorage.getItem(k);if(g("cadetPlanStart"))p.start=g("cadetPlanStart");if(g("cadetTarget")){p.target=g("cadetTarget");p.tt=+g("cadetTargetT")||0}return p}catch(e){return {}}}
 function mergeRemote(rm){
   rm=rm||{};const rs=rm.srs||{};
   for(const k in rs){const r=rs[k],l=srs[k];if(!l||(r.t||0)>(l.t||0)||((r.t||0)===(l.t||0)&&(r.n||0)>(l.n||0)))srs[k]=r}
@@ -18,6 +19,9 @@ function mergeRemote(rm){
   const mg=(L,R)=>{for(const k in (R||{})){if(!L[k]||(R[k].tm||0)>(L[k].tm||0))L[k]=R[k]}};
   E.notes=E.notes||{};mg(E.notes,re.notes);mg(E.topics,re.topics);mg(E.cards,re.cards);mg(E.del,re.del);
   (re.add||[]).forEach(a=>{const l=E.add.find(x=>x.id===a.id);if(!l)E.add.push(a);else if((a.tm||0)>(l.tm||0))Object.assign(l,a)});
+  try{const rp=rm.plan||{},g=k=>localStorage.getItem(k); // 計劃日期：start 取較早（原本開始日），target 取較新修改
+    if(rp.start&&(!g("cadetPlanStart")||rp.start<g("cadetPlanStart")))localStorage.setItem("cadetPlanStart",rp.start);
+    if(rp.target&&(!g("cadetTarget")||(rp.tt||0)>(+g("cadetTargetT")||0))){localStorage.setItem("cadetTarget",rp.target);localStorage.setItem("cadetTargetT",String(rp.tt||0))}}catch(e){}
   try{applyEdits()}catch(e){}}
 function persistLocal(){_save();if(_lsave)_lsave();try{localStorage.setItem('cadetV2',JSON.stringify(V2))}catch(e){}}
 const b64e=s=>btoa(unescape(encodeURIComponent(s))),b64d=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,""))));
@@ -40,7 +44,7 @@ async function syncNow(manual,retry){
   }catch(e){setSync("❌ 同步失敗："+e.message)}finally{SYNC.busy=false}}
 function scheduleSync(){if(!ghCfg())return;clearTimeout(SYNC.timer);SYNC.timer=setTimeout(()=>syncNow(false),4000)}
 function setSync(m){SYNC.msg=m;const el=document.querySelector("#syncMsg");if(el)el.textContent=m}
-function refreshUI(){try{renderSide();if(view==="learn")renderLearn();else if(view==="dash")renderDash();else if(view==="cards")next(true)}catch(e){}}
+function refreshUI(){try{renderSide();if(view==="learn")renderLearn();else if(view==="dash")renderDash();else if(view==="cards")next(true);else if(view==="cal")renderCal()}catch(e){}}
 save=function(){_save();scheduleSync()};
 if(_lsave)lsave=function(){_lsave();scheduleSync()};
 /* 設定頁 UI */
