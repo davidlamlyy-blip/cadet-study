@@ -4,7 +4,7 @@ const SYNC={busy:false,timer:null,last:"",msg:""};
 const _save=save,_lsave=typeof lsave==="function"?lsave:null;
 const ghCfg=()=>{try{const t=localStorage.getItem("cadetGhToken");return t?{t,repo:localStorage.getItem("cadetGhRepo")||"davidlamlyy-blip/cadet-progress"}:null}catch(e){return null}};
 function stable(o){return JSON.stringify(o,(k,v)=>v&&typeof v==="object"&&!Array.isArray(v)?Object.keys(v).sort().reduce((a,x)=>(a[x]=v[x],a),{}):v)}
-function syncState(){return {v:1,srs,learn:{xp:LV.st.xp,done:LV.st.done,streak:LV.st.streak},v2:{noted:V2.noted,edits:V2.edits,mcq:V2.mcq||{}},plan:planLocal()}}
+function syncState(){return {v:1,srs,learn:{xp:LV.st.xp,done:LV.st.done,streak:LV.st.streak},v2:{noted:V2.noted,edits:V2.edits,mcq:V2.mcq||{},tests:V2.tests||{}},plan:planLocal()}}
 function planLocal(){try{const p={},g=k=>localStorage.getItem(k);if(g("cadetPlanStart"))p.start=g("cadetPlanStart");if(g("cadetTarget")){p.target=g("cadetTarget");p.tt=+g("cadetTargetT")||0}return p}catch(e){return {}}}
 function mergeRemote(rm){
   rm=rm||{};const rs=rm.srs||{};
@@ -15,6 +15,7 @@ function mergeRemote(rm){
   if(rl.streak&&rl.streak.d>(LV.st.streak.d||""))LV.st.streak=rl.streak;
   const r2=rm.v2||{},E=V2.edits,re=r2.edits||{};
   V2.mcq=V2.mcq||{};for(const id in (r2.mcq||{}))if(!V2.mcq[id]||(r2.mcq[id].t||0)>(V2.mcq[id].t||0))V2.mcq[id]=r2.mcq[id];
+  V2.tests=V2.tests||{};for(const id in (r2.tests||{})){const r=r2.tests[id],l=V2.tests[id];if(!l||(r.t||0)>(l.t||0))V2.tests[id]=Object.assign({},r,{pass:!!(r.pass||(l&&l.pass))});else if(r.pass)l.pass=true} // 測驗結果：以最後作答為準，合格狀態只升不降
   for(const id in (r2.noted||{}))V2.noted[id]=Math.max(V2.noted[id]||0,r2.noted[id]);
   const mg=(L,R)=>{for(const k in (R||{})){if(!L[k]||(R[k].tm||0)>(L[k].tm||0))L[k]=R[k]}};
   E.notes=E.notes||{};mg(E.notes,re.notes);mg(E.topics,re.topics);mg(E.cards,re.cards);mg(E.del,re.del);
