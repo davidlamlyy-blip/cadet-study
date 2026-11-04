@@ -17,7 +17,7 @@ function show(v){
   document.querySelectorAll("#rail button[data-v],.gear button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));
   closeSide();
   if(v==="learn")renderLearn();if(v==="dash")renderDash();if(v==="anim")renderAnimList();if(v==="set")renderSet();
-  if(v==="cards")next(true);
+  if(v==="cards")cardsEnter();
   if(v==="map")drawMap();
   head();renderTabs();renderSide();
   try{history.replaceState(null,"","#"+v)}catch(e){}window.scrollTo(0,0)}
@@ -294,6 +294,7 @@ function pool(){const L=learnedOnly()?learnedSet():null;return model().cards.fil
 function goDeck(k,t){deck=k||"all";topicF=t||null;show("cards")}
 function goCard(key){const c=model().byKey.get(key);if(!c)return;deck="all";topicF=null;forced=c;show("cards")}
 function next(rebuild){
+  deckKey=deck+"|"+topicF;
   if(rebuild||!queue.length){let p=pool();
     if(only()){ // smart review：到期（熟悉度低先）→ 新 card（每次最多 10 張）
       const due=p.filter(c=>!isNew(c)&&isDue(c)).sort((a,b)=>(srs[a._k].b-srs[b._k].b)||(srs[a._k].due-srs[b._k].due));
@@ -302,6 +303,15 @@ function next(rebuild){
     else for(let i=p.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[p[i],p[j]]=[p[j],p[i]]}
     if(forced){p=p.filter(c=>c!==forced);p.unshift(forced);forced=null}queue=p}
   cur=queue.shift()||null;flipped=false;draw(true)}
+/* 背景同步／編輯後只更新數字，唔換走而家嗰張（舊做法係 next(true)，每次同步都洗牌換卡）。force＝卡內容改咗要重畫 */
+let deckKey="";
+function softCards(force){
+  if(!cur){if(Date.now()>=busyUntil)next(true);return}
+  const M=model(),c=M.byKey.get(cur._k);queue=queue.map(x=>M.byKey.get(x._k)).filter(Boolean);
+  if(!c){cur=null;next(false);return}
+  const sig=x=>x.q+"\u0001"+x.a+"\u0001"+x.zh,changed=force||sig(c)!==sig(cur)||!$("#sw");cur=c;draw(false,!changed);if(changed&&flipped){const f=$("#fl");if(f)f.classList.add("f")}}
+function cardsEnter(){if(!forced&&cur&&deckKey===deck+"|"+topicF)softCards(true);else next(true)}
+function cardCrumb(c){const f=c.topic&&Cadet.topic(c.topic);return f?gname(f.t)+" › "+f.t.t:""}
 function renderCardHead(){
   const P=progress();
   $("#deckbar").innerHTML=['all',...Cadet.order].map(k=>{const S=k==="all"?null:SUBJ(k),p=k==="all"?P.all:P.s.get(k);return `<button class="tab ${k===deck?"on":""}" data-d="${k}">${S?S.emoji+" "+esc(S.name):"全部"}<small>${p?p.k+"/"+p.n:"0"}</small></button>`}).join("");
@@ -313,17 +323,18 @@ function renderCardHead(){
 $("#deckbar").addEventListener("click",e=>{const b=e.target.closest("[data-d]");if(b)goDeck(b.dataset.d)});
 $("#topicSel").onchange=e=>{topicF=e.target.value||null;next(true)};
 $("#onlyUnk").onchange=()=>next(true);$("#onlyLearned").onchange=()=>next(true);
-function draw(anim){
+function draw(anim,keep){
   renderCardHead();const P=pool(),done=P.filter(c=>store[c._k]==="k").length;
-  $("#prog").style.width=(P.length?done/P.length*100:0)+"%";const dueN=P.filter(c=>!isNew(c)&&isDue(c)).length,newN=P.filter(isNew).length;$("#count").textContent=`Mastered ${done} / ${P.length} · Due ${dueN} · New ${newN}`;$("#daily").textContent=`今日練咗 ${daily.n} 張 · 識 ${daily.ok}`;head();renderTabs();
+  $("#prog").style.width=(P.length?done/P.length*100:0)+"%";const dueN=P.filter(c=>!isNew(c)&&isDue(c)).length,newN=P.filter(isNew).length;$("#count").textContent=`Mastered ${done} / ${P.length} · Due ${dueN} · New ${newN}`;$("#daily").textContent=`今日練咗 ${daily.n} 張 · 識 ${daily.ok}`;$("#count").textContent+=cur?` · 今輪仲有 ${queue.length+1} 張`:"";head();renderTabs();
+  if(keep&&cur&&$("#sw"))return;
   const area=$("#cardArea"),btns=$("#cardBtns");
   if(!cur){btns.style.display="none";
     area.innerHTML=P.length?`<div class="empty" style="margin-top:12px">🎉 All caught up for now. Cards come back when they are due.<br><button class="b" id="redo" style="margin-top:10px">Practise everything anyway</button></div>`:learnedOnly()?`<div class="empty" style="margin-top:12px">📚 No cards unlocked here yet.<br><span class="small">Finish a lesson in Learn first. Cards only cover topics you have learned.</span><br><button class="b" id="tolearn" style="margin-top:10px">Go to Learn</button> <button class="b g" id="showall" style="margin-top:10px">Show all cards</button></div>`:`<div class="empty" style="margin-top:12px">呢個範圍暫時未有 card 🛠️<br><span class="small">揀返其他科目，或者等資料整好。</span></div>`;
     const r=$("#redo");if(r)r.onclick=()=>{$("#onlyUnk").checked=false;next(true)};const tl=$("#tolearn");if(tl)tl.onclick=()=>show("learn");const sa=$("#showall");if(sa)sa.onclick=()=>{$("#onlyLearned").checked=false;next(true)};return}
-  btns.style.display="";const S=SUBJ(cur._s);
+  btns.style.display="";const S=SUBJ(cur._s),crumb=cardCrumb(cur),again=cur._again?'<span class="again">🔁 再出</span>':"";
   area.innerHTML=`<div class="scene"><div class="swipe" id="sw"><div class="flip" id="fl">
-   <div class="face" style="background:${S.color}"><span class="tag">${esc(S.name)}</span><div class="em">${cur.e||"✈️"}</div><div class="q">${esc(cur.q)}</div><span class="tip">撳一下／空白鍵翻面</span></div>
-   <div class="face back"><span class="tag">Answer${cur.st==="check"?" (to verify)":""}</span><div class="a">${esc(cur.a)}</div>${cur.zh?`<div class="zh">💡 ${esc(cur.zh)}</div>`:""}${cur.st==="check"?whyHTML(cur.topic,true):""}</div></div></div></div>`;
+   <div class="face" style="background:${S.color}"><span class="tag">${esc(S.name)}${again}</span>${crumb?`<div class="crumb">${esc(crumb)}</div>`:""}<div class="em">${cur.e||"✈️"}</div><div class="q">${esc(cur.q)}</div><span class="tip">撳一下／空白鍵翻面</span></div>
+   <div class="face back"><span class="tag">Answer${cur.st==="check"?" (to verify)":""}</span>${crumb?`<div class="crumb">${esc(S.name)} · ${esc(crumb)}</div>`:""}<div class="a">${esc(cur.a)}</div>${cur.zh?`<div class="zh">💡 ${esc(cur.zh)}</div>`:""}${cur.st==="check"?whyHTML(cur.topic,true):""}</div></div></div></div>`;
   if(anim){$("#sw").animate([{opacity:0,transform:"translateX(40px)"},{opacity:1,transform:"none"}],{duration:200})}}
 function flip(){const f=$("#fl");if(f){flipped=!flipped;f.classList.toggle("f",flipped)}}
 const undoStack=[];let busyUntil=0;
@@ -335,7 +346,7 @@ function undoCard(){if(Date.now()<busyUntil){setTimeout(undoCard,busyUntil-Date.
   else if(e.t==="skip"){if(V2.skip)delete V2.skip[e.c._k];v2save();Cadet._v++;_M=null}
   if(cur)queue.unshift(cur);queue.unshift(e.c);cur=null;next(false);renderSide()}
 function answer(g){if(typeof g==="boolean")g=g?1:0;if(!cur||view!=="cards")return;const c=cur;pushUndo({t:"ans",c,s:cl(srs[c._k]),st:store[c._k],dn:daily.n,dok:daily.ok,again:g===0});grade(c,g);daily.n++;if(g>0)daily.ok++;save();
-  if(g===0){const at=Math.min(3,queue.length);queue.splice(at,0,c)} // Again：幾張之後再出
+  c._again=g===0;if(g===0){const at=Math.min(3,queue.length);queue.splice(at,0,c)} // Again：幾張之後再出
   const ok=g>0,sw=$("#sw");sw.classList.remove("drag");sw.style.transform=`translateX(${ok?130:-130}%) rotate(${ok?12:-12}deg)`;sw.style.opacity=0;cur=null;busyUntil=Date.now()+300;
   setTimeout(()=>{next(!queue.length);renderSide()},260)}
 function skipCard(){if(!cur||view!=="cards")return;const c=cur;pushUndo({t:"skip",c});V2.skip=V2.skip||{};V2.skip[c._k]=Date.now();v2save();Cadet._v++;_M=null;queue=queue.filter(x=>x!==c);

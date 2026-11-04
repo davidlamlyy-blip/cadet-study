@@ -98,7 +98,7 @@ function cardForm(c){const isNew=!c;const subs=Cadet.order;const cs=c?c._s:(deck
     if(c._u){const x=V2.edits.add.find(y=>y.s+"|"+y.id===c._k);if(x){x.x=1;x.tm=tm}}else V2.edits.del[c._k]={v:1,tm};
     v2save();applyEdits();closeModal();refresh2(true)};
   const r=$("#cfReset");if(r)r.onclick=()=>{V2.edits.cards[c._k]={x:1,tm:Date.now()};v2save();applyEdits();closeModal();refresh2(true)}}
-function refresh2(cards){try{renderSide();if(view==="map")drawMap();else if(view==="notes")renderNotes();else if(view==="cards")next(true)}catch(e){}}
+function refresh2(cards){try{renderSide();if(view==="map")drawMap();else if(view==="notes")renderNotes();else if(view==="cards")softCards(true)}catch(e){}}
 /* ---------- 全域點擊 ---------- */
 document.addEventListener("click",e=>{
   const a=e.target.closest("[data-act2]");if(a){const id=a.dataset.id;

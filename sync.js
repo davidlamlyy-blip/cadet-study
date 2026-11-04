@@ -45,7 +45,7 @@ async function syncNow(manual,retry){
   }catch(e){setSync("❌ 同步失敗："+e.message)}finally{SYNC.busy=false}}
 function scheduleSync(){if(!ghCfg())return;clearTimeout(SYNC.timer);SYNC.timer=setTimeout(()=>syncNow(false),4000)}
 function setSync(m){SYNC.msg=m;const el=document.querySelector("#syncMsg");if(el)el.textContent=m}
-function refreshUI(){try{renderSide();if(view==="learn")renderLearn();else if(view==="dash")renderDash();else if(view==="cards")next(true);else if(view==="cal")renderCal()}catch(e){}}
+function refreshUI(){try{renderSide();if(view==="learn")renderLearn();else if(view==="dash")renderDash();else if(view==="cards")softCards();else if(view==="cal")renderCal()}catch(e){}}
 save=function(){_save();scheduleSync()};
 if(_lsave)lsave=function(){_lsave();scheduleSync()};
 /* 設定頁 UI */
