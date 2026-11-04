@@ -2,7 +2,7 @@
    localhost／本機有 data/notion.js 就直接用。 */
 (function(){
   const KEY="cadetNotionCache";
-  function apply(arr){if(Array.isArray(arr)&&arr.length){Cadet.notion=arr;try{if(view==="notes")renderNotes()}catch(e){}}}
+  function apply(arr){if(Array.isArray(arr)&&arr.length){Cadet.notion=arr;try{const f=document.activeElement;if(view==="notes"&&!(f&&f.isContentEditable))renderNotes()}catch(e){}}}
   if(!(Cadet.notion&&Cadet.notion.length)){try{apply(JSON.parse(localStorage.getItem(KEY)||"null"))}catch(e){}}
   async function pull(){const c=typeof ghCfg==="function"?ghCfg():null;if(!c)return;
     try{const r=await fetch(`https://api.github.com/repos/${c.repo}/contents/notion.json`,{headers:{Authorization:"Bearer "+c.t,Accept:"application/vnd.github.raw+json"}});

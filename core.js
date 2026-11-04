@@ -58,7 +58,7 @@ function migrateKeys(){let done=null;try{done=localStorage.getItem("cadetKeyV")}
   try{localStorage.setItem("cadetKeyV","2")}catch(e){}if(moved){try{v2save()}catch(e){}}}
 function applyEdits(){ // 將編輯覆蓋到 data（保留原本喺 _o，可還原）
   const E=V2.edits;E.notes=E.notes||{};
-  [Cadet.lnotes,Cadet.notion].forEach(arr=>(arr||[]).forEach(n=>{if(!n._o)n._o={t:n.t,rec:n.rec,notes:n.notes,sum:n.sum};const e=E.notes[n.id];if(e&&!e.x){n.t=e.t||n._o.t;n.rec=e.rec||n._o.rec;n.notes=e.notes!=null?e.notes:n._o.notes;n.sum=e.sum!=null?e.sum:n._o.sum;n._ed=1}else{n.t=n._o.t;n.rec=n._o.rec;n.notes=n._o.notes;n.sum=n._o.sum;n._ed=0}}));
+  [Cadet.lnotes,Cadet.notion].forEach(arr=>(arr||[]).forEach(n=>{if(!n._o)n._o={t:n.t,rec:n.rec,rl:n.rl,notes:n.notes,sum:n.sum};const e=E.notes[n.id];if(e&&!e.x){n.t=e.t||n._o.t;n.rec=e.rec||n._o.rec;n.rl=e.rl||n._o.rl;n.notes=e.notes!=null?e.notes:n._o.notes;n.sum=e.sum!=null?e.sum:n._o.sum;n._ed=1}else{n.t=n._o.t;n.rec=n._o.rec;n.rl=n._o.rl;n.notes=n._o.notes;n.sum=n._o.sum;n._ed=0}}));
   Cadet.order.forEach(k=>{const S=Cadet.subjects[k];
     (S.topics||[]).forEach(t=>{const e=E.topics[t.id];if(!t._o)t._o={t:t.t,d:t.d,pts:t.pts};if(e&&!e.x){t.t=e.t!=null?e.t:t._o.t;t.d=e.d!=null?e.d:t._o.d;t.pts=e.pts||t._o.pts;t._ed=1}else{t.t=t._o.t;t.d=t._o.d;t.pts=t._o.pts;t._ed=0}});
     S.cards=(S.cards||[]).filter(c=>!c._u);

@@ -349,7 +349,7 @@ $("#skipc").onclick=skipCard;$("#undoc").onclick=undoCard;$("#know").onclick=()=
   window.addEventListener("pointerup",end);window.addEventListener("pointercancel",end)})();
 document.addEventListener("keydown",e=>{
   if(document.querySelector("#lesson.on"))return;
-  const t=e.target,typing=t&&(t.tagName==="INPUT"||t.tagName==="SELECT"||t.tagName==="TEXTAREA");
+  const t=e.target,typing=t&&(t.tagName==="INPUT"||t.tagName==="SELECT"||t.tagName==="TEXTAREA"||t.isContentEditable);
   if(e.key==="Escape"){if($("#ovl").classList.contains("on"))closeAnim();closeSide();hideRes();return}
   if(typing)return;
   if(e.key==="/"){e.preventDefault();$("#q").focus();return}

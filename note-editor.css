@@ -1,0 +1,25 @@
+/* 筆記內容（語意 tag）＋ Notion／Word 式編輯 */
+.mdb ul,.mdb ol{margin:6px 0;padding-left:24px}.mdb li{margin:4px 0;font-size:16.5px;line-height:1.7}.mdb li::marker{color:var(--orange);font-weight:700}.mdb ul ul{list-style-type:"–  "}
+.mdb h2{margin:20px 0 6px;font-size:21px}.mdb h3{margin:18px 0 6px;font-size:18px}.mdb h4{margin:14px 0 4px;font-size:16px}
+.mdb blockquote{border-left:4px solid var(--line);padding:2px 12px;margin:8px 0;color:#4a463d}.mdb blockquote p{margin:0}
+.mdb hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+.note:not(.editing) .ns.isempty{display:none}
+.fig[data-w="33"] img{max-width:33%}.fig[data-w="60"] img{max-width:60%}.fig.missing img{display:none}.fig.missing::before{content:"🖼 相片未載到（要網絡同 token）";display:block;padding:18px;color:var(--mute);font-size:13px}.fig figcaption:empty{display:none}
+.figst{font-size:12px;color:var(--mute);margin-top:4px}
+.nesave{margin-left:8px}.nesave .rlink{margin-left:4px}
+/* 編輯模式 */
+.editing [contenteditable=true],.editing [contenteditable=plaintext-only]{outline:none;cursor:text}
+.editing h1[data-f=t]:hover,.editing .ned.on:hover{box-shadow:0 0 0 4px rgba(255,90,54,.07);border-radius:6px}
+.editing .ned{min-height:1.8em}.editing .ned.isnull::before{content:attr(data-ph);color:var(--mute);position:absolute;pointer-events:none}.editing .ned.isnull{position:relative}
+.editing .ned.drop{box-shadow:0 0 0 2px var(--orange);border-radius:6px}
+.editing .recl .rt:empty{display:inline-block;min-width:60%}
+.editing .fig{position:relative}.editing .fig figcaption:empty{display:block;min-height:1.4em}.editing .fig figcaption:empty::before{content:attr(data-ph);color:var(--mute)}.editing .fig figcaption[contenteditable=true]{cursor:text}
+.figt{position:absolute;top:8px;right:8px;display:flex;gap:2px;background:var(--ink);border-radius:8px;padding:3px;opacity:0;transition:opacity .12s}.fig:hover .figt,.fig:focus-within .figt{opacity:1}
+.figt button{background:none;border:0;color:#fff;font-size:12px;padding:3px 7px;border-radius:5px;cursor:pointer}.figt button:hover{background:rgba(255,255,255,.2)}
+@media (hover:none){.figt{opacity:1}}
+.netb{position:sticky;top:6px;z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:2px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:5px 6px;margin:12px 0;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.netb button{background:none;border:0;color:var(--ink);min-width:32px;height:32px;padding:0 7px;border-radius:8px;font-size:14px;cursor:pointer}.netb button:hover{background:var(--stone2)}
+.netb i:empty{width:1px;height:20px;background:var(--line);margin:0 4px}.netb .tbt{display:inline-flex;align-items:center;gap:2px}.netb .tbt[hidden]{display:none}.nehint{margin-left:auto;padding-right:6px}
+@media (max-width:760px){.nehint{display:none}}
+.neslash{position:fixed;z-index:60;width:210px;max-height:280px;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.16);padding:5px}
+.neslash button{display:block;width:100%;text-align:left;background:none;border:0;border-radius:8px;padding:7px 10px;font-size:14px;color:var(--ink);cursor:pointer}.neslash button.on{background:var(--stone2)}
